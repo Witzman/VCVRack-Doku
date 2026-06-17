@@ -15,21 +15,19 @@ OUT_DIR = os.path.join(BASE_DIR, "docs", "Rack-Doku")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 SIDEBAR = [
-    ("Start", [
+    ("Common", [
         ("Overview", "readme"),
         ("Signal Flow & Concepts", "mental-model"),
         ("How a Patch Works", "kernablauf"),
         ("Glossary", "glossary"),
-    ]),
-    ("Patcher", [
         ("Using VCV Rack", "userguide"),
         ("Patching Use Cases", "anwendungsfaelle"),
         ("FAQ", "faq"),
-        ("Your First Patch", "first-patch"),
-    ]),
-    ("Modules", [
         ("Fundamental Modules", "fundamental-modules"),
         ("Befaco Modules", "befaco-modules"),
+    ]),
+    ("Tutorials", [
+        ("Your First Patch", "first-patch"),
     ]),
 ]
 
