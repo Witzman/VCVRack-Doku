@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Befaco Modules — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<a href="first-patch.html">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html">Fundamental Modules</a>
+<a href="befaco-modules.html" aria-current="page">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Befaco Modules</strong></header>
+  <main>
+    <article>
+<h1>Befaco Modules</h1>
+<p>Reference for all modules in the Befaco plugin. Befaco modules are hardware clones of the Befaco Eurorack module range. For each module: what it does, its parameters, inputs, and outputs.</p>
+<hr>
+<h2>Even VCO</h2>
+<p>Analog-style VCO featuring an even-harmonic waveform output in addition to the standard set. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Octave</td><td>Octave offset (−5 to +4)</td></tr>
+<tr><td>Tune</td><td>Fine tune in semitones (±7)</td></tr>
+<tr><td>Pulse Width</td><td>Square wave pulse width</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Pitch 1</td><td>1V/oct pitch CV input 1</td></tr>
+<tr><td>Pitch 2</td><td>Second 1V/oct pitch CV input (summed with Pitch 1)</td></tr>
+<tr><td>FM</td><td>Frequency modulation CV</td></tr>
+<tr><td>Hard Sync</td><td>Resets oscillator phase</td></tr>
+<tr><td>PWM</td><td>Pulse width modulation CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Triangle</td><td>Triangle wave</td></tr>
+<tr><td>Sine</td><td>Sine wave</td></tr>
+<tr><td>Even</td><td>Even harmonic wave (distinct character from standard shapes)</td></tr>
+<tr><td>Sawtooth</td><td>Sawtooth wave</td></tr>
+<tr><td>Square</td><td>Square/pulse wave</td></tr>
+</table>
+<hr>
+<h2>Rampage</h2>
+<p>Dual ramp generator — a versatile module that functions as a dual function generator, slew limiter, envelope generator, LFO, and more. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Ch 1/2 Range</td><td>Speed range: Medium, Fast, or Slow</td></tr>
+<tr><td>Ch 1/2 Shape</td><td>Waveform shape of the ramp (logarithmic to exponential)</td></tr>
+<tr><td>Ch 1/2 Trigger</td><td>Manual trigger button</td></tr>
+<tr><td>Ch 1/2 Rise</td><td>Rise time</td></tr>
+<tr><td>Ch 1/2 Fall</td><td>Fall time</td></tr>
+<tr><td>Ch 1/2 Cycle</td><td>Looping mode — ramp repeats continuously</td></tr>
+<tr><td>Balance</td><td>Output balance between the two channels&#x27; combined output</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A / B</td><td>Input signal for each channel</td></tr>
+<tr><td>Trigger A / B</td><td>Gate or trigger to start the ramp</td></tr>
+<tr><td>Rise CV A / B</td><td>CV control of rise time</td></tr>
+<tr><td>Fall CV A / B</td><td>CV control of fall time</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>A Rising</td><td>Gate while channel A is rising</td></tr>
+<tr><td>A Falling</td><td>Gate while channel A is falling</td></tr>
+<tr><td>A Endof</td><td>Trigger at end of channel A cycle</td></tr>
+<tr><td>A Out</td><td>Channel A ramp output</td></tr>
+<tr><td>B Out</td><td>Channel B ramp output</td></tr>
+<tr><td>B Rising</td><td>Gate while channel B is rising</td></tr>
+<tr><td>B Falling</td><td>Gate while channel B is falling</td></tr>
+<tr><td>B Endof</td><td>Trigger at end of channel B cycle</td></tr>
+<tr><td>Comparator</td><td>Gate when channel A output exceeds channel B</td></tr>
+<tr><td>Logic AND</td><td>Gate when both channels are active</td></tr>
+<tr><td>Logic OR</td><td>Gate when either channel is active</td></tr>
+</table>
+<hr>
+<h2>A*B+C</h2>
+<p>Dual four-quadrant multiplier. Computes A×B+C for two channels. Useful as a ring modulator, VCA, mixer, or offset generator. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>B1 Level</td><td>Attenuverter for the B1 input</td></tr>
+<tr><td>C1 Level</td><td>Attenuverter for the C1 (offset) input</td></tr>
+<tr><td>B2 Level</td><td>Attenuverter for the B2 input</td></tr>
+<tr><td>C2 Level</td><td>Attenuverter for the C2 input</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A1, B1, C1</td><td>Three inputs for channel 1 computation</td></tr>
+<tr><td>A2, B2, C2</td><td>Three inputs for channel 2 computation</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Out 1</td><td>Result of A1 × B1 + C1</td></tr>
+<tr><td>Out 2</td><td>Result of A2 × B2 + C2</td></tr>
+</table>
+<hr>
+<h2>Spring Reverb</h2>
+<p>Spring reverb tank driver — emulates the sound of a physical spring reverb tank.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>In 1 Level</td><td>Level of input 1</td></tr>
+<tr><td>In 2 Level</td><td>Level of input 2</td></tr>
+<tr><td>Dry/Wet</td><td>Mix between dry and wet signal</td></tr>
+<tr><td>High Pass Filter</td><td>Cutoff of the HPF applied to the wet signal</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>CV 1</td><td>CV control for input 1 level</td></tr>
+<tr><td>CV 2</td><td>CV control for input 2 level</td></tr>
+<tr><td>In 1</td><td>Audio input 1</td></tr>
+<tr><td>In 2</td><td>Audio input 2</td></tr>
+<tr><td>Mix CV</td><td>CV control for dry/wet mix</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mix</td><td>Dry + wet output</td></tr>
+<tr><td>Wet</td><td>Wet-only reverb output</td></tr>
+</table>
+<hr>
+<h2>Mixer (Befaco)</h2>
+<p>Four-channel mixer for audio or CV with per-channel level controls.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Ch 1–4 Level</td><td>Level for each channel</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Ch 1–4</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Main</td><td>Mixed output</td></tr>
+<tr><td>Inverted</td><td>Polarity-inverted version of the main output</td></tr>
+</table>
+<hr>
+<h2>Slew Limiter</h2>
+<p>Voltage-controlled slew limiter. Smooths abrupt voltage jumps. Useful as a portamento, glide processor, or low-pass CV filter. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Shape</td><td>Curve shape of the slew (linear to exponential)</td></tr>
+<tr><td>Rise</td><td>Rise time</td></tr>
+<tr><td>Fall</td><td>Fall time</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Rise CV</td><td>CV control for rise time</td></tr>
+<tr><td>Fall CV</td><td>CV control for fall time</td></tr>
+<tr><td>In</td><td>Signal to slew</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Out</td><td>Slewed output</td></tr>
+</table>
+<hr>
+<h2>Dual Atenuverter</h2>
+<p>Two-channel attenuverter with offset. Each channel scales and offsets an input independently. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Ch 1/2 Gain</td><td>Attenuverter (−1 to +1)</td></tr>
+<tr><td>Ch 1/2 Offset</td><td>Constant voltage offset (±10 V)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>In 1, In 2</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Out 1, Out 2</td><td>Scaled and offset outputs</td></tr>
+</table>
+<hr>
+<h2>Percall</h2>
+<p>Quad percussive envelope generator and mixer. Four independent channels, each with trigger, decay, and level. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Channel 1–4 Level</td><td>Output level per channel</td></tr>
+<tr><td>Channel 1–4 Decay</td><td>Decay time per channel</td></tr>
+<tr><td>Choke 1–2 and 3–4</td><td>Choke pair — triggering one channel stops the other</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channel 1–4</td><td>Audio or CV input per channel</td></tr>
+<tr><td>Trigger 1–4</td><td>Trigger for each channel&#x27;s envelope</td></tr>
+<tr><td>CV 1–4</td><td>Decay time CV per channel</td></tr>
+<tr><td>Overall gain</td><td>Scales the output of all channels (also affects envelope outputs)</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Channel 1–4</td><td>Per-channel audio output shaped by decay envelope</td></tr>
+<tr><td>Envelope 1–4</td><td>Envelope CV output for each channel</td></tr>
+</table>
+<hr>
+<h2>Hex Mix VCA</h2>
+<p>Six-channel VCA with adjustable response curve per channel. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Response 1–6</td><td>VCA response curve (logarithmic to linear to exponential)</td></tr>
+<tr><td>Level 1–6</td><td>Maximum output level per channel</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channel 1–6</td><td>Audio or CV inputs</td></tr>
+<tr><td>Gain 1–6</td><td>CV control for each channel&#x27;s VCA</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Channel 1–6</td><td>VCA outputs</td></tr>
+</table>
+<hr>
+<h2>Chopping Kinky</h2>
+<p>Dual wavefolder with voltage-controlled chop (hard gate between channels).</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain/Shape A</td><td>Gain and fold amount for channel A</td></tr>
+<tr><td>Gain/Shape B</td><td>Gain and fold amount for channel B</td></tr>
+<tr><td>CV A attenuverter</td><td>Scales the CV A input</td></tr>
+<tr><td>CV B attenuverter</td><td>Scales the CV B input</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A</td><td>Channel A input</td></tr>
+<tr><td>B</td><td>Channel B input</td></tr>
+<tr><td>Chopp</td><td>Gate that switches between A and B outputs</td></tr>
+<tr><td>CV A</td><td>Wavefold CV with attenuverter</td></tr>
+<tr><td>VCA CV A</td><td>Direct VCA CV for channel A</td></tr>
+<tr><td>CV B</td><td>Wavefold CV with attenuverter</td></tr>
+<tr><td>VCA CV B</td><td>Direct VCA CV for channel B</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Chopp</td><td>Switches between A and B based on Chopp gate</td></tr>
+<tr><td>A</td><td>Wavefolded channel A output</td></tr>
+<tr><td>B</td><td>Wavefolded channel B output</td></tr>
+</table>
+<hr>
+<h2>Kickall</h2>
+<p>Kick drum synthesizer with pitch and volume envelopes.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Tune</td><td>Base frequency of the kick</td></tr>
+<tr><td>Wave Shape</td><td>Waveform shape (sine to more complex)</td></tr>
+<tr><td>VCA Decay</td><td>Amplitude envelope decay time</td></tr>
+<tr><td>Pitch Decay</td><td>Pitch envelope decay time</td></tr>
+<tr><td>Pitch Bend</td><td>Amount of pitch drop from start to sustain</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Trigger</td><td>Trigger input to fire the kick</td></tr>
+<tr><td>Gain</td><td>VCA level CV</td></tr>
+<tr><td>Tune</td><td>Pitch CV (V/oct)</td></tr>
+<tr><td>Shape CV</td><td>Waveform shape CV</td></tr>
+<tr><td>Decay CV</td><td>VCA decay CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Kick</td><td>Kick drum audio output</td></tr>
+</table>
+<hr>
+<h2>ADSR (Befaco)</h2>
+<p>ADSR envelope generator with stage gate outputs, variable shape, and gate/trigger mode. Has its own character compared to the VCV Free ADSR.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Mode</td><td>Gate or Trigger operation</td></tr>
+<tr><td>Shape</td><td>Envelope curve shape</td></tr>
+<tr><td>Attack</td><td>Attack time</td></tr>
+<tr><td>Decay</td><td>Decay time</td></tr>
+<tr><td>Sustain</td><td>Sustain level</td></tr>
+<tr><td>Release</td><td>Release time</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Trigger</td><td>Gate or trigger input</td></tr>
+<tr><td>Attack CV</td><td>Attack time CV</td></tr>
+<tr><td>Decay CV</td><td>Decay time CV</td></tr>
+<tr><td>Sustain CV</td><td>Sustain level CV</td></tr>
+<tr><td>Release CV</td><td>Release time CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Envelope</td><td>Main ADSR output</td></tr>
+<tr><td>Attack stage</td><td>Gate while in attack stage</td></tr>
+<tr><td>Decay stage</td><td>Gate while in decay stage</td></tr>
+<tr><td>Sustain stage</td><td>Gate while in sustain stage</td></tr>
+<tr><td>Release stage</td><td>Gate while in release stage</td></tr>
+</table>
+<hr>
+<h2>STMix</h2>
+<p>Compact 4-channel stereo mixer with auxiliary input.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain 1–4</td><td>Per-channel gain</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channel 1–4 Left</td><td>Left input per channel</td></tr>
+<tr><td>Channel 1–4 Right</td><td>Right input per channel</td></tr>
+<tr><td>Channel Left (aux)</td><td>Auxiliary left input</td></tr>
+<tr><td>Channel Right (aux)</td><td>Auxiliary right input</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Left</td><td>Stereo left mix output</td></tr>
+<tr><td>Right</td><td>Stereo right mix output</td></tr>
+</table>
+<hr>
+<h2>Muxlicer</h2>
+<p>VC-addressable sequential switch and sequencer. Steps through 8 positions, with per-step gain and gate outputs. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Play</td><td>Play once / stop / play continuously</td></tr>
+<tr><td>Address</td><td>Manual step address (−1 = sequential)</td></tr>
+<tr><td>Gate Mode</td><td>Gate pattern for each step</td></tr>
+<tr><td>Clock Mult/Div</td><td>Clock multiplication or division</td></tr>
+<tr><td>Gain 1–8</td><td>Per-step gain</td></tr>
+<tr><td>Step 1–8</td><td>Step mode: Gate/Clock out, Muted, or All Gates</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Gate Mode CV</td><td>CV for gate mode</td></tr>
+<tr><td>Address CV</td><td>CV to select step</td></tr>
+<tr><td>Clock</td><td>Clock input</td></tr>
+<tr><td>Reset</td><td>Resets to start</td></tr>
+<tr><td>COM I/O</td><td>Common input/output</td></tr>
+<tr><td>All</td><td>Broadcasts to all steps simultaneously</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Step 1–8</td><td>Per-step signal output</td></tr>
+<tr><td>Gate 1–8</td><td>Per-step gate</td></tr>
+<tr><td>End of cycle</td><td>Trigger at end of each cycle</td></tr>
+<tr><td>Clock</td><td>Clock output</td></tr>
+<tr><td>All gates</td><td>Gate on every active step</td></tr>
+<tr><td>All</td><td>Sum of all step outputs</td></tr>
+<tr><td>COM I/O</td><td>Common routed output</td></tr>
+</table>
+<hr>
+<h2>Mex</h2>
+<p>Gate expander for the Muxlicer. Attaches to the right side of Muxlicer to add additional gate outputs per step.</p>
+<hr>
+<h2>Noise Plethora</h2>
+<p>Dual noise engine with filterable outputs. Three independent programmable noise generators (A, B, C) with built-in filter per channel.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>X A / Y A</td><td>Noise algorithm parameters for channel A</td></tr>
+<tr><td>Resonance A</td><td>Filter resonance for channel A</td></tr>
+<tr><td>Cutoff A</td><td>Filter cutoff for channel A</td></tr>
+<tr><td>Cutoff CV A</td><td>Filter cutoff CV attenuverter</td></tr>
+<tr><td>Filter Type A</td><td>Lowpass, Bandpass, or Highpass</td></tr>
+<tr><td>Program/Bank</td><td>Selects the noise algorithm/bank</td></tr>
+<tr><td>(Same for B and C)</td><td></td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Cutoff CV A/B/C</td><td>Filter cutoff CVs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Output A/B/C</td><td>Filtered noise outputs per channel</td></tr>
+</table>
+<hr>
+<h2>Stereo Strip</h2>
+<p>Stereo channel strip with EQ, pan, VCA, and level control. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>High shelf (2 kHz)</td><td>High frequency gain (±15 dB)</td></tr>
+<tr><td>Mid band (1.2 kHz)</td><td>Midrange gain (±12.5 dB)</td></tr>
+<tr><td>Low shelf (125 Hz)</td><td>Low frequency gain (±20 dB)</td></tr>
+<tr><td>Pan</td><td>Stereo position</td></tr>
+<tr><td>Pan CV</td><td>Attenuverter for pan CV</td></tr>
+<tr><td>Level</td><td>Output gain (−60 to 0 dB)</td></tr>
+<tr><td>In boost</td><td>+6 dB input boost switch</td></tr>
+<tr><td>Out cut</td><td>−6 dB output cut switch</td></tr>
+<tr><td>Mute</td><td>Mute switch</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Left</td><td>Left channel input</td></tr>
+<tr><td>Right</td><td>Right channel input (normalises from Left if unpatched)</td></tr>
+<tr><td>Level</td><td>VCA CV (10 V normalised)</td></tr>
+<tr><td>Pan CV</td><td>Pan control voltage (±5 V)</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Left</td><td>Processed left output</td></tr>
+<tr><td>Right</td><td>Processed right output</td></tr>
+</table>
+<hr>
+<h2>Pony VCO</h2>
+<p>Compact through-zero FM oscillator with integrated wavefolder and VCA. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Frequency</td><td>Pitch offset</td></tr>
+<tr><td>Range</td><td>VCO Full / VCO Octave / VCO Semitone / LFO</td></tr>
+<tr><td>Octave</td><td>Octave select (C1–C7)</td></tr>
+<tr><td>Wave</td><td>Waveform: Sine, Triangle, Sawtooth, Pulse</td></tr>
+<tr><td>Timbre</td><td>Controls wavefolding depth or pulse width depending on waveform</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Through-zero FM</td><td>TZFM input</td></tr>
+<tr><td>Timbre</td><td>Timbre modulation CV</td></tr>
+<tr><td>V/Oct</td><td>Pitch CV</td></tr>
+<tr><td>Hard Sync</td><td>Sync input</td></tr>
+<tr><td>VCA</td><td>Built-in VCA CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Out</td><td>Waveform output</td></tr>
+</table>
+<hr>
+<h2>Motion MTR</h2>
+<p>Three-channel CV/audio utility with per-channel mode switching and visualisation. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Channel 1–3 Mode</td><td>Attenuate, Attenuvert, or DC-block</td></tr>
+<tr><td>Channel 1–3 Gain</td><td>Gain knob per channel</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channel 1–3</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Channel 1, 2</td><td>Per-channel processed outputs</td></tr>
+<tr><td>Channel 3 (Mix)</td><td>Sum of all three channels</td></tr>
+</table>
+<hr>
+<h2>Burst</h2>
+<p>Trigger processor and generator. Takes one trigger and outputs a burst of triggers with configurable timing, quantity, and distribution. Useful for flams, rolls, and organic rhythmic variations.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Mode</td><td>One-shot or Cycle</td></tr>
+<tr><td>Number of bursts</td><td>Count of triggers to generate (1–max)</td></tr>
+<tr><td>Quantity CV</td><td>Attenuverter for quantity CV</td></tr>
+<tr><td>Distribution</td><td>Spacing between triggers in the burst</td></tr>
+<tr><td>Time</td><td>Clock division/multiplication ratio</td></tr>
+<tr><td>Probability</td><td>Probability that each burst trigger fires</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Quantity CV</td><td>CV to set number of triggers</td></tr>
+<tr><td>Distribution</td><td>CV to control burst distribution</td></tr>
+<tr><td>Ping</td><td>Clock reference input</td></tr>
+<tr><td>Time</td><td>Time CV</td></tr>
+<tr><td>Probability</td><td>Probability CV</td></tr>
+<tr><td>Trigger</td><td>Main trigger input</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Tempo</td><td>Derived tempo output</td></tr>
+<tr><td>End of cycle</td><td>Trigger at end of burst</td></tr>
+<tr><td>(Individual trigger outputs for each burst step)</td><td></td></tr>
+</table>
+<hr>
+<h2>Sampling Modulator</h2>
+<p>Multi-function module: oscillator, sample &amp; hold, and 8-step trigger sequencer combined. Can self-clock or sync to an external clock.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Rate</td><td>Oscillator/clock rate</td></tr>
+<tr><td>Fine</td><td>Fine tune</td></tr>
+<tr><td>Clock</td><td>Internal or external clock</td></tr>
+<tr><td>Step 1–8</td><td>Each step: Reset, Off, or On</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Sync</td><td>External sync input</td></tr>
+<tr><td>V/Oct</td><td>Pitch CV for oscillator rate</td></tr>
+<tr><td>Hold</td><td>Hold input — freezes output</td></tr>
+<tr><td>Raw</td><td>Audio input to sample</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Clock</td><td>Clock output</td></tr>
+<tr><td>Trigger</td><td>Trigger on each active step</td></tr>
+<tr><td>Sampled</td><td>Sampled and sequenced output</td></tr>
+</table>
+<hr>
+<h2>Morphader</h2>
+<p>Four-channel CV/audio crossfader between two sets of signals. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>CV attenuator</td><td>Scales the CV input</td></tr>
+<tr><td>A Level 1–4</td><td>Level of the A side per channel</td></tr>
+<tr><td>B Level 1–4</td><td>Level of the B side per channel</td></tr>
+<tr><td>Mode 1–4</td><td>Audio or CV mode per channel</td></tr>
+<tr><td>Fader</td><td>Main crossfade position</td></tr>
+<tr><td>Fader Lag</td><td>Slew applied to fader movement</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A1–A4</td><td>A-side signal inputs</td></tr>
+<tr><td>B1–B4</td><td>B-side signal inputs</td></tr>
+<tr><td>CV channel 1–4</td><td>Per-channel CV position</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Channel 1–4</td><td>Crossfaded outputs</td></tr>
+</table>
+<hr>
+<h2>MIDI Thing V2</h2>
+<p>Bridge module for the Befaco MIDI Thing V2 hardware — a flexible MIDI-to-CV converter. Requires the physical Befaco MIDI Thing V2 hardware connected to your computer.</p>
+<hr>
+<h2>Voltio</h2>
+<p>Precision voltage source and precision adder. Sets an exact output voltage defined by octave and semitone values, with an optional summing input.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Octave</td><td>Integer octave (0–10 V)</td></tr>
+<tr><td>Range</td><td>0 to 10 V or −5 to +5 V</td></tr>
+<tr><td>Semitones</td><td>Semitone offset (0–11)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Sum</td><td>Voltage added to the panel-set value</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Main</td><td>Precise voltage output</td></tr>
+</table>
+<hr>
+<h2>Octaves</h2>
+<p>Additive oscillator with individual gain controls for the fundamental and five harmonics. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Octave</td><td>Base octave (C1–C7)</td></tr>
+<tr><td>Tune</td><td>Fine tune (±1 semitone)</td></tr>
+<tr><td>PWM</td><td>Pulse width</td></tr>
+<tr><td>Range</td><td>VCO Full / Octave / Semitone</td></tr>
+<tr><td>Gain Fundamental</td><td>Level of the fundamental frequency</td></tr>
+<tr><td>Gain ×2</td><td>Level of the 2nd harmonic</td></tr>
+<tr><td>Gain ×4</td><td>Level of the 4th harmonic</td></tr>
+<tr><td>Gain ×8</td><td>Level of the 8th harmonic</td></tr>
+<tr><td>Gain ×16</td><td>Level of the 16th harmonic</td></tr>
+<tr><td>Gain ×32</td><td>Level of the 32nd harmonic</td></tr>
+<tr><td>PWM CV</td><td>Attenuverter for PWM CV</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>V/Oct 1</td><td>First pitch CV input</td></tr>
+<tr><td>V/Oct 2</td><td>Second pitch CV input</td></tr>
+<tr><td>Sync</td><td>Oscillator sync</td></tr>
+<tr><td>PWM</td><td>Pulse width modulation CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Out</td><td>Mixed additive output</td></tr>
+</table>
+<hr>
+<h2>Bypass</h2>
+<p>Stereo bypass/switching module for routing signals to and from an external effect. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Return Mode</td><td>Hard or soft bypass transition</td></tr>
+<tr><td>FX Return Gain</td><td>Attenuverter for the returned FX signal</td></tr>
+<tr><td>Launch Mode</td><td>Latch (toggle) or Gate (momentary)</td></tr>
+<tr><td>Slew Time</td><td>Transition speed for soft bypass</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Left, Right</td><td>Dry signal inputs</td></tr>
+<tr><td>From FX L, From FX R</td><td>Return from external effect</td></tr>
+<tr><td>Launch</td><td>CV to trigger bypass switch</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>To FX L, To FX R</td><td>Send to external effect</td></tr>
+<tr><td>Left, Right</td><td>Output (dry or through-effect depending on bypass state)</td></tr>
+</table>
+<hr>
+<h2>Bandit</h2>
+<p>Spectral processing module — a four-band splitter that separates a signal into frequency bands, sends each band to an external effect, then recombines the returns.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Low gain</td><td>Level of the low band send</td></tr>
+<tr><td>Low mid gain</td><td>Level of the low-mid band send</td></tr>
+<tr><td>High mid gain</td><td>Level of the high-mid band send</td></tr>
+<tr><td>High gain</td><td>Level of the high band send</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Low, Low mid, High mid, High</td><td>Band inputs</td></tr>
+<tr><td>Low return, Low mid return, High mid return, High return</td><td>Effect returns per band</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Low, Low mid, High mid, High</td><td>Band sends</td></tr>
+<tr><td>(Mixed output available)</td><td></td></tr>
+</table>
+<hr>
+<h2>Mixer (v2)</h2>
+<p>Utilitarian four-channel audio and CV mixer with individual gain knobs.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain 1–4</td><td>Per-channel gain</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channel 1–4</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mix 1+2</td><td>Sum of channels 1 and 2</td></tr>
+<tr><td>Mix 3+4 (Master)</td><td>Sum of channels 3 and 4</td></tr>
+</table>
+<hr>
+<h2>Atte</h2>
+<p>Quad attenuator/inverter with individual mode switches. Can attenuate or invert each channel. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain A–D</td><td>Level for each channel (0–100%)</td></tr>
+<tr><td>Mode A–D</td><td>Attenuation or inverse attenuation per channel</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A, B, C, D</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>A, B, C, D</td><td>Processed outputs</td></tr>
+</table>
+<hr>
+<h2>AxBC</h2>
+<p>Two-channel voltage-controlled processor. Computes A×B+C with per-channel gain mode switches and a mix/multiply mode. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>B1, C1</td><td>Attenuverters for B and C on channel 1</td></tr>
+<tr><td>B2, C2</td><td>Attenuverters for B and C on channel 2</td></tr>
+<tr><td>Gain Mode B1/C1/B2/C2</td><td>×−1, ×1, or ×2 scaling</td></tr>
+<tr><td>Mix mode</td><td>Mix (A+B+C) or Multiply (A×B+C)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A1, B1, C1</td><td>Inputs for channel 1</td></tr>
+<tr><td>A2, B2, C2</td><td>Inputs for channel 2</td></tr>
+</table>
+<hr>
+<h2>Slew</h2>
+<p>Voltage-controlled lag processor with slope detection. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Shape</td><td>Curve shape of the slew</td></tr>
+<tr><td>Range</td><td>Fast, Medium, or Slow speed range</td></tr>
+<tr><td>Rise</td><td>Rise slew time</td></tr>
+<tr><td>Fall</td><td>Fall slew time</td></tr>
+<tr><td>CV Mode</td><td>CV affects Rise, Rise/Fall, or Fall only</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>In</td><td>Signal to slew</td></tr>
+<tr><td>CV</td><td>CV control for slew rate</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Out</td><td>Slewed output</td></tr>
+<tr><td>Rising</td><td>Gate while input is rising</td></tr>
+<tr><td>Falling</td><td>Gate while input is falling</td></tr>
+</table>
+<hr>
+<h2>MuDi</h2>
+<p>Clock multiplier, conditioner, and divider in 2HP.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Clock</td><td>Clock input</td></tr>
+<tr><td>Reset</td><td>Reset all dividers</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>F</td><td>Fundamental clock frequency</td></tr>
+<tr><td>1/2 F</td><td>Half the input clock</td></tr>
+<tr><td>1/4 F</td><td>Quarter clock</td></tr>
+<tr><td>1/8 F</td><td>Eighth clock</td></tr>
+<tr><td>1/16 F</td><td>Sixteenth clock</td></tr>
+</table>
+<hr>
+<h2>Iroi</h2>
+<p>Atmospheric processing module combining a resonator, echo, and ambience (reverb) section in one module.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Filter Cutoff</td><td>Filter cutoff frequency</td></tr>
+<tr><td>Resonator Tune</td><td>Resonator pitch</td></tr>
+<tr><td>Modulation Level</td><td>Depth of internal modulation</td></tr>
+<tr><td>Resonance</td><td>Filter resonance</td></tr>
+<tr><td>Resonator Feedback</td><td>Feedback in the resonator path</td></tr>
+<tr><td>Modulation Speed</td><td>Rate of internal modulation</td></tr>
+<tr><td>Echo Density</td><td>Echo time and density</td></tr>
+<tr><td>Ambience Spacetime</td><td>Room size and complexity</td></tr>
+<tr><td>Echo Repeats</td><td>Number/decay of echo repeats</td></tr>
+<tr><td>Ambience Decay</td><td>Reverb tail length</td></tr>
+<tr><td>Filter VCA</td><td>VCA for the filter section</td></tr>
+<tr><td>Resonator Dry/Wet</td><td>Mix for the resonator section</td></tr>
+<tr><td>Echo Dry/Wet</td><td>Mix for the echo section</td></tr>
+<tr><td>Ambience Dry/Wet</td><td>Mix for the ambience section</td></tr>
+<tr><td>Map Mode</td><td>How the CV input maps: Random, CV, or Mod</td></tr>
+</table>
+<hr>
+<h2>Random8</h2>
+<p>Eight-channel random voltage generator with per-channel looping, probability, scale, and slide controls.</p>
+<table>
+<tr><th>Parameters (per channel)</th><th></th></tr>
+<tr><td>Gain</td><td>Output level</td></tr>
+<tr><td>Divider</td><td>Clock division for this channel</td></tr>
+<tr><td>Probability</td><td>Chance of generating a new value</td></tr>
+<tr><td>Style</td><td>Random distribution style</td></tr>
+<tr><td>Offset</td><td>Voltage offset added to output</td></tr>
+<tr><td>Scale</td><td>Quantization scale for output values</td></tr>
+<tr><td>Slide</td><td>Portamento/slew on output</td></tr>
+<tr><td>Steps</td><td>Number of steps in the loop</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Trigger 1–8</td><td>Per-channel trigger inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Ch 1–8</td><td>Random voltage outputs</td></tr>
+</table>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="fundamental-modules.html">Fundamental Modules</a> — the modules included with VCV Rack Free</li>
+<li><a href="kernablauf.html">How a Patch Works</a> — signal chain context</li>
+<li><a href="anwendungsfaelle.html">Patching Use Cases</a> — recipes using Befaco modules</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

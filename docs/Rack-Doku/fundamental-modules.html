@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamental Modules — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<a href="first-patch.html">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html" aria-current="page">Fundamental Modules</a>
+<a href="befaco-modules.html">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Fundamental Modules</strong></header>
+  <main>
+    <article>
+<h1>Fundamental Modules</h1>
+<p>Reference for all modules included with VCV Rack Free (the VCV Fundamental plugin). For each module: what it does, its parameters, inputs, and outputs.</p>
+<hr>
+<h2>VCO — Voltage-Controlled Oscillator</h2>
+<p>Generates four simultaneous waveforms at audio rate. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Frequency</td><td>Center frequency of the oscillator (in Hz, via 12-TET scaling)</td></tr>
+<tr><td>FM</td><td>Attenuverter for the FM input — scales how much the FM signal shifts the frequency</td></tr>
+<tr><td>Pulse Width</td><td>Width of the square wave (0.01–0.99, default 0.5 for symmetric)</td></tr>
+<tr><td>PW CV</td><td>Attenuverter for the pulse width CV input</td></tr>
+<tr><td>Sync Mode</td><td>Hard or soft sync on the Sync input</td></tr>
+<tr><td>FM Mode</td><td>1V/octave (exponential) or linear FM</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>PITCH</td><td>1V/octave pitch CV</td></tr>
+<tr><td>FM</td><td>Frequency modulation CV</td></tr>
+<tr><td>SYNC</td><td>Resets oscillator phase — hard or soft depending on Sync Mode</td></tr>
+<tr><td>PW</td><td>Pulse width modulation CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>SIN</td><td>Sine wave</td></tr>
+<tr><td>TRI</td><td>Triangle wave</td></tr>
+<tr><td>SAW</td><td>Sawtooth wave</td></tr>
+<tr><td>SQR</td><td>Square/pulse wave</td></tr>
+</table>
+<hr>
+<h2>Wavetable VCO</h2>
+<p>Wavetable oscillator that scans through a set of waveforms. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Frequency</td><td>Center frequency</td></tr>
+<tr><td>Wavetable position</td><td>Which waveform in the wavetable (0–100%)</td></tr>
+<tr><td>FM</td><td>FM attenuverter</td></tr>
+<tr><td>POS CV</td><td>Wavetable position CV attenuverter</td></tr>
+<tr><td>Sync</td><td>Hard or soft sync</td></tr>
+<tr><td>FM Mode</td><td>1V/oct or through-zero linear FM</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>PITCH</td><td>1V/octave pitch CV</td></tr>
+<tr><td>FM</td><td>Frequency modulation</td></tr>
+<tr><td>SYNC</td><td>Sync input</td></tr>
+<tr><td>POS</td><td>Wavetable position CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>WAVE</td><td>Wavetable output</td></tr>
+</table>
+<hr>
+<h2>VCF — Voltage-Controlled Filter</h2>
+<p>Ladder filter with lowpass and highpass outputs. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Cutoff</td><td>Filter cutoff frequency</td></tr>
+<tr><td>Resonance</td><td>Resonance / Q (0–100%)</td></tr>
+<tr><td>Freq CV</td><td>Attenuverter for cutoff frequency CV input</td></tr>
+<tr><td>Drive</td><td>Input drive / saturation amount</td></tr>
+<tr><td>Res CV</td><td>Attenuverter for resonance CV input</td></tr>
+<tr><td>Drive CV</td><td>Attenuverter for drive CV input</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Frequency</td><td>Cutoff frequency CV</td></tr>
+<tr><td>Resonance</td><td>Resonance CV</td></tr>
+<tr><td>Drive</td><td>Drive CV</td></tr>
+<tr><td>Audio</td><td>Audio signal to filter</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>LPF</td><td>Lowpass output</td></tr>
+<tr><td>HPF</td><td>Highpass output</td></tr>
+</table>
+<hr>
+<h2>VCA — Voltage-Controlled Amplifier</h2>
+<p>Single-channel VCA. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Level</td><td>Base level (0–100%)</td></tr>
+<tr><td>Response Mode</td><td>Exponential or linear response to CV</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>CV</td><td>Control voltage — scales the output level</td></tr>
+<tr><td>CH</td><td>Audio or CV input</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>CH</td><td>Scaled output</td></tr>
+</table>
+<hr>
+<h2>VCA-2</h2>
+<p>Two-channel VCA (same as VCA but dual channel). Hidden from browser by default; use VCA instead.</p>
+<hr>
+<h2>ADSR EG — Envelope Generator</h2>
+<p>Generates an ADSR envelope. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Attack</td><td>Attack time</td></tr>
+<tr><td>Decay</td><td>Decay time</td></tr>
+<tr><td>Sustain</td><td>Sustain level (0–100%)</td></tr>
+<tr><td>Release</td><td>Release time</td></tr>
+<tr><td>Attack CV</td><td>Attenuverter for Attack CV input</td></tr>
+<tr><td>Decay CV</td><td>Attenuverter for Decay CV input</td></tr>
+<tr><td>Sustain CV</td><td>Attenuverter for Sustain CV input</td></tr>
+<tr><td>Release CV</td><td>Attenuverter for Release CV input</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Attack</td><td>Attack time CV</td></tr>
+<tr><td>Decay</td><td>Decay time CV</td></tr>
+<tr><td>Sustain</td><td>Sustain level CV</td></tr>
+<tr><td>Release</td><td>Release time CV</td></tr>
+<tr><td>Gate</td><td>Gate signal — high = envelope runs; falling edge triggers release</td></tr>
+<tr><td>Retrigger</td><td>Retrigger the attack from current level on each rising edge</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Envelope</td><td>ADSR envelope output (0–10 V)</td></tr>
+</table>
+<hr>
+<h2>LFO — Low-Frequency Oscillator</h2>
+<p>Generates four simultaneous low-frequency waveforms. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Frequency</td><td>LFO rate in Hz</td></tr>
+<tr><td>FM</td><td>FM attenuverter</td></tr>
+<tr><td>Pulse Width</td><td>Square wave pulse width</td></tr>
+<tr><td>PW M</td><td>Pulse width modulation attenuverter</td></tr>
+<tr><td>Offset</td><td>Bipolar (−5 to +5 V) or unipolar (0 to +10 V) output</td></tr>
+<tr><td>Invert</td><td>Flips the polarity of the output</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>FM</td><td>Frequency modulation CV</td></tr>
+<tr><td>Clock</td><td>External clock input — LFO syncs to clock rate</td></tr>
+<tr><td>Reset</td><td>Resets LFO phase to start</td></tr>
+<tr><td>PW</td><td>Pulse width modulation CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>SIN</td><td>Sine</td></tr>
+<tr><td>TRI</td><td>Triangle</td></tr>
+<tr><td>SAW</td><td>Sawtooth</td></tr>
+<tr><td>SQR</td><td>Square/pulse</td></tr>
+</table>
+<hr>
+<h2>Wavetable LFO</h2>
+<p>Wavetable oscillator running at LFO rates. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Frequency</td><td>LFO rate</td></tr>
+<tr><td>Wavetable position</td><td>Waveform position</td></tr>
+<tr><td>FM</td><td>FM attenuverter</td></tr>
+<tr><td>POS CV</td><td>Position CV attenuverter</td></tr>
+<tr><td>Offset</td><td>Bipolar or unipolar</td></tr>
+<tr><td>Invert</td><td>Polarity flip</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>FM</td><td>Frequency modulation</td></tr>
+<tr><td>Reset</td><td>Phase reset</td></tr>
+<tr><td>POS</td><td>Wavetable position CV</td></tr>
+<tr><td>Clock</td><td>Clock sync</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>WAVE</td><td>Wavetable output</td></tr>
+</table>
+<hr>
+<h2>Delay</h2>
+<p>Stereo delay effect with tone control.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Time</td><td>Delay time</td></tr>
+<tr><td>Feedback</td><td>Feedback amount (0–100%)</td></tr>
+<tr><td>Tone</td><td>Tone of the repeats (0% = dark, 100% = bright, 200% = brighter than input)</td></tr>
+<tr><td>Mix</td><td>Dry/wet mix</td></tr>
+<tr><td>Time CV</td><td>Attenuverter for Time CV input</td></tr>
+<tr><td>Feedback CV</td><td>Attenuverter for Feedback CV</td></tr>
+<tr><td>Tone CV</td><td>Attenuverter for Tone CV</td></tr>
+<tr><td>Mix CV</td><td>Attenuverter for Mix CV</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Time</td><td>Delay time CV</td></tr>
+<tr><td>Feedback</td><td>Feedback CV</td></tr>
+<tr><td>Tone</td><td>Tone CV</td></tr>
+<tr><td>Mix</td><td>Mix CV</td></tr>
+<tr><td>Audio</td><td>Audio input</td></tr>
+<tr><td>Clock</td><td>Clock input — delay time snaps to clock divisions</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mix</td><td>Dry + wet output</td></tr>
+<tr><td>Wet</td><td>Wet-only output</td></tr>
+</table>
+<hr>
+<h2>Mix — 6-Channel Mixer</h2>
+<p>Mixes up to 6 signals with individual level controls. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Level</td><td>Master level (0–100%)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channels 1–6</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mix</td><td>Mixed output</td></tr>
+</table>
+<hr>
+<h2>VCA Mix — 4-Channel Mixer with VCAs</h2>
+<p>4-channel mixer with individual VCA inputs per channel and a master level with VCA. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Mix Level</td><td>Master mix level in dB</td></tr>
+<tr><td>Channel 1–4 Level</td><td>Per-channel level</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Mix CV</td><td>Master VCA CV</td></tr>
+<tr><td>Channel 1–4</td><td>Audio inputs</td></tr>
+<tr><td>Channel 1–4 CV</td><td>Per-channel VCA CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mix</td><td>Mixed output</td></tr>
+<tr><td>Channel 1–4</td><td>Individual channel outputs</td></tr>
+</table>
+<hr>
+<h2>8vert</h2>
+<p>8-channel attenuverter. Each row independently scales a signal from −1× to +1×. If no input is connected, outputs a constant voltage from −10 V to +10 V set by the knob. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain 1–8</td><td>Attenuverter knob per row (−1 to +1)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Row 1–8</td><td>Signal inputs (normalled so each row copies from the one above if unpatched)</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Row 1–8</td><td>Scaled outputs</td></tr>
+</table>
+<hr>
+<h2>Mutes — 10-Channel Toggle Switch</h2>
+<p>Toggles up to 10 signals on or off with buttons. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Mute 1–10</td><td>Toggle button per row</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Row 1–10</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Row 1–10</td><td>Muted or passed-through outputs</td></tr>
+</table>
+<hr>
+<h2>Pulses — 10-Channel Trigger/Gate Generator</h2>
+<p>Generates trigger and gate outputs for each of 10 buttons. No inputs required.</p>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Row 1–10 Trigger</td><td>Short trigger pulse on button press</td></tr>
+<tr><td>Row 1–10 Gate</td><td>High while button is held</td></tr>
+</table>
+<hr>
+<h2>SEQ 3 — 3-Channel 8-Step Sequencer</h2>
+<p>Three rows of 8 programmable steps, with built-in clock and gate outputs.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Tempo</td><td>Internal clock BPM</td></tr>
+<tr><td>Tempo CV</td><td>Attenuverter for tempo CV</td></tr>
+<tr><td>Steps</td><td>Number of active steps (1–8)</td></tr>
+<tr><td>Steps CV</td><td>Attenuverter for steps CV</td></tr>
+<tr><td>CV 1–3, Steps 1–8</td><td>Voltage value for each step on each row</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Tempo</td><td>Tempo CV</td></tr>
+<tr><td>Clock</td><td>External clock input (overrides internal clock)</td></tr>
+<tr><td>Run</td><td>Run/stop CV</td></tr>
+<tr><td>Reset</td><td>Resets to step 1</td></tr>
+<tr><td>Steps</td><td>Steps CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>CV 1–3</td><td>Pitch or other CV per row</td></tr>
+<tr><td>Step 1–8</td><td>Trigger on the active step</td></tr>
+<tr><td>Trigger</td><td>Trigger on every step</td></tr>
+<tr><td>Steps</td><td>Steps CV passthrough</td></tr>
+<tr><td>Clock</td><td>Clock output</td></tr>
+<tr><td>Run</td><td>Run state output</td></tr>
+<tr><td>Reset</td><td>Reset passthrough</td></tr>
+</table>
+<hr>
+<h2>Sequential Switch 1→4</h2>
+<p>Routes one input to one of four outputs, advancing each clock step.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Clock</td><td>Advances the active output</td></tr>
+<tr><td>Reset</td><td>Returns to output 1</td></tr>
+<tr><td>Input</td><td>Signal to route</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>1–4</td><td>Routed outputs</td></tr>
+</table>
+<hr>
+<h2>Sequential Switch 4→1</h2>
+<p>Routes one of four inputs to one output, advancing each clock step.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Clock</td><td>Advances the active input</td></tr>
+<tr><td>Reset</td><td>Returns to input 1</td></tr>
+<tr><td>1–4</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Output</td><td>Selected input</td></tr>
+</table>
+<hr>
+<h2>Octave</h2>
+<p>Shifts a 1V/oct pitch CV by whole octaves. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Shift</td><td>Octave shift (−4 to +4 octaves)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Pitch</td><td>1V/oct pitch CV input</td></tr>
+<tr><td>Octave Shift CV</td><td>CV to shift the octave</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Pitch</td><td>Transposed pitch output</td></tr>
+</table>
+<hr>
+<h2>Quantizer</h2>
+<p>Snaps incoming pitch CV to the nearest note in a chosen scale. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Pre-offset</td><td>Shifts the input voltage by −12 to +12 semitones before quantizing</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Pitch</td><td>Unquantized pitch CV</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Pitch</td><td>Quantized pitch output</td></tr>
+</table>
+<p>Right-click to select the quantization scale.</p>
+<hr>
+<h2>Split</h2>
+<p>Splits one polyphonic cable into up to 16 monophonic outputs.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Polyphonic</td><td>Polyphonic input cable</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Channel 1–16</td><td>Individual channel outputs</td></tr>
+</table>
+<hr>
+<h2>Merge</h2>
+<p>Combines up to 16 monophonic cables into one polyphonic cable.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Channel 1–16</td><td>Monophonic inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Polyphonic</td><td>Combined polyphonic output</td></tr>
+</table>
+<hr>
+<h2>Sum</h2>
+<p>Sums all channels of a polyphonic cable into a single monophonic output. Polyphonic input.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Level</td><td>Output level (0–100%)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Polyphonic</td><td>Polyphonic input</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Monophonic</td><td>Summed output</td></tr>
+</table>
+<hr>
+<h2>Viz</h2>
+<p>Visualises all channels of a polyphonic cable as a bargraph. No audio output.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Polyphonic</td><td>Polyphonic input to visualise</td></tr>
+</table>
+<hr>
+<h2>Scope</h2>
+<p>Oscilloscope for inspecting waveforms. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain 1</td><td>Vertical scale for Ch 1</td></tr>
+<tr><td>Offset 1</td><td>Vertical offset for Ch 1</td></tr>
+<tr><td>Gain 2</td><td>Vertical scale for Ch 2</td></tr>
+<tr><td>Offset 2</td><td>Vertical offset for Ch 2</td></tr>
+<tr><td>Time</td><td>Horizontal time scale</td></tr>
+<tr><td>Scope mode</td><td>Time (1 &amp; 2 over time) or Lissajous (1 x 2)</td></tr>
+<tr><td>Trigger threshold</td><td>Trigger level for display sync</td></tr>
+<tr><td>Trigger</td><td>Enable or disable trigger</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Ch 1</td><td>Channel 1 signal</td></tr>
+<tr><td>Ch 2</td><td>Channel 2 signal</td></tr>
+<tr><td>External trigger</td><td>External trigger for display sync</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Ch 1</td><td>Passthrough of Ch 1 input</td></tr>
+<tr><td>Ch 2</td><td>Passthrough of Ch 2 input</td></tr>
+</table>
+<hr>
+<h2>Noise</h2>
+<p>Multicolor noise generator. No inputs.</p>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>White</td><td>White noise (equal energy per Hz)</td></tr>
+<tr><td>Pink</td><td>Pink noise (equal energy per octave)</td></tr>
+<tr><td>Red</td><td>Red / Brownian noise (heavy low-end emphasis)</td></tr>
+<tr><td>Violet</td><td>Violet noise (high-end emphasis)</td></tr>
+<tr><td>Blue</td><td>Blue noise</td></tr>
+<tr><td>Gray</td><td>Gray noise (psychoacoustically flat)</td></tr>
+<tr><td>Black</td><td>Near-silence with very slow random walk</td></tr>
+</table>
+<hr>
+<h2>Random</h2>
+<p>Random CV generator with internal or external triggering. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Rate</td><td>Internal trigger rate (Hz)</td></tr>
+<tr><td>Probability</td><td>Chance that each trigger produces a new value</td></tr>
+<tr><td>Spread</td><td>Range of random values</td></tr>
+<tr><td>Shape</td><td>Distribution shape of random values</td></tr>
+<tr><td>Offset</td><td>Bipolar or unipolar output</td></tr>
+<tr><td>Rate CV</td><td>Attenuverter for Rate CV</td></tr>
+<tr><td>Probability CV</td><td>Attenuverter</td></tr>
+<tr><td>Spread CV</td><td>Attenuverter</td></tr>
+<tr><td>Shape CV</td><td>Attenuverter</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Rate</td><td>Rate CV</td></tr>
+<tr><td>Probability</td><td>Probability CV</td></tr>
+<tr><td>Spread</td><td>Spread CV</td></tr>
+<tr><td>Shape</td><td>Shape CV</td></tr>
+<tr><td>Trigger</td><td>External trigger (overrides internal clock)</td></tr>
+<tr><td>External</td><td>External audio input to sample</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Trigger</td><td>Internal trigger output</td></tr>
+<tr><td>Stepped</td><td>New random value on each trigger</td></tr>
+<tr><td>Linear</td><td>Linearly interpolated between values</td></tr>
+<tr><td>Exponential</td><td>Exponentially interpolated</td></tr>
+<tr><td>Smooth</td><td>Smoothly interpolated</td></tr>
+</table>
+<hr>
+<h2>CV Mix</h2>
+<p>Mixes 3 CV signals with attenuverters. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Level 1–3</td><td>Attenuverter for each input (−1 to +1)</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>CV 1–3</td><td>Signal inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mix</td><td>Mixed output</td></tr>
+</table>
+<hr>
+<h2>Fade</h2>
+<p>Crossfader between two signals. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Crossfade</td><td>Position (0% = Ch 1, 100% = Ch 2)</td></tr>
+<tr><td>Crossfade CV</td><td>Attenuverter for Crossfade CV</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Crossfade</td><td>CV to control fade position</td></tr>
+<tr><td>Ch 1</td><td>First input</td></tr>
+<tr><td>Ch 2</td><td>Second input</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Ch 1</td><td>Faded output 1 (inverse of fade)</td></tr>
+<tr><td>Ch 2</td><td>Faded output 2 (follows fade)</td></tr>
+</table>
+<hr>
+<h2>Logic</h2>
+<p>Gate logic processor. Polyphonic.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A</td><td>First gate signal</td></tr>
+<tr><td>B</td><td>Second gate signal</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>NOT A</td><td>Inverted A</td></tr>
+<tr><td>NOT B</td><td>Inverted B</td></tr>
+<tr><td>OR</td><td>High if A or B is high</td></tr>
+<tr><td>NOR</td><td>High if neither A nor B is high</td></tr>
+<tr><td>AND</td><td>High only if both A and B are high</td></tr>
+<tr><td>NAND</td><td>High unless both are high</td></tr>
+<tr><td>XOR</td><td>High if exactly one of A or B is high</td></tr>
+<tr><td>XNOR</td><td>High if A and B match</td></tr>
+</table>
+<hr>
+<h2>Compare</h2>
+<p>Compares two voltages. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>B offset</td><td>Offset added to the B input</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>A</td><td>Signal A</td></tr>
+<tr><td>B</td><td>Signal B</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Maximum</td><td>The larger of A or B</td></tr>
+<tr><td>Minimum</td><td>The smaller of A or B</td></tr>
+<tr><td>Clip</td><td>A clipped to B&#x27;s range</td></tr>
+<tr><td>Limit</td><td>A limited to ±B</td></tr>
+<tr><td>Clip gate</td><td>High while A is being clipped</td></tr>
+<tr><td>Limit gate</td><td>High while A is being limited</td></tr>
+<tr><td>A &gt; B</td><td>Gate high when A exceeds B</td></tr>
+<tr><td>A &lt; B</td><td>Gate high when A is below B</td></tr>
+</table>
+<hr>
+<h2>Gates — Gate Processor</h2>
+<p>Detects rising and falling edges, generates fixed-length gates, and includes a flip/flop. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gate length</td><td>Length of the generated gate output</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Gate length</td><td>CV to modulate gate length</td></tr>
+<tr><td>Gate</td><td>Input gate or trigger signal</td></tr>
+<tr><td>Reset</td><td>Resets the flip/flop</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Rising edge</td><td>Trigger on rising edge</td></tr>
+<tr><td>Falling edge</td><td>Trigger on falling edge</td></tr>
+<tr><td>Flip</td><td>Toggles on each rising edge</td></tr>
+<tr><td>Flop</td><td>Toggles on each falling edge</td></tr>
+<tr><td>Gate</td><td>Fixed-length gate triggered on rising edge</td></tr>
+<tr><td>Gate delay</td><td>Gate output delayed by the gate length</td></tr>
+</table>
+<hr>
+<h2>Process — CV Processor</h2>
+<p>Sample &amp; hold, track &amp; hold, and slew in one module. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Slew</td><td>Slew rate for the Slew and Glide outputs</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Slew</td><td>Slew rate CV</td></tr>
+<tr><td>Voltage</td><td>Input voltage</td></tr>
+<tr><td>Gate</td><td>Gate for track &amp; hold and hold &amp; track modes</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Sample &amp; hold</td><td>Samples input on gate rising edge, holds until next</td></tr>
+<tr><td>Sample &amp; hold 2</td><td>Samples on gate falling edge</td></tr>
+<tr><td>Track &amp; hold</td><td>Follows input while gate is high; holds on falling edge</td></tr>
+<tr><td>Hold &amp; track</td><td>Holds while gate is high; tracks when gate is low</td></tr>
+<tr><td>Slew</td><td>Slew-limited version of input</td></tr>
+<tr><td>Glide</td><td>Smooth glide with different slew characteristics</td></tr>
+</table>
+<hr>
+<h2>Mult — 1-to-8 Multiple</h2>
+<p>Copies one input signal to eight outputs unchanged. Polyphonic.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Mult</td><td>Signal to copy</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Mult 1–8</td><td>Identical copies of the input</td></tr>
+</table>
+<hr>
+<h2>Rescale</h2>
+<p>Scales and offsets a signal with range limiting. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Gain</td><td>Signal gain (−1 to +1, with 0 = silence)</td></tr>
+<tr><td>Offset</td><td>Voltage offset added after gain</td></tr>
+<tr><td>Maximum</td><td>Upper clamp for output</td></tr>
+<tr><td>Minimum</td><td>Lower clamp for output</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Signal</td><td>Input signal</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Signal</td><td>Rescaled output</td></tr>
+</table>
+<hr>
+<h2>Mid/Side</h2>
+<p>Encodes stereo left/right to mid/side and decodes mid/side back to left/right. Polyphonic.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Encoder width</td><td>Mid/side stereo width for the encoder</td></tr>
+<tr><td>Decoder width</td><td>Stereo width for the decoder</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Encoder width</td><td>Width CV for encoder</td></tr>
+<tr><td>Encoder left</td><td>Left channel input</td></tr>
+<tr><td>Encoder right</td><td>Right channel input</td></tr>
+<tr><td>Decoder width</td><td>Width CV for decoder</td></tr>
+<tr><td>Decoder mid</td><td>Mid channel input</td></tr>
+<tr><td>Decoder side</td><td>Side channel input</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Encoder mid</td><td>Mid output</td></tr>
+<tr><td>Encoder side</td><td>Side output</td></tr>
+<tr><td>Decoder left</td><td>Left output</td></tr>
+<tr><td>Decoder right</td><td>Right output</td></tr>
+</table>
+<hr>
+<h2>Push — Button with Gate/Trigger</h2>
+<p>Manual button with gate and trigger outputs and a hold switch.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Hold</td><td>Holds the gate open while high</td></tr>
+<tr><td>Push</td><td>CV input that triggers the button</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Trigger</td><td>Short pulse on press</td></tr>
+<tr><td>Gate</td><td>High while button is held</td></tr>
+</table>
+<hr>
+<h2>Random Values</h2>
+<p>Generates 7 fixed random voltages. On each trigger, all 7 voltages are re-randomized simultaneously. Polyphonic.</p>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Trigger</td><td>Trigger to generate new random values</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Random 1–7</td><td>Fixed random output voltages, re-randomized on trigger</td></tr>
+</table>
+<hr>
+<h2>SHASR — Sample &amp; Hold Analog Shift Register</h2>
+<p>8-channel sample &amp; hold with a shift register mode. Each channel samples its input when triggered.</p>
+<table>
+<tr><th>Parameters</th><th></th></tr>
+<tr><td>Randomize</td><td>Randomizes the shift register contents</td></tr>
+</table>
+<table>
+<tr><th>Inputs</th><th></th></tr>
+<tr><td>Sample 1–8</td><td>Input voltages to sample</td></tr>
+<tr><td>Trigger 1–8</td><td>Per-channel trigger inputs</td></tr>
+</table>
+<table>
+<tr><th>Outputs</th><th></th></tr>
+<tr><td>Sample 1–8</td><td>Held output voltages</td></tr>
+</table>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="befaco-modules.html">Befaco Modules</a> — additional modules with more complex features</li>
+<li><a href="kernablauf.html">How a Patch Works</a> — how these modules connect in a signal chain</li>
+<li><a href="anwendungsfaelle.html">Patching Use Cases</a> — recipes using these modules</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

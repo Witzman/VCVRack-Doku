@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using VCV Rack — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html" aria-current="page">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<a href="first-patch.html">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html">Fundamental Modules</a>
+<a href="befaco-modules.html">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Using VCV Rack</strong></header>
+  <main>
+    <article>
+<h1>Using VCV Rack</h1>
+<p>This page covers the VCV Rack interface: how to add and remove modules, draw cables, control parameters, save patches, and set up audio and MIDI. If you want a guided walkthrough of building your first patch, see <a href="first-patch.html">Your First Patch</a>.</p>
+<hr>
+<h2>The rack</h2>
+<p>When you open VCV Rack, you see a scrollable rack — a virtual Eurorack case. Modules sit in the rack like hardware modules in a real case. You can scroll left and right to expand your patch as far as you need. The rack has unlimited horizontal space.</p>
+<hr>
+<h2>Adding modules</h2>
+<p>Open the module browser by pressing the <strong>+</strong> button in the toolbar, pressing <strong>Space</strong>, or right-clicking an empty area of the rack and choosing <strong>Add module</strong>. The browser shows all installed plugins and modules. Search by name or tag. Double-click a module or press Enter to add it to the rack.</p>
+<p>Modules snap to a grid. Drag them left and right to rearrange. Right-click a module for options including <strong>Delete</strong>, <strong>Duplicate</strong>, <strong>Initialize</strong> (reset all parameters to default), and <strong>Bypass</strong> (which passes audio through untouched and hides the module&#x27;s processing).</p>
+<hr>
+<h2>Drawing cables</h2>
+<p>Click any output port and drag to an input port to connect a cable. Each connection creates a new cable with a randomly assigned color. You can connect one output to multiple inputs by clicking the output again and dragging another cable — outputs are &quot;stackable&quot; but inputs accept only one cable at a time (unless the module explicitly merges internally).</p>
+<p>To remove a cable, right-click it and choose <strong>Delete</strong>, or simply drag the cable&#x27;s end away from a port and release it in empty space. To move a cable&#x27;s destination, drag its connector end to a new input.</p>
+<p>Cable colors can be changed: right-click a cable to pick a new color. Assigning colors intentionally — blue for audio, yellow for pitch, orange for gates — helps you read complex patches at a glance.</p>
+<hr>
+<h2>Controlling parameters</h2>
+<p>Knobs, buttons, and switches make up most of a module&#x27;s controls.</p>
+<p><strong>Knobs</strong> can be adjusted by dragging up (increase) or down (decrease). Hold Ctrl while dragging for fine control. Double-click a knob to type an exact value. Right-click any knob for a context menu with options to set the value, reset to default, enable MIDI learn, and connect the knob to a polyphonic CV source.</p>
+<p><strong>Buttons</strong> toggle or momentarily activate functions. Right-click for MIDI learn.</p>
+<p><strong>Switches</strong> flip between two or more positions. Click to toggle.</p>
+<hr>
+<h2>Saving and loading patches</h2>
+<p>Save your patch with <strong>Ctrl+S</strong> (or Cmd+S on Mac). Patches are saved as <code>.vcv</code> files in the location you choose. Open a patch with <strong>Ctrl+O</strong>. VCV Rack also offers <strong>File &gt; Save a copy</strong> for snapshots without overwriting.</p>
+<p>The <strong>Autosave</strong> feature saves your patch automatically every few minutes. If VCV Rack crashes, the autosave file is offered on next launch.</p>
+<hr>
+<h2>Audio settings</h2>
+<p>The <strong>AUDIO</strong> module connects VCV Rack to your sound card. Add it to your rack (it&#x27;s in the Core category). Click the display on the module to select your audio interface and sample rate. A sample rate of 44100 Hz or 48000 Hz is standard. Higher buffer sizes reduce CPU load but add latency.</p>
+<p>The AUDIO module&#x27;s L and R inputs receive your patch&#x27;s final stereo audio output. Without connecting to an AUDIO module, you won&#x27;t hear anything.</p>
+<hr>
+<h2>MIDI</h2>
+<p>The <strong>MIDI-CV</strong> module (in Core) converts incoming MIDI notes to pitch CV and gate signals. Select your MIDI device in the module&#x27;s display. The V/Oct output sends pitch CV; the Gate output sends a gate that&#x27;s high while a key is held. Additional outputs include Velocity, Aftertouch, and Mod Wheel CV.</p>
+<p>For sending MIDI out, the <strong>CV-MIDI</strong> module does the reverse: converts CV signals to outgoing MIDI messages.</p>
+<hr>
+<h2>Toolbar</h2>
+<p>The toolbar at the top of the screen has controls for:</p>
+<ul><li><strong>Engine on/off</strong> — starts and stops audio processing</li>
+<li><strong>BPM</strong> — sets the master tempo for Rack&#x27;s internal clock</li>
+<li><strong>Zoom</strong> — scroll wheel or the zoom controls to make modules larger or smaller</li>
+<li><strong>Cables visible</strong> — toggle cable visibility to declutter the view</li></ul>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="first-patch.html">Your First Patch</a> — put this into practice step by step</li>
+<li><a href="kernablauf.html">How a Patch Works</a> — understand why each connection matters</li>
+<li><a href="faq.html">FAQ</a> — solutions to common interface and audio problems</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

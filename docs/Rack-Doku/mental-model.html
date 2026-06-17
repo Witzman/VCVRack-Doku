@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signal Flow &amp; Concepts — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html" aria-current="page">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<a href="first-patch.html">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html">Fundamental Modules</a>
+<a href="befaco-modules.html">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Signal Flow &amp; Concepts</strong></header>
+  <main>
+    <article>
+<h1>Signal Flow &amp; Concepts</h1>
+<p>Modular synthesis is built on one idea: everything is a voltage. Audio signals, musical notes, rhythms, filter cutoffs, effects levels — all of them are just voltages flowing through cables. Understanding how different kinds of voltages work is the foundation of everything you&#x27;ll patch.</p>
+<hr>
+<h2>Voltage is the universal language</h2>
+<p>In VCV Rack, every signal is a number between roughly −10 V and +10 V. That&#x27;s it. There is no separate &quot;CV world&quot; and &quot;audio world&quot; at the hardware level — it&#x27;s all just numbers. What differs is how those voltages are typically used and what range makes sense for each purpose.</p>
+<p>This means you can do things that would be strange on a traditional synthesizer: run an audio signal into a filter&#x27;s cutoff input to create ring-modulation-like effects, or use an envelope to pan a mixer, or sequence a filter cutoff the same way you sequence pitch. The patch cable doesn&#x27;t know what the signal is &quot;for.&quot;</p>
+<hr>
+<h2>Audio signals</h2>
+<p>Audio signals carry sound. They typically swing between −5 V and +5 V at audio rates — anything from 20 Hz up to 20 kHz and beyond. When you connect an oscillator&#x27;s output to the AUDIO module&#x27;s input and press play, you&#x27;re sending an audio-rate voltage to your sound card.</p>
+<p>If the signal is too loud (peaks beyond roughly ±5–6 V), you&#x27;ll hear clipping — a harsh, crunchy distortion. A VCA or mixer with its level turned down is the usual fix.</p>
+<hr>
+<h2>CV — Control Voltage</h2>
+<p>CV signals move slowly relative to audio. They&#x27;re used to control parameters: pitch, filter cutoff, reverb mix, envelope speed. There are several common CV conventions:</p>
+<p><strong>1V/octave pitch CV.</strong> Each volt represents one octave. Middle C (C4) is typically 0 V. C5 is 1 V. C3 is −1 V. This means a sequence or MIDI module outputs a voltage, and any VCO tracking at 1V/oct will play the right note. Most oscillators in VCV Rack follow this standard.</p>
+<p><strong>Unipolar CV (0 V to +10 V).</strong> Used for things that have no &quot;negative&quot; value — envelope output, for example. An ADSR outputs 0 V when silent and +10 V at peak.</p>
+<p><strong>Bipolar CV (−5 V to +5 V or −10 V to +10 V).</strong> Used for modulation that should swing in both directions, like an LFO that sweeps a filter up and down around a center frequency.</p>
+<hr>
+<h2>Gates and triggers</h2>
+<p>Gates and triggers are CV signals used for timing and control.</p>
+<p>A <strong>gate</strong> is a high voltage (+10 V, or similar) that stays high for as long as a key is held or a sequencer step is active. An ADSR envelope typically expects a gate: the attack begins when the gate goes high, sustain holds while the gate is up, and release begins when the gate drops.</p>
+<p>A <strong>trigger</strong> is a very short pulse — just a few milliseconds — that says &quot;now.&quot; It fires a drum hit, advances a sequencer, resets an LFO. Triggers don&#x27;t have duration in the way gates do. Some modules accept either.</p>
+<p>If a module seems to fire once and not repeat, or never sustain, check whether it wants a gate or a trigger.</p>
+<hr>
+<h2>Module categories</h2>
+<p>VCV Rack modules fall into a handful of functional categories. Knowing these helps you find what you need in the module browser.</p>
+<p><strong>VCO (Voltage-Controlled Oscillator).</strong> Generates an audio-rate waveform — sine, triangle, sawtooth, square. The primary sound source. Takes a 1V/oct pitch CV input to track pitch.</p>
+<p><strong>VCF (Voltage-Controlled Filter).</strong> Shapes the frequency content of a signal. Lowpass is the most common type: it passes low frequencies and cuts high ones. Resonance emphasizes the cutoff frequency. Can be modulated by an envelope or LFO for classic filter sweeps.</p>
+<p><strong>VCA (Voltage-Controlled Amplifier).</strong> Controls the level of a signal. Patching an envelope to a VCA&#x27;s CV input shapes the amplitude over time — the signature of any note-like sound. Without a VCA, your oscillator plays continuously at full volume.</p>
+<p><strong>Envelope Generator (EG).</strong> Generates a contour voltage over time, typically triggered by a gate. The ADSR shape — Attack, Decay, Sustain, Release — is the standard form. Output is usually 0–10 V.</p>
+<p><strong>LFO (Low-Frequency Oscillator).</strong> Like a VCO but running below 20 Hz — too slow to be heard as a pitch. Used as a modulation source: vibrato, tremolo, filter wobble, rhythmic panning.</p>
+<p><strong>Sequencer.</strong> Steps through a series of values over time, driven by a clock. Outputs pitch CV, gates, or both. The heart of melodic and rhythmic patterns.</p>
+<p><strong>Mixer.</strong> Combines multiple signals into one output. Audio mixing keeps levels balanced. CV mixing can blend two modulation sources.</p>
+<p><strong>Utility.</strong> Everything that doesn&#x27;t fit a specific category: attenuators, inverters, logic, switches, multiples. Often the modules that make complex patches actually work.</p>
+<p><strong>Effects.</strong> Reverb, delay, chorus, distortion. Usually placed after VCAs in the signal chain, taking audio in and returning processed audio.</p>
+<hr>
+<h2>Polyphony</h2>
+<p>VCV Rack supports polyphony through a single cable carrying up to 16 channels. A polyphonic cable appears thicker than a monophonic one. A MIDI module or sequencer can output all note pitches and gates as a single polyphonic cable. An oscillator, filter, and VCA that support polyphony will process all 16 channels in parallel.</p>
+<p>The Split module separates a polyphonic cable into individual monophonic cables. The Merge module does the reverse. Sum adds all channels to a single mono output.</p>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="kernablauf.html">How a Patch Works</a> — see signal flow in action from oscillator to output</li>
+<li><a href="first-patch.html">Your First Patch</a> — build a working patch step by step</li>
+<li><a href="fundamental-modules.html">Fundamental Modules</a> — reference for every module in this category</li>
+<li><a href="glossary.html">Glossary</a> — definitions for every term on this page</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

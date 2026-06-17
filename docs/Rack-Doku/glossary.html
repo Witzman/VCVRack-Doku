@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glossary — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html" aria-current="page">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<a href="first-patch.html">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html">Fundamental Modules</a>
+<a href="befaco-modules.html">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Glossary</strong></header>
+  <main>
+    <article>
+<h1>Glossary</h1>
+<p>Definitions for terms used throughout this handbook, in alphabetical order.</p>
+<hr>
+<table>
+<tr><th>Term</th><th>Definition</th></tr>
+<tr><td><strong>ADSR</strong></td><td>Attack-Decay-Sustain-Release. The four stages of a common envelope shape. Attack is the rise time, Decay is the fall to Sustain level, Sustain is the held level while a gate is open, Release is the fall after the gate closes.</td></tr>
+<tr><td><strong>Attenuator</strong></td><td>Reduces the level of a signal. An attenuverter can also invert the signal (negative values).</td></tr>
+<tr><td><strong>Attenuverter</strong></td><td>A knob or module that scales a signal from −1× (full inversion) to +1× (full pass-through), with 0 at center for silence.</td></tr>
+<tr><td><strong>Audio rate</strong></td><td>Signals oscillating fast enough to be heard as pitch — typically 20 Hz and above. Contrast with CV rate.</td></tr>
+<tr><td><strong>Bipolar</strong></td><td>A signal that swings both positive and negative, typically −5 V to +5 V or −10 V to +10 V. An LFO is usually bipolar.</td></tr>
+<tr><td><strong>BPM</strong></td><td>Beats per minute. The tempo of a clock or sequencer.</td></tr>
+<tr><td><strong>Cable</strong></td><td>In VCV Rack, a virtual patch cable connecting one module&#x27;s output to another&#x27;s input. Right-click a cable to delete it. Hold Ctrl while dragging to duplicate a connection.</td></tr>
+<tr><td><strong>Channel</strong></td><td>One voice or signal lane. A polyphonic cable carries up to 16 channels.</td></tr>
+<tr><td><strong>Clock</strong></td><td>A signal that generates regular pulses at a set tempo, used to advance sequencers, trigger envelopes, or sync LFOs.</td></tr>
+<tr><td><strong>CV</strong></td><td>Control Voltage. Any signal used to modulate a parameter rather than be heard directly as audio. Pitch CV, filter CV, and envelope output are all CV signals.</td></tr>
+<tr><td><strong>Cutoff</strong></td><td>The frequency at which a filter begins to attenuate signals. For a lowpass filter, signals below the cutoff pass through; above it they are reduced.</td></tr>
+<tr><td><strong>DC offset</strong></td><td>A constant voltage added to a signal, shifting it away from 0 V. Can be useful for bias or cause problems when mixing with AC audio signals.</td></tr>
+<tr><td><strong>Drone</strong></td><td>A sustained, continuous note or texture without rhythmic articulation. Common in ambient and experimental patches.</td></tr>
+<tr><td><strong>Envelope</strong></td><td>A voltage that changes shape over time in response to a trigger or gate. ADSR is the most common form. Used to shape amplitude, filter, and other parameters.</td></tr>
+<tr><td><strong>Envelope follower</strong></td><td>Tracks the amplitude of an audio signal and outputs a corresponding CV. Louder input = higher output voltage.</td></tr>
+<tr><td><strong>Expander</strong></td><td>A module that attaches to the side of another module to add functionality, communicating via the Rack expander system rather than patch cables.</td></tr>
+<tr><td><strong>FM</strong></td><td>Frequency Modulation. Using one oscillator (or LFO) to modulate the frequency of another, creating complex timbres. Linear FM and exponential FM behave differently.</td></tr>
+<tr><td><strong>Gate</strong></td><td>A CV signal that stays high (+10 V) for a duration, indicating &quot;key held.&quot; ADSRs typically use gates for their sustain stage.</td></tr>
+<tr><td><strong>Generative</strong></td><td>A patch that produces evolving, semi-random output without continuous manual control — often using random CV sources, clock divisions, and logic.</td></tr>
+<tr><td><strong>HP</strong></td><td>Highpass filter. Passes high frequencies, attenuates low ones. Useful for removing low-end rumble from signals.</td></tr>
+<tr><td><strong>Hz</strong></td><td>Hertz. Cycles per second. A measure of frequency for both audio and CV signals.</td></tr>
+<tr><td><strong>Knob</strong></td><td>A rotary control on a module panel. Right-click in VCV Rack for context menu options including setting exact values and MIDI mapping.</td></tr>
+<tr><td><strong>LFO</strong></td><td>Low-Frequency Oscillator. An oscillator running below audio rate (below ~20 Hz), used as a modulation source. Common uses: vibrato, tremolo, filter wobble.</td></tr>
+<tr><td><strong>Logic</strong></td><td>Modules that perform Boolean operations on gate signals: AND, OR, NOT, XOR, etc. Useful for combining rhythmic patterns.</td></tr>
+<tr><td><strong>LP</strong></td><td>Lowpass filter. Passes low frequencies, attenuates high ones. The most common filter type in subtractive synthesis.</td></tr>
+<tr><td><strong>Merge</strong></td><td>A utility module that combines multiple monophonic cables into one polyphonic cable.</td></tr>
+<tr><td><strong>MIDI</strong></td><td>Musical Instrument Digital Interface. A standard protocol for communicating notes, controllers, and clock between devices. VCV Rack&#x27;s MIDI modules convert MIDI signals to CV and vice versa.</td></tr>
+<tr><td><strong>Module</strong></td><td>A single functional unit in a VCV Rack patch. Modules have inputs, outputs, and controls on their panel.</td></tr>
+<tr><td><strong>Monophonic</strong></td><td>A single-channel signal carrying one voice.</td></tr>
+<tr><td><strong>Mult</strong></td><td>Multiple. A utility that copies one signal to several outputs without changing it.</td></tr>
+<tr><td><strong>Noise</strong></td><td>A signal with random values at every sample. White noise has equal energy at all frequencies. Pink noise has more energy in low frequencies. Useful for percussion, wind sounds, and random modulation sources.</td></tr>
+<tr><td><strong>Octave</strong></td><td>A doubling of frequency. In 1V/oct pitch CV, one volt equals one octave.</td></tr>
+<tr><td><strong>Oscillator</strong></td><td>A module that generates a periodic waveform. VCOs run at audio rate; LFOs run below audio rate.</td></tr>
+<tr><td><strong>Pan</strong></td><td>Panning. The left-right position of a sound in a stereo field.</td></tr>
+<tr><td><strong>Patch</strong></td><td>A complete VCV Rack setup — the set of modules placed and the cables connecting them. Saved as a .vcv file.</td></tr>
+<tr><td><strong>Pitch CV</strong></td><td>A control voltage representing musical pitch, typically following the 1V/octave standard.</td></tr>
+<tr><td><strong>Polyphonic</strong></td><td>A cable or module carrying multiple voices simultaneously. VCV Rack supports up to 16 channels in a single polyphonic cable. Polyphonic cables appear thicker.</td></tr>
+<tr><td><strong>Port</strong></td><td>An input or output socket on a module panel.</td></tr>
+<tr><td><strong>Quantizer</strong></td><td>A module that snaps incoming CV to the nearest note in a chosen scale, ensuring musical pitch output from continuous or random CV sources.</td></tr>
+<tr><td><strong>Rack</strong></td><td>The virtual modular synthesizer environment in VCV Rack where modules are placed and connected.</td></tr>
+<tr><td><strong>Resonance</strong></td><td>The emphasis of frequencies near a filter&#x27;s cutoff point. High resonance causes the filter to ring at the cutoff frequency. Also called Q.</td></tr>
+<tr><td><strong>Ring modulator</strong></td><td>Multiplies two signals together, producing sum and difference frequencies. Creates metallic, bell-like, or distorted timbres.</td></tr>
+<tr><td><strong>Sample and hold</strong></td><td>Captures (samples) the value of an input signal when triggered, then holds that value until the next trigger. Often fed noise to produce random stepped voltages.</td></tr>
+<tr><td><strong>Sawtooth</strong></td><td>A waveform that rises linearly then drops sharply, or the reverse. Rich in harmonics, characteristic of brass and string synthesis.</td></tr>
+<tr><td><strong>Semitone</strong></td><td>One twelfth of an octave. In 1V/oct pitch CV, one semitone = 1/12 V ≈ 0.0833 V.</td></tr>
+<tr><td><strong>Sequencer</strong></td><td>Steps through a series of programmed values over time, driven by a clock. Outputs pitch CV, gate, and other signals to drive a patch.</td></tr>
+<tr><td><strong>Signal chain</strong></td><td>The path a signal takes from source to output, through processors and modifiers.</td></tr>
+<tr><td><strong>Sine wave</strong></td><td>A smooth, pure waveform with a single frequency and no harmonics.</td></tr>
+<tr><td><strong>Slew</strong></td><td>Gradual change. A slew limiter smooths abrupt voltage jumps, turning sharp steps into gliding transitions — the modular equivalent of portamento.</td></tr>
+<tr><td><strong>Split</strong></td><td>A utility module that separates a polyphonic cable into individual monophonic cables.</td></tr>
+<tr><td><strong>Square wave</strong></td><td>A waveform that alternates between two fixed voltages. Pulse width determines the on/off ratio. Rich in odd harmonics, hollow sounding.</td></tr>
+<tr><td><strong>Step</strong></td><td>One position in a sequencer&#x27;s cycle. Each step typically outputs a programmed pitch CV and gate.</td></tr>
+<tr><td><strong>Sum</strong></td><td>Adds all channels of a polyphonic cable into a single monophonic output.</td></tr>
+<tr><td><strong>Sync</strong></td><td>Hard sync resets an oscillator&#x27;s phase to zero when a trigger arrives, creating a distinctive harsh tone. Soft sync is a gentler version.</td></tr>
+<tr><td><strong>Tempo</strong></td><td>Speed of a clock or pattern, measured in BPM.</td></tr>
+<tr><td><strong>Track &amp; hold</strong></td><td>Like sample and hold, but continuously follows the input while a gate is high, then holds the value when the gate closes.</td></tr>
+<tr><td><strong>Trigger</strong></td><td>A brief voltage pulse (a few milliseconds) indicating &quot;fire now.&quot; Advances sequencers, fires drum hits, resets LFOs.</td></tr>
+<tr><td><strong>Triangle wave</strong></td><td>A waveform that rises and falls linearly. Softer than sawtooth, with fewer harmonics.</td></tr>
+<tr><td><strong>Unipolar</strong></td><td>A signal that stays positive, typically 0 V to +10 V. Envelope output is usually unipolar.</td></tr>
+<tr><td><strong>V/Oct</strong></td><td>Volts per octave. The pitch CV standard where each 1 V increase raises pitch by one octave. See also: 1V/oct.</td></tr>
+<tr><td><strong>VCA</strong></td><td>Voltage-Controlled Amplifier. Controls signal level using a CV input. Essential for shaping amplitude envelopes.</td></tr>
+<tr><td><strong>VCF</strong></td><td>Voltage-Controlled Filter. Shapes the frequency content of a signal. Cutoff frequency and resonance are typically CV-controllable.</td></tr>
+<tr><td><strong>VCO</strong></td><td>Voltage-Controlled Oscillator. An audio-rate oscillator whose frequency is set by a CV input, typically following the 1V/oct standard.</td></tr>
+<tr><td><strong>Velocity</strong></td><td>In MIDI, how hard a key was pressed. MIDI modules in VCV Rack can output velocity as a CV (typically 0–10 V).</td></tr>
+<tr><td><strong>Vibrato</strong></td><td>Periodic pitch modulation, created by patching an LFO to a VCO&#x27;s FM input.</td></tr>
+<tr><td><strong>Wavefolder</strong></td><td>A waveshaper that folds the waveform back on itself when it exceeds a threshold, adding harmonics and creating metallic or bell-like timbres.</td></tr>
+<tr><td><strong>Waveform</strong></td><td>The shape of one cycle of an oscillator&#x27;s output: sine, triangle, sawtooth, square, or custom wavetable.</td></tr>
+<tr><td><strong>Wavetable</strong></td><td>A stored waveform that an oscillator scans through. Wavetable position can be modulated to morph between waveforms.</td></tr>
+</table>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="mental-model.html">Signal Flow &amp; Concepts</a> — these terms in context</li>
+<li><a href="kernablauf.html">How a Patch Works</a> — see how these concepts connect</li>
+<li><a href="fundamental-modules.html">Fundamental Modules</a> — modules that implement these functions</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

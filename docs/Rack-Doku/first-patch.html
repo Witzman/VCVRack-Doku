@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your First Patch — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<a href="first-patch.html" aria-current="page">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html">Fundamental Modules</a>
+<a href="befaco-modules.html">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Your First Patch</strong></header>
+  <main>
+    <article>
+<h1>Your First Patch</h1>
+<p>This tutorial takes you from a blank VCV Rack canvas to a working, playable sound using only the modules included with VCV Rack Free. It should take about ten minutes.</p>
+<hr>
+<h2>What you&#x27;ll build</h2>
+<p>A basic synthesizer voice: an oscillator shaped by a filter and an amplitude envelope, played from your computer keyboard via MIDI.</p>
+<hr>
+<h2>Step 1 — Open a new patch</h2>
+<p>Launch VCV Rack. If a patch is already open, choose <strong>File &gt; New</strong> to start fresh.</p>
+<hr>
+<h2>Step 2 — Add the AUDIO module</h2>
+<p>Press <strong>Space</strong> to open the module browser. Search for <strong>AUDIO-8</strong> or just <strong>Audio</strong>. Add the AUDIO-8 module (from Core). This is your connection to your speakers.</p>
+<p>Click the device display on the module and select your audio output device. If you don&#x27;t see one, check that your audio interface or built-in speakers are connected and not in use by another application.</p>
+<hr>
+<h2>Step 3 — Add MIDI-CV</h2>
+<p>Open the browser again and add <strong>MIDI-CV</strong> (also in Core). Click its display and select your MIDI keyboard, or select <strong>Computer keyboard</strong> to use your computer&#x27;s typing keys as a piano.</p>
+<p>You now have a V/Oct output (pitch) and a Gate output on this module.</p>
+<hr>
+<h2>Step 4 — Add VCO</h2>
+<p>Add the <strong>VCO</strong> module (from VCV Free). Connect the MIDI-CV&#x27;s <strong>V/Oct</strong> output to the VCO&#x27;s <strong>PITCH</strong> input. You&#x27;ve just told the oscillator to track your keyboard.</p>
+<p>Run the engine (click the power button in the toolbar) and press a key. Nothing sounds yet — the oscillator is running, but nothing is carrying its signal to the output.</p>
+<hr>
+<h2>Step 5 — Add ADSR</h2>
+<p>Add <strong>ADSR EG</strong> (from VCV Free). Connect MIDI-CV&#x27;s <strong>Gate</strong> output to the ADSR&#x27;s <strong>Gate</strong> input. The envelope will now fire when you press a key.</p>
+<hr>
+<h2>Step 6 — Add VCA</h2>
+<p>Add <strong>VCA</strong> (from VCV Free). Connect the VCO&#x27;s <strong>SAW</strong> output to the VCA&#x27;s <strong>CH</strong> input. Connect the ADSR&#x27;s <strong>Envelope</strong> output to the VCA&#x27;s <strong>CV</strong> input.</p>
+<p>Connect the VCA&#x27;s <strong>CH</strong> output to the AUDIO-8&#x27;s <strong>L</strong> input (and optionally also to <strong>R</strong> for mono-to-stereo).</p>
+<p>Press a key. You should now hear a sawtooth note that fades with the release time of the envelope.</p>
+<hr>
+<h2>Step 7 — Add VCF</h2>
+<p>Add <strong>VCF</strong> (from VCV Free). Insert it between the VCO and the VCA: disconnect the VCO from the VCA, then connect the VCO&#x27;s <strong>SAW</strong> output to the VCF&#x27;s <strong>IN</strong> input, and the VCF&#x27;s <strong>LPF</strong> output to the VCA&#x27;s <strong>CH</strong> input.</p>
+<p>Turn the VCF&#x27;s <strong>Cutoff</strong> knob to a lower value — around 9 o&#x27;clock. Press a key. The sound is now darker. Turn Resonance up for a more nasal character.</p>
+<hr>
+<h2>Step 8 — Modulate the filter</h2>
+<p>Connect a second cable from the ADSR&#x27;s <strong>Envelope</strong> output to the VCF&#x27;s <strong>Freq</strong> input. Turn the VCF&#x27;s Freq CV knob (small knob next to the Freq input) up to about 3 o&#x27;clock.</p>
+<p>Now each note attack briefly opens the filter before it closes back down. This is the classic subtractive synthesis &quot;envelope filter&quot; effect.</p>
+<hr>
+<h2>Step 9 — Save your patch</h2>
+<p>Press <strong>Ctrl+S</strong> and save the patch somewhere you&#x27;ll find it.</p>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="kernablauf.html">How a Patch Works</a> — understand what each connection is doing</li>
+<li><a href="anwendungsfaelle.html">Patching Use Cases</a> — extend this patch into a bassline or add effects</li>
+<li><a href="fundamental-modules.html">Fundamental Modules</a> — full parameter reference for every module you used here</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

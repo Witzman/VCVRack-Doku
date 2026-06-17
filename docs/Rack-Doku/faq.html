@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Start</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="kernablauf.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<div class="section-title">Patcher</div>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="faq.html" aria-current="page">FAQ</a>
+<a href="first-patch.html">Your First Patch</a>
+<div class="section-title">Modules</div>
+<a href="fundamental-modules.html">Fundamental Modules</a>
+<a href="befaco-modules.html">Befaco Modules</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>FAQ</strong></header>
+  <main>
+    <article>
+<h1>FAQ</h1>
+<p>Common questions and fixes, grouped by topic.</p>
+<hr>
+<h2>No sound</h2>
+<p><strong>The engine is running but I hear nothing.</strong> Check that the AUDIO module is added to your patch, that the correct audio device is selected in its display, and that a cable is connected to its L input. Also confirm the Engine is on (toolbar power button).</p>
+<p><strong>I connected everything but still no sound.</strong> Trace the signal chain manually: right-click each module and look for bypass mode being enabled. Check that the VCA&#x27;s Level knob is above zero and that a CV signal (envelope or direct voltage) is reaching its CV input. A VCA with nothing in its CV input and Level at minimum produces silence.</p>
+<p><strong>The ADSR fires but I hear only a click, not a sustained note.</strong> The Sustain knob is probably at zero. Raise it so the envelope holds a level while the gate is open.</p>
+<p><strong>Sound plays for one note then stops.</strong> Check the ADSR&#x27;s Release time. If Release is at minimum, the sound cuts off the moment the gate closes. Raise Release for a fade-out.</p>
+<p><strong>I hear sound in the toolbar meters but not from my speakers.</strong> Select the correct audio output device in the AUDIO module. Also check system volume and that your audio interface is not routing to a different output.</p>
+<p><strong>Patching a cable from VCO to AUDIO directly produces sound. Patching it through a VCA produces silence.</strong> The VCA&#x27;s CV input has nothing in it, or the Level knob is at zero. Either raise the Level knob or connect a CV signal (like an ADSR or a constant +10 V voltage) to the CV input.</p>
+<hr>
+<h2>Tuning and pitch</h2>
+<p><strong>My VCO sounds out of tune with everything else.</strong> The VCO is using an exponential FM input where a linear one (or V/oct) is expected, or vice versa. Also check for a DC offset or attenuverter between your pitch source and the VCO&#x27;s PITCH input — any voltage scaling or offset here shifts pitch.</p>
+<p><strong>Octave is right but the note is slightly off.</strong> A small offset is being added somewhere in the CV chain, or an attenuverter is scaling the 1V/oct signal slightly away from 1:1. Check all attenuverters and offset knobs between your pitch source and the VCO.</p>
+<p><strong>The Quantizer doesn&#x27;t seem to quantize.</strong> Check that a cable is connected to the Quantizer&#x27;s Pitch input, not just its output. Also confirm the right scale is selected (right-click the module).</p>
+<p><strong>Two VCOs are slightly detuned and I want them perfectly in tune.</strong> Right-click both VCOs, choose Initialize, then repatch. Or use the Octave module to shift pitch in exact octave increments without introducing detune.</p>
+<hr>
+<h2>CPU and performance</h2>
+<p><strong>CPU usage is very high.</strong> Reduce the number of oversampling-heavy modules (some VCOs and effects use 8× or 16× oversampling). Lower the sample rate in the AUDIO module. Bypass modules you&#x27;re not currently using. Close other CPU-heavy applications.</p>
+<p><strong>VCV Rack crackles or stutters.</strong> Increase the buffer size in the AUDIO module. A buffer of 256 or 512 samples is a good starting point. Crackle usually means the buffer is too small for the CPU to fill in time.</p>
+<p><strong>A specific module is causing a CPU spike.</strong> Bypass modules one at a time to identify the culprit. Effects modules (reverb, convolution) are common offenders at high buffer quality settings.</p>
+<hr>
+<h2>MIDI</h2>
+<p><strong>My MIDI keyboard sends notes but I hear nothing in VCV Rack.</strong> Confirm the MIDI-CV module is added and your device is selected in its display. Check that V/Oct is connected to the VCO&#x27;s PITCH input and Gate is connected to the ADSR&#x27;s Gate input.</p>
+<p><strong>Only one note plays at a time (no polyphony).</strong> MIDI-CV in its default mode is monophonic. To enable polyphony, right-click the MIDI-CV module and change the polyphony mode to a chord or poly mode. Then use polyphonic-capable modules (most VCV Free modules support polyphony) for the rest of the chain.</p>
+<p><strong>Pitch bend doesn&#x27;t work.</strong> Connect the MIDI-CV module&#x27;s <strong>Pitch Bend</strong> output to the VCO&#x27;s FM input. Set the FM attenuverter to a value that corresponds to your desired bend range (a full semitone is roughly 0.083 V, so for ±2 semitone bend, use an attenuverter that scales the ±5 V bend signal to ±0.17 V).</p>
+<hr>
+<h2>Polyphony</h2>
+<p><strong>I want to play chords but the sound is still monophonic.</strong> Check that all modules in your chain support polyphony (most VCV Free modules do). The polyphonic signal is only as wide as the narrowest module in the chain. If one module in the middle is monophonic, it collapses the signal to one channel.</p>
+<p><strong>I&#x27;m using a polyphonic oscillator but it outputs identical pitches for every voice.</strong> The pitch input to the VCO is monophonic — likely a single-channel cable. Make sure a polyphonic pitch CV is reaching the VCO&#x27;s PITCH input.</p>
+<p><strong>How do I check how many channels a cable carries?</strong> Hover over any cable or port to see a tooltip with the current channel count. A polyphonic cable appears thicker and slightly colored based on channel count.</p>
+<hr>
+<h2>Common beginner mistakes</h2>
+<p><strong>I&#x27;m getting audio feedback / runaway loud noise.</strong> An output is connected back into an earlier input in the same chain, creating a feedback loop. Trace the signal path and find the loop.</p>
+<p><strong>My LFO modulation is extremely fast.</strong> The LFO&#x27;s rate knob is set high, or you&#x27;re patching an audio-rate VCO output to a CV destination and getting audio-rate modulation. Turn the rate down or use the LFO module instead of VCO for slow modulation.</p>
+<p><strong>Notes overlap or hang when playing fast.</strong> The ADSR&#x27;s Release time is long. Short Release stops the previous note before the next one starts.</p>
+<p><strong>I can&#x27;t find a module I installed.</strong> Restart VCV Rack. If the plugin installed correctly, it will appear in the browser after restart. Check the plugin manager for any installation errors.</p>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="userguide.html">Using VCV Rack</a> — interface guide</li>
+<li><a href="kernablauf.html">How a Patch Works</a> — signal chain fundamentals</li>
+<li><a href="anwendungsfaelle.html">Patching Use Cases</a> — step-by-step patching recipes</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>
