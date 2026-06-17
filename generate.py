@@ -201,21 +201,14 @@ def build_sidebar(current_slug):
     sec_id = 0
     for section_title, entries in SIDEBAR:
         sid = f"sec-{sec_id}"; sec_id += 1
-        if isinstance(entries, dict):
-            active = any(slug == current_slug for subs in entries.values() for _, slug in subs)
-        else:
-            active = any(slug == current_slug for _, slug in entries)
-        open_cls = " open" if active else ""
-        parts.append(f'<div class="section-title{open_cls}" onclick="toggle(\'{sid}\')">{section_title}<span class="arrow">›</span></div>')
-        parts.append(f'<div class="section-content{open_cls}" id="{sid}">')
+        parts.append(f'<div class="section-title" onclick="toggle(\'{sid}\')">{section_title}<span class="arrow">›</span></div>')
+        parts.append(f'<div class="section-content" id="{sid}">')
         if isinstance(entries, dict):
             sub_id = 0
             for sub_title, sub_entries in entries.items():
                 ssid = f"{sid}-sub-{sub_id}"; sub_id += 1
-                sub_active = any(slug == current_slug for _, slug in sub_entries)
-                sopen = " open" if sub_active else ""
-                parts.append(f'<div class="sub-section-title{sopen}" onclick="event.stopPropagation();toggle(\'{ssid}\')">{sub_title}<span class="arrow">›</span></div>')
-                parts.append(f'<div class="sub-content{sopen}" id="{ssid}">')
+                parts.append(f'<div class="sub-section-title" onclick="event.stopPropagation();toggle(\'{ssid}\')">{sub_title}<span class="arrow">›</span></div>')
+                parts.append(f'<div class="sub-content" id="{ssid}">')
                 for name, slug in sub_entries:
                     cur = ' aria-current="page"' if slug == current_slug else ""
                     parts.append(f'<a href="{slug}.html"{cur} class="sub-link">{name}</a>')
