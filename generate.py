@@ -10,7 +10,7 @@ import shutil
 import html as html_mod
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-SRC_DIR = os.path.join(BASE_DIR, "htmldoku")
+SRC_DIR = os.path.join(BASE_DIR, "src")
 OUT_DIR = os.path.join(BASE_DIR, "docs", "Rack-Doku")
 os.makedirs(OUT_DIR, exist_ok=True)
 

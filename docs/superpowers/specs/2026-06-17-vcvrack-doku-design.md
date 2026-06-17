@@ -29,7 +29,7 @@ All files committed to `VCVRack-Doku/` (this repo), outside all upstream git rep
 
 ```
 VCVRack-Doku/
-  htmldoku/             Markdown sources
+  src/             Markdown sources
   docs/
     index.html          GitHub Pages redirect → Rack-Doku/index.html
     Rack-Doku/          Static HTML site (GitHub Pages served from here)
