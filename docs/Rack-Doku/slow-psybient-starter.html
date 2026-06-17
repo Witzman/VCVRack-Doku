@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slow Psybient — Starter Patch — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title" onclick="toggle('sec-0')">Common<span class="arrow">›</span></div>
+<div class="section-content" id="sec-0">
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+</div>
+<div class="section-title" onclick="toggle('sec-1')">Modules<span class="arrow">›</span></div>
+<div class="section-content" id="sec-1">
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-0')">Sound Generation<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-0">
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-1')">Sound Shaping<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-1">
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-2')">Modulation / Control<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-2">
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-3')">Utilities<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-3">
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-4')">MIDI / I/O<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-4">
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</div>
+</div>
+<div class="section-title open" onclick="toggle('sec-2')">Tutorials<span class="arrow">›</span></div>
+<div class="section-content open" id="sec-2">
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<a href="slow-psybient-starter.html" aria-current="page">Slow Psybient Starter Patch</a>
+<a href="maschine-mapping.html">Maschine MK2 Live Control</a>
+</div>
+</nav>
+<script>
+function toggle(id){
+  var c=document.getElementById(id);
+  var h=c.previousElementSibling;
+  c.classList.toggle("open");
+  h.classList.toggle("open");
+}
+</script>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Slow Psybient — Starter Patch</strong></header>
+  <main>
+    <article>
+<h1>Slow Psybient — Starter Patch</h1>
+<p>This page walks you through the downloadable Fundamental-only starter patch, explains the signal flow, and shows how to extend it into the full psybient setup described in the <a href="slow-psybient.html">Slow Psybient</a> tutorial.</p>
+<h2>Download the patch</h2>
+<p><strong><a href="slow-psybient-starter.vcv">slow-psybient-starter.vcv</a></strong></p>
+<p>Save the file and open it in VCV Rack via <strong>File → Open</strong>. You need the Fundamental plugin installed — it ships with VCV Rack by default.</p>
+<hr>
+<h2>What is in the patch</h2>
+<p>Nine modules, all from Fundamental:</p>
+<table>
+<tr><th>Module</th><th>Role</th></tr>
+<tr><td>VCO (×2)</td><td>Dual drone oscillators, tuned to G2 and detuned by 12 cents</td></tr>
+<tr><td>Noise</td><td>Pink noise for texture layer</td></tr>
+<tr><td>LFO</td><td>Slow 8-second filter sweep</td></tr>
+<tr><td>VCMixer</td><td>Blends the two oscillators and noise</td></tr>
+<tr><td>VCF</td><td>Lowpass ladder filter with LFO modulation</td></tr>
+<tr><td>VCA</td><td>Signal level, permanently open for a continuous drone</td></tr>
+<tr><td>Delay</td><td>Dub echo at dotted-eighth time (≈ 506 ms at 89 BPM)</td></tr>
+<tr><td>AudioInterface2</td><td>Stereo output to your audio device</td></tr>
+</table>
+<hr>
+<h2>Signal flow</h2>
+<pre><code class="language-">VCO 1 (G2)  ─┐
+VCO 2 (G2+12¢)─┤ VCMixer → VCF → VCA → Delay → AudioInterface2
+Noise (Pink) ─┘
+
+LFO (8s) ──────→ VCF freq CV</code></pre>
+<p>The two VCOs produce a slow-beating drone — the 12-cent offset creates a gentle chorus-like shimmer. Pink noise mixed at 25 % adds breathiness. The LFO sweeps the filter cutoff over eight seconds, giving the pad its characteristic slow, evolving texture. The VCA is wide open; the drone sustains continuously. Delay feeds back at 55 % with a slightly dark tone for the dub echo tail.</p>
+<hr>
+<h2>First steps after loading</h2>
+<ol><li><strong>Set your audio device.</strong> Right-click AudioInterface2 and choose your output device. The patch is silent until a device is selected.</li>
+<li><strong>Listen.</strong> You should hear a low G drone with a slowly moving filter.</li>
+<li><strong>Adjust the VCF knobs</strong> to taste — cutoff at around 9 o&#x27;clock, resonance at around 10 o&#x27;clock is a good starting point.</li>
+<li><strong>Nudge the Delay feedback</strong> up if you want longer echoes, down for a subtler tail.</li></ol>
+<hr>
+<h2>Extending to the full patch</h2>
+<p>The starter covers the drone layer. The full <a href="slow-psybient.html">Slow Psybient</a> patch adds:</p>
+<h3>Add reverb</h3>
+<p>Install the <strong>Valley</strong> plugin for the <strong>Plateau</strong> reverb. Connect VCA output to Plateau input, and Plateau output to Delay input (or to a second mixer channel). Set decay long (0.9 +) and size large.</p>
+<h3>Add a bass line</h3>
+<p>Add a second VCO (or any Fundamental VCO) tuned 1–2 octaves below, driven by a sequencer. A Fundamental <strong>SEQ-3</strong> works for a simple repeating bass pattern. Add an <strong>ADSR</strong> with a short attack and medium decay to shape the bass notes.</p>
+<h3>Add a clock and gate</h3>
+<p>Install <strong>Impromptu Modular</strong> for the <strong>Clocked</strong> master clock. Connect Clocked&#x27;s clock output to ADSR gates and any other trigger destinations. At 89 BPM, Clocked sets the tempo master for the whole patch.</p>
+<h3>Add modulation depth control</h3>
+<p>Add a Fundamental <strong>VCA</strong> as an attenuverter for the LFO → VCF path. This lets you dial in exactly how much filter movement you want. Put it between the LFO output and the VCF FREQ CV input; map its level to a MIDI CC for live control.</p>
+<h3>Add pattern switching</h3>
+<p>Four instances of <strong>Impromptu PhraseSeq16</strong> (one per voice layer) handle pattern storage and bar-locked switching. See the <a href="maschine-mapping.html">Maschine MK2 Live Control</a> guide for how to wire pad hits to pattern changes.</p>
+<hr>
+<h2>Module connection reference</h2>
+<p>For wiring the modules listed above, the connections are:</p>
+<table>
+<tr><th>From</th><th>Output</th><th>To</th><th>Input</th></tr>
+<tr><td>VCO 1</td><td>SAW</td><td>VCMixer</td><td>CH 1</td></tr>
+<tr><td>VCO 2</td><td>SAW</td><td>VCMixer</td><td>CH 2</td></tr>
+<tr><td>Noise</td><td>PINK</td><td>VCMixer</td><td>CH 3</td></tr>
+<tr><td>LFO</td><td>SIN</td><td>VCF</td><td>FREQ CV</td></tr>
+<tr><td>VCMixer</td><td>MIX</td><td>VCF</td><td>IN</td></tr>
+<tr><td>VCF</td><td>LPF</td><td>VCA</td><td>IN 1</td></tr>
+<tr><td>VCA</td><td>OUT 1</td><td>Delay</td><td>IN</td></tr>
+<tr><td>Delay</td><td>MIX</td><td>AudioInterface2</td><td>L</td></tr>
+<tr><td>Delay</td><td>MIX</td><td>AudioInterface2</td><td>R</td></tr>
+</table>
+<hr>
+<h2>Maschine MK2 mapping</h2>
+<p>Once you have the full patch running, the <a href="maschine-mapping.html">Maschine MK2 Live Control</a> guide maps:</p>
+<ul><li>4 × 4 pads → pattern selection per voice, quantized to bar end</li>
+<li>8 encoders × 2 pages → filter, LFO, reverb, delay, and tempo control</li></ul>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="slow-psybient.html">Slow Psybient</a> — full tutorial for the complete patch</li>
+<li><a href="maschine-mapping.html">Maschine MK2 Live Control</a> — MIDI mapping guide</li>
+<li><a href="lfo.html">LFO</a> — understanding slow modulation sources</li>
+<li><a href="delay-reverb-chorus.html">Delay, Reverb &amp; Chorus</a> — FX parameters and alternatives</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

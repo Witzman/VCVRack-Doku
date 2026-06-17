@@ -59,6 +59,7 @@ SIDEBAR = [
         ("Your First Patch", "first-patch"),
         ("Intermediate Patch", "intermediate-patch"),
         ("Slow Psybient", "slow-psybient"),
+        ("Slow Psybient Starter Patch", "slow-psybient-starter"),
         ("Maschine MK2 Live Control", "maschine-mapping"),
     ]),
 ]
