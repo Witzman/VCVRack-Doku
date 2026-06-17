@@ -1,6 +1,6 @@
 # Patching Use Cases
 
-Each section below is a recipe for a common patching goal. They build on the foundation from [Your First Patch](first-patch.md) and [How a Patch Works](kernablauf.md). Modules referenced are all from VCV Free or Befaco unless noted otherwise.
+Each section below is a recipe for a common patching goal. They build on the foundation from [Your First Patch](first-patch.md) and [How a Patch Works](how-a-patch-works.md). Modules referenced are all from VCV Free or Befaco unless noted otherwise.
 
 ---
 
@@ -71,7 +71,7 @@ For rhythmic variation, add a **Logic** module and combine two different clock d
 ## Where to go next
 
 - [FAQ](faq.md) — common problems with effects, sequencers, and clocking
-- [How a Patch Works](kernablauf.md) — signal chain fundamentals
+- [How a Patch Works](how-a-patch-works.md) — signal chain fundamentals
 - [Fundamental Modules](fundamental-modules.md) — full reference for all modules used here
 - [Befaco Modules](befaco-modules.md) — more complex sources and processors
 

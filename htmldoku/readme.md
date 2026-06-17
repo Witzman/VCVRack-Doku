@@ -9,7 +9,7 @@ Welcome. This handbook is your guide to building patches in VCV Rack. Whether yo
 | Page | What it answers |
 |------|----------------|
 | [Signal Flow & Concepts](mental-model.md) | How signals work in modular — voltage, CV, audio, gates, polyphony |
-| [How a Patch Works](kernablauf.md) | The path from oscillator to speaker, and why each stage matters |
+| [How a Patch Works](how-a-patch-works.md) | The path from oscillator to speaker, and why each stage matters |
 | [Glossary](glossary.md) | Definitions for every modular term used in this handbook |
 
 ---
@@ -20,7 +20,7 @@ Welcome. This handbook is your guide to building patches in VCV Rack. Whether yo
 |------|----------------|
 | [Using VCV Rack](userguide.md) | The interface — adding modules, drawing cables, saving patches, audio setup |
 | [Your First Patch](first-patch.md) | Step-by-step: build a working patch from scratch using only free modules |
-| [Patching Use Cases](anwendungsfaelle.md) | Recipes for common goals: bassline, percussion, effects send, generative patch |
+| [Patching Use Cases](patching-use-cases.md) | Recipes for common goals: bassline, percussion, effects send, generative patch |
 | [FAQ](faq.md) | Fixes for common problems — no sound, tuning issues, CPU spikes, MIDI |
 
 ---

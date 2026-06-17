@@ -5,6 +5,7 @@ Reference for all modules in the Befaco plugin. Befaco modules are hardware clon
 ---
 
 ## Even VCO
+![Even VCO panel](img/befaco/EvenVCO.svg)
 
 Analog-style VCO featuring an even-harmonic waveform output in addition to the standard set. Polyphonic.
 
@@ -33,6 +34,7 @@ Analog-style VCO featuring an even-harmonic waveform output in addition to the s
 ---
 
 ## Rampage
+![Rampage panel](img/befaco/Rampage.svg)
 
 Dual ramp generator — a versatile module that functions as a dual function generator, slew limiter, envelope generator, LFO, and more. Polyphonic.
 
@@ -93,6 +95,7 @@ Dual four-quadrant multiplier. Computes A×B+C for two channels. Useful as a rin
 ---
 
 ## Spring Reverb
+![Spring Reverb panel](img/befaco/SpringReverb.svg)
 
 Spring reverb tank driver — emulates the sound of a physical spring reverb tank.
 
@@ -138,6 +141,7 @@ Four-channel mixer for audio or CV with per-channel level controls.
 ---
 
 ## Slew Limiter
+![Slew Limiter panel](img/befaco/SlewLimiter.svg)
 
 Voltage-controlled slew limiter. Smooths abrupt voltage jumps. Useful as a portamento, glide processor, or low-pass CV filter. Polyphonic.
 
@@ -160,6 +164,7 @@ Voltage-controlled slew limiter. Smooths abrupt voltage jumps. Useful as a porta
 ---
 
 ## Dual Atenuverter
+![Dual Atenuverter panel](img/befaco/DualAtenuverter.svg)
 
 Two-channel attenuverter with offset. Each channel scales and offsets an input independently. Polyphonic.
 
@@ -179,6 +184,7 @@ Two-channel attenuverter with offset. Each channel scales and offsets an input i
 ---
 
 ## Percall
+![Percall panel](img/befaco/Percall.svg)
 
 Quad percussive envelope generator and mixer. Four independent channels, each with trigger, decay, and level. Polyphonic.
 
@@ -203,6 +209,7 @@ Quad percussive envelope generator and mixer. Four independent channels, each wi
 ---
 
 ## Hex Mix VCA
+![Hex Mix VCA panel](img/befaco/HexmixVCA.svg)
 
 Six-channel VCA with adjustable response curve per channel. Polyphonic.
 
@@ -223,6 +230,7 @@ Six-channel VCA with adjustable response curve per channel. Polyphonic.
 ---
 
 ## Chopping Kinky
+![Chopping Kinky panel](img/befaco/ChoppingKinky.svg)
 
 Dual wavefolder with voltage-controlled chop (hard gate between channels).
 
@@ -252,6 +260,7 @@ Dual wavefolder with voltage-controlled chop (hard gate between channels).
 ---
 
 ## Kickall
+![Kickall panel](img/befaco/Kickall.svg)
 
 Kick drum synthesizer with pitch and volume envelopes.
 
@@ -309,6 +318,7 @@ ADSR envelope generator with stage gate outputs, variable shape, and gate/trigge
 ---
 
 ## STMix
+![STMix panel](img/befaco/STMix.svg)
 
 Compact 4-channel stereo mixer with auxiliary input.
 
@@ -331,6 +341,7 @@ Compact 4-channel stereo mixer with auxiliary input.
 ---
 
 ## Muxlicer
+![Muxlicer panel](img/befaco/Muxlicer.svg)
 
 VC-addressable sequential switch and sequencer. Steps through 8 positions, with per-step gain and gate outputs. Polyphonic.
 
@@ -365,12 +376,14 @@ VC-addressable sequential switch and sequencer. Steps through 8 positions, with 
 ---
 
 ## Mex
+![Mex panel](img/befaco/Mex.svg)
 
 Gate expander for the Muxlicer. Attaches to the right side of Muxlicer to add additional gate outputs per step.
 
 ---
 
 ## Noise Plethora
+![Noise Plethora panel](img/befaco/NoisePlethora.svg)
 
 Dual noise engine with filterable outputs. Three independent programmable noise generators (A, B, C) with built-in filter per channel.
 
@@ -395,6 +408,7 @@ Dual noise engine with filterable outputs. Three independent programmable noise 
 ---
 
 ## Stereo Strip
+![Stereo Strip panel](img/befaco/StereoStrip.svg)
 
 Stereo channel strip with EQ, pan, VCA, and level control. Polyphonic.
 
@@ -425,6 +439,7 @@ Stereo channel strip with EQ, pan, VCA, and level control. Polyphonic.
 ---
 
 ## Pony VCO
+![Pony VCO panel](img/befaco/PonyVCO.svg)
 
 Compact through-zero FM oscillator with integrated wavefolder and VCA. Polyphonic.
 
@@ -451,6 +466,7 @@ Compact through-zero FM oscillator with integrated wavefolder and VCA. Polyphoni
 ---
 
 ## Motion MTR
+![Motion MTR panel](img/befaco/MotionMTR.svg)
 
 Three-channel CV/audio utility with per-channel mode switching and visualisation. Polyphonic.
 
@@ -471,6 +487,7 @@ Three-channel CV/audio utility with per-channel mode switching and visualisation
 ---
 
 ## Burst
+![Burst panel](img/befaco/Burst.svg)
 
 Trigger processor and generator. Takes one trigger and outputs a burst of triggers with configurable timing, quantity, and distribution. Useful for flams, rolls, and organic rhythmic variations.
 
@@ -501,6 +518,7 @@ Trigger processor and generator. Takes one trigger and outputs a burst of trigge
 ---
 
 ## Sampling Modulator
+![Sampling Modulator panel](img/befaco/SamplingModulator.svg)
 
 Multi-function module: oscillator, sample & hold, and 8-step trigger sequencer combined. Can self-clock or sync to an external clock.
 
@@ -527,6 +545,7 @@ Multi-function module: oscillator, sample & hold, and 8-step trigger sequencer c
 ---
 
 ## Morphader
+![Morphader panel](img/befaco/Morphader.svg)
 
 Four-channel CV/audio crossfader between two sets of signals. Polyphonic.
 
@@ -558,6 +577,7 @@ Bridge module for the Befaco MIDI Thing V2 hardware — a flexible MIDI-to-CV co
 ---
 
 ## Voltio
+![Voltio panel](img/befaco/Voltio.svg)
 
 Precision voltage source and precision adder. Sets an exact output voltage defined by octave and semitone values, with an optional summing input.
 
@@ -578,6 +598,7 @@ Precision voltage source and precision adder. Sets an exact output voltage defin
 ---
 
 ## Octaves
+![Octaves panel](img/befaco/Octaves.svg)
 
 Additive oscillator with individual gain controls for the fundamental and five harmonics. Polyphonic.
 
@@ -609,6 +630,7 @@ Additive oscillator with individual gain controls for the fundamental and five h
 ---
 
 ## Bypass
+![Bypass panel](img/befaco/Bypass.svg)
 
 Stereo bypass/switching module for routing signals to and from an external effect. Polyphonic.
 
@@ -633,6 +655,7 @@ Stereo bypass/switching module for routing signals to and from an external effec
 ---
 
 ## Bandit
+![Bandit panel](img/befaco/Bandit.svg)
 
 Spectral processing module — a four-band splitter that separates a signal into frequency bands, sends each band to an external effect, then recombines the returns.
 
@@ -675,6 +698,7 @@ Utilitarian four-channel audio and CV mixer with individual gain knobs.
 ---
 
 ## Atte
+![Atte panel](img/befaco/Atte.svg)
 
 Quad attenuator/inverter with individual mode switches. Can attenuate or invert each channel. Polyphonic.
 
@@ -694,6 +718,7 @@ Quad attenuator/inverter with individual mode switches. Can attenuate or invert 
 ---
 
 ## AxBC
+![AxBC panel](img/befaco/AxBC.svg)
 
 Two-channel voltage-controlled processor. Computes A×B+C with per-channel gain mode switches and a mix/multiply mode. Polyphonic.
 
@@ -712,6 +737,7 @@ Two-channel voltage-controlled processor. Computes A×B+C with per-channel gain 
 ---
 
 ## Slew
+![Slew panel](img/befaco/Slew.svg)
 
 Voltage-controlled lag processor with slope detection. Polyphonic.
 
@@ -737,6 +763,7 @@ Voltage-controlled lag processor with slope detection. Polyphonic.
 ---
 
 ## MuDi
+![MuDi panel](img/befaco/MuDi.svg)
 
 Clock multiplier, conditioner, and divider in 2HP.
 
@@ -756,6 +783,7 @@ Clock multiplier, conditioner, and divider in 2HP.
 ---
 
 ## Iroi
+![Iroi panel](img/befaco/Iroi.svg)
 
 Atmospheric processing module combining a resonator, echo, and ambience (reverb) section in one module.
 
@@ -780,6 +808,7 @@ Atmospheric processing module combining a resonator, echo, and ambience (reverb)
 ---
 
 ## Random8
+![Random8 panel](img/befaco/Random8.svg)
 
 Eight-channel random voltage generator with per-channel looping, probability, scale, and slide controls.
 
@@ -807,8 +836,8 @@ Eight-channel random voltage generator with per-channel looping, probability, sc
 ## Where to go next
 
 - [Fundamental Modules](fundamental-modules.md) — the modules included with VCV Rack Free
-- [How a Patch Works](kernablauf.md) — signal chain context
-- [Patching Use Cases](anwendungsfaelle.md) — recipes using Befaco modules
+- [How a Patch Works](how-a-patch-works.md) — signal chain context
+- [Patching Use Cases](patching-use-cases.md) — recipes using Befaco modules
 
 ---
 

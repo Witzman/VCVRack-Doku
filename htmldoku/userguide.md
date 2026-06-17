@@ -78,7 +78,7 @@ The toolbar at the top of the screen has controls for:
 ## Where to go next
 
 - [Your First Patch](first-patch.md) — put this into practice step by step
-- [How a Patch Works](kernablauf.md) — understand why each connection matters
+- [How a Patch Works](how-a-patch-works.md) — understand why each connection matters
 - [FAQ](faq.md) — solutions to common interface and audio problems
 
 ---

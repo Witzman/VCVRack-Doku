@@ -100,8 +100,8 @@ Restart VCV Rack. If the plugin installed correctly, it will appear in the brows
 ## Where to go next
 
 - [Using VCV Rack](userguide.md) — interface guide
-- [How a Patch Works](kernablauf.md) — signal chain fundamentals
-- [Patching Use Cases](anwendungsfaelle.md) — step-by-step patching recipes
+- [How a Patch Works](how-a-patch-works.md) — signal chain fundamentals
+- [Patching Use Cases](patching-use-cases.md) — step-by-step patching recipes
 
 ---
 

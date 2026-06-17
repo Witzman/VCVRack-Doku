@@ -14,10 +14,10 @@
 <div class="section-title">Common</div>
 <a href="readme.html">Overview</a>
 <a href="mental-model.html">Signal Flow & Concepts</a>
-<a href="kernablauf.html">How a Patch Works</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
 <a href="glossary.html">Glossary</a>
 <a href="userguide.html">Using VCV Rack</a>
-<a href="anwendungsfaelle.html">Patching Use Cases</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
 <a href="faq.html">FAQ</a>
 <a href="fundamental-modules.html" aria-current="page">Fundamental Modules</a>
 <a href="befaco-modules.html">Befaco Modules</a>
@@ -32,6 +32,7 @@
 <p>Reference for all modules included with VCV Rack Free (the VCV Fundamental plugin). For each module: what it does, its parameters, inputs, and outputs.</p>
 <hr>
 <h2>VCO — Voltage-Controlled Oscillator</h2>
+<p><img src="img/fundamental/VCO.svg" alt="VCO panel"></p>
 <p>Generates four simultaneous waveforms at audio rate. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -58,6 +59,7 @@
 </table>
 <hr>
 <h2>Wavetable VCO</h2>
+<p><img src="img/fundamental/WTVCO.svg" alt="Wavetable VCO panel"></p>
 <p>Wavetable oscillator that scans through a set of waveforms. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -81,6 +83,7 @@
 </table>
 <hr>
 <h2>VCF — Voltage-Controlled Filter</h2>
+<p><img src="img/fundamental/VCF.svg" alt="VCF panel"></p>
 <p>Ladder filter with lowpass and highpass outputs. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -105,6 +108,7 @@
 </table>
 <hr>
 <h2>VCA — Voltage-Controlled Amplifier</h2>
+<p><img src="img/fundamental/VCA.svg" alt="VCA panel"></p>
 <p>Single-channel VCA. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -152,6 +156,7 @@
 </table>
 <hr>
 <h2>LFO — Low-Frequency Oscillator</h2>
+<p><img src="img/fundamental/LFO.svg" alt="LFO panel"></p>
 <p>Generates four simultaneous low-frequency waveforms. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -178,6 +183,7 @@
 </table>
 <hr>
 <h2>Wavetable LFO</h2>
+<p><img src="img/fundamental/WTLFO.svg" alt="Wavetable LFO panel"></p>
 <p>Wavetable oscillator running at LFO rates. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -201,6 +207,7 @@
 </table>
 <hr>
 <h2>Delay</h2>
+<p><img src="img/fundamental/Delay.svg" alt="Delay panel"></p>
 <p>Stereo delay effect with tone control.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -263,6 +270,7 @@
 </table>
 <hr>
 <h2>8vert</h2>
+<p><img src="img/fundamental/8vert.svg" alt="8vert panel"></p>
 <p>8-channel attenuverter. Each row independently scales a signal from −1× to +1×. If no input is connected, outputs a constant voltage from −10 V to +10 V set by the knob. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -278,6 +286,7 @@
 </table>
 <hr>
 <h2>Mutes — 10-Channel Toggle Switch</h2>
+<p><img src="img/fundamental/Mutes.svg" alt="Mutes panel"></p>
 <p>Toggles up to 10 signals on or off with buttons. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -293,6 +302,7 @@
 </table>
 <hr>
 <h2>Pulses — 10-Channel Trigger/Gate Generator</h2>
+<p><img src="img/fundamental/Pulses.svg" alt="Pulses panel"></p>
 <p>Generates trigger and gate outputs for each of 10 buttons. No inputs required.</p>
 <table>
 <tr><th>Outputs</th><th></th></tr>
@@ -301,6 +311,7 @@
 </table>
 <hr>
 <h2>SEQ 3 — 3-Channel 8-Step Sequencer</h2>
+<p><img src="img/fundamental/SEQ3.svg" alt="SEQ 3 panel"></p>
 <p>Three rows of 8 programmable steps, with built-in clock and gate outputs.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -356,6 +367,7 @@
 </table>
 <hr>
 <h2>Octave</h2>
+<p><img src="img/fundamental/Octave.svg" alt="Octave panel"></p>
 <p>Shifts a 1V/oct pitch CV by whole octaves. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -372,6 +384,7 @@
 </table>
 <hr>
 <h2>Quantizer</h2>
+<p><img src="img/fundamental/Quantizer.svg" alt="Quantizer panel"></p>
 <p>Snaps incoming pitch CV to the nearest note in a chosen scale. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -388,6 +401,7 @@
 <p>Right-click to select the quantization scale.</p>
 <hr>
 <h2>Split</h2>
+<p><img src="img/fundamental/Split.svg" alt="Split panel"></p>
 <p>Splits one polyphonic cable into up to 16 monophonic outputs.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -399,6 +413,7 @@
 </table>
 <hr>
 <h2>Merge</h2>
+<p><img src="img/fundamental/Merge.svg" alt="Merge panel"></p>
 <p>Combines up to 16 monophonic cables into one polyphonic cable.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -410,6 +425,7 @@
 </table>
 <hr>
 <h2>Sum</h2>
+<p><img src="img/fundamental/Sum.svg" alt="Sum panel"></p>
 <p>Sums all channels of a polyphonic cable into a single monophonic output. Polyphonic input.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -425,6 +441,7 @@
 </table>
 <hr>
 <h2>Viz</h2>
+<p><img src="img/fundamental/Viz.svg" alt="Viz panel"></p>
 <p>Visualises all channels of a polyphonic cable as a bargraph. No audio output.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -432,6 +449,7 @@
 </table>
 <hr>
 <h2>Scope</h2>
+<p><img src="img/fundamental/Scope.svg" alt="Scope panel"></p>
 <p>Oscilloscope for inspecting waveforms. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -457,6 +475,7 @@
 </table>
 <hr>
 <h2>Noise</h2>
+<p><img src="img/fundamental/Noise.svg" alt="Noise panel"></p>
 <p>Multicolor noise generator. No inputs.</p>
 <table>
 <tr><th>Outputs</th><th></th></tr>
@@ -470,6 +489,7 @@
 </table>
 <hr>
 <h2>Random</h2>
+<p><img src="img/fundamental/Random.svg" alt="Random panel"></p>
 <p>Random CV generator with internal or external triggering. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -502,6 +522,7 @@
 </table>
 <hr>
 <h2>CV Mix</h2>
+<p><img src="img/fundamental/CVMix.svg" alt="CV Mix panel"></p>
 <p>Mixes 3 CV signals with attenuverters. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -517,6 +538,7 @@
 </table>
 <hr>
 <h2>Fade</h2>
+<p><img src="img/fundamental/Fade.svg" alt="Fade panel"></p>
 <p>Crossfader between two signals. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -536,6 +558,7 @@
 </table>
 <hr>
 <h2>Logic</h2>
+<p><img src="img/fundamental/Logic.svg" alt="Logic panel"></p>
 <p>Gate logic processor. Polyphonic.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -555,6 +578,7 @@
 </table>
 <hr>
 <h2>Compare</h2>
+<p><img src="img/fundamental/Compare.svg" alt="Compare panel"></p>
 <p>Compares two voltages. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -578,6 +602,7 @@
 </table>
 <hr>
 <h2>Gates — Gate Processor</h2>
+<p><img src="img/fundamental/Gates.svg" alt="Gates panel"></p>
 <p>Detects rising and falling edges, generates fixed-length gates, and includes a flip/flop. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -600,6 +625,7 @@
 </table>
 <hr>
 <h2>Process — CV Processor</h2>
+<p><img src="img/fundamental/Process.svg" alt="Process panel"></p>
 <p>Sample &amp; hold, track &amp; hold, and slew in one module. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -622,6 +648,7 @@
 </table>
 <hr>
 <h2>Mult — 1-to-8 Multiple</h2>
+<p><img src="img/fundamental/Mult.svg" alt="Mult panel"></p>
 <p>Copies one input signal to eight outputs unchanged. Polyphonic.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -633,6 +660,7 @@
 </table>
 <hr>
 <h2>Rescale</h2>
+<p><img src="img/fundamental/Rescale.svg" alt="Rescale panel"></p>
 <p>Scales and offsets a signal with range limiting. Polyphonic.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -675,6 +703,7 @@
 </table>
 <hr>
 <h2>Push — Button with Gate/Trigger</h2>
+<p><img src="img/fundamental/Push.svg" alt="Push panel"></p>
 <p>Manual button with gate and trigger outputs and a hold switch.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -688,6 +717,7 @@
 </table>
 <hr>
 <h2>Random Values</h2>
+<p><img src="img/fundamental/RandomValues.svg" alt="Random Values panel"></p>
 <p>Generates 7 fixed random voltages. On each trigger, all 7 voltages are re-randomized simultaneously. Polyphonic.</p>
 <table>
 <tr><th>Inputs</th><th></th></tr>
@@ -699,6 +729,7 @@
 </table>
 <hr>
 <h2>SHASR — Sample &amp; Hold Analog Shift Register</h2>
+<p><img src="img/fundamental/SHASR.svg" alt="SHASR panel"></p>
 <p>8-channel sample &amp; hold with a shift register mode. Each channel samples its input when triggered.</p>
 <table>
 <tr><th>Parameters</th><th></th></tr>
@@ -716,8 +747,8 @@
 <hr>
 <h2>Where to go next</h2>
 <ul><li><a href="befaco-modules.html">Befaco Modules</a> — additional modules with more complex features</li>
-<li><a href="kernablauf.html">How a Patch Works</a> — how these modules connect in a signal chain</li>
-<li><a href="anwendungsfaelle.html">Patching Use Cases</a> — recipes using these modules</li></ul>
+<li><a href="how-a-patch-works.html">How a Patch Works</a> — how these modules connect in a signal chain</li>
+<li><a href="patching-use-cases.html">Patching Use Cases</a> — recipes using these modules</li></ul>
 <hr>
 <p><em>Version: 2026-06-17.</em></p>
     </article>

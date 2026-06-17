@@ -18,10 +18,10 @@ SIDEBAR = [
     ("Common", [
         ("Overview", "readme"),
         ("Signal Flow & Concepts", "mental-model"),
-        ("How a Patch Works", "kernablauf"),
+        ("How a Patch Works", "how-a-patch-works"),
         ("Glossary", "glossary"),
         ("Using VCV Rack", "userguide"),
-        ("Patching Use Cases", "anwendungsfaelle"),
+        ("Patching Use Cases", "patching-use-cases"),
         ("FAQ", "faq"),
         ("Fundamental Modules", "fundamental-modules"),
         ("Befaco Modules", "befaco-modules"),
@@ -120,6 +120,7 @@ article li { margin: 0.3rem 0; }
 article hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
 article blockquote { border-left: 4px solid #cba6f7; margin: 1rem 0; padding: 0.5rem 1rem; background: #f3f4f6; color: #555; }
 .mermaid { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1rem; margin: 1rem 0; text-align: center; }
+article img { max-width: 120px; float: right; margin: 0 0 1rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 4px; background: #fff; padding: 4px; }
 footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; }
 @media (max-width: 900px) {
     #layout { flex-direction: column; }
@@ -165,6 +166,8 @@ def inline(text):
     text = re.sub(r'\*\*\*(.+?)\*\*\*', r'<strong><em>\1</em></strong>', text)
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
+    # Images (before links)
+    text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src="\2" alt="\1">', text)
     # Links
     text = re.sub(r'\[([^\]]+)\]\(([^)]+\.md)([^)]*)\)',
                   lambda m: f'<a href="{m.group(2)[:-3]}.html{m.group(3)}">{m.group(1)}</a>', text)
@@ -372,6 +375,14 @@ def main():
         os.path.join(OUT_DIR, "index.html")
     )
     print("  ✓ index.html (copy of readme.html)")
+
+    # Remove stale German-named HTML files if they exist
+    for stale in ["kernablauf.html", "anwendungsfaelle.html"]:
+        stale_path = os.path.join(OUT_DIR, stale)
+        if os.path.exists(stale_path):
+            os.remove(stale_path)
+            print(f"  ✗ removed stale {stale}")
+
     print(f"\nDone. Output: {OUT_DIR}")
 
 

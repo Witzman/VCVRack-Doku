@@ -86,6 +86,7 @@ article li { margin: 0.3rem 0; }
 article hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
 article blockquote { border-left: 4px solid #cba6f7; margin: 1rem 0; padding: 0.5rem 1rem; background: #f3f4f6; color: #555; }
 .mermaid { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1rem; margin: 1rem 0; text-align: center; }
+article img { max-width: 120px; float: right; margin: 0 0 1rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 4px; background: #fff; padding: 4px; }
 footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; }
 @media (max-width: 900px) {
     #layout { flex-direction: column; }

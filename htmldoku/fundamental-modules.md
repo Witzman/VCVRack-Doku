@@ -5,6 +5,7 @@ Reference for all modules included with VCV Rack Free (the VCV Fundamental plugi
 ---
 
 ## VCO — Voltage-Controlled Oscillator
+![VCO panel](img/fundamental/VCO.svg)
 
 Generates four simultaneous waveforms at audio rate. Polyphonic.
 
@@ -34,6 +35,7 @@ Generates four simultaneous waveforms at audio rate. Polyphonic.
 ---
 
 ## Wavetable VCO
+![Wavetable VCO panel](img/fundamental/WTVCO.svg)
 
 Wavetable oscillator that scans through a set of waveforms. Polyphonic.
 
@@ -60,6 +62,7 @@ Wavetable oscillator that scans through a set of waveforms. Polyphonic.
 ---
 
 ## VCF — Voltage-Controlled Filter
+![VCF panel](img/fundamental/VCF.svg)
 
 Ladder filter with lowpass and highpass outputs. Polyphonic.
 
@@ -87,6 +90,7 @@ Ladder filter with lowpass and highpass outputs. Polyphonic.
 ---
 
 ## VCA — Voltage-Controlled Amplifier
+![VCA panel](img/fundamental/VCA.svg)
 
 Single-channel VCA. Polyphonic.
 
@@ -143,6 +147,7 @@ Generates an ADSR envelope. Polyphonic.
 ---
 
 ## LFO — Low-Frequency Oscillator
+![LFO panel](img/fundamental/LFO.svg)
 
 Generates four simultaneous low-frequency waveforms. Polyphonic.
 
@@ -172,6 +177,7 @@ Generates four simultaneous low-frequency waveforms. Polyphonic.
 ---
 
 ## Wavetable LFO
+![Wavetable LFO panel](img/fundamental/WTLFO.svg)
 
 Wavetable oscillator running at LFO rates. Polyphonic.
 
@@ -198,6 +204,7 @@ Wavetable oscillator running at LFO rates. Polyphonic.
 ---
 
 ## Delay
+![Delay panel](img/fundamental/Delay.svg)
 
 Stereo delay effect with tone control.
 
@@ -269,6 +276,7 @@ Mixes up to 6 signals with individual level controls. Polyphonic.
 ---
 
 ## 8vert
+![8vert panel](img/fundamental/8vert.svg)
 
 8-channel attenuverter. Each row independently scales a signal from −1× to +1×. If no input is connected, outputs a constant voltage from −10 V to +10 V set by the knob. Polyphonic.
 
@@ -287,6 +295,7 @@ Mixes up to 6 signals with individual level controls. Polyphonic.
 ---
 
 ## Mutes — 10-Channel Toggle Switch
+![Mutes panel](img/fundamental/Mutes.svg)
 
 Toggles up to 10 signals on or off with buttons. Polyphonic.
 
@@ -305,6 +314,7 @@ Toggles up to 10 signals on or off with buttons. Polyphonic.
 ---
 
 ## Pulses — 10-Channel Trigger/Gate Generator
+![Pulses panel](img/fundamental/Pulses.svg)
 
 Generates trigger and gate outputs for each of 10 buttons. No inputs required.
 
@@ -316,6 +326,7 @@ Generates trigger and gate outputs for each of 10 buttons. No inputs required.
 ---
 
 ## SEQ 3 — 3-Channel 8-Step Sequencer
+![SEQ 3 panel](img/fundamental/SEQ3.svg)
 
 Three rows of 8 programmable steps, with built-in clock and gate outputs.
 
@@ -380,6 +391,7 @@ Routes one of four inputs to one output, advancing each clock step.
 ---
 
 ## Octave
+![Octave panel](img/fundamental/Octave.svg)
 
 Shifts a 1V/oct pitch CV by whole octaves. Polyphonic.
 
@@ -399,6 +411,7 @@ Shifts a 1V/oct pitch CV by whole octaves. Polyphonic.
 ---
 
 ## Quantizer
+![Quantizer panel](img/fundamental/Quantizer.svg)
 
 Snaps incoming pitch CV to the nearest note in a chosen scale. Polyphonic.
 
@@ -419,6 +432,7 @@ Right-click to select the quantization scale.
 ---
 
 ## Split
+![Split panel](img/fundamental/Split.svg)
 
 Splits one polyphonic cable into up to 16 monophonic outputs.
 
@@ -433,6 +447,7 @@ Splits one polyphonic cable into up to 16 monophonic outputs.
 ---
 
 ## Merge
+![Merge panel](img/fundamental/Merge.svg)
 
 Combines up to 16 monophonic cables into one polyphonic cable.
 
@@ -447,6 +462,7 @@ Combines up to 16 monophonic cables into one polyphonic cable.
 ---
 
 ## Sum
+![Sum panel](img/fundamental/Sum.svg)
 
 Sums all channels of a polyphonic cable into a single monophonic output. Polyphonic input.
 
@@ -465,6 +481,7 @@ Sums all channels of a polyphonic cable into a single monophonic output. Polypho
 ---
 
 ## Viz
+![Viz panel](img/fundamental/Viz.svg)
 
 Visualises all channels of a polyphonic cable as a bargraph. No audio output.
 
@@ -475,6 +492,7 @@ Visualises all channels of a polyphonic cable as a bargraph. No audio output.
 ---
 
 ## Scope
+![Scope panel](img/fundamental/Scope.svg)
 
 Oscilloscope for inspecting waveforms. Polyphonic.
 
@@ -503,6 +521,7 @@ Oscilloscope for inspecting waveforms. Polyphonic.
 ---
 
 ## Noise
+![Noise panel](img/fundamental/Noise.svg)
 
 Multicolor noise generator. No inputs.
 
@@ -519,6 +538,7 @@ Multicolor noise generator. No inputs.
 ---
 
 ## Random
+![Random panel](img/fundamental/Random.svg)
 
 Random CV generator with internal or external triggering. Polyphonic.
 
@@ -554,6 +574,7 @@ Random CV generator with internal or external triggering. Polyphonic.
 ---
 
 ## CV Mix
+![CV Mix panel](img/fundamental/CVMix.svg)
 
 Mixes 3 CV signals with attenuverters. Polyphonic.
 
@@ -572,6 +593,7 @@ Mixes 3 CV signals with attenuverters. Polyphonic.
 ---
 
 ## Fade
+![Fade panel](img/fundamental/Fade.svg)
 
 Crossfader between two signals. Polyphonic.
 
@@ -594,6 +616,7 @@ Crossfader between two signals. Polyphonic.
 ---
 
 ## Logic
+![Logic panel](img/fundamental/Logic.svg)
 
 Gate logic processor. Polyphonic.
 
@@ -616,6 +639,7 @@ Gate logic processor. Polyphonic.
 ---
 
 ## Compare
+![Compare panel](img/fundamental/Compare.svg)
 
 Compares two voltages. Polyphonic.
 
@@ -642,6 +666,7 @@ Compares two voltages. Polyphonic.
 ---
 
 ## Gates — Gate Processor
+![Gates panel](img/fundamental/Gates.svg)
 
 Detects rising and falling edges, generates fixed-length gates, and includes a flip/flop. Polyphonic.
 
@@ -667,6 +692,7 @@ Detects rising and falling edges, generates fixed-length gates, and includes a f
 ---
 
 ## Process — CV Processor
+![Process panel](img/fundamental/Process.svg)
 
 Sample & hold, track & hold, and slew in one module. Polyphonic.
 
@@ -692,6 +718,7 @@ Sample & hold, track & hold, and slew in one module. Polyphonic.
 ---
 
 ## Mult — 1-to-8 Multiple
+![Mult panel](img/fundamental/Mult.svg)
 
 Copies one input signal to eight outputs unchanged. Polyphonic.
 
@@ -706,6 +733,7 @@ Copies one input signal to eight outputs unchanged. Polyphonic.
 ---
 
 ## Rescale
+![Rescale panel](img/fundamental/Rescale.svg)
 
 Scales and offsets a signal with range limiting. Polyphonic.
 
@@ -754,6 +782,7 @@ Encodes stereo left/right to mid/side and decodes mid/side back to left/right. P
 ---
 
 ## Push — Button with Gate/Trigger
+![Push panel](img/fundamental/Push.svg)
 
 Manual button with gate and trigger outputs and a hold switch.
 
@@ -770,6 +799,7 @@ Manual button with gate and trigger outputs and a hold switch.
 ---
 
 ## Random Values
+![Random Values panel](img/fundamental/RandomValues.svg)
 
 Generates 7 fixed random voltages. On each trigger, all 7 voltages are re-randomized simultaneously. Polyphonic.
 
@@ -784,6 +814,7 @@ Generates 7 fixed random voltages. On each trigger, all 7 voltages are re-random
 ---
 
 ## SHASR — Sample & Hold Analog Shift Register
+![SHASR panel](img/fundamental/SHASR.svg)
 
 8-channel sample & hold with a shift register mode. Each channel samples its input when triggered.
 
@@ -805,8 +836,8 @@ Generates 7 fixed random voltages. On each trigger, all 7 voltages are re-random
 ## Where to go next
 
 - [Befaco Modules](befaco-modules.md) — additional modules with more complex features
-- [How a Patch Works](kernablauf.md) — how these modules connect in a signal chain
-- [Patching Use Cases](anwendungsfaelle.md) — recipes using these modules
+- [How a Patch Works](how-a-patch-works.md) — how these modules connect in a signal chain
+- [Patching Use Cases](patching-use-cases.md) — recipes using these modules
 
 ---
 

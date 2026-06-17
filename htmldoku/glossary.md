@@ -80,7 +80,7 @@ Definitions for terms used throughout this handbook, in alphabetical order.
 ## Where to go next
 
 - [Signal Flow & Concepts](mental-model.md) — these terms in context
-- [How a Patch Works](kernablauf.md) — see how these concepts connect
+- [How a Patch Works](how-a-patch-works.md) — see how these concepts connect
 - [Fundamental Modules](fundamental-modules.md) — modules that implement these functions
 
 ---

@@ -92,7 +92,7 @@ Adding a **Sequencer** to drive the pitch CV turns a single-note test into a mel
 ## Where to go next
 
 - [Your First Patch](first-patch.md) — build this signal chain step by step
-- [Patching Use Cases](anwendungsfaelle.md) — expand on this foundation
+- [Patching Use Cases](patching-use-cases.md) — expand on this foundation
 - [Signal Flow & Concepts](mental-model.md) — deeper background on voltages and module types
 - [Fundamental Modules](fundamental-modules.md) — reference for VCO, VCF, VCA, ADSR
 

@@ -80,8 +80,8 @@ Press **Ctrl+S** and save the patch somewhere you'll find it.
 
 ## Where to go next
 
-- [How a Patch Works](kernablauf.md) — understand what each connection is doing
-- [Patching Use Cases](anwendungsfaelle.md) — extend this patch into a bassline or add effects
+- [How a Patch Works](how-a-patch-works.md) — understand what each connection is doing
+- [Patching Use Cases](patching-use-cases.md) — extend this patch into a bassline or add effects
 - [Fundamental Modules](fundamental-modules.md) — full parameter reference for every module you used here
 
 ---

@@ -78,7 +78,7 @@ The Split module separates a polyphonic cable into individual monophonic cables.
 
 ## Where to go next
 
-- [How a Patch Works](kernablauf.md) — see signal flow in action from oscillator to output
+- [How a Patch Works](how-a-patch-works.md) — see signal flow in action from oscillator to output
 - [Your First Patch](first-patch.md) — build a working patch step by step
 - [Fundamental Modules](fundamental-modules.md) — reference for every module in this category
 - [Glossary](glossary.md) — definitions for every term on this page
