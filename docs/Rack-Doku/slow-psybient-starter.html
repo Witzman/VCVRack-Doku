@@ -80,7 +80,66 @@ function toggle(id){
   <main>
     <article>
 <h1>Slow Psybient — Starter Patch</h1>
-<p>This page walks you through the downloadable Fundamental-only starter patch, explains the signal flow, and shows how to extend it into the full psybient setup described in the <a href="slow-psybient.html">Slow Psybient</a> tutorial.</p>
+<p>This page walks you through building the patch manually from scratch, offers a downloadable .vcv file if you prefer to skip the build, explains the signal flow, and shows how to extend it into the full psybient setup described in the <a href="slow-psybient.html">Slow Psybient</a> tutorial.</p>
+<hr>
+<h2>Build it manually</h2>
+<p>All modules are from <strong>Fundamental</strong>, which ships with VCV Rack by default. No extra plugins needed.</p>
+<h3>Step 1 — Add modules</h3>
+<p>Open VCV Rack with a blank patch. Double-click an empty rack area to open the module browser. Add these modules in order from left to right — placing them left to right in two rows makes the cabling cleaner:</p>
+<p><strong>Top row</strong></p>
+<ol><li><strong>VCO</strong> — first drone oscillator</li>
+<li><strong>VCO</strong> — second drone oscillator (detuned)</li>
+<li><strong>Noise</strong> — texture layer</li>
+<li><strong>LFO</strong> — slow filter sweep</li></ol>
+<p><strong>Bottom row</strong></p>
+<ol><li><strong>VCMixer</strong> — blends the three sources</li>
+<li><strong>VCF</strong> — lowpass filter</li>
+<li><strong>VCA</strong> — amplitude, always open</li>
+<li><strong>Delay</strong> — dub echo</li>
+<li><strong>AudioInterface2</strong> (under Core) — stereo output to your soundcard</li></ol>
+<h3>Step 2 — Set the parameters</h3>
+<p><strong>VCO 1</strong> (drone root):</p>
+<ul><li><strong>FREQ</strong> knob: turn fully counterclockwise, then nudge up to about 7 o&#x27;clock. This puts it at G2 (roughly −17 semitones from the centre C4 default). The exact position is not critical — you can tune by ear.</li>
+<li>Leave all other knobs at centre.</li></ul>
+<p><strong>VCO 2</strong> (detuned voice):</p>
+<ul><li><strong>FREQ</strong> knob: same position as VCO 1, then turn it a tiny fraction higher — the goal is about 12 cents of detune, which is just a hair of movement. The beating between the two oscillators should pulse slowly (about once every 3–4 seconds at this detuning).</li></ul>
+<p><strong>Noise</strong>: no knobs to set.</p>
+<p><strong>LFO</strong>:</p>
+<ul><li><strong>FREQ</strong> knob: turn to roughly 8 o&#x27;clock (well left of centre). This gives an 8-second sweep period. If you move it further left, the sweep slows down; further right, it speeds up.</li></ul>
+<p><strong>VCMixer</strong>:</p>
+<ul><li>CH 1 and CH 2 level knobs: full up (5 o&#x27;clock).</li>
+<li>CH 3 level knob (Noise channel): turn down to about 7–8 o&#x27;clock — about 25 % level. The noise should be felt more than heard.</li>
+<li>MIX knob: full up.</li></ul>
+<p><strong>VCF</strong>:</p>
+<ul><li><strong>FREQ</strong> (cutoff) knob: just below centre — around 10 o&#x27;clock. This gives a warm, filtered tone.</li>
+<li><strong>RES</strong> knob: slightly past the minimum — about 8 o&#x27;clock. A touch of resonance adds character without getting sharp.</li>
+<li><strong>FREQ CV</strong> attenuverter (small knob near FREQ CV input): turn to about 9–10 o&#x27;clock — this controls how much the LFO moves the cutoff. Start conservative; you can increase it once the patch is running.</li></ul>
+<p><strong>VCA</strong>:</p>
+<ul><li><strong>LEVEL 1</strong> knob: full up. The drone sustains continuously with no envelope.</li></ul>
+<p><strong>Delay</strong>:</p>
+<ul><li><strong>TIME</strong> knob: just above centre — about 1 o&#x27;clock. At 89 BPM this lands near a dotted eighth note (≈ 506 ms).</li>
+<li><strong>FEEDBACK</strong> knob: just above centre — around 2 o&#x27;clock (55 %). Higher gives more repeats; lower is subtler.</li>
+<li><strong>TONE</strong> knob: slightly left of centre — about 11 o&#x27;clock. Darkens the delay repeats.</li>
+<li><strong>MIX</strong> knob: about 10 o&#x27;clock (35 % wet). The dry signal should dominate; the delay is a tail.</li></ul>
+<p><strong>AudioInterface2</strong>: no knobs to set here — just right-click it later to select your audio device.</p>
+<h3>Step 3 — Connect the cables</h3>
+<p>Drag from output port to input port. The outputs are on the right side of each module (or bottom), inputs on the left (or top).</p>
+<table>
+<tr><th>From module</th><th>Output port</th><th>To module</th><th>Input port</th></tr>
+<tr><td>VCO 1</td><td><strong>SAW</strong></td><td>VCMixer</td><td><strong>CH 1</strong></td></tr>
+<tr><td>VCO 2</td><td><strong>SAW</strong></td><td>VCMixer</td><td><strong>CH 2</strong></td></tr>
+<tr><td>Noise</td><td><strong>PINK</strong></td><td>VCMixer</td><td><strong>CH 3</strong></td></tr>
+<tr><td>LFO</td><td><strong>SIN</strong></td><td>VCF</td><td><strong>FREQ CV</strong></td></tr>
+<tr><td>VCMixer</td><td><strong>MIX</strong></td><td>VCF</td><td><strong>IN</strong></td></tr>
+<tr><td>VCF</td><td><strong>LPF</strong></td><td>VCA</td><td><strong>IN 1</strong></td></tr>
+<tr><td>VCA</td><td><strong>OUT 1</strong></td><td>Delay</td><td><strong>IN</strong></td></tr>
+<tr><td>Delay</td><td><strong>MIX</strong></td><td>AudioInterface2</td><td><strong>L</strong></td></tr>
+<tr><td>Delay</td><td><strong>MIX</strong></td><td>AudioInterface2</td><td><strong>R</strong></td></tr>
+</table>
+<p>For the last two cables: you can stack two cables on the same Delay MIX output by holding the existing cable&#x27;s output port and dragging a second cable from it, or by clicking the output and pulling again — VCV Rack allows multiple cables from one output.</p>
+<h3>Step 4 — Set your audio device</h3>
+<p>Right-click <strong>AudioInterface2</strong> and choose your output device from the list. You should now hear a low, slowly sweeping drone.</p>
+<hr>
 <h2>Download the patch</h2>
 <p><strong><a href="slow-psybient-starter.vcv">slow-psybient-starter.vcv</a></strong></p>
 <p>Save the file and open it in VCV Rack via <strong>File → Open</strong>. You need the Fundamental plugin installed — it ships with VCV Rack by default.</p>

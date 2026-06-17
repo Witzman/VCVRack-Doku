@@ -1,6 +1,90 @@
 # Slow Psybient — Starter Patch
 
-This page walks you through the downloadable Fundamental-only starter patch, explains the signal flow, and shows how to extend it into the full psybient setup described in the [Slow Psybient](slow-psybient.md) tutorial.
+This page walks you through building the patch manually from scratch, offers a downloadable .vcv file if you prefer to skip the build, explains the signal flow, and shows how to extend it into the full psybient setup described in the [Slow Psybient](slow-psybient.md) tutorial.
+
+---
+
+## Build it manually
+
+All modules are from **Fundamental**, which ships with VCV Rack by default. No extra plugins needed.
+
+### Step 1 — Add modules
+
+Open VCV Rack with a blank patch. Double-click an empty rack area to open the module browser. Add these modules in order from left to right — placing them left to right in two rows makes the cabling cleaner:
+
+**Top row**
+
+1. **VCO** — first drone oscillator
+2. **VCO** — second drone oscillator (detuned)
+3. **Noise** — texture layer
+4. **LFO** — slow filter sweep
+
+**Bottom row**
+
+5. **VCMixer** — blends the three sources
+6. **VCF** — lowpass filter
+7. **VCA** — amplitude, always open
+8. **Delay** — dub echo
+9. **AudioInterface2** (under Core) — stereo output to your soundcard
+
+### Step 2 — Set the parameters
+
+**VCO 1** (drone root):
+- **FREQ** knob: turn fully counterclockwise, then nudge up to about 7 o'clock. This puts it at G2 (roughly −17 semitones from the centre C4 default). The exact position is not critical — you can tune by ear.
+- Leave all other knobs at centre.
+
+**VCO 2** (detuned voice):
+- **FREQ** knob: same position as VCO 1, then turn it a tiny fraction higher — the goal is about 12 cents of detune, which is just a hair of movement. The beating between the two oscillators should pulse slowly (about once every 3–4 seconds at this detuning).
+
+**Noise**: no knobs to set.
+
+**LFO**:
+- **FREQ** knob: turn to roughly 8 o'clock (well left of centre). This gives an 8-second sweep period. If you move it further left, the sweep slows down; further right, it speeds up.
+
+**VCMixer**:
+- CH 1 and CH 2 level knobs: full up (5 o'clock).
+- CH 3 level knob (Noise channel): turn down to about 7–8 o'clock — about 25 % level. The noise should be felt more than heard.
+- MIX knob: full up.
+
+**VCF**:
+- **FREQ** (cutoff) knob: just below centre — around 10 o'clock. This gives a warm, filtered tone.
+- **RES** knob: slightly past the minimum — about 8 o'clock. A touch of resonance adds character without getting sharp.
+- **FREQ CV** attenuverter (small knob near FREQ CV input): turn to about 9–10 o'clock — this controls how much the LFO moves the cutoff. Start conservative; you can increase it once the patch is running.
+
+**VCA**:
+- **LEVEL 1** knob: full up. The drone sustains continuously with no envelope.
+
+**Delay**:
+- **TIME** knob: just above centre — about 1 o'clock. At 89 BPM this lands near a dotted eighth note (≈ 506 ms).
+- **FEEDBACK** knob: just above centre — around 2 o'clock (55 %). Higher gives more repeats; lower is subtler.
+- **TONE** knob: slightly left of centre — about 11 o'clock. Darkens the delay repeats.
+- **MIX** knob: about 10 o'clock (35 % wet). The dry signal should dominate; the delay is a tail.
+
+**AudioInterface2**: no knobs to set here — just right-click it later to select your audio device.
+
+### Step 3 — Connect the cables
+
+Drag from output port to input port. The outputs are on the right side of each module (or bottom), inputs on the left (or top).
+
+| From module | Output port | To module | Input port |
+|-------------|-------------|-----------|------------|
+| VCO 1 | **SAW** | VCMixer | **CH 1** |
+| VCO 2 | **SAW** | VCMixer | **CH 2** |
+| Noise | **PINK** | VCMixer | **CH 3** |
+| LFO | **SIN** | VCF | **FREQ CV** |
+| VCMixer | **MIX** | VCF | **IN** |
+| VCF | **LPF** | VCA | **IN 1** |
+| VCA | **OUT 1** | Delay | **IN** |
+| Delay | **MIX** | AudioInterface2 | **L** |
+| Delay | **MIX** | AudioInterface2 | **R** |
+
+For the last two cables: you can stack two cables on the same Delay MIX output by holding the existing cable's output port and dragging a second cable from it, or by clicking the output and pulling again — VCV Rack allows multiple cables from one output.
+
+### Step 4 — Set your audio device
+
+Right-click **AudioInterface2** and choose your output device from the list. You should now hear a low, slowly sweeping drone.
+
+---
 
 ## Download the patch
 
