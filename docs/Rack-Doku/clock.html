@@ -11,7 +11,8 @@
 <div id="layout">
 <nav id="sidebar">
 <h1>VCV Rack Handbook</h1>
-<div class="section-title">Common</div>
+<div class="section-title" onclick="toggle('sec-0')">Common<span class="arrow">›</span></div>
+<div class="section-content" id="sec-0">
 <a href="readme.html">Overview</a>
 <a href="mental-model.html">Signal Flow & Concepts</a>
 <a href="how-a-patch-works.html">How a Patch Works</a>
@@ -19,36 +20,59 @@
 <a href="userguide.html">Using VCV Rack</a>
 <a href="patching-use-cases.html">Patching Use Cases</a>
 <a href="faq.html">FAQ</a>
-<div class="section-title">Tutorials</div>
-<a href="first-patch.html">Your First Patch</a>
-<a href="intermediate-patch.html">Intermediate Patch</a>
-<a href="slow-psybient.html">Slow Psybient</a>
-<div class="section-title">Modules</div>
-<div class="sub-section-title">Sound Generation</div>
+</div>
+<div class="section-title open" onclick="toggle('sec-1')">Modules<span class="arrow">›</span></div>
+<div class="section-content open" id="sec-1">
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-0')">Sound Generation<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-0">
 <a href="vco.html" class="sub-link">VCO</a>
 <a href="noise.html" class="sub-link">Noise</a>
 <a href="wavetable.html" class="sub-link">Wavetable</a>
-<div class="sub-section-title">Sound Shaping</div>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-1')">Sound Shaping<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-1">
 <a href="vcf.html" class="sub-link">VCF</a>
 <a href="vca.html" class="sub-link">VCA</a>
 <a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
 <a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
-<div class="sub-section-title">Modulation / Control</div>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-2')">Modulation / Control<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-2">
 <a href="envelope.html" class="sub-link">Envelopes</a>
 <a href="lfo.html" class="sub-link">LFO</a>
 <a href="sequencer.html" class="sub-link">Sequencers</a>
 <a href="sample-hold.html" class="sub-link">Sample & Hold</a>
-<div class="sub-section-title">Utilities</div>
+</div>
+<div class="sub-section-title open" onclick="event.stopPropagation();toggle('sec-1-sub-3')">Utilities<span class="arrow">›</span></div>
+<div class="sub-content open" id="sec-1-sub-3">
 <a href="mixer.html" class="sub-link">Mixer</a>
 <a href="attenuverter.html" class="sub-link">Attenuverter</a>
 <a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
 <a href="quantizer.html" class="sub-link">Quantizer</a>
 <a href="clock.html" aria-current="page" class="sub-link">Clock</a>
 <a href="logic.html" class="sub-link">Logic</a>
-<div class="sub-section-title">MIDI / I/O</div>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-4')">MIDI / I/O<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-4">
 <a href="midi-cv.html" class="sub-link">MIDI to CV</a>
 <a href="audio-output.html" class="sub-link">Audio Output</a>
+</div>
+</div>
+<div class="section-title" onclick="toggle('sec-2')">Tutorials<span class="arrow">›</span></div>
+<div class="section-content" id="sec-2">
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+</div>
 </nav>
+<script>
+function toggle(id){
+  var c=document.getElementById(id);
+  var h=c.previousElementSibling;
+  c.classList.toggle("open");
+  h.classList.toggle("open");
+}
+</script>
 <div id="content">
   <header>VCV Rack Handbook — <strong>Clock</strong></header>
   <main>

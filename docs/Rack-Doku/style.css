@@ -35,7 +35,17 @@ body {
     letter-spacing: 0.1em;
     color: #6c7086;
     padding: 1rem 1.25rem 0.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
 }
+#sidebar .section-title:hover { color: #bac2de; }
+#sidebar .section-title .arrow { transition: transform 0.2s; }
+#sidebar .section-title.open .arrow { transform: rotate(90deg); }
+#sidebar .section-content { display: none; }
+#sidebar .section-content.open { display: block; }
 #sidebar a {
     display: block;
     padding: 0.35rem 1.25rem 0.35rem 1.6rem;
@@ -95,7 +105,17 @@ footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1p
     letter-spacing: 0.08em;
     color: #45475a;
     padding: 0.6rem 1.25rem 0.2rem 1.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
 }
+#sidebar .sub-section-title:hover { color: #bac2de; }
+#sidebar .sub-section-title .arrow { transition: transform 0.2s; }
+#sidebar .sub-section-title.open .arrow { transform: rotate(90deg); }
+#sidebar .sub-content { display: none; }
+#sidebar .sub-content.open { display: block; }
 #sidebar a.sub-link {
     padding-left: 2rem;
     font-size: 0.85rem;

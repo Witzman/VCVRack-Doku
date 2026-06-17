@@ -24,11 +24,6 @@ SIDEBAR = [
         ("Patching Use Cases", "patching-use-cases"),
         ("FAQ", "faq"),
     ]),
-    ("Tutorials", [
-        ("Your First Patch", "first-patch"),
-        ("Intermediate Patch", "intermediate-patch"),
-        ("Slow Psybient", "slow-psybient"),
-    ]),
     ("Modules", {
         "Sound Generation": [
             ("VCO", "vco"),
@@ -60,6 +55,11 @@ SIDEBAR = [
             ("Audio Output", "audio-output"),
         ],
     }),
+    ("Tutorials", [
+        ("Your First Patch", "first-patch"),
+        ("Intermediate Patch", "intermediate-patch"),
+        ("Slow Psybient", "slow-psybient"),
+    ]),
 ]
 
 CSS = """\
@@ -100,7 +100,17 @@ body {
     letter-spacing: 0.1em;
     color: #6c7086;
     padding: 1rem 1.25rem 0.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
 }
+#sidebar .section-title:hover { color: #bac2de; }
+#sidebar .section-title .arrow { transition: transform 0.2s; }
+#sidebar .section-title.open .arrow { transform: rotate(90deg); }
+#sidebar .section-content { display: none; }
+#sidebar .section-content.open { display: block; }
 #sidebar a {
     display: block;
     padding: 0.35rem 1.25rem 0.35rem 1.6rem;
@@ -160,7 +170,17 @@ footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1p
     letter-spacing: 0.08em;
     color: #45475a;
     padding: 0.6rem 1.25rem 0.2rem 1.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
 }
+#sidebar .sub-section-title:hover { color: #bac2de; }
+#sidebar .sub-section-title .arrow { transition: transform 0.2s; }
+#sidebar .sub-section-title.open .arrow { transform: rotate(90deg); }
+#sidebar .sub-content { display: none; }
+#sidebar .sub-content.open { display: block; }
 #sidebar a.sub-link {
     padding-left: 2rem;
     font-size: 0.85rem;
@@ -176,19 +196,42 @@ footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1p
 
 def build_sidebar(current_slug):
     parts = ['<nav id="sidebar">', '<h1>VCV Rack Handbook</h1>']
+    sec_id = 0
     for section_title, entries in SIDEBAR:
-        parts.append(f'<div class="section-title">{section_title}</div>')
+        sid = f"sec-{sec_id}"; sec_id += 1
         if isinstance(entries, dict):
+            active = any(slug == current_slug for subs in entries.values() for _, slug in subs)
+        else:
+            active = any(slug == current_slug for _, slug in entries)
+        open_cls = " open" if active else ""
+        parts.append(f'<div class="section-title{open_cls}" onclick="toggle(\'{sid}\')">{section_title}<span class="arrow">›</span></div>')
+        parts.append(f'<div class="section-content{open_cls}" id="{sid}">')
+        if isinstance(entries, dict):
+            sub_id = 0
             for sub_title, sub_entries in entries.items():
-                parts.append(f'<div class="sub-section-title">{sub_title}</div>')
+                ssid = f"{sid}-sub-{sub_id}"; sub_id += 1
+                sub_active = any(slug == current_slug for _, slug in sub_entries)
+                sopen = " open" if sub_active else ""
+                parts.append(f'<div class="sub-section-title{sopen}" onclick="event.stopPropagation();toggle(\'{ssid}\')">{sub_title}<span class="arrow">›</span></div>')
+                parts.append(f'<div class="sub-content{sopen}" id="{ssid}">')
                 for name, slug in sub_entries:
                     cur = ' aria-current="page"' if slug == current_slug else ""
                     parts.append(f'<a href="{slug}.html"{cur} class="sub-link">{name}</a>')
+                parts.append('</div>')
         else:
             for name, slug in entries:
                 cur = ' aria-current="page"' if slug == current_slug else ""
                 parts.append(f'<a href="{slug}.html"{cur}>{name}</a>')
+        parts.append('</div>')
     parts.append('</nav>')
+    parts.append('''<script>
+function toggle(id){
+  var c=document.getElementById(id);
+  var h=c.previousElementSibling;
+  c.classList.toggle("open");
+  h.classList.toggle("open");
+}
+</script>''')
     return "\n".join(parts)
 
 
