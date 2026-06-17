@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VCA — Voltage Controlled Amplifier — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" aria-current="page" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>VCA — Voltage Controlled Amplifier</strong></header>
+  <main>
+    <article>
+<h1>VCA — Voltage Controlled Amplifier</h1>
+<p>A VCA controls the volume of a signal using a CV input. Without a VCA, a sound plays continuously at full volume the moment you connect the oscillator to the output — there is no way to start or stop individual notes. By patching an envelope into the VCA&#x27;s CV input, you give each note a defined attack, sustain, and release. Every voice in a polyphonic patch needs at least one VCA; effects sends and mixer levels often use additional VCAs for dynamic control.</p>
+<h2>VCA (Fundamental)</h2>
+<p>The Fundamental VCA is a clean, straightforward amplifier. It has two inputs — linear and exponential response — and applies a CV-controlled gain. The exponential mode better matches how humans perceive loudness; the linear mode is useful for modulation routing where mathematical precision matters.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>LEVEL</td><td>0–2</td><td>Manual gain offset added to CV</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>IN</td><td>Input</td><td>Audio or CV signal to amplify</td></tr>
+<tr><td>CV</td><td>Input</td><td>Gain control voltage</td></tr>
+<tr><td>OUT</td><td>Output</td><td>Amplified signal</td></tr>
+</table>
+<p>There are two VCA channels on the module. The second channel follows the same pattern.</p>
+<p><strong>Patching tips:</strong> For a basic voice, connect your ADSR&#x27;s ENV output to the VCA&#x27;s CV input and your filtered oscillator to IN. The LEVEL knob acts as a manual volume offset — leave it at 0 if your envelope reaches full amplitude on its own. For a tremolo effect, replace the envelope with a slow LFO patched to CV. Use the linear input for modulation routing where you want predictable, proportional response.</p>
+<h2>VCA-1 (Fundamental)</h2>
+<p>A simpler single-channel VCA with only one input and exponential response. Use this when you just need a basic gated amplifier and don&#x27;t need the two-channel or linear mode features of the main VCA.</p>
+<h2>Bogaudio VCA (Bogaudio)</h2>
+<p>Bogaudio&#x27;s VCA offers linear and exponential modes with a dedicated level knob that sets the maximum gain independently of the CV. This makes it easy to set a ceiling on how loud the sound gets regardless of the incoming CV level — useful when controlling volume from an LFO or other non-standard modulator.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>LEVEL</td><td>Maximum gain (scaled by CV)</td></tr>
+<tr><td>LIN/EXP</td><td>Response mode switch</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Set LEVEL to a comfortable maximum and let CV control the dynamics within that range. Patch a random S&amp;H into CV for stochastic volume variation.</p>
+<h3>8vert (Fundamental)</h3>
+<p>Eight attenuverters — modules that scale and optionally invert a signal. When a VCA input is already at a fixed level, 8vert lets you scale the modulator before it reaches the VCA rather than turning down the VCA&#x27;s CV input. See <a href="attenuverter.html">Attenuverter</a> for full details.</p>
+<h3>Befaco HexmixVCA (Befaco)</h3>
+<p>Six VCAs in a single module, each with independent level CV. Designed for mixing multiple voices with individual dynamic control — useful for complex patches where a standard mixer without CV control isn&#x27;t enough.</p>
+<h3>Count Modula VCA (Count Modula)</h3>
+<p>Count Modula provides VCA modules with both linear and exponential response. Their modules are well-suited for integration with Count Modula sequencers and utility modules.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="envelope.html">Envelopes</a> — the CV source that drives VCA dynamics</li>
+<li><a href="vcf.html">VCF</a> — filtering before the VCA</li>
+<li><a href="mixer.html">Mixer</a> — combining multiple VCA outputs</li>
+<li><a href="lfo.html">LFO</a> — use an LFO as a tremolo VCA modulator</li>
+<li><a href="how-a-patch-works.html">How a Patch Works</a> — VCA&#x27;s role in the signal chain</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

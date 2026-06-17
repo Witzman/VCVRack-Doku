@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delay, Reverb &amp; Chorus — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" aria-current="page" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Delay, Reverb &amp; Chorus</strong></header>
+  <main>
+    <article>
+<h1>Delay, Reverb &amp; Chorus</h1>
+<p>Effects modules add space, depth, and movement to sounds. They are almost always used as send effects: the dry signal passes through your main voice chain, and a copy is sent to the effect module, with the wet output mixed back in at a lower level. This lets you adjust the dry/wet balance freely and apply the same effect to multiple voices through a shared send bus.</p>
+<h2>Valley Plateau (Valley)</h2>
+<p>Plateau is one of the most highly regarded free reverb modules available for VCV Rack. It is based on the Dattorro plate reverb algorithm, which produces lush, diffuse reverberation similar to studio hardware units. Plateau is the first choice for ambient, cinematic, and psychedelic patches.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>SIZE</td><td>0–1</td><td>Reverb room size / decay length</td></tr>
+<tr><td>DIFF</td><td>0–1</td><td>Diffusion — how quickly echoes blur into wash</td></tr>
+<tr><td>DECAY</td><td>0–1</td><td>Tail length — higher = longer reverb</td></tr>
+<tr><td>DAMP</td><td>0–1</td><td>High-frequency damping — simulates air absorption</td></tr>
+<tr><td>MOD SPEED</td><td>0–1</td><td>Speed of internal pitch modulation</td></tr>
+<tr><td>MOD DEPTH</td><td>0–1</td><td>Amount of internal pitch modulation (shimmer/chorus)</td></tr>
+<tr><td>PRE-DELAY</td><td>0–1</td><td>Time before reverb starts</td></tr>
+<tr><td>DRY/WET</td><td>0–1</td><td>Mix of dry and wet signal</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>IN L/R</td><td>Input</td><td>Stereo audio input</td></tr>
+<tr><td>OUT L/R</td><td>Output</td><td>Stereo reverb output</td></tr>
+<tr><td>CV inputs</td><td>Input</td><td>CV control over most parameters</td></tr>
+</table>
+<p><strong>Patching tips:</strong> For an ambient pad, set SIZE and DECAY near maximum, DAMP around 0.4, and keep PRE-DELAY at 20–50ms for definition. Modulate MOD SPEED and MOD DEPTH slightly for a shimmer effect. Use as a send: mix your dry signal with the Plateau output using a <a href="mixer.html">Mixer</a>. For psybient or ambient patches, reverb tails of 8–14 seconds are realistic — a DECAY near 0.95 and SIZE at max will approach this.</p>
+<h2>Chronoblob2 (Alright Devices)</h2>
+<p>Chronoblob2 is a high-quality stereo delay module. It features tempo-syncable delay time, adjustable feedback, a tone filter on the feedback path, and a stereo spread control. The delay is clean and musical rather than lo-fi.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>TIME</td><td>Delay time (or tempo division when synced)</td></tr>
+<tr><td>FEEDBACK</td><td>How much of the output feeds back into input</td></tr>
+<tr><td>TONE</td><td>High-frequency cut on feedback path</td></tr>
+<tr><td>SPREAD</td><td>Stereo width of delay taps</td></tr>
+<tr><td>MIX</td><td>Dry/wet blend</td></tr>
+</table>
+<p><strong>Patching tips:</strong> For dub-style delay, set TIME to dotted 1/8 at 89 BPM (roughly 420ms), FEEDBACK 40–65%, and TONE around 0.4 to roll off harsh highs on repeats. Patch a random S&amp;H into FEEDBACK CV for unpredictable, organic delay behavior. Send a sparse chord hit or melodic fragment through this for a classic dub echo effect.</p>
+<h2>Delay (Fundamental)</h2>
+<p>The built-in Fundamental Delay is a straightforward stereo delay. TIME, FEEDBACK, and MIX controls with CV inputs. Not as feature-rich as Chronoblob2 but requires no extra plugin installation. Suitable for basic echo effects when starting out.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>TIME</td><td>Delay time in seconds</td></tr>
+<tr><td>FEEDBACK</td><td>Feedback level</td></tr>
+<tr><td>MIX</td><td>Wet/dry blend</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Keep FEEDBACK below 0.8 unless you want runaway feedback. Use MIX at 0.2–0.4 for subtle echoes that don&#x27;t overwhelm the dry signal.</p>
+<h3>Befaco Spring Reverb (Befaco)</h3>
+<p>A physical model of a spring reverb tank — the type found in vintage guitar amplifiers. Spring reverb has a distinctly metallic, boingy character quite different from plate or hall reverb. The Befaco version accurately models this character including the bouncy transient splash.</p>
+<p><strong>Patching tips:</strong> Apply to drums or a sharp plucked sound for a surf-rock or dub-techno character. The spring splash on transients is the defining feature — let it breathe rather than damping it with a gate.</p>
+<h3>Vult Tangents (Vult — free tier)</h3>
+<p>A phaser effect from Vult&#x27;s free tier. Phasers apply multiple notch filters with a sweeping cutoff to create comb-filtering effects. The result sounds like a moving, swirling filter sweep. More subtle than chorus, more rhythmic than reverb.</p>
+<h3>AS Delay (AS)</h3>
+<p>A basic delay module from AS. Simple TIME/FEEDBACK/MIX interface. Good fallback when you need a delay but haven&#x27;t installed dedicated delay plugins.</p>
+<h3>Count Modula Chorus (Count Modula)</h3>
+<p>A stereo chorus module that thickens sounds by mixing slightly delayed, pitch-modulated copies of the signal. Adds width and movement without the obvious echo of a delay or the diffusion of a reverb.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="mixer.html">Mixer</a> — set up a send/return for effects</li>
+<li><a href="vcf.html">VCF</a> — filter the reverb return for darker tails</li>
+<li><a href="lfo.html">LFO</a> — modulate delay time for chorus/vibrato effects</li>
+<li><a href="slow-psybient.html">Slow Psybient</a> — tutorial built around Plateau + Chronoblob2</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

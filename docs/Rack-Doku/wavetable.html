@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wavetable Oscillators — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" aria-current="page" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Wavetable Oscillators</strong></header>
+  <main>
+    <article>
+<h1>Wavetable Oscillators</h1>
+<p>A wavetable oscillator reads through a stored table of waveform shapes rather than calculating a waveform mathematically. The key advantage is the ability to sweep through many different timbres using a single CV — position modulation moves the playback point through the table, morphing from one waveform to the next. This produces animated, evolving tones that a standard VCO cannot replicate.</p>
+<h2>WTVCO (Fundamental)</h2>
+<p>The WTVCO is VCV Rack&#x27;s built-in wavetable oscillator. It comes with a bank of wavetables covering analog, digital, vocal, and spectral shapes. A POS knob and CV input control which wavetable position is being read.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>FREQ</td><td>wide</td><td>Coarse pitch</td></tr>
+<tr><td>FINE</td><td>±1 semitone</td><td>Fine-tune</td></tr>
+<tr><td>POS</td><td>0–1</td><td>Wavetable position (timbre)</td></tr>
+<tr><td>BANK</td><td>selector</td><td>Chooses which wavetable bank to use</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>V/OCT</td><td>Input</td><td>Pitch CV</td></tr>
+<tr><td>POS</td><td>Input</td><td>CV morphs through wavetable positions</td></tr>
+<tr><td>OUT</td><td>Output</td><td>Audio output</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. The BANK selector changes the entire character of the oscillator — try all banks before committing.</p>
+<h2>Surge XT Wavetable VCO (Surge XT)</h2>
+<p>Surge XT includes a high-quality wavetable engine with hundreds of factory wavetables plus the ability to load custom wavetable files. It offers multiple playback modes (forward, backward, ping-pong), morph smoothing, and spectral processing options. For complex sound design, this is one of the best free wavetable sources available in VCV Rack.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>Position</td><td>Wavetable morph position</td></tr>
+<tr><td>Skew</td><td>Asymmetry in wavetable scanning</td></tr>
+<tr><td>Formant</td><td>Formant shift independent of pitch</td></tr>
+<tr><td>Morph</td><td>Crossfade between adjacent tables</td></tr>
+</table>
+<p>The Formant parameter separates timbral character from pitch — raising formant produces vowel-like tones while keeping the note the same. Very useful for vocal pad textures.</p>
+<p><strong>Patching tips:</strong> Load a vocal or harmonics wavetable and modulate Position with a very slow envelope (8–16 second attack) for evolving pad textures. Pair with Plateau reverb and a long VCA release for cinematic soundscapes.</p>
+<h3>WTLFO (Fundamental)</h3>
+<p>Technically an LFO, but uses the same wavetable engine as WTVCO at sub-audio rates. Useful for producing unusual modulation shapes rather than standard sine/triangle/square LFO waveforms. See <a href="lfo.html">LFO</a> for context on using it as a modulator.</p>
+<h3>Valley Dexter (Valley)</h3>
+<p>Dexter is a four-operator FM/wavetable hybrid oscillator. Each operator can use a wavetable or a standard waveform, and operators modulate each other in FM configurations. This places it somewhere between a wavetable oscillator and an FM synthesizer. Free from the Valley plugin.</p>
+<h3>Count Modula Wavetable VCO (Count Modula)</h3>
+<p>Count Modula includes a wavetable oscillator with a set of built-in tables and CV-controllable position. Straightforward to patch and consistent with the rest of the Count Modula interface style.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="vco.html">VCO</a> — standard oscillators for comparison</li>
+<li><a href="vcf.html">VCF</a> — filtering wavetable output shapes the character further</li>
+<li><a href="lfo.html">LFO</a> — use an LFO to modulate wavetable position</li>
+<li><a href="slow-psybient.html">Slow Psybient</a> — tutorial using wavetable textures for pad sounds</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

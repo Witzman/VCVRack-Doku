@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Envelopes — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" aria-current="page" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Envelopes</strong></header>
+  <main>
+    <article>
+<h1>Envelopes</h1>
+<p>An envelope generates a shaped CV signal in response to a gate or trigger. When a note starts (gate goes high), the envelope rises and falls through a predefined contour; when the note ends (gate goes low), it releases. Envelopes are used primarily to control VCA volume and VCF cutoff, but they can modulate anything that accepts a CV input. The most common shape is ADSR: Attack, Decay, Sustain, Release.</p>
+<h2>ADSR (Fundamental)</h2>
+<p>The Fundamental ADSR is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs both a positive (ENV) and inverted (INV) version.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>ATTACK</td><td>1ms – 10s</td><td>Time to rise from 0 to peak when gate opens</td></tr>
+<tr><td>DECAY</td><td>1ms – 10s</td><td>Time to fall from peak to sustain level</td></tr>
+<tr><td>SUSTAIN</td><td>0–1</td><td>Level held while gate remains open</td></tr>
+<tr><td>RELEASE</td><td>1ms – 10s</td><td>Time to fall from sustain to 0 after gate closes</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>GATE</td><td>Input</td><td>Gate signal — high = note on, low = note off</td></tr>
+<tr><td>TRIG</td><td>Input</td><td>Retrigger envelope without retriggering gate</td></tr>
+<tr><td>ENV</td><td>Output</td><td>Envelope CV (0–10V)</td></tr>
+<tr><td>INV</td><td>Output</td><td>Inverted envelope (10V – ENV)</td></tr>
+</table>
+<p><strong>Patching tips:</strong> For a plucky sound: fast ATTACK (near minimum), medium DECAY (100–300ms), SUSTAIN at zero, and short RELEASE. For a pad: slow ATTACK (1–3s), no DECAY, full SUSTAIN, slow RELEASE (2–5s). Use the INV output to close a filter as the amplitude opens — this creates a tone that gets darker as it gets louder, useful for plucked string simulations. Patch the ENV output to both VCA and VCF for coordinated amplitude and tonal shaping.</p>
+<h2>Befaco Rampage (Befaco)</h2>
+<p>Rampage is a dual function generator — each channel can act as an envelope, LFO, slew limiter, or oscillator depending on how it is patched. As an envelope, it produces a customizable rise/fall contour with adjustable response curves (log, linear, exponential). Unlike ADSR, Rampage does not have a sustain stage: it rises when triggered and falls when the trigger ends or after a set time.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>RISE</td><td>Attack time</td></tr>
+<tr><td>FALL</td><td>Release time</td></tr>
+<tr><td>SHAPE</td><td>Curve shape (log → linear → exp)</td></tr>
+<tr><td>CYCLE</td><td>When active, loops the envelope as an LFO</td></tr>
+</table>
+<p><strong>Patching tips:</strong> The SHAPE knob&#x27;s ability to change curve type is its key advantage over ADSR — exponential curves feel more natural for amplitude; logarithmic curves feel faster. Use CYCLE to turn Rampage into an LFO without patching a separate module. The two channels have a logical comparator output useful for rhythmic triggering — see the <a href="logic.html">Logic</a> page.</p>
+<h2>Bogaudio ADSR (Bogaudio)</h2>
+<p>Bogaudio&#x27;s ADSR adds a linear/exponential mode switch and separate CV inputs for all four parameters. This allows all stages to be modulated in real time — you can sweep attack time with an LFO or modulate sustain level from a sequencer.</p>
+<table>
+<tr><th>Input</th><th>Description</th></tr>
+<tr><td>GATE</td><td>Gate signal</td></tr>
+<tr><td>A, D, S, R CV</td><td>Per-parameter modulation inputs</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Patch a slow random S&amp;H signal to the ATTACK CV input to give each note a slightly different attack time — the variation adds organic feel to repeated notes.</p>
+<h3>Count Modula ADSR (Count Modula)</h3>
+<p>Count Modula&#x27;s envelope includes all standard ADSR controls with a retrigger mode and optional looping. Consistent with their other sequencer modules — useful in Count Modula-heavy patches.</p>
+<h3>ML Modules ADSR (ML Modules)</h3>
+<p>A clean, minimal ADSR with standard parameters. Good starting point for simple patches where no per-parameter CV modulation is needed.</p>
+<h3>Befaco ADSR (Befaco)</h3>
+<p>A compact ADSR from Befaco, smaller than Fundamental&#x27;s. Behaves similarly to Fundamental ADSR with the addition of a VEL input for velocity-sensitive amplitude scaling.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="vca.html">VCA</a> — the most common envelope destination</li>
+<li><a href="vcf.html">VCF</a> — envelope-driven filter sweeps</li>
+<li><a href="lfo.html">LFO</a> — continuous modulation vs. triggered envelopes</li>
+<li><a href="how-a-patch-works.html">How a Patch Works</a> — envelope&#x27;s role in a complete voice</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" aria-current="page" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Clock</strong></header>
+  <main>
+    <article>
+<h1>Clock</h1>
+<p>A clock generates regular trigger or gate pulses at a defined tempo, measured in BPM. Everything rhythmic in a patch — sequencers, envelopes, LFOs synced to tempo, sample-and-hold rates — derives its timing from a clock signal. Without a master clock, all rhythmic elements run independently at their own rates and drift apart over time.</p>
+<h2>Clocked (Impromptu)</h2>
+<p>Clocked is one of the most capable free clock modules for VCV Rack. It provides a master BPM control plus four output channels, each of which can output a different clock division or multiplication of the master tempo. This makes it possible to run a kick drum on the beat, a snare on half-time, hats on 1/8th notes, and a sequencer on dotted 1/4 notes all from a single module.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>BPM</td><td>Master tempo in beats per minute</td></tr>
+<tr><td>RATIO (×4)</td><td>Per-output clock division or multiplication</td></tr>
+<tr><td>SWING</td><td>Per-output swing amount</td></tr>
+<tr><td>PW</td><td>Pulse width of gate output</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>RUN</td><td>Input</td><td>Start/stop the clock</td></tr>
+<tr><td>RESET</td><td>Input</td><td>Reset all outputs to beat 1</td></tr>
+<tr><td>CLK 1–4</td><td>Output</td><td>Four independently ratioed clock outputs</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Set CLK1 to ×1 (master beat), CLK2 to /2 (half notes), CLK3 to ×2 (eighth notes), CLK4 to dotted 1/8. Route CLK1 to a kick sequencer, CLK2 to snare, CLK3 to hi-hats, CLK4 to a delay module&#x27;s time CV for tempo-synced echoes. The SWING parameter on each output allows independent groove feel per rhythmic layer — slightly swing the hi-hats while keeping the kick straight.</p>
+<h2>Bogaudio CLKD (Bogaudio)</h2>
+<p>A straightforward master clock with four outputs, each with a fixed division ratio. Simpler than Clocked — no swing or per-output ratio control, but very clean and easy to set up quickly.</p>
+<table>
+<tr><th>Output</th><th>Fixed division</th></tr>
+<tr><td>/1</td><td>Master beat</td></tr>
+<tr><td>/2</td><td>Half time</td></tr>
+<tr><td>/4</td><td>Quarter time</td></tr>
+<tr><td>/8</td><td>Eighth time</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Use CLKD for fast patch setup when you just need standard clock divisions and don&#x27;t need swing or unusual ratios.</p>
+<h3>Count Modula Clock Divider (Count Modula)</h3>
+<p>Takes a master clock input and outputs multiple divided rates. Useful as an extension when your master clock module doesn&#x27;t have enough outputs — chain it after Clocked to get additional divisions.</p>
+<h3>Fundamental Clock (if available)</h3>
+<p>VCV Rack Free&#x27;s core modules don&#x27;t include a dedicated clock generator. Clocked (Impromptu) or CLKD (Bogaudio) are the recommended free options.</p>
+<h3>Befaco Burst (Befaco)</h3>
+<p>Not a standard clock, but a burst generator — outputs a defined number of rapid trigger pulses when triggered. Useful for generating drum rolls, ratcheting sequencer steps, or creating polymetric bursts of activity from a single trigger.</p>
+<h3>Using an LFO as a clock</h3>
+<p>A square-wave LFO can serve as a simple clock. Set the rate to match your desired BPM (at 120 BPM, the clock fires twice per second — set the LFO rate to 2 Hz). This approach lacks precision and BPM readout but works for slow, tempo-free patches where exact BPM doesn&#x27;t matter.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="sequencer.html">Sequencers</a> — the primary clock consumer</li>
+<li><a href="envelope.html">Envelopes</a> — trigger gates from clock for rhythmic envelopes</li>
+<li><a href="sample-hold.html">Sample &amp; Hold</a> — clock the S&amp;H for synchronized random CV</li>
+<li><a href="lfo.html">LFO</a> — sync LFOs to clock for locked modulation</li>
+<li><a href="patching-use-cases.html">Patching Use Cases</a> — drum pattern recipes</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

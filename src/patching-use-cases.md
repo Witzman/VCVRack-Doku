@@ -68,12 +68,62 @@ For rhythmic variation, add a **Logic** module and combine two different clock d
 
 ---
 
+---
+
+## Recipe 6 — Generative Melody with Bogaudio S&H and Quantizer
+
+**Goal:** A self-generating melodic line that stays in key and never exactly repeats.
+
+Install **Bogaudio** if not already installed. Add **Bogaudio S&H**, **Fundamental Noise**, **Fundamental Quantizer**, **Impromptu Clocked**, and a basic VCO-VCF-VCA voice.
+
+Set Clocked to 120 BPM. Connect CLK2 (eighth notes) to Bogaudio S&H's TRIG input. Connect Fundamental Noise's White output to S&H IN. Connect S&H OUT to Quantizer IN. In the Quantizer, select a pentatonic scale: activate C, D, E, G, A only. Connect Quantizer OUT to VCO V/OCT.
+
+The patch now generates a new random note in the pentatonic scale on every eighth note. Pentatonic works especially well here because it has no dissonant intervals — every random note combination sounds musical.
+
+**Tweak:** Slow the clock division to CLK3 (quarter notes) for a sparser, more deliberate melodic feel. Add a Bogaudio ADSR with short attack and medium decay for plucky note shapes. Layer a second quantized S&H at a different clock division for a second melodic voice.
+
+---
+
+## Recipe 7 — Textural Pad with Surge XT Wavetable and Plateau
+
+**Goal:** A slowly evolving atmospheric pad using a wavetable oscillator and large reverb.
+
+Install **Surge XT** and **Valley**. Add **Surge XT Wavetable VCO**, **Fundamental VCF**, **Fundamental VCA**, **Bogaudio ADSR**, **Bogaudio LFO**, **Valley Plateau**.
+
+Tune the Surge XT VCO to a fixed pitch (no sequencer — this is a drone). Select a vocal or harmonics wavetable from the bank. Set a slow ADSR: 3 second attack, full sustain, 6 second release. Manually trigger the ADSR to start the pad.
+
+Add Bogaudio LFO at 0.02 Hz (very slow). Route the SIN output through 8vert at 0.4 to the Surge XT VCO's Position CV input. The wavetable position morphs continuously through different timbres over a 50-second cycle.
+
+Add Valley Plateau: SIZE 0.95, DECAY 0.93, DAMP 0.4. Route the VCA output to Plateau and mix the reverb return generously (0.5–0.7 wet level).
+
+**Tweak:** Add a second LFO at a different rate (0.05 Hz) to the VCF cutoff for independent timbral and spatial evolution. This creates a pad that changes character in two independent dimensions simultaneously.
+
+---
+
+## Recipe 8 — Euclidean Rhythms with Count Modula
+
+**Goal:** Interlocking polyrhythmic percussion patterns with a mathematical, hypnotic character.
+
+Install **Count Modula**. Add **Count Modula Euclidean Rhythm Generator** (search "Euclidean" in the browser), **Impromptu Clocked**, and three noise-based drum voices (see [Slow Psybient](slow-psybient.md) for drum voice construction).
+
+Set Clocked to 120 BPM. Connect the master clock to the Euclidean Rhythm Generator clock input. Configure three channels:
+- Channel 1: 3 hits in 8 steps (kick pattern)
+- Channel 2: 5 hits in 8 steps (hi-hat pattern)
+- Channel 3: 2 hits in 7 steps (snare — intentionally odd to create polyrhythm)
+
+Route each channel's gate output to a corresponding drum voice envelope.
+
+**Tweak:** Rotate individual channel patterns (shift the starting point) while the patch runs to change which beats line up. Changing the step count from 8 to 16 creates the same density but at double the resolution — tighter, faster patterns. The channel with 7 steps will drift in and out of phase with the others every 7 beats — this is the core of polyrhythmic music.
+
+---
+
 ## Where to go next
 
 - [FAQ](faq.md) — common problems with effects, sequencers, and clocking
 - [How a Patch Works](how-a-patch-works.md) — signal chain fundamentals
-- [Fundamental Modules](fundamental-modules.md) — full reference for all modules used here
-- [Befaco Modules](befaco-modules.md) — more complex sources and processors
+- [Sequencers](sequencer.md) — deeper sequencer techniques
+- [Sample & Hold](sample-hold.md) — the S&H techniques used in Recipe 6
+- [Slow Psybient](slow-psybient.md) — full tutorial combining many of these recipes
 
 ---
 

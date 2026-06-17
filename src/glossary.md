@@ -77,11 +77,40 @@ Definitions for terms used throughout this handbook, in alphabetical order.
 
 ---
 
+## Third-Party Plugin Glossary
+
+Terms specific to popular free VCV Rack plugins.
+
+| Term | Definition |
+|------|-----------|
+| **Alright Devices** | Plugin maker known for Chronoblob2 delay — a high-quality dub-style stereo delay with tempo sync. |
+| **Bernoulli Gate** | An ML Modules gate splitter that routes each incoming trigger randomly to one of two outputs based on a probability setting. Creates random gate patterns from a regular clock. |
+| **Bogaudio** | A comprehensive free plugin providing VCOs, filters, envelopes, LFOs, mixers, S&H, and utilities. Known for clean behavior and CV inputs on all parameters. |
+| **Chronoblob2** | Alright Devices' flagship delay module. Stereo, tempo-syncable, with a tone control on the feedback path for dark dub-style repeats. |
+| **Count Modula** | A large free plugin (80+ modules) specializing in sequencers, Euclidean rhythm generators, logic, and utility modules. Per-step probability is its standout sequencer feature. |
+| **Drone** | A sustained, non-rhythmic sound providing harmonic foundation. Created with slow attack/release envelopes and no gate-off event. Common in ambient and psybient music. |
+| **Euclidean rhythm** | A rhythm that distributes a number of hits as evenly as possible across a number of steps. 3 hits in 8 steps produces the son clave pattern. Generates interlocking polyrhythms. |
+| **Impromptu Modular** | Free plugin known for Clocked (master clock with swing and multiple divisions) and Phrase-Seq16 (phrase-chaining sequencer with slide and ties). |
+| **ML Modules** | A small focused free plugin providing Bernoulli Gate, S&H, quantizer, and basic utilities. |
+| **Morphader** | A Befaco crossfader that blends two signals using CV control. Useful for transition effects and live mixing. |
+| **Muxlicer** | A Befaco step sequencer combined with a signal multiplexer. Each step has an independent clock division, enabling polyrhythmic step sequences. |
+| **Plateau** | Valley's plate reverb based on the Dattorro algorithm. Produces long lush reverb tails; widely considered the best free reverb for VCV Rack. |
+| **Polyrhythm** | Two or more rhythmic patterns running simultaneously at different rates or step counts, creating a shifting relationship between them that only resolves after a number of bars. |
+| **Psybient** | Genre combining psychedelic and ambient electronic music. Characteristics: slow BPM (80–100), minor keys, enormous reverb, slowly evolving timbres, hypnotic repetition. |
+| **Rampage** | A Befaco dual function generator that acts as envelope, LFO, slew limiter, or oscillator. Its comparator output produces rhythmic gates from two interacting waveforms. |
+| **Slew limiter** | A module that smooths abrupt CV changes by limiting how fast the voltage can rise or fall. Creates portamento (pitch glide) and organic-feeling filter sweeps. |
+| **Stoermelder PACK-ONE** | A free plugin with CV-MAP (map any CV to any parameter), Transit (preset morphing), and other performance utilities. Among the most useful free utility plugins. |
+| **Surge XT** | A free plugin porting the Surge synthesizer's algorithms to VCV Rack. Provides high-quality wavetable, FM, and spectral oscillators plus multiple filter topologies including comb filters. |
+| **Topograph** | Valley's drum sequencer based on the Mutable Instruments Grids algorithm. Generates kick/snare/hat patterns with a density control; ranges from sparse to busy. |
+| **Valley** | A free plugin known for Plateau (reverb), Topograph (drum sequencer), and Dexter (wavetable/FM oscillator). |
+
+---
+
 ## Where to go next
 
 - [Signal Flow & Concepts](mental-model.md) — these terms in context
 - [How a Patch Works](how-a-patch-works.md) — see how these concepts connect
-- [Fundamental Modules](fundamental-modules.md) — modules that implement these functions
+- [VCO](vco.md) — oscillator modules in detail
 
 ---
 

@@ -88,6 +88,18 @@ article blockquote { border-left: 4px solid #cba6f7; margin: 1rem 0; padding: 0.
 .mermaid { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1rem; margin: 1rem 0; text-align: center; }
 article img { max-width: 120px; float: right; margin: 0 0 1rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 4px; background: #fff; padding: 4px; }
 footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; }
+#sidebar .sub-section-title {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #45475a;
+    padding: 0.6rem 1.25rem 0.2rem 1.6rem;
+}
+#sidebar a.sub-link {
+    padding-left: 2rem;
+    font-size: 0.85rem;
+}
 @media (max-width: 900px) {
     #layout { flex-direction: column; }
     #sidebar { width: 100%; height: auto; position: static; }

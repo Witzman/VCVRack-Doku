@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attenuverter — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" aria-current="page" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Attenuverter</strong></header>
+  <main>
+    <article>
+<h1>Attenuverter</h1>
+<p>An attenuverter scales a CV signal up or down (attenuation) and optionally flips it to negative (inversion). The word combines &quot;attenuate&quot; and &quot;invert.&quot; Attenuverters are utility modules — they don&#x27;t generate or transform sound, but they make modulation practical by letting you dial in exactly how much a modulator affects its target, and in which direction.</p>
+<p>Without attenuverters, a signal going from an LFO to a filter might swing the cutoff across the entire frequency range when you only want a subtle movement. An attenuverter scales that swing down to a useful range. If you want the filter to close as the LFO rises rather than open, an attenuverter inverts the signal.</p>
+<h2>8vert (Fundamental)</h2>
+<p>8vert provides eight independent attenuverter channels. Each channel has an input, a knob ranging from -1 to +1, and an output. At +1, the signal passes unchanged. At 0, the output is zero. At -1, the signal is inverted. Values between these points scale and optionally flip the signal.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>Knob (×8)</td><td>-1 to +1</td><td>Scale factor and inversion for that channel</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>IN 1–8</td><td>Input</td><td>Signal to scale (if unpatched, uses +10V)</td></tr>
+<tr><td>OUT 1–8</td><td>Output</td><td>Scaled signal</td></tr>
+</table>
+<p><strong>Patching tips:</strong> If a channel&#x27;s input is unpatched, it defaults to +10V — so the output is the knob position × 10V. This makes 8vert useful as a manual CV source: an unpatched channel with the knob at +0.5 outputs +5V. Patch several LFOs to 8vert inputs and tune each knob to set the modulation depth for different destinations. Use negative knob values when you want the modulator to move a parameter in the opposite direction.</p>
+<h2>Bogaudio OFFSET (Bogaudio)</h2>
+<p>Adds a fixed offset to a CV signal — shifts the entire voltage range up or down without scaling. Useful when a modulator or sequencer outputs voltages in the wrong range for your target. For example, an envelope that outputs 0–10V can be shifted down by 5V to produce a -5V to +5V range.</p>
+<p><strong>Patching tips:</strong> After an S&amp;H random output, add an OFFSET to bias random voltages into a higher or lower range before sending to a quantizer. This shifts which octave or register the random pitches land in.</p>
+<h3>Fundamental 8vert as CV source</h3>
+<p>With no inputs patched, 8vert&#x27;s eight knobs become eight independent manual CV sources. Set knob positions for fixed offsets, pitch CV values, or modulation biases. This is a free way to create up to eight manually-tuned control voltages without dedicated offset or CV source modules.</p>
+<h3>Bogaudio Attenuvert (Bogaudio)</h3>
+<p>A single-channel attenuverter with a cleaner panel layout than individual 8vert channels. Use when you need one attenuverter in a specific part of the signal path and don&#x27;t want to use a full 8vert module for a single channel.</p>
+<h3>Count Modula Attenuverter (Count Modula)</h3>
+<p>A four-channel attenuverter with per-channel knobs. Fits naturally into Count Modula-heavy patches and offers the same functionality as 8vert for four channels.</p>
+<h3>AS Attenuator (AS)</h3>
+<p>A simple attenuator — scaling only, no inversion. Use when you need to scale a signal down but never need negative values. Takes up less mental overhead than a full attenuverter when inversion isn&#x27;t required.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="lfo.html">LFO</a> — attenuate LFO outputs before patching to destinations</li>
+<li><a href="mixer.html">Mixer</a> — mix multiple attenuated CV signals</li>
+<li><a href="vcf.html">VCF</a> — scale envelope or LFO depth into filter CV input</li>
+<li><a href="envelope.html">Envelopes</a> — scale envelope output for modulation depth control</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

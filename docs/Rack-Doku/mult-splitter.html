@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mult &amp; Splitter — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" aria-current="page" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Mult &amp; Splitter</strong></header>
+  <main>
+    <article>
+<h1>Mult &amp; Splitter</h1>
+<p>A mult (multiple) copies one signal to several outputs so the same CV or audio can be sent to multiple destinations simultaneously. A splitter separates a polyphonic cable (a single cable carrying multiple independent signals) into individual monophonic outputs. These are routing utilities — they don&#x27;t change the signal, they distribute it.</p>
+<p>In VCV Rack, you can often connect one output to multiple inputs simply by clicking the output and adding more cables. The built-in mult behavior means you may not always need a dedicated mult module. However, explicit mult modules are useful for documentation clarity and when driving many destinations from a single source.</p>
+<h2>Split (Fundamental)</h2>
+<p>Split takes one polyphonic cable and outputs up to 16 individual monophonic channels. Polyphonic cables in VCV Rack carry multiple signals in a single wire. When a polyphonic source (like a MIDI keyboard outputting polyphonic pitch CV) needs to feed multiple monophonic destinations, Split separates the channels.</p>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>POLY</td><td>Input</td><td>Polyphonic cable input</td></tr>
+<tr><td>1–16</td><td>Output</td><td>Individual channel outputs</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Connect the POLY output of a MIDI-CV module (in polyphonic mode) to Split&#x27;s input. Each output then carries one voice&#x27;s pitch CV. Route each to its own VCO for true polyphony.</p>
+<h2>Merge (Fundamental)</h2>
+<p>The inverse of Split — takes up to 16 monophonic inputs and combines them into one polyphonic cable output. Used to feed polyphonic-aware modules from individual signals.</p>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>1–16</td><td>Input</td><td>Individual channel inputs</td></tr>
+<tr><td>POLY</td><td>Output</td><td>Polyphonic cable output</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Merge several separate LFO outputs into one polyphonic cable for use with polyphonic-capable modules. Or merge individual voices&#x27; outputs into a single polyphonic bus for a polyphonic VCF.</p>
+<h2>Mult (Fundamental)</h2>
+<p>A simple passive mult: one input connected to multiple outputs. In VCV Rack, this is largely redundant since any output cable can be clicked repeatedly to add multiple destinations. However, explicit Mult modules make the signal flow visually clearer when one source drives many destinations.</p>
+<p><strong>Patching tips:</strong> Use a Mult to distribute a master clock signal to multiple sequencers, LFOs, and envelope triggers from a single source. Visual clarity is the main benefit.</p>
+<h3>Count Modula Poly Channels (Count Modula)</h3>
+<p>Manipulates polyphonic channel counts — useful for building polyphonic patches where you need to manage how many voices are active. Complements Split and Merge for more complex polyphonic routing.</p>
+<h3>Stoermelder STRIP (Stoermelder PACK-ONE)</h3>
+<p>While primarily a preset manager, Stoermelder PACK-ONE includes utilities for polyphonic cable manipulation. The free PACK-ONE plugin is essential for complex patching workflows.</p>
+<h3>VCV built-in cable routing</h3>
+<p>For simple mult needs, just connect one output to multiple inputs by clicking the output and drawing additional cables. Each cable is a separate connection but carries the same signal — no module needed.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="midi-cv.html">MIDI to CV</a> — polyphonic MIDI setup using Split/Merge</li>
+<li><a href="clock.html">Clock</a> — distributing clock to multiple modules via Mult</li>
+<li><a href="mixer.html">Mixer</a> — collecting multiple signals into one output</li>
+<li><a href="sequencer.html">Sequencers</a> — running multiple sequencers from one clock</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

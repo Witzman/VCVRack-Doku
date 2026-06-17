@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VCF — Voltage Controlled Filter — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" aria-current="page" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>VCF — Voltage Controlled Filter</strong></header>
+  <main>
+    <article>
+<h1>VCF — Voltage Controlled Filter</h1>
+<p>A VCF removes frequencies from an audio signal based on a cutoff point set by a knob or CV. It is the primary tonal shaping tool in subtractive synthesis: start with a harmonically rich source (a saw or square wave), then sculpt the brightness with the filter. The most common type is a low-pass filter, which lets frequencies below the cutoff through and attenuates those above it. Resonance adds a peak at the cutoff frequency, producing the characteristic sweeping &quot;wah&quot; character.</p>
+<h2>VCF (Fundamental)</h2>
+<p>The VCF bundled with Rack Free is a state-variable filter with simultaneous low-pass, high-pass, and band-pass outputs. It covers the core subtractive synthesis use cases and responds well to CV modulation.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>FREQ</td><td>20 Hz – 20 kHz</td><td>Cutoff frequency</td></tr>
+<tr><td>RES</td><td>0–1</td><td>Resonance — peak at cutoff</td></tr>
+<tr><td>FREQ CV</td><td>±1</td><td>Amount of CV applied to cutoff</td></tr>
+<tr><td>DRIVE</td><td>0–1</td><td>Input gain — adds saturation at high amounts</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>IN</td><td>Input</td><td>Audio signal to filter</td></tr>
+<tr><td>FREQ</td><td>Input</td><td>CV modulates cutoff frequency</td></tr>
+<tr><td>RES</td><td>Input</td><td>CV modulates resonance</td></tr>
+<tr><td>LP, BP, HP</td><td>Output</td><td>Low-pass, band-pass, high-pass outputs</td></tr>
+</table>
+<p><strong>Patching tips:</strong> For a classic synth sweep, connect an ADSR envelope to the FREQ CV input and set FREQ CV amount to taste. The LP output handles most bread-and-butter sounds. Use BP for nasal, mid-forward tones. Patch HP through a second VCF to create a band-pass with independently adjustable slopes. At high RES with low FREQ, the filter self-oscillates and produces a pure sine tone — useful as a secondary sound source.</p>
+<h2>Vult Freak (Vult — free tier)</h2>
+<p>Freak is a zero-delay-feedback filter based on several classic hardware filter topologies. The model can be switched between Ladder (Moog-style), Steiner-Parker, and others. Each topology has a distinctly different character. The free tier of Vult includes Freak.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>FREQ</td><td>Cutoff frequency</td></tr>
+<tr><td>RES</td><td>Resonance</td></tr>
+<tr><td>TYPE</td><td>Filter topology (Ladder, Steiner, etc.)</td></tr>
+<tr><td>IN GAIN</td><td>Input level</td></tr>
+</table>
+<p><strong>Patching tips:</strong> The Ladder mode has the warm, bouncy resonance of classic Moog-style filters. Switch to Steiner for a more aggressive, electronic character. At high resonance, all modes self-oscillate — detune against another oscillator for beating textures.</p>
+<h2>Surge XT Filters (Surge XT)</h2>
+<p>Surge XT provides multiple filter modules including LP/HP/BP variations of Ladder, Comb, and other algorithms. The Comb filter in particular is not commonly available in free plugins — it creates flanging, chorusing, and metallic resonance effects by adding a delayed copy of the signal to itself.</p>
+<table>
+<tr><th>Notable filter types</th><th>Character</th></tr>
+<tr><td>LP Ladder</td><td>Warm, musical, self-oscillates</td></tr>
+<tr><td>Comb</td><td>Flanging, metallic, chorus-like</td></tr>
+<tr><td>OB-Xd style</td><td>Bright, snappy, less warm than Ladder</td></tr>
+<tr><td>Cutoff</td><td>All types share standard FREQ + RES controls</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Use the Comb filter on a noise source with a short delay time for metallic percussion sounds. Modulate comb delay time slowly for a sweeping flanger effect without needing a dedicated flanger module.</p>
+<h3>Bogaudio LMHR (Bogaudio)</h3>
+<p>A four-output state-variable filter (LP, HP, BP, notch) with a clean, accurate response. Good for precise frequency sculpting when the Fundamental VCF&#x27;s DRIVE character isn&#x27;t wanted.</p>
+<h3>Count Modula Filter (Count Modula)</h3>
+<p>Count Modula includes a multi-mode filter consistent with their other modules. Useful in Count Modula-heavy patches. Offers standard LP/HP/BP modes with CV inputs.</p>
+<h3>Befaco Rampage as filter</h3>
+<p>Rampage is technically an envelope/function generator, but its slew inputs can behave as a first-order low-pass filter at audio rates when used creatively. Not a typical filter use, but worth knowing.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="vco.html">VCO</a> — the audio source you&#x27;re filtering</li>
+<li><a href="vca.html">VCA</a> — volume shaping after the filter</li>
+<li><a href="envelope.html">Envelopes</a> — automate filter cutoff sweeps</li>
+<li><a href="lfo.html">LFO</a> — rhythmic filter modulation</li>
+<li><a href="how-a-patch-works.html">How a Patch Works</a> — VCF&#x27;s place in the signal chain</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

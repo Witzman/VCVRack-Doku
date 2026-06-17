@@ -19,10 +19,35 @@
 <a href="userguide.html">Using VCV Rack</a>
 <a href="patching-use-cases.html">Patching Use Cases</a>
 <a href="faq.html">FAQ</a>
-<a href="fundamental-modules.html">Fundamental Modules</a>
-<a href="befaco-modules.html">Befaco Modules</a>
 <div class="section-title">Tutorials</div>
 <a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
 </nav>
 <div id="content">
   <header>VCV Rack Handbook — <strong>Glossary</strong></header>
@@ -103,10 +128,36 @@
 <tr><td><strong>Wavetable</strong></td><td>A stored waveform that an oscillator scans through. Wavetable position can be modulated to morph between waveforms.</td></tr>
 </table>
 <hr>
+<h2>Third-Party Plugin Glossary</h2>
+<p>Terms specific to popular free VCV Rack plugins.</p>
+<table>
+<tr><th>Term</th><th>Definition</th></tr>
+<tr><td><strong>Alright Devices</strong></td><td>Plugin maker known for Chronoblob2 delay — a high-quality dub-style stereo delay with tempo sync.</td></tr>
+<tr><td><strong>Bernoulli Gate</strong></td><td>An ML Modules gate splitter that routes each incoming trigger randomly to one of two outputs based on a probability setting. Creates random gate patterns from a regular clock.</td></tr>
+<tr><td><strong>Bogaudio</strong></td><td>A comprehensive free plugin providing VCOs, filters, envelopes, LFOs, mixers, S&amp;H, and utilities. Known for clean behavior and CV inputs on all parameters.</td></tr>
+<tr><td><strong>Chronoblob2</strong></td><td>Alright Devices&#x27; flagship delay module. Stereo, tempo-syncable, with a tone control on the feedback path for dark dub-style repeats.</td></tr>
+<tr><td><strong>Count Modula</strong></td><td>A large free plugin (80+ modules) specializing in sequencers, Euclidean rhythm generators, logic, and utility modules. Per-step probability is its standout sequencer feature.</td></tr>
+<tr><td><strong>Drone</strong></td><td>A sustained, non-rhythmic sound providing harmonic foundation. Created with slow attack/release envelopes and no gate-off event. Common in ambient and psybient music.</td></tr>
+<tr><td><strong>Euclidean rhythm</strong></td><td>A rhythm that distributes a number of hits as evenly as possible across a number of steps. 3 hits in 8 steps produces the son clave pattern. Generates interlocking polyrhythms.</td></tr>
+<tr><td><strong>Impromptu Modular</strong></td><td>Free plugin known for Clocked (master clock with swing and multiple divisions) and Phrase-Seq16 (phrase-chaining sequencer with slide and ties).</td></tr>
+<tr><td><strong>ML Modules</strong></td><td>A small focused free plugin providing Bernoulli Gate, S&amp;H, quantizer, and basic utilities.</td></tr>
+<tr><td><strong>Morphader</strong></td><td>A Befaco crossfader that blends two signals using CV control. Useful for transition effects and live mixing.</td></tr>
+<tr><td><strong>Muxlicer</strong></td><td>A Befaco step sequencer combined with a signal multiplexer. Each step has an independent clock division, enabling polyrhythmic step sequences.</td></tr>
+<tr><td><strong>Plateau</strong></td><td>Valley&#x27;s plate reverb based on the Dattorro algorithm. Produces long lush reverb tails; widely considered the best free reverb for VCV Rack.</td></tr>
+<tr><td><strong>Polyrhythm</strong></td><td>Two or more rhythmic patterns running simultaneously at different rates or step counts, creating a shifting relationship between them that only resolves after a number of bars.</td></tr>
+<tr><td><strong>Psybient</strong></td><td>Genre combining psychedelic and ambient electronic music. Characteristics: slow BPM (80–100), minor keys, enormous reverb, slowly evolving timbres, hypnotic repetition.</td></tr>
+<tr><td><strong>Rampage</strong></td><td>A Befaco dual function generator that acts as envelope, LFO, slew limiter, or oscillator. Its comparator output produces rhythmic gates from two interacting waveforms.</td></tr>
+<tr><td><strong>Slew limiter</strong></td><td>A module that smooths abrupt CV changes by limiting how fast the voltage can rise or fall. Creates portamento (pitch glide) and organic-feeling filter sweeps.</td></tr>
+<tr><td><strong>Stoermelder PACK-ONE</strong></td><td>A free plugin with CV-MAP (map any CV to any parameter), Transit (preset morphing), and other performance utilities. Among the most useful free utility plugins.</td></tr>
+<tr><td><strong>Surge XT</strong></td><td>A free plugin porting the Surge synthesizer&#x27;s algorithms to VCV Rack. Provides high-quality wavetable, FM, and spectral oscillators plus multiple filter topologies including comb filters.</td></tr>
+<tr><td><strong>Topograph</strong></td><td>Valley&#x27;s drum sequencer based on the Mutable Instruments Grids algorithm. Generates kick/snare/hat patterns with a density control; ranges from sparse to busy.</td></tr>
+<tr><td><strong>Valley</strong></td><td>A free plugin known for Plateau (reverb), Topograph (drum sequencer), and Dexter (wavetable/FM oscillator).</td></tr>
+</table>
+<hr>
 <h2>Where to go next</h2>
 <ul><li><a href="mental-model.html">Signal Flow &amp; Concepts</a> — these terms in context</li>
 <li><a href="how-a-patch-works.html">How a Patch Works</a> — see how these concepts connect</li>
-<li><a href="fundamental-modules.html">Fundamental Modules</a> — modules that implement these functions</li></ul>
+<li><a href="vco.html">VCO</a> — oscillator modules in detail</li></ul>
 <hr>
 <p><em>Version: 2026-06-17.</em></p>
     </article>

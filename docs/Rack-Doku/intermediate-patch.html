@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Basics: Your First Third-Party Patch — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html" aria-current="page">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Beyond the Basics: Your First Third-Party Patch</strong></header>
+  <main>
+    <article>
+<h1>Beyond the Basics: Your First Third-Party Patch</h1>
+<p>This tutorial assumes you have worked through <a href="first-patch.html">Your First Patch</a> and are comfortable with the basic VCO → VCF → VCA → Output signal chain. Here you will install your first free third-party plugins, build a more expressive voice using Bogaudio, and add a proper clock and sequencer using Impromptu Clocked. The result is a self-playing melodic patch that runs without a keyboard.</p>
+<h2>What you will build</h2>
+<p>A four-step melodic sequence through a filter-swept lead voice with velocity variation and an automated tempo-synced LFO filter sweep. The patch plays itself and introduces three new concepts: installing plugins, using a clock module, and modulating with tempo-synced LFOs.</p>
+<h2>Step 1 — Install the plugins</h2>
+<p>Before building, install two free plugins from the VCV Library:</p>
+<ol><li>Open VCV Rack and go to Library (top menu) → VCV Library.</li>
+<li>Search for <strong>Bogaudio</strong> and click Subscribe.</li>
+<li>Search for <strong>Impromptu Modular</strong> and click Subscribe.</li>
+<li>Restart VCV Rack. The new modules will appear in the module browser.</li></ol>
+<h2>Step 2 — Build the clock</h2>
+<p>Add <strong>Impromptu Clocked</strong> from the module browser (search &quot;Clocked&quot;). This is your master tempo source.</p>
+<ul><li>Set BPM to 120.</li>
+<li>CLK1 output: set ratio to ×1 (quarter notes — the main beat).</li>
+<li>CLK2 output: set ratio to ×4 (sixteenth notes — for a future hi-hat if you want one).</li>
+<li>Press RUN to start the clock.</li></ul>
+<p>You will hear nothing yet — the clock only outputs trigger pulses.</p>
+<h2>Step 3 — Add a sequencer</h2>
+<p>Add <strong>SEQ-3</strong> (Fundamental) from the module browser.</p>
+<ul><li>Connect Clocked&#x27;s CLK1 output to SEQ-3&#x27;s CLK input.</li>
+<li>Set STEPS to 4 (four-step loop).</li>
+<li>Set the four step knobs to C3, E3, G3, A3 (these are approximately -1V, -0.75V, -0.5V, -0.25V — tune by ear against the VCO you add next).</li>
+<li>Enable all four gate buttons.</li></ul>
+<h2>Step 4 — Add the voice</h2>
+<p>Add <strong>Bogaudio VCO</strong> (search &quot;Bogaudio VCO&quot; in the browser). This is a more flexible oscillator than Fundamental&#x27;s VCO-1.</p>
+<ul><li>Connect SEQ-3&#x27;s ROW1 output to Bogaudio VCO&#x27;s V/OCT input.</li>
+<li>Connect SEQ-3&#x27;s GATE output to the next step&#x27;s input (keep reading).</li>
+<li>Take the SAW output from Bogaudio VCO forward into the filter.</li></ul>
+<h2>Step 5 — Add filter and envelope</h2>
+<p>Add <strong>Fundamental VCF</strong> and <strong>Bogaudio ADSR</strong>.</p>
+<ul><li>Connect Bogaudio VCO&#x27;s SAW output to VCF IN.</li>
+<li>Take VCF&#x27;s LP output to a VCA (add <strong>Fundamental VCA</strong>).</li>
+<li>Connect SEQ-3&#x27;s GATE to Bogaudio ADSR&#x27;s GATE input.</li>
+<li>Connect Bogaudio ADSR&#x27;s ENV output to VCA&#x27;s CV input.</li>
+<li>Connect VCA&#x27;s OUT to the Audio module inputs.</li></ul>
+<p>Set the ADSR: Attack 10ms, Decay 200ms, Sustain 0.6, Release 300ms. You should now hear a four-note sequence.</p>
+<p><strong>What to tweak first:</strong> Adjust the SEQ-3 step knob voltages while the sequence runs to change the pitches. The four notes will drift through whatever intervals you set — use the VCO&#x27;s built-in tuner display or tune by ear.</p>
+<h2>Step 6 — Add a tempo-synced filter sweep</h2>
+<p>This is the step that makes the patch feel professional rather than static.</p>
+<p>Add <strong>Bogaudio LFO</strong>.</p>
+<ul><li>Set Bogaudio LFO&#x27;s FREQ to match your tempo: at 120 BPM, one beat per second = 2 Hz.</li>
+<li>Take the SIN output through a <strong>Fundamental 8vert</strong> channel (attenuate to about 0.4).</li>
+<li>Connect the attenuated output to VCF&#x27;s FREQ CV input.</li></ul>
+<p>Now the filter opens and closes in time with the beat, giving the sequence a rhythmic breathing quality.</p>
+<p><strong>What to tweak:</strong> Change the LFO rate. Halving it to 1 Hz gives a two-beat filter sweep — the filter opens slowly over two beats and closes again. Setting it very slow (0.1 Hz) produces a gradual sweep over ten seconds. Each rate changes the groove completely.</p>
+<h2>Step 7 — Add velocity variation</h2>
+<p>Bogaudio ADSR has a separate GATE input and a VEL input. Add randomness to velocity:</p>
+<ul><li>Add <strong>Bogaudio S&amp;H</strong>.</li>
+<li>Connect Clocked&#x27;s CLK1 to S&amp;H&#x27;s TRIG input.</li>
+<li>Connect <strong>Fundamental Noise</strong> (White output) to S&amp;H&#x27;s IN input.</li>
+<li>Connect S&amp;H&#x27;s OUT through an 8vert channel (attenuate to 0.3) to Bogaudio ADSR&#x27;s VEL input.</li></ul>
+<p>The ADSR now receives a different random velocity on each step — some notes hit harder, some softer. This is the single biggest step toward making a sequenced patch feel alive.</p>
+<h2>What you have learned</h2>
+<p>This patch introduced: installing free plugins, Impromptu Clocked as a master tempo source, Bogaudio&#x27;s more flexible VCO and ADSR, tempo-synced LFO filter modulation, and random velocity using S&amp;H. These techniques apply to every patch you build from here on.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="sequencer.html">Sequencers</a> — deeper sequencer options including phrase chaining</li>
+<li><a href="lfo.html">LFO</a> — more modulation techniques</li>
+<li><a href="sample-hold.html">Sample &amp; Hold</a> — all the ways S&amp;H adds randomness</li>
+<li><a href="slow-psybient.html">Slow Psybient</a> — a more complex patch using similar techniques</li>
+<li><a href="patching-use-cases.html">Patching Use Cases</a> — more patch recipes to try</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VCO — Voltage Controlled Oscillator — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" aria-current="page" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>VCO — Voltage Controlled Oscillator</strong></header>
+  <main>
+    <article>
+<h1>VCO — Voltage Controlled Oscillator</h1>
+<p>A VCO is the sound source of your patch. It generates a continuous waveform at a pitch set by an incoming CV signal. Without a VCO (or another sound source), there is nothing to filter, shape, or amplify. Most patches start here. The standard pitch control format is V/Oct: one volt per octave, so middle C is typically 0V and the C one octave up is 1V.</p>
+<h2>VCO-1 (Fundamental)</h2>
+<p>The VCO-1 is the oscillator bundled with every VCV Rack installation. It covers the full range of classic subtractive synthesis waveforms and accepts V/Oct pitch CV, FM, and pulse width modulation.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>FREQ</td><td>±5 octaves</td><td>Coarse pitch offset from center</td></tr>
+<tr><td>FINE</td><td>±1 semitone</td><td>Fine-tune for exact pitch</td></tr>
+<tr><td>PW</td><td>0–100%</td><td>Pulse width of the square wave</td></tr>
+<tr><td>FM</td><td>±1</td><td>Amount of FM applied from the FM input</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>V/OCT</td><td>Input</td><td>Pitch CV — 1V per octave</td></tr>
+<tr><td>FM</td><td>Input</td><td>Frequency modulation CV</td></tr>
+<tr><td>SYNC</td><td>Input</td><td>Hard sync — resets waveform phase</td></tr>
+<tr><td>SIN, TRI, SAW, SQR</td><td>Output</td><td>Individual waveform outputs</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Connect a MIDI-CV module&#x27;s V/OCT output to VCO-1&#x27;s V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO-1 instances slightly detuned using the FINE knob and mix their outputs.</p>
+<h2>EvenVCO (Befaco)</h2>
+<p>The EvenVCO is a clean, low-aliasing oscillator based on the Befaco hardware module. It produces even harmonics alongside its main waveforms, giving it a warmer, more analog character than a mathematically pure oscillator.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>TUNE</td><td>±4 octaves</td><td>Coarse pitch</td></tr>
+<tr><td>Octave switch</td><td>-2 to +2</td><td>Octave transpose</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>V/OCT</td><td>Input</td><td>Pitch CV</td></tr>
+<tr><td>PWM</td><td>Input</td><td>Pulse width modulation</td></tr>
+<tr><td>Even</td><td>Output</td><td>Even-harmonic enriched output</td></tr>
+<tr><td>Sine, Triangle, Saw, Pulse</td><td>Output</td><td>Standard waveforms</td></tr>
+</table>
+<p><strong>Patching tips:</strong> The Even output has a distinctly warm character — useful as a second layer under a brighter saw. Use the Octave switch to quickly transpose without touching the TUNE knob.</p>
+<h2>Bogaudio VCO (Bogaudio)</h2>
+<p>A full-featured oscillator with linear and exponential FM, soft sync, and a built-in sub-oscillator one octave down. Good choice when you need FM capability or a thicker sound without adding a second module.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>FREQ</td><td>wide range</td><td>Coarse pitch</td></tr>
+<tr><td>FINE</td><td>±1 semitone</td><td>Fine pitch</td></tr>
+<tr><td>FM depth</td><td>±1</td><td>Linear or exponential FM amount</td></tr>
+</table>
+<p>Sub output provides a sine wave one octave below the main pitch — useful for adding low-end weight to a bass patch without a second oscillator.</p>
+<p><strong>Patching tips:</strong> Use linear FM for cleaner FM tones; exponential FM tracks pitch better for musical intervals but can get harsh at high amounts.</p>
+<h3>Surge XT VCO (Surge XT)</h3>
+<p>Surge XT provides a library of oscillator algorithms: Classic (virtual analog), Modern (anti-aliased), Wavetable, Window, FM2, FM3, String, Twist, and more. Each algorithm has its own set of parameters. The plugin is free and dramatically expands sound design range beyond standard waveforms. Find it in the VCV Library under &quot;Surge XT.&quot;</p>
+<h3>WTVCO (Fundamental)</h3>
+<p>The WTVCO is the wavetable oscillator included with Fundamental. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated <a href="wavetable.html">Wavetable</a> page.</p>
+<h3>VCO-2 (Fundamental)</h3>
+<p>A simpler oscillator with fewer outputs but a morphing waveform knob that crossfades continuously between sine, triangle, sawtooth, and square. Useful when you want a single output with variable timbre rather than separate waveform outs.</p>
+<h3>Vult Vco (Vult — free tier)</h3>
+<p>Vult&#x27;s free oscillators include models with analog drift simulation. Their oscillators are known for subtle pitch and waveform instability that mimics hardware VCOs well.</p>
+<h3>Squinky Labs EV3 (Squinky Labs)</h3>
+<p>Three oscillators in one module. Each has independent V/OCT, pitch offset, and waveform selection. Efficient for building thick, detuned unison sounds without wiring three separate modules.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="mental-model.html">Signal Flow &amp; Concepts</a> — how oscillator outputs flow through a patch</li>
+<li><a href="vcf.html">VCF</a> — filter the oscillator output</li>
+<li><a href="vca.html">VCA</a> — shape the volume with an envelope</li>
+<li><a href="wavetable.html">Wavetable</a> — wavetable oscillators in detail</li>
+<li><a href="how-a-patch-works.html">How a Patch Works</a> — see the VCO&#x27;s role in a complete voice</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

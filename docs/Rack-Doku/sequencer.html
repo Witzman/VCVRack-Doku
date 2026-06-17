@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequencers — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" aria-current="page" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Sequencers</strong></header>
+  <main>
+    <article>
+<h1>Sequencers</h1>
+<p>A sequencer stores a series of values and outputs them one at a time in response to a clock. The output is typically a V/Oct pitch CV for melodic sequences, but sequencers can also output gate signals, trigger patterns, and modulation values. Sequencers are the primary way to make a patch play musical patterns autonomously without a keyboard or MIDI input.</p>
+<h2>SEQ-3 (Fundamental)</h2>
+<p>SEQ-3 is an 8-step sequencer included with Rack Free. Each step has a voltage knob and a gate button. When clocked, the module advances one step per clock pulse and outputs the current step&#x27;s voltage and gate state.</p>
+<table>
+<tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
+<tr><td>STEPS</td><td>1–8</td><td>Number of active steps in the sequence</td></tr>
+<tr><td>Per-step knob</td><td>±5V</td><td>Voltage output for that step</td></tr>
+<tr><td>Per-step button</td><td>on/off</td><td>Whether the gate fires on that step</td></tr>
+<tr><td>RUN</td><td>toggle</td><td>Starts and stops the sequencer</td></tr>
+<tr><td>RESET</td><td>trigger</td><td>Returns to step 1</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>CLK</td><td>Input</td><td>Clock input — advances one step per pulse</td></tr>
+<tr><td>RESET</td><td>Input</td><td>Resets to step 1</td></tr>
+<tr><td>GATE</td><td>Output</td><td>Gate signal for the current step&#x27;s gate setting</td></tr>
+<tr><td>ROW1/2/3</td><td>Output</td><td>Three independent voltage rows per step</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Connect a clock&#x27;s output to CLK. Patch ROW1 to a VCO&#x27;s V/OCT input for a pitched sequence. Patch GATE to an ADSR&#x27;s GATE input to trigger notes. The three rows allow independent pitch, modulation, and velocity sequences running in sync — program ROW1 for pitch, ROW2 for filter cutoff offsets, and ROW3 for VCA level variation. Use STEPS to create patterns shorter than 8 — a 5-step sequence over a 4/4 clock creates interesting polyrhythmic effects.</p>
+<h2>Impromptu Clocked + Phrase-Seq (Impromptu)</h2>
+<p>Impromptu is a free plugin with a comprehensive sequencing ecosystem. Clocked provides a master clock with multiple divided outputs. Phrase-Seq16 is a 16-step, 2-row sequencer with phrase chaining — you can define up to 16 different phrases and chain them in order, allowing full song structures rather than a single repeating loop.</p>
+<table>
+<tr><th>Feature</th><th>Description</th></tr>
+<tr><td>Phrase chaining</td><td>Define multiple patterns, play them in sequence</td></tr>
+<tr><td>CV inputs</td><td>Real-time control over most parameters</td></tr>
+<tr><td>Note tie</td><td>Hold notes across steps for legato playing</td></tr>
+<tr><td>Slide</td><td>Portamento between adjacent steps</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Use Phrase-Seq16&#x27;s pattern chain to build a verse/chorus structure. Set an 8-bar phrase for the verse and a 4-bar phrase for the chorus, then define a chain that plays verse × 2, chorus × 1. Slide between steps for bass sequences that feel legato and natural.</p>
+<h2>Count Modula Step Sequencer (Count Modula)</h2>
+<p>Count Modula provides a family of step sequencers — 8-step, 16-step, and modular building blocks. Their standout feature is per-step probability: each step has a chance of firing that can be set from 0% to 100%. This produces sequences that are recognizable but not perfectly repetitive — essential for generative music.</p>
+<table>
+<tr><th>Feature</th><th>Description</th></tr>
+<tr><td>Per-step probability</td><td>Random step skipping</td></tr>
+<tr><td>Gate length</td><td>Per-step gate duration control</td></tr>
+<tr><td>CV outputs</td><td>Pitch + multiple modulation rows</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Set most steps to 100% probability but add one or two at 50% for occasional variation. A 16-step sequence with 3 steps at 60% probability generates a different groove every few bars while maintaining the general pattern.</p>
+<h3>Befaco Muxlicer (Befaco)</h3>
+<p>A step sequencer combined with a signal multiplexer. Each step has a voltage, gate, and a clock divider, making it possible to build polyrhythmic patterns where different steps run at different speeds. Its output routing capabilities are more complex than a standard sequencer — useful for advanced rhythmic applications.</p>
+<h3>ML Modules SeqSwitch (ML Modules)</h3>
+<p>Routes an input signal to one of several outputs based on a clock step. Useful for switching between sound sources or effects routings rhythmically rather than for pitch sequencing.</p>
+<h3>VCV MIDI-CV + keyboard</h3>
+<p>For live playing rather than sequenced patterns, a MIDI keyboard connected through MIDI-CV is the simplest approach. See <a href="midi-cv.html">MIDI to CV</a> for setup details.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="clock.html">Clock</a> — the clock that drives sequencers</li>
+<li><a href="quantizer.html">Quantizer</a> — snap sequencer output to musical scales</li>
+<li><a href="midi-cv.html">MIDI to CV</a> — keyboard alternative to sequencer pitch</li>
+<li><a href="patching-use-cases.html">Patching Use Cases</a> — bassline and melodic patch recipes</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

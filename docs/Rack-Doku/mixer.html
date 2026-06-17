@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixer — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" aria-current="page" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Mixer</strong></header>
+  <main>
+    <article>
+<h1>Mixer</h1>
+<p>A mixer combines multiple audio signals into one output, with individual level control for each channel. In a modular patch, mixers appear at several points: combining multiple oscillator waveforms, summing voices before a shared filter, blending dry and wet signals in an effects send, and at the final stage before the audio output. CV signals can also be mixed to combine multiple modulation sources.</p>
+<h2>Mixer (Fundamental)</h2>
+<p>The Fundamental Mixer has four mono input channels each with a LEVEL knob, and two outputs: a mono sum and a stereo sum (channels 1-2 panned left, channels 3-4 panned right). Simple and immediately useful.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>CH1–CH4 LEVEL</td><td>Per-channel volume</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>CH1–CH4</td><td>Input</td><td>Four mono audio inputs</td></tr>
+<tr><td>MIX</td><td>Output</td><td>Mono summed output</td></tr>
+<tr><td>L / R</td><td>Output</td><td>Stereo output with fixed pan positions</td></tr>
+</table>
+<p><strong>Patching tips:</strong> The stereo output places channels 1-2 left and 3-4 right — put your bass and lead on 1-2 so they appear center, and pads on 3-4 for width. For a send effect, take the MIX output to your reverb input, then mix the reverb return with the dry signal in a second mixer channel.</p>
+<h2>VCMixer (Fundamental)</h2>
+<p>An extended mixer with CV-controllable channel levels. Each channel has both a LEVEL knob and a CV input that scales the knob value. This allows dynamic volume control per channel — useful for automated fade-ins, envelope-shaped channel levels, or LFO-driven volume animation.</p>
+<table>
+<tr><th>Input</th><th>Description</th></tr>
+<tr><td>CV 1–4</td><td>Per-channel volume CV — multiplies the knob value</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Patch an envelope to a channel&#x27;s CV input to make that voice fade in from silence each time a note triggers. Use an LFO on a pad channel&#x27;s CV for a slow tremolo on just that voice while other channels remain steady.</p>
+<h2>Bogaudio Mixer (Bogaudio)</h2>
+<p>Bogaudio provides a more comprehensive mixer with stereo channels, per-channel pan controls, mute buttons, and optional solo. This is a better choice than Fundamental&#x27;s mixer for patches with four or more voices that need proper stereo placement.</p>
+<table>
+<tr><th>Feature</th><th>Description</th></tr>
+<tr><td>Stereo channels</td><td>Each channel accepts L+R or mono-summed input</td></tr>
+<tr><td>PAN</td><td>Per-channel stereo position</td></tr>
+<tr><td>MUTE</td><td>Silence individual channels without disconnecting cables</td></tr>
+<tr><td>CV inputs</td><td>Optional CV on level and pan</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Use pan CV inputs to automate stereo movement — a slow triangle LFO on pan produces a gradual side-to-side sweep (autopan effect). Mute buttons let you quickly A/B voices during patch building.</p>
+<h3>CVMix (Fundamental)</h3>
+<p>A four-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.</p>
+<h3>8vert (Fundamental)</h3>
+<p>Eight attenuverters that can function as a simple eight-input mixer when their outputs are connected to a multi-input module. See <a href="attenuverter.html">Attenuverter</a> for full details.</p>
+<h3>Befaco STMix (Befaco)</h3>
+<p>A four-channel stereo mixer with individual level controls and a simple, compact layout. The stereo capability makes it a good choice for mixing stereo effects returns. Each channel accepts a stereo input pair.</p>
+<h3>Befaco HexmixVCA (Befaco)</h3>
+<p>Six VCA channels with individual CV inputs, functioning as a mixer with dynamic level control per channel. When you need both mixing and per-channel amplitude envelope control without wiring separate VCA and mixer modules.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="vca.html">VCA</a> — per-voice volume control before the mixer</li>
+<li><a href="delay-reverb-chorus.html">Delay, Reverb &amp; Chorus</a> — effects send/return through a mixer</li>
+<li><a href="audio-output.html">Audio Output</a> — the final destination after mixing</li>
+<li><a href="attenuverter.html">Attenuverter</a> — scale signals before mixing</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>

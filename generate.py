@@ -23,12 +23,43 @@ SIDEBAR = [
         ("Using VCV Rack", "userguide"),
         ("Patching Use Cases", "patching-use-cases"),
         ("FAQ", "faq"),
-        ("Fundamental Modules", "fundamental-modules"),
-        ("Befaco Modules", "befaco-modules"),
     ]),
     ("Tutorials", [
         ("Your First Patch", "first-patch"),
+        ("Intermediate Patch", "intermediate-patch"),
+        ("Slow Psybient", "slow-psybient"),
     ]),
+    ("Modules", {
+        "Sound Generation": [
+            ("VCO", "vco"),
+            ("Noise", "noise"),
+            ("Wavetable", "wavetable"),
+        ],
+        "Sound Shaping": [
+            ("VCF", "vcf"),
+            ("VCA", "vca"),
+            ("Waveshaper & Distortion", "waveshaper-distortion"),
+            ("Delay, Reverb & Chorus", "delay-reverb-chorus"),
+        ],
+        "Modulation / Control": [
+            ("Envelopes", "envelope"),
+            ("LFO", "lfo"),
+            ("Sequencers", "sequencer"),
+            ("Sample & Hold", "sample-hold"),
+        ],
+        "Utilities": [
+            ("Mixer", "mixer"),
+            ("Attenuverter", "attenuverter"),
+            ("Mult & Splitter", "mult-splitter"),
+            ("Quantizer", "quantizer"),
+            ("Clock", "clock"),
+            ("Logic", "logic"),
+        ],
+        "MIDI / I/O": [
+            ("MIDI to CV", "midi-cv"),
+            ("Audio Output", "audio-output"),
+        ],
+    }),
 ]
 
 CSS = """\
@@ -122,6 +153,18 @@ article blockquote { border-left: 4px solid #cba6f7; margin: 1rem 0; padding: 0.
 .mermaid { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1rem; margin: 1rem 0; text-align: center; }
 article img { max-width: 120px; float: right; margin: 0 0 1rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 4px; background: #fff; padding: 4px; }
 footer { padding: 1rem 2.5rem; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; }
+#sidebar .sub-section-title {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #45475a;
+    padding: 0.6rem 1.25rem 0.2rem 1.6rem;
+}
+#sidebar a.sub-link {
+    padding-left: 2rem;
+    font-size: 0.85rem;
+}
 @media (max-width: 900px) {
     #layout { flex-direction: column; }
     #sidebar { width: 100%; height: auto; position: static; }
@@ -135,9 +178,16 @@ def build_sidebar(current_slug):
     parts = ['<nav id="sidebar">', '<h1>VCV Rack Handbook</h1>']
     for section_title, entries in SIDEBAR:
         parts.append(f'<div class="section-title">{section_title}</div>')
-        for name, slug in entries:
-            cur = ' aria-current="page"' if slug == current_slug else ""
-            parts.append(f'<a href="{slug}.html"{cur}>{name}</a>')
+        if isinstance(entries, dict):
+            for sub_title, sub_entries in entries.items():
+                parts.append(f'<div class="sub-section-title">{sub_title}</div>')
+                for name, slug in sub_entries:
+                    cur = ' aria-current="page"' if slug == current_slug else ""
+                    parts.append(f'<a href="{slug}.html"{cur} class="sub-link">{name}</a>')
+        else:
+            for name, slug in entries:
+                cur = ' aria-current="page"' if slug == current_slug else ""
+                parts.append(f'<a href="{slug}.html"{cur}>{name}</a>')
     parts.append('</nav>')
     return "\n".join(parts)
 
@@ -366,9 +416,15 @@ def main():
         f.write(CSS)
 
     for _, entries in SIDEBAR:
-        for _, slug in entries:
-            convert_page(slug)
-            print(f"  ✓ {slug}.html")
+        if isinstance(entries, dict):
+            for _, sub_entries in entries.items():
+                for _, slug in sub_entries:
+                    convert_page(slug)
+                    print(f"  ✓ {slug}.html")
+        else:
+            for _, slug in entries:
+                convert_page(slug)
+                print(f"  ✓ {slug}.html")
 
     shutil.copy(
         os.path.join(OUT_DIR, "readme.html"),
@@ -376,12 +432,13 @@ def main():
     )
     print("  ✓ index.html (copy of readme.html)")
 
-    # Remove stale German-named HTML files if they exist
-    for stale in ["kernablauf.html", "anwendungsfaelle.html"]:
+    # Remove replaced and stale HTML files
+    for stale in ["fundamental-modules.html", "befaco-modules.html",
+                  "kernablauf.html", "anwendungsfaelle.html"]:
         stale_path = os.path.join(OUT_DIR, stale)
         if os.path.exists(stale_path):
             os.remove(stale_path)
-            print(f"  ✗ removed stale {stale}")
+            print(f"  ✗ removed {stale}")
 
     print(f"\nDone. Output: {OUT_DIR}")
 

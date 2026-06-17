@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample &amp; Hold — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title">Common</div>
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+<div class="section-title">Tutorials</div>
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<div class="section-title">Modules</div>
+<div class="sub-section-title">Sound Generation</div>
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+<div class="sub-section-title">Sound Shaping</div>
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+<div class="sub-section-title">Modulation / Control</div>
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" aria-current="page" class="sub-link">Sample & Hold</a>
+<div class="sub-section-title">Utilities</div>
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+<div class="sub-section-title">MIDI / I/O</div>
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</nav>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Sample &amp; Hold</strong></header>
+  <main>
+    <article>
+<h1>Sample &amp; Hold</h1>
+<p>A Sample &amp; Hold (S&amp;H) module captures (&quot;samples&quot;) the current value of an input signal when it receives a trigger, then holds that value until the next trigger arrives. The output is a stepped, staircase-like CV that jumps to a new value with each clock pulse. When the input is a noise source, S&amp;H produces random stepped voltages — one of the most useful sources of controlled randomness in a modular patch.</p>
+<h2>Bogaudio S&amp;H (Bogaudio)</h2>
+<p>Bogaudio&#x27;s S&amp;H is a clean, accurate sample-and-hold with a track mode (output follows input continuously while gate is high, then holds on falling edge) alongside the standard sample mode.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>MODE</td><td>Sample (trigger) or Track+Hold (gate)</td></tr>
+</table>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>IN</td><td>Input</td><td>Signal to sample — often a noise source</td></tr>
+<tr><td>TRIG</td><td>Input</td><td>Trigger or gate to initiate sampling</td></tr>
+<tr><td>OUT</td><td>Output</td><td>Held voltage</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Connect Fundamental Noise&#x27;s White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO&#x27;s V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.</p>
+<h2>SHASR (Fundamental)</h2>
+<p>SHASR combines Sample &amp; Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.</p>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>IN</td><td>Input</td><td>Signal to sample</td></tr>
+<tr><td>TRIG</td><td>Input</td><td>Trigger input</td></tr>
+<tr><td>SH OUT</td><td>Output</td><td>Standard sample-and-hold output</td></tr>
+<tr><td>ASR OUT</td><td>Output</td><td>Slewed output — smooth transitions between samples</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Use the ASR output rather than SH OUT when you want random values that glide smoothly — this produces organic, flowing pitch sequences when patched to a VCO. The glide time is set by the ASR attack and release knobs.</p>
+<h2>ML Modules Bernoulli Gate (ML Modules)</h2>
+<p>Strictly a gate router rather than a sample-and-hold, but closely related in function: each incoming trigger has a 50% probability (adjustable) of being routed to one of two outputs rather than the other. This introduces randomness into gate patterns — notes are selectively triggered or skipped. Combined with a sequencer, it creates sequences that randomly drop notes.</p>
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><td>P</td><td>Probability of routing to output A vs. B</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Patch a sequencer&#x27;s gate output to Bernoulli Gate&#x27;s input, and both outputs to different voices or effects paths. Set P to 0.6–0.8 so most notes still fire but some are randomly rerouted. For a psybient texture, route occasional gates to a second voice with a different timbre for unpredictable moments.</p>
+<h3>Count Modula Random Sampler (Count Modula)</h3>
+<p>An extended S&amp;H with multiple outputs, each holding a different sample taken at the same trigger moment. Useful when you need several simultaneous but independent random values — for example, random pitch, random filter cutoff, and random reverb send all changing together on the same clock.</p>
+<h3>Squinky Labs S&amp;H (Squinky Labs)</h3>
+<p>A compact S&amp;H with clean tracking. Minimal interface — input, trigger, output. Good choice when you just need a standard S&amp;H without extra features.</p>
+<h2>Where to go next</h2>
+<ul><li><a href="noise.html">Noise</a> — the random signal source fed into S&amp;H</li>
+<li><a href="quantizer.html">Quantizer</a> — snap S&amp;H output to musical scales</li>
+<li><a href="clock.html">Clock</a> — the trigger source that controls sampling rate</li>
+<li><a href="lfo.html">LFO</a> — continuous modulation alternative to stepped S&amp;H</li>
+<li><a href="slow-psybient.html">Slow Psybient</a> — S&amp;H patched to reverb send and delay feedback</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>
