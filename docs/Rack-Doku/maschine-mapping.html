@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maschine MK2 — Live Control Setup — VCV Rack Handbook</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="layout">
+<nav id="sidebar">
+<h1>VCV Rack Handbook</h1>
+<div class="section-title" onclick="toggle('sec-0')">Common<span class="arrow">›</span></div>
+<div class="section-content" id="sec-0">
+<a href="readme.html">Overview</a>
+<a href="mental-model.html">Signal Flow & Concepts</a>
+<a href="how-a-patch-works.html">How a Patch Works</a>
+<a href="glossary.html">Glossary</a>
+<a href="userguide.html">Using VCV Rack</a>
+<a href="patching-use-cases.html">Patching Use Cases</a>
+<a href="faq.html">FAQ</a>
+</div>
+<div class="section-title" onclick="toggle('sec-1')">Modules<span class="arrow">›</span></div>
+<div class="section-content" id="sec-1">
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-0')">Sound Generation<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-0">
+<a href="vco.html" class="sub-link">VCO</a>
+<a href="noise.html" class="sub-link">Noise</a>
+<a href="wavetable.html" class="sub-link">Wavetable</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-1')">Sound Shaping<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-1">
+<a href="vcf.html" class="sub-link">VCF</a>
+<a href="vca.html" class="sub-link">VCA</a>
+<a href="waveshaper-distortion.html" class="sub-link">Waveshaper & Distortion</a>
+<a href="delay-reverb-chorus.html" class="sub-link">Delay, Reverb & Chorus</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-2')">Modulation / Control<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-2">
+<a href="envelope.html" class="sub-link">Envelopes</a>
+<a href="lfo.html" class="sub-link">LFO</a>
+<a href="sequencer.html" class="sub-link">Sequencers</a>
+<a href="sample-hold.html" class="sub-link">Sample & Hold</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-3')">Utilities<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-3">
+<a href="mixer.html" class="sub-link">Mixer</a>
+<a href="attenuverter.html" class="sub-link">Attenuverter</a>
+<a href="mult-splitter.html" class="sub-link">Mult & Splitter</a>
+<a href="quantizer.html" class="sub-link">Quantizer</a>
+<a href="clock.html" class="sub-link">Clock</a>
+<a href="logic.html" class="sub-link">Logic</a>
+</div>
+<div class="sub-section-title" onclick="event.stopPropagation();toggle('sec-1-sub-4')">MIDI / I/O<span class="arrow">›</span></div>
+<div class="sub-content" id="sec-1-sub-4">
+<a href="midi-cv.html" class="sub-link">MIDI to CV</a>
+<a href="audio-output.html" class="sub-link">Audio Output</a>
+</div>
+</div>
+<div class="section-title open" onclick="toggle('sec-2')">Tutorials<span class="arrow">›</span></div>
+<div class="section-content open" id="sec-2">
+<a href="first-patch.html">Your First Patch</a>
+<a href="intermediate-patch.html">Intermediate Patch</a>
+<a href="slow-psybient.html">Slow Psybient</a>
+<a href="maschine-mapping.html" aria-current="page">Maschine MK2 Live Control</a>
+</div>
+</nav>
+<script>
+function toggle(id){
+  var c=document.getElementById(id);
+  var h=c.previousElementSibling;
+  c.classList.toggle("open");
+  h.classList.toggle("open");
+}
+</script>
+<div id="content">
+  <header>VCV Rack Handbook — <strong>Maschine MK2 — Live Control Setup</strong></header>
+  <main>
+    <article>
+<h1>Maschine MK2 — Live Control Setup</h1>
+<p>This guide maps a Native Instruments Maschine MK2 to the Slow Psybient patch for live performance. You get pattern switching on the pads, sound and FX control on the encoders, and mixer control on a second encoder page — all on a single MIDI channel with no laptop keyboard required during performance.</p>
+<h2>What you need</h2>
+<ul><li>Maschine MK2 with NI Controller Editor installed</li>
+<li>VCV Rack with the Slow Psybient patch loaded</li>
+<li>Impromptu Modular plugin (free) — for PhraseSeq16 and Clocked</li></ul>
+<hr>
+<h2>Step 1 — NI Controller Editor setup</h2>
+<p>Open Controller Editor and select your Maschine MK2.</p>
+<h3>MIDI channel</h3>
+<p>Set the global MIDI channel to <strong>1</strong> for all pads and encoders. One channel keeps the VCV Rack setup simple.</p>
+<h3>Pad configuration</h3>
+<p>The 16 pads are split into four rows of four. Each row controls one voice, sending MIDI notes that trigger pattern switches in VCV Rack.</p>
+<table>
+<tr><th>Row</th><th>Pads</th><th>MIDI Notes</th><th>Voice</th><th>LED Color</th></tr>
+<tr><td>1 (top)</td><td>1–4</td><td>36, 37, 38, 39</td><td>Drums</td><td>Red</td></tr>
+<tr><td>2</td><td>5–8</td><td>40, 41, 42, 43</td><td>Bass</td><td>Blue</td></tr>
+<tr><td>3</td><td>9–12</td><td>44, 45, 46, 47</td><td>Pads / Texture</td><td>Green</td></tr>
+<tr><td>4 (bottom)</td><td>13–16</td><td>48, 49, 50, 51</td><td>Synth</td><td>Yellow</td></tr>
+</table>
+<p>For each pad in Controller Editor:</p>
+<ol><li>Click the pad</li>
+<li>Set <strong>Type</strong> to Note</li>
+<li>Set <strong>Note</strong> to the value from the table above</li>
+<li>Set <strong>On Color</strong> to the row color at full brightness</li>
+<li>Set <strong>Off Color</strong> to the same hue at around 20% brightness — this makes inactive patterns visually distinct without going dark</li></ol>
+<p>Each group of four pads represents patterns A, B, C, D for that voice. Hitting a pad queues the corresponding pattern, which switches at the end of the current bar.</p>
+<h3>Encoder pages</h3>
+<p>The 8 encoders work across two pages, switched with the Left/Right direction buttons on the Maschine.</p>
+<p><strong>Page 1 — Sound &amp; Modulation</strong></p>
+<table>
+<tr><th>Encoder</th><th>CC</th><th>Controls</th></tr>
+<tr><td>1</td><td>CC1</td><td>Drone filter cutoff</td></tr>
+<tr><td>2</td><td>CC2</td><td>Drone filter resonance</td></tr>
+<tr><td>3</td><td>CC3</td><td>Drone LFO rate</td></tr>
+<tr><td>4</td><td>CC4</td><td>Drone LFO depth (to filter)</td></tr>
+<tr><td>5</td><td>CC5</td><td>Bass filter cutoff</td></tr>
+<tr><td>6</td><td>CC6</td><td>Bass envelope decay</td></tr>
+<tr><td>7</td><td>CC7</td><td>Synth / texture filter cutoff</td></tr>
+<tr><td>8</td><td>CC8</td><td>Master reverb send</td></tr>
+</table>
+<p><strong>Page 2 — FX &amp; Timing</strong></p>
+<table>
+<tr><th>Encoder</th><th>CC</th><th>Controls</th></tr>
+<tr><td>1</td><td>CC9</td><td>Reverb decay time</td></tr>
+<tr><td>2</td><td>CC10</td><td>Reverb pre-delay</td></tr>
+<tr><td>3</td><td>CC11</td><td>Delay time</td></tr>
+<tr><td>4</td><td>CC12</td><td>Delay feedback</td></tr>
+<tr><td>5</td><td>CC13</td><td>Delay mix / send</td></tr>
+<tr><td>6</td><td>CC14</td><td>Master LFO rate</td></tr>
+<tr><td>7</td><td>CC15</td><td>S&amp;H trigger rate</td></tr>
+<tr><td>8</td><td>CC16</td><td>Master tempo</td></tr>
+</table>
+<p>For each encoder, set <strong>Type</strong> to CC and assign the CC number from the table. Use <strong>relative</strong> mode if your encoders jump, <strong>absolute</strong> if they feel smooth.</p>
+<p>Save the preset in Controller Editor before moving to VCV Rack.</p>
+<hr>
+<h2>Step 2 — VCV Rack MIDI modules</h2>
+<p>Add these modules to your patch:</p>
+<p><strong>MIDI-GATE</strong> (Fundamental) — converts the pad note-ons into gate signals, one gate output per note. Use four instances, one per voice row, or one instance and route outputs by note number.</p>
+<p><strong>MIDI-MAP</strong> (VCV) — right-click any parameter in your patch, select &quot;Map to MIDI CC&quot;, then move the corresponding encoder. Repeat for all 16 CCs across both encoder pages. MIDI-MAP can handle all 16 in two stacked modules (8 slots each).</p>
+<hr>
+<h2>Step 3 — Pattern switching with PhraseSeq16</h2>
+<p>Add four instances of <strong>Impromptu PhraseSeq16</strong> — one for each voice (Drums, Bass, Pads, Synth).</p>
+<p>Each PhraseSeq16 stores up to 16 patterns. You&#x27;ll use patterns 1–4 (corresponding to pads A–D per row).</p>
+<p><strong>Wiring per sequencer:</strong></p>
+<ol><li>Connect <strong>Impromptu Clocked</strong> master clock output → PhraseSeq16 clock input</li>
+<li>Connect Clocked&#x27;s <strong>bar output</strong> (or end-of-phrase trigger) → PhraseSeq16 reset/phrase-advance input — this is what makes switching wait for the bar end</li>
+<li>Connect the MIDI-GATE output for that voice&#x27;s pads → PhraseSeq16 phrase select CV input</li></ol>
+<p>When you hit pad 1 in the drums row, the gate fires, PhraseSeq16 queues pattern 1, and at the next bar boundary it switches cleanly.</p>
+<p><strong>Programming patterns:</strong> Click into each PhraseSeq16, select a pattern slot (1–4), and program the steps. The drums sequencer drives your kick/snare/hat trigger signals; the bass sequencer drives the bass VCO pitch and gate.</p>
+<hr>
+<h2>Step 4 — MIDI-MAP routing</h2>
+<p>Right-click each target parameter and map it:</p>
+<ul><li>Drone VCF cutoff knob → CC1</li>
+<li>Drone VCF resonance → CC2</li>
+<li>Drone LFO rate → CC3</li>
+<li>Drone LFO attenuverter (depth) → CC4</li>
+<li>Bass VCF cutoff → CC5</li>
+<li>Bass ADSR decay → CC6</li>
+<li>Synth/texture VCF cutoff → CC7</li>
+<li>Reverb send mixer level → CC8</li>
+<li>Plateau decay → CC9</li>
+<li>Plateau pre-delay → CC10</li>
+<li>Chronoblob delay time → CC11</li>
+<li>Chronoblob feedback → CC12</li>
+<li>Chronoblob mix → CC13</li>
+<li>Slow modulation LFO rate → CC14</li>
+<li>S&amp;H trigger clock rate → CC15</li>
+<li>Clocked BPM → CC16</li></ul>
+<p>Move each encoder after mapping to confirm it moves the right parameter.</p>
+<hr>
+<h2>Performing live</h2>
+<p><strong>Before the set:</strong> load the patch, confirm MIDI is flowing (wiggle an encoder, watch the mapped parameter move), run through each pad row to confirm pattern switching works.</p>
+<p><strong>During the set:</strong></p>
+<ul><li>Use pad rows to build and break down the arrangement — start with just drums + bass, bring in pads and synth as the track evolves</li>
+<li>Page 1 encoders for tonal shaping — filter and LFO are the most expressive</li>
+<li>Page 2 encoders for space — reverb and delay feedback define the psychedelic character</li>
+<li>Encoder 16 (tempo) lets you nudge BPM if needed, but keep changes small at 89 BPM</li></ul>
+<p><strong>Pattern switching feel:</strong> after hitting a pad, the switch happens at the bar end — at 89 BPM that&#x27;s about 2.7 seconds. Hit the pad slightly early if you want the change to land on a specific moment.</p>
+<hr>
+<h2>Where to go next</h2>
+<ul><li><a href="slow-psybient.html">Slow Psybient</a> — the full patch this mapping is built for</li>
+<li><a href="lfo.html">LFO</a> — understanding the modulation sources you&#x27;re controlling</li>
+<li><a href="delay-reverb-chorus.html">Delay, Reverb &amp; Chorus</a> — the FX parameters on encoder page 2</li>
+<li><a href="sequencer.html">Sequencers</a> — deeper look at PhraseSeq16 and pattern-based sequencing</li></ul>
+<hr>
+<p><em>Version: 2026-06-17.</em></p>
+    </article>
+  </main>
+  <footer>VCV Rack Patcher's Handbook · 2026</footer>
+</div>
+</div>
+</body>
+</html>
