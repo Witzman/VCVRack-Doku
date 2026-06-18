@@ -20,7 +20,7 @@ There are two VCA channels on the module. The second channel follows the same pa
 
 **Patching tips:** For a basic voice, connect your ADSR's ENV output to the VCA's CV input and your filtered oscillator to IN. The LEVEL knob acts as a manual volume offset — leave it at 0 if your envelope reaches full amplitude on its own. For a tremolo effect, replace the envelope with a slow LFO patched to CV. Use the linear input for modulation routing where you want predictable, proportional response.
 
-## VCA (VCV Free)
+## VCA-2 (VCV Free)
 
 A simpler single-channel VCA with only one input and exponential response. Use this when you just need a basic gated amplifier and don't need the two-channel or linear mode features of the main VCA.
 

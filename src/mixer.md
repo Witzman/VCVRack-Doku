@@ -41,7 +41,7 @@ Bogaudio provides a more comprehensive mixer with stereo channels, per-channel p
 
 **Patching tips:** Use pan CV inputs to automate stereo movement — a slow triangle LFO on pan produces a gradual side-to-side sweep (autopan effect). Mute buttons let you quickly A/B voices during patch building.
 
-### CVMix (VCV Free)
+### CV Mix (VCV Free)
 
 A four-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.
 

@@ -20,7 +20,7 @@ Bogaudio's S&H is a clean, accurate sample-and-hold with a track mode (output fo
 
 ## Sample & Hold ASR (VCV Free)
 
-SHASR combines Sample & Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.
+Sample & Hold ASR combines Sample & Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
