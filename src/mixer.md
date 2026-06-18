@@ -2,9 +2,9 @@
 
 A mixer combines multiple audio signals into one output, with individual level control for each channel. In a modular patch, mixers appear at several points: combining multiple oscillator waveforms, summing voices before a shared filter, blending dry and wet signals in an effects send, and at the final stage before the audio output. CV signals can also be mixed to combine multiple modulation sources.
 
-## Mixer (Fundamental)
+## Mix (VCV Free)
 
-The Fundamental Mixer has four mono input channels each with a LEVEL knob, and two outputs: a mono sum and a stereo sum (channels 1-2 panned left, channels 3-4 panned right). Simple and immediately useful.
+The VCV Free Mix has four mono input channels each with a LEVEL knob, and two outputs: a mono sum and a stereo sum (channels 1-2 panned left, channels 3-4 panned right). Simple and immediately useful.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -18,7 +18,7 @@ The Fundamental Mixer has four mono input channels each with a LEVEL knob, and t
 
 **Patching tips:** The stereo output places channels 1-2 left and 3-4 right — put your bass and lead on 1-2 so they appear center, and pads on 3-4 for width. For a send effect, take the MIX output to your reverb input, then mix the reverb return with the dry signal in a second mixer channel.
 
-## VCMixer (Fundamental)
+## VCA Mix (VCV Free)
 
 An extended mixer with CV-controllable channel levels. Each channel has both a LEVEL knob and a CV input that scales the knob value. This allows dynamic volume control per channel — useful for automated fade-ins, envelope-shaped channel levels, or LFO-driven volume animation.
 
@@ -30,7 +30,7 @@ An extended mixer with CV-controllable channel levels. Each channel has both a L
 
 ## Bogaudio Mixer (Bogaudio)
 
-Bogaudio provides a more comprehensive mixer with stereo channels, per-channel pan controls, mute buttons, and optional solo. This is a better choice than Fundamental's mixer for patches with four or more voices that need proper stereo placement.
+Bogaudio provides a more comprehensive mixer with stereo channels, per-channel pan controls, mute buttons, and optional solo. This is a better choice than VCV Free's Mix for patches with four or more voices that need proper stereo placement.
 
 | Feature | Description |
 |---------|-------------|
@@ -41,11 +41,11 @@ Bogaudio provides a more comprehensive mixer with stereo channels, per-channel p
 
 **Patching tips:** Use pan CV inputs to automate stereo movement — a slow triangle LFO on pan produces a gradual side-to-side sweep (autopan effect). Mute buttons let you quickly A/B voices during patch building.
 
-### CVMix (Fundamental)
+### CVMix (VCV Free)
 
 A four-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.
 
-### 8vert (Fundamental)
+### 8vert (VCV Free)
 
 Eight attenuverters that can function as a simple eight-input mixer when their outputs are connected to a multi-input module. See [Attenuverter](attenuverter.md) for full details.
 

@@ -4,7 +4,7 @@ An attenuverter scales a CV signal up or down (attenuation) and optionally flips
 
 Without attenuverters, a signal going from an LFO to a filter might swing the cutoff across the entire frequency range when you only want a subtle movement. An attenuverter scales that swing down to a useful range. If you want the filter to close as the LFO rises rather than open, an attenuverter inverts the signal.
 
-## 8vert (Fundamental)
+## 8vert (VCV Free)
 
 8vert provides eight independent attenuverter channels. Each channel has an input, a knob ranging from -1 to +1, and an output. At +1, the signal passes unchanged. At 0, the output is zero. At -1, the signal is inverted. Values between these points scale and optionally flip the signal.
 
@@ -25,7 +25,7 @@ Adds a fixed offset to a CV signal — shifts the entire voltage range up or dow
 
 **Patching tips:** After an S&H random output, add an OFFSET to bias random voltages into a higher or lower range before sending to a quantizer. This shifts which octave or register the random pitches land in.
 
-### Fundamental 8vert as CV source
+### VCV Free 8vert as CV source
 
 With no inputs patched, 8vert's eight knobs become eight independent manual CV sources. Set knob positions for fixed offsets, pitch CV values, or modulation biases. This is a free way to create up to eight manually-tuned control voltages without dedicated offset or CV source modules.
 

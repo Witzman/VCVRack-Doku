@@ -2,9 +2,9 @@
 
 A quantizer snaps incoming CV voltages to the nearest note in a defined musical scale. Without a quantizer, a random CV source or a freely-turned knob will output arbitrary voltages that don't correspond to musical pitches. With a quantizer, those same voltages snap to the nearest note in C minor, pentatonic, or whatever scale you choose — making random or manual CVs immediately musical.
 
-## Quantizer (Fundamental)
+## Quantizer (VCV Free)
 
-The Fundamental Quantizer allows you to select which individual notes of the chromatic scale are active. Any input voltage is snapped to the nearest active note. It is intentionally simple — no scale presets, just 12 note buttons you toggle on and off.
+The VCV Free Quantizer allows you to select which individual notes of the chromatic scale are active. Any input voltage is snapped to the nearest active note. It is intentionally simple — no scale presets, just 12 note buttons you toggle on and off.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -15,7 +15,7 @@ The Fundamental Quantizer allows you to select which individual notes of the chr
 | IN | Input | Unquantized CV |
 | OUT | Output | Quantized CV snapped to selected notes |
 
-**Patching tips:** For a C minor scale, activate: C, D, Eb, F, G, Ab, Bb. Feed a random S&H output to IN — the OUT produces melodic fragments in C minor. For a pentatonic scale, activate only 5 notes; the output will feel more immediately musical with fewer dissonant possibilities. The Fundamental Quantizer fires a trigger on each output change — useful as a gate source for accompanying envelopes.
+**Patching tips:** For a C minor scale, activate: C, D, Eb, F, G, Ab, Bb. Feed a random S&H output to IN — the OUT produces melodic fragments in C minor. For a pentatonic scale, activate only 5 notes; the output will feel more immediately musical with fewer dissonant possibilities. The VCV Free Quantizer fires a trigger on each output change — useful as a gate source for accompanying envelopes.
 
 ## Bogaudio ADDR-SEQ as quantizer
 
@@ -23,7 +23,7 @@ Bogaudio's ADDR-SEQ is an addressable step sequencer that can function as a quan
 
 ## Count Modula Quant (Count Modula)
 
-Count Modula's quantizer provides scale presets (major, minor, pentatonic, blues, modes, etc.) alongside a custom note toggle interface. The preset system makes it faster to work than the Fundamental Quantizer when you want standard scales without manually toggling notes.
+Count Modula's quantizer provides scale presets (major, minor, pentatonic, blues, modes, etc.) alongside a custom note toggle interface. The preset system makes it faster to work than the VCV Free Quantizer when you want standard scales without manually toggling notes.
 
 | Feature | Description |
 |---------|-------------|

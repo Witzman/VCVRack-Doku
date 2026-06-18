@@ -2,9 +2,9 @@
 
 A wavetable oscillator reads through a stored table of waveform shapes rather than calculating a waveform mathematically. The key advantage is the ability to sweep through many different timbres using a single CV — position modulation moves the playback point through the table, morphing from one waveform to the next. This produces animated, evolving tones that a standard VCO cannot replicate.
 
-## WTVCO (Fundamental)
+## Wavetable VCO (VCV Free)
 
-The WTVCO is VCV Rack's built-in wavetable oscillator. It comes with a bank of wavetables covering analog, digital, vocal, and spectral shapes. A POS knob and CV input control which wavetable position is being read.
+The Wavetable VCO is VCV Rack's built-in wavetable oscillator. It comes with a bank of wavetables covering analog, digital, vocal, and spectral shapes. A POS knob and CV input control which wavetable position is being read.
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
@@ -19,7 +19,7 @@ The WTVCO is VCV Rack's built-in wavetable oscillator. It comes with a bank of w
 | POS | Input | CV morphs through wavetable positions |
 | OUT | Output | Audio output |
 
-**Patching tips:** Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. The BANK selector changes the entire character of the oscillator — try all banks before committing.
+**Patching tips:** Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. The BANK selector changes the entire character of the Wavetable VCO — try all banks before committing.
 
 ## Surge XT Wavetable VCO (Surge XT)
 
@@ -36,9 +36,9 @@ The Formant parameter separates timbral character from pitch — raising formant
 
 **Patching tips:** Load a vocal or harmonics wavetable and modulate Position with a very slow envelope (8–16 second attack) for evolving pad textures. Pair with Plateau reverb and a long VCA release for cinematic soundscapes.
 
-### WTLFO (Fundamental)
+### Wavetable LFO (VCV Free)
 
-Technically an LFO, but uses the same wavetable engine as WTVCO at sub-audio rates. Useful for producing unusual modulation shapes rather than standard sine/triangle/square LFO waveforms. See [LFO](lfo.md) for context on using it as a modulator.
+Technically an LFO, but uses the same wavetable engine as Wavetable VCO at sub-audio rates. Useful for producing unusual modulation shapes rather than standard sine/triangle/square LFO waveforms. See [LFO](lfo.md) for context on using it as a modulator.
 
 ### Valley Dexter (Valley)
 

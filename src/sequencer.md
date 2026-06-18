@@ -2,9 +2,9 @@
 
 A sequencer stores a series of values and outputs them one at a time in response to a clock. The output is typically a V/Oct pitch CV for melodic sequences, but sequencers can also output gate signals, trigger patterns, and modulation values. Sequencers are the primary way to make a patch play musical patterns autonomously without a keyboard or MIDI input.
 
-## SEQ-3 (Fundamental)
+## SEQ 3 (VCV Free)
 
-SEQ-3 is an 8-step sequencer included with Rack Free. Each step has a voltage knob and a gate button. When clocked, the module advances one step per clock pulse and outputs the current step's voltage and gate state.
+SEQ 3 is an 8-step sequencer included with Rack Free. Each step has a voltage knob and a gate button. When clocked, the module advances one step per clock pulse and outputs the current step's voltage and gate state.
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
@@ -56,9 +56,9 @@ A step sequencer combined with a signal multiplexer. Each step has a voltage, ga
 
 Routes an input signal to one of several outputs based on a clock step. Useful for switching between sound sources or effects routings rhythmically rather than for pitch sequencing.
 
-### VCV MIDI-CV + keyboard
+### VCV Core MIDI to CV + keyboard
 
-For live playing rather than sequenced patterns, a MIDI keyboard connected through MIDI-CV is the simplest approach. See [MIDI to CV](midi-cv.md) for setup details.
+For live playing rather than sequenced patterns, a MIDI keyboard connected through MIDI to CV is the simplest approach. See [MIDI to CV](midi-cv.md) for setup details.
 
 ## Where to go next
 

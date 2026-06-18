@@ -4,7 +4,7 @@ A mult (multiple) copies one signal to several outputs so the same CV or audio c
 
 In VCV Rack, you can often connect one output to multiple inputs simply by clicking the output and adding more cables. The built-in mult behavior means you may not always need a dedicated mult module. However, explicit mult modules are useful for documentation clarity and when driving many destinations from a single source.
 
-## Split (Fundamental)
+## Split (VCV Free)
 
 Split takes one polyphonic cable and outputs up to 16 individual monophonic channels. Polyphonic cables in VCV Rack carry multiple signals in a single wire. When a polyphonic source (like a MIDI keyboard outputting polyphonic pitch CV) needs to feed multiple monophonic destinations, Split separates the channels.
 
@@ -13,9 +13,9 @@ Split takes one polyphonic cable and outputs up to 16 individual monophonic chan
 | POLY | Input | Polyphonic cable input |
 | 1–16 | Output | Individual channel outputs |
 
-**Patching tips:** Connect the POLY output of a MIDI-CV module (in polyphonic mode) to Split's input. Each output then carries one voice's pitch CV. Route each to its own VCO for true polyphony.
+**Patching tips:** Connect the POLY output of a MIDI to CV module (in polyphonic mode) to Split's input. Each output then carries one voice's pitch CV. Route each to its own VCO for true polyphony.
 
-## Merge (Fundamental)
+## Merge (VCV Free)
 
 The inverse of Split — takes up to 16 monophonic inputs and combines them into one polyphonic cable output. Used to feed polyphonic-aware modules from individual signals.
 
@@ -26,7 +26,7 @@ The inverse of Split — takes up to 16 monophonic inputs and combines them into
 
 **Patching tips:** Merge several separate LFO outputs into one polyphonic cable for use with polyphonic-capable modules. Or merge individual voices' outputs into a single polyphonic bus for a polyphonic VCF.
 
-## Mult (Fundamental)
+## Mult (VCV Free)
 
 A simple passive mult: one input connected to multiple outputs. In VCV Rack, this is largely redundant since any output cable can be clicked repeatedly to add multiple destinations. However, explicit Mult modules make the signal flow visually clearer when one source drives many destinations.
 

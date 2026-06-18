@@ -78,7 +78,7 @@ Save the preset in Controller Editor before moving to VCV Rack.
 
 Add these modules to your patch:
 
-**MIDI-GATE** (Fundamental) — converts the pad note-ons into gate signals, one gate output per note. Use four instances, one per voice row, or one instance and route outputs by note number.
+**MIDI to Gate** (VCV Free) — converts the pad note-ons into gate signals, one gate output per note. Use four instances, one per voice row, or one instance and route outputs by note number.
 
 **MIDI-MAP** (VCV) — right-click any parameter in your patch, select "Map to MIDI CC", then move the corresponding encoder. Repeat for all 16 CCs across both encoder pages. MIDI-MAP can handle all 16 in two stacked modules (8 slots each).
 
@@ -94,7 +94,7 @@ Each PhraseSeq16 stores up to 16 patterns. You'll use patterns 1–4 (correspond
 
 1. Connect **Impromptu Clocked** master clock output → PhraseSeq16 clock input
 2. Connect Clocked's **bar output** (or end-of-phrase trigger) → PhraseSeq16 reset/phrase-advance input — this is what makes switching wait for the bar end
-3. Connect the MIDI-GATE output for that voice's pads → PhraseSeq16 phrase select CV input
+3. Connect the MIDI to Gate output for that voice's pads → PhraseSeq16 phrase select CV input
 
 When you hit pad 1 in the drums row, the gate fires, PhraseSeq16 queues pattern 1, and at the next bar boundary it switches cleanly.
 

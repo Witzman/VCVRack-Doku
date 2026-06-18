@@ -38,7 +38,7 @@ A straightforward master clock with four outputs, each with a fixed division rat
 
 Takes a master clock input and outputs multiple divided rates. Useful as an extension when your master clock module doesn't have enough outputs — chain it after Clocked to get additional divisions.
 
-### Fundamental Clock (if available)
+### VCV Free Clock (if available)
 
 VCV Rack Free's core modules don't include a dedicated clock generator. Clocked (Impromptu) or CLKD (Bogaudio) are the recommended free options.
 

@@ -16,9 +16,9 @@ Bogaudio's S&H is a clean, accurate sample-and-hold with a track mode (output fo
 | TRIG | Input | Trigger or gate to initiate sampling |
 | OUT | Output | Held voltage |
 
-**Patching tips:** Connect Fundamental Noise's White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO's V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.
+**Patching tips:** Connect VCV Free Noise's White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO's V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.
 
-## SHASR (Fundamental)
+## Sample & Hold ASR (VCV Free)
 
 SHASR combines Sample & Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.
 

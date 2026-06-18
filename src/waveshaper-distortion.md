@@ -38,9 +38,9 @@ A waveshaper with multiple transfer function modes: overdrive, clip, fold, and o
 
 **Patching tips:** Use SHAPE at low amounts with the overdrive mode on a pad to add harmonic warmth without obvious distortion. Sweep SHAPE with an envelope for a distortion that opens up on transients.
 
-### VCV Rack DRIVE (Fundamental — via VCF)
+### VCV Free VCF DRIVE
 
-The Fundamental VCF has a built-in DRIVE parameter that applies soft saturation before filtering. It is not a standalone waveshaper, but at higher settings it adds audible harmonic distortion to the filtered signal. This is the simplest way to add warmth without adding an extra module.
+The VCV Free VCF has a built-in DRIVE parameter that applies soft saturation before filtering. It is not a standalone waveshaper, but at higher settings it adds audible harmonic distortion to the filtered signal. This is the simplest way to add warmth without adding an extra module.
 
 ### AS WaveFolder (AS)
 

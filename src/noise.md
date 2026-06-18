@@ -2,7 +2,7 @@
 
 Noise modules generate random, unpitched signals across a range of frequencies. In a patch, noise serves several roles: it can be a sound source for percussion and wind textures, a randomness source for CV modulation, or a component layered with a VCO to add grit and breathiness. Noise is always present in the signal path of electronic percussion and is one of the most versatile raw materials in modular synthesis.
 
-## Noise (Fundamental)
+## Noise (VCV Free)
 
 The Noise module bundled with VCV Rack Free outputs five simultaneous noise colors, each with a different frequency distribution. No parameters — just outputs.
 
@@ -39,7 +39,7 @@ Valley's Topograph drum module generates noise-based percussion internally. If y
 
 ### ML Modules Noise (ML Modules)
 
-ML Modules provides a noise source alongside other utilities in their free pack. Outputs white noise; useful as a compact addition when you need a noise source without taking up a full Bogaudio or Fundamental slot.
+ML Modules provides a noise source alongside other utilities in their free pack. Outputs white noise; useful as a compact addition when you need a noise source without taking up a full Bogaudio or VCV Free slot.
 
 ## Where to go next
 
