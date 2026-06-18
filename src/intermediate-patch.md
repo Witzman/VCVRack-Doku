@@ -28,34 +28,34 @@ You will hear nothing yet — the clock only outputs trigger pulses.
 
 ## Step 3 — Add a sequencer
 
-Add **SEQ-3** (Fundamental) from the module browser.
+Add **SEQ 3** (VCV Free) from the module browser.
 
-- Connect Clocked's CLK1 output to SEQ-3's CLK input.
+- Connect Clocked's CLK1 output to SEQ 3's CLK input.
 - Set STEPS to 4 (four-step loop).
 - Set the four step knobs to C3, E3, G3, A3 (these are approximately -1V, -0.75V, -0.5V, -0.25V — tune by ear against the VCO you add next).
 - Enable all four gate buttons.
 
 ## Step 4 — Add the voice
 
-Add **Bogaudio VCO** (search "Bogaudio VCO" in the browser). This is a more flexible oscillator than Fundamental's VCO-1.
+Add **Bogaudio VCO** (search "Bogaudio VCO" in the browser). This is a more flexible oscillator than VCV Free's VCO.
 
-- Connect SEQ-3's ROW1 output to Bogaudio VCO's V/OCT input.
-- Connect SEQ-3's GATE output to the next step's input (keep reading).
+- Connect SEQ 3's ROW1 output to Bogaudio VCO's V/OCT input.
+- Connect SEQ 3's GATE output to the next step's input (keep reading).
 - Take the SAW output from Bogaudio VCO forward into the filter.
 
 ## Step 5 — Add filter and envelope
 
-Add **Fundamental VCF** and **Bogaudio ADSR**.
+Add **VCV Free VCF** and **Bogaudio ADSR**.
 
 - Connect Bogaudio VCO's SAW output to VCF IN.
-- Take VCF's LP output to a VCA (add **Fundamental VCA**).
-- Connect SEQ-3's GATE to Bogaudio ADSR's GATE input.
+- Take VCF's LP output to a VCA (add **VCV Free VCA**).
+- Connect SEQ 3's GATE to Bogaudio ADSR's GATE input.
 - Connect Bogaudio ADSR's ENV output to VCA's CV input.
 - Connect VCA's OUT to the Audio module inputs.
 
 Set the ADSR: Attack 10ms, Decay 200ms, Sustain 0.6, Release 300ms. You should now hear a four-note sequence.
 
-**What to tweak first:** Adjust the SEQ-3 step knob voltages while the sequence runs to change the pitches. The four notes will drift through whatever intervals you set — use the VCO's built-in tuner display or tune by ear.
+**What to tweak first:** Adjust the SEQ 3 step knob voltages while the sequence runs to change the pitches. The four notes will drift through whatever intervals you set — use the VCO's built-in tuner display or tune by ear.
 
 ## Step 6 — Add a tempo-synced filter sweep
 
@@ -64,7 +64,7 @@ This is the step that makes the patch feel professional rather than static.
 Add **Bogaudio LFO**.
 
 - Set Bogaudio LFO's FREQ to match your tempo: at 120 BPM, one beat per second = 2 Hz.
-- Take the SIN output through a **Fundamental 8vert** channel (attenuate to about 0.4).
+- Take the SIN output through a **VCV Free 8vert** channel (attenuate to about 0.4).
 - Connect the attenuated output to VCF's FREQ CV input.
 
 Now the filter opens and closes in time with the beat, giving the sequence a rhythmic breathing quality.
@@ -77,7 +77,7 @@ Bogaudio ADSR has a separate GATE input and a VEL input. Add randomness to veloc
 
 - Add **Bogaudio S&H**.
 - Connect Clocked's CLK1 to S&H's TRIG input.
-- Connect **Fundamental Noise** (White output) to S&H's IN input.
+- Connect **VCV Free Noise** (White output) to S&H's IN input.
 - Connect S&H's OUT through an 8vert channel (attenuate to 0.3) to Bogaudio ADSR's VEL input.
 
 The ADSR now receives a different random velocity on each step — some notes hit harder, some softer. This is the single biggest step toward making a sequenced patch feel alive.
