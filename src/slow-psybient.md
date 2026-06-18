@@ -71,7 +71,7 @@ The bass is simple, mono, and low. It sits below the pad and pulses on specific 
 
 Brief, bright melodic fragments that appear and disappear — the "psychedelic" element. These use random pitch selection with a quantizer so they always sound musical.
 
-**Modules needed:** VCV Free VCO (or WTVCO), VCV Free VCF, VCV Free VCA, Bogaudio ADSR, Bogaudio S&H, VCV Free Noise, VCV Free Quantizer, VCV Free 8vert.
+**Modules needed:** VCV Free VCO (or VCV Free VCO), VCV Free VCF, VCV Free VCA, Bogaudio ADSR, Bogaudio S&H, VCV Free Noise, VCV Free Quantizer, VCV Free 8vert.
 
 **Build it:**
 
