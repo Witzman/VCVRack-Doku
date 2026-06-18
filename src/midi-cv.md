@@ -35,7 +35,7 @@ A companion module to MIDI-CV that converts MIDI Control Change messages (knobs,
 
 **Patching tips:** Assign your controller's filter knob to CC74 (standard) and map it to MIDI-CC output 1. Patch that output to VCF FREQ CV for hands-on filter control from hardware. Use multiple MIDI-CC channels for a live performance setup with tactile hardware control.
 
-### VCV Gate (VCV Core)
+### MIDI to Gate (VCV Core)
 
 Converts MIDI notes to gate outputs — each note produces its own gate when that specific note is played. Useful for triggering drum voices from a MIDI keyboard where each key corresponds to a specific drum hit.
 
