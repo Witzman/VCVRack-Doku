@@ -58,7 +58,7 @@ The AUDIO module's L and R inputs receive your patch's final stereo audio output
 
 ## MIDI
 
-The **MIDI-CV** module (in Core) converts incoming MIDI notes to pitch CV and gate signals. Select your MIDI device in the module's display. The V/Oct output sends pitch CV; the Gate output sends a gate that's high while a key is held. Additional outputs include Velocity, Aftertouch, and Mod Wheel CV.
+The **MIDI to CV** module (VCV Core) converts incoming MIDI notes to pitch CV and gate signals. Select your MIDI device in the module's display. The V/Oct output sends pitch CV; the Gate output sends a gate that's high while a key is held. Additional outputs include Velocity, Aftertouch, and Mod Wheel CV.
 
 For sending MIDI out, the **CV-MIDI** module does the reverse: converts CV signals to outgoing MIDI messages.
 

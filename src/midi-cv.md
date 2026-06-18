@@ -2,9 +2,9 @@
 
 MIDI to CV modules convert incoming MIDI messages — note on/off, pitch, velocity, modulation wheel, aftertouch, and other controllers — into control voltages that modular modules understand. This is the bridge between a MIDI keyboard, DAW, or controller and your VCV Rack patch. Without a MIDI-CV converter, the patch operates in isolation from external MIDI instruments.
 
-## MIDI-CV (VCV Core)
+## MIDI to CV (VCV Core)
 
-The MIDI-CV module is included with VCV Rack Free as a core module (not part of any plugin — it appears under the VCV menu in the module browser). It accepts MIDI input from any device connected to your computer and outputs pitch CV, gate, velocity, aftertouch, and modulation wheel as separate signals.
+The MIDI to CV module is included with VCV Rack Free as a core module (not part of any plugin — it appears under the VCV menu in the module browser). It accepts MIDI input from any device connected to your computer and outputs pitch CV, gate, velocity, aftertouch, and modulation wheel as separate signals.
 
 | Output | Type | Description |
 |--------|------|-------------|

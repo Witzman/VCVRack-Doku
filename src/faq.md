@@ -58,13 +58,13 @@ Bypass modules one at a time to identify the culprit. Effects modules (reverb, c
 ## MIDI
 
 **My MIDI keyboard sends notes but I hear nothing in VCV Rack.**
-Confirm the MIDI-CV module is added and your device is selected in its display. Check that V/Oct is connected to the VCO's PITCH input and Gate is connected to the ADSR's Gate input.
+Confirm the MIDI to CV module is added and your device is selected in its display. Check that V/Oct is connected to the VCO's PITCH input and Gate is connected to the ADSR's Gate input.
 
 **Only one note plays at a time (no polyphony).**
-MIDI-CV in its default mode is monophonic. To enable polyphony, right-click the MIDI-CV module and change the polyphony mode to a chord or poly mode. Then use polyphonic-capable modules (most VCV Free modules support polyphony) for the rest of the chain.
+MIDI to CV in its default mode is monophonic. To enable polyphony, right-click the MIDI to CV module and change the polyphony mode to a chord or poly mode. Then use polyphonic-capable modules (most VCV Free modules support polyphony) for the rest of the chain.
 
 **Pitch bend doesn't work.**
-Connect the MIDI-CV module's **Pitch Bend** output to the VCO's FM input. Set the FM attenuverter to a value that corresponds to your desired bend range (a full semitone is roughly 0.083 V, so for ±2 semitone bend, use an attenuverter that scales the ±5 V bend signal to ±0.17 V).
+Connect the MIDI to CV module's **Pitch Bend** output to the VCO's FM input. Set the FM attenuverter to a value that corresponds to your desired bend range (a full semitone is roughly 0.083 V, so for ±2 semitone bend, use an attenuverter that scales the ±5 V bend signal to ±0.17 V).
 
 ---
 
