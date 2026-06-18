@@ -2,9 +2,9 @@
 
 An LFO is an oscillator running below audio rate — typically between 0.01 Hz and 20 Hz — whose output is used as a CV modulator rather than a sound source. LFOs add movement, variation, and life to otherwise static patches. A slow sine LFO on filter cutoff produces a gradual sweep; a faster triangle on oscillator pitch produces vibrato; a square wave into a VCA produces tremolo. Almost any parameter that accepts CV can be animated with an LFO.
 
-## LFO (Fundamental)
+## LFO (VCV Free)
 
-The Fundamental LFO provides simultaneous sine, triangle, sawtooth, reverse sawtooth, and square wave outputs. It can sync to an external clock and has a reset input for phase-locking.
+The VCV Free LFO provides simultaneous sine, triangle, sawtooth, reverse sawtooth, and square wave outputs. It can sync to an external clock and has a reset input for phase-locking.
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
@@ -19,9 +19,9 @@ The Fundamental LFO provides simultaneous sine, triangle, sawtooth, reverse sawt
 
 **Patching tips:** For vibrato, patch the SIN output through an [Attenuverter](attenuverter.md) to VCO FM — keep the depth small (a few semitones maximum). For filter animation, patch SIN or TRI to VCF FREQ CV. For rhythmic tremolo, use SQR at a musically related frequency and patch to VCA CV. Extremely slow LFOs (0.01–0.1 Hz) are essential for psybient and ambient patches — they provide gradual change that feels like the patch is "breathing" rather than obviously moving.
 
-## WTLFO (Fundamental)
+## Wavetable LFO (VCV Free)
 
-The WTLFO uses the same wavetable engine as the WTVCO oscillator but runs at LFO rates. You can select a wavetable bank and modulate position to produce unusual, non-standard modulation shapes — morphing between waveforms rather than switching between fixed ones. Useful when a standard sine or triangle doesn't produce the modulation character you want.
+The Wavetable LFO uses the same wavetable engine as the Wavetable VCO oscillator but runs at LFO rates. You can select a wavetable bank and modulate position to produce unusual, non-standard modulation shapes — morphing between waveforms rather than switching between fixed ones. Useful when a standard sine or triangle doesn't produce the modulation character you want.
 
 | Parameter | Description |
 |-----------|-------------|
@@ -58,7 +58,7 @@ A clean, minimal LFO. Covers sine, triangle, sawtooth, and square waveforms with
 
 ### Befaco Rampage as LFO
 
-When the CYCLE switch is engaged on Befaco Rampage, it loops its rise/fall contour continuously as an LFO. The SHAPE knob changes the curve type, allowing log, linear, and exponential slopes — shapes that Fundamental LFO's standard waveforms don't offer. See [Envelopes](envelope.md) for Rampage details.
+When the CYCLE switch is engaged on Befaco Rampage, it loops its rise/fall contour continuously as an LFO. The SHAPE knob changes the curve type, allowing log, linear, and exponential slopes — shapes that VCV Free LFO's standard waveforms don't offer. See [Envelopes](envelope.md) for Rampage details.
 
 ## Where to go next
 

@@ -2,7 +2,7 @@
 
 A VCF removes frequencies from an audio signal based on a cutoff point set by a knob or CV. It is the primary tonal shaping tool in subtractive synthesis: start with a harmonically rich source (a saw or square wave), then sculpt the brightness with the filter. The most common type is a low-pass filter, which lets frequencies below the cutoff through and attenuates those above it. Resonance adds a peak at the cutoff frequency, producing the characteristic sweeping "wah" character.
 
-## VCF (Fundamental)
+## VCF (VCV Free)
 
 The VCF bundled with Rack Free is a state-variable filter with simultaneous low-pass, high-pass, and band-pass outputs. It covers the core subtractive synthesis use cases and responds well to CV modulation.
 
@@ -50,7 +50,7 @@ Surge XT provides multiple filter modules including LP/HP/BP variations of Ladde
 
 ### Bogaudio LMHR (Bogaudio)
 
-A four-output state-variable filter (LP, HP, BP, notch) with a clean, accurate response. Good for precise frequency sculpting when the Fundamental VCF's DRIVE character isn't wanted.
+A four-output state-variable filter (LP, HP, BP, notch) with a clean, accurate response. Good for precise frequency sculpting when the VCV Free VCF's DRIVE character isn't wanted.
 
 ### Count Modula Filter (Count Modula)
 

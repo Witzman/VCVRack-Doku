@@ -2,9 +2,9 @@
 
 An envelope generates a shaped CV signal in response to a gate or trigger. When a note starts (gate goes high), the envelope rises and falls through a predefined contour; when the note ends (gate goes low), it releases. Envelopes are used primarily to control VCA volume and VCF cutoff, but they can modulate anything that accepts a CV input. The most common shape is ADSR: Attack, Decay, Sustain, Release.
 
-## ADSR (Fundamental)
+## ADSR EG (VCV Free)
 
-The Fundamental ADSR is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs both a positive (ENV) and inverted (INV) version.
+The VCV Free ADSR EG is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs both a positive (ENV) and inverted (INV) version.
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
@@ -56,7 +56,7 @@ A clean, minimal ADSR with standard parameters. Good starting point for simple p
 
 ### Befaco ADSR (Befaco)
 
-A compact ADSR from Befaco, smaller than Fundamental's. Behaves similarly to Fundamental ADSR with the addition of a VEL input for velocity-sensitive amplitude scaling.
+A compact ADSR from Befaco, smaller than VCV Free's. Behaves similarly to VCV Free ADSR EG with the addition of a VEL input for velocity-sensitive amplitude scaling.
 
 ## Where to go next
 

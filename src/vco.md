@@ -2,9 +2,9 @@
 
 A VCO is the sound source of your patch. It generates a continuous waveform at a pitch set by an incoming CV signal. Without a VCO (or another sound source), there is nothing to filter, shape, or amplify. Most patches start here. The standard pitch control format is V/Oct: one volt per octave, so middle C is typically 0V and the C one octave up is 1V.
 
-## VCO-1 (Fundamental)
+## VCO (VCV Free)
 
-The VCO-1 is the oscillator bundled with every VCV Rack installation. It covers the full range of classic subtractive synthesis waveforms and accepts V/Oct pitch CV, FM, and pulse width modulation.
+The VCO is the oscillator bundled with every VCV Rack installation. It covers the full range of classic subtractive synthesis waveforms and accepts V/Oct pitch CV, FM, and pulse width modulation.
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
@@ -20,7 +20,7 @@ The VCO-1 is the oscillator bundled with every VCV Rack installation. It covers 
 | SYNC | Input | Hard sync — resets waveform phase |
 | SIN, TRI, SAW, SQR | Output | Individual waveform outputs |
 
-**Patching tips:** Connect a MIDI-CV module's V/OCT output to VCO-1's V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO-1 instances slightly detuned using the FINE knob and mix their outputs.
+**Patching tips:** Connect a MIDI to CV module's V/OCT output to VCO's V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO instances slightly detuned using the FINE knob and mix their outputs.
 
 ## EvenVCO (Befaco)
 
@@ -58,11 +58,11 @@ Sub output provides a sine wave one octave below the main pitch — useful for a
 
 Surge XT provides a library of oscillator algorithms: Classic (virtual analog), Modern (anti-aliased), Wavetable, Window, FM2, FM3, String, Twist, and more. Each algorithm has its own set of parameters. The plugin is free and dramatically expands sound design range beyond standard waveforms. Find it in the VCV Library under "Surge XT."
 
-### WTVCO (Fundamental)
+### Wavetable VCO (VCV Free)
 
-The WTVCO is the wavetable oscillator included with Fundamental. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated [Wavetable](wavetable.md) page.
+The Wavetable VCO is the wavetable oscillator included with VCV Free. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated [Wavetable](wavetable.md) page.
 
-### VCO-2 (Fundamental)
+### VCO 2 (VCV Free)
 
 A simpler oscillator with fewer outputs but a morphing waveform knob that crossfades continuously between sine, triangle, sawtooth, and square. Useful when you want a single output with variable timbre rather than separate waveform outs.
 
