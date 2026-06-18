@@ -6,7 +6,7 @@ This page walks you through building the patch manually from scratch, offers a d
 
 ## Build it manually
 
-All modules are from **Fundamental**, which ships with VCV Rack by default. No extra plugins needed.
+All modules are from **VCV Free**, which ships with VCV Rack by default. No extra plugins needed.
 
 ### Step 1 — Add modules
 
@@ -21,11 +21,11 @@ Open VCV Rack with a blank patch. Double-click an empty rack area to open the mo
 
 **Bottom row**
 
-5. **VCMixer** — blends the three sources
+5. **VCA Mix** — blends the three sources
 6. **VCF** — lowpass filter
 7. **VCA** — amplitude, always open
 8. **Delay** — dub echo
-9. **AudioInterface2** (under Core) — stereo output to your soundcard
+9. **Audio 2** (VCV Core) — stereo output to your soundcard
 
 ### Step 2 — Set the parameters
 
@@ -41,7 +41,7 @@ Open VCV Rack with a blank patch. Double-click an empty rack area to open the mo
 **LFO**:
 - **FREQ** knob: turn to roughly 8 o'clock (well left of centre). This gives an 8-second sweep period. If you move it further left, the sweep slows down; further right, it speeds up.
 
-**VCMixer**:
+**VCA Mix**:
 - CH 1 and CH 2 level knobs: full up (5 o'clock).
 - CH 3 level knob (Noise channel): turn down to about 7–8 o'clock — about 25 % level. The noise should be felt more than heard.
 - MIX knob: full up.
@@ -60,7 +60,7 @@ Open VCV Rack with a blank patch. Double-click an empty rack area to open the mo
 - **TONE** knob: slightly left of centre — about 11 o'clock. Darkens the delay repeats.
 - **MIX** knob: about 10 o'clock (35 % wet). The dry signal should dominate; the delay is a tail.
 
-**AudioInterface2**: no knobs to set here — just right-click it later to select your audio device.
+**Audio 2**: no knobs to set here — just right-click it later to select your audio device.
 
 ### Step 3 — Connect the cables
 
@@ -68,21 +68,21 @@ Drag from output port to input port. The outputs are on the right side of each m
 
 | From module | Output port | To module | Input port |
 |-------------|-------------|-----------|------------|
-| VCO 1 | **SAW** | VCMixer | **CH 1** |
-| VCO 2 | **SAW** | VCMixer | **CH 2** |
-| Noise | **PINK** | VCMixer | **CH 3** |
+| VCO 1 | **SAW** | VCA Mix | **CH 1** |
+| VCO 2 | **SAW** | VCA Mix | **CH 2** |
+| Noise | **PINK** | VCA Mix | **CH 3** |
 | LFO | **SIN** | VCF | **FREQ CV** |
-| VCMixer | **MIX** | VCF | **IN** |
+| VCA Mix | **MIX** | VCF | **IN** |
 | VCF | **LPF** | VCA | **IN 1** |
 | VCA | **OUT 1** | Delay | **IN** |
-| Delay | **MIX** | AudioInterface2 | **L** |
-| Delay | **MIX** | AudioInterface2 | **R** |
+| Delay | **MIX** | Audio 2 | **L** |
+| Delay | **MIX** | Audio 2 | **R** |
 
 For the last two cables: you can stack two cables on the same Delay MIX output by holding the existing cable's output port and dragging a second cable from it, or by clicking the output and pulling again — VCV Rack allows multiple cables from one output.
 
 ### Step 4 — Set your audio device
 
-Right-click **AudioInterface2** and choose your output device from the list. You should now hear a low, slowly sweeping drone.
+Right-click **Audio 2** and choose your output device from the list. You should now hear a low, slowly sweeping drone.
 
 ---
 
@@ -90,24 +90,24 @@ Right-click **AudioInterface2** and choose your output device from the list. You
 
 **[slow-psybient-starter.vcv](slow-psybient-starter.vcv)**
 
-Save the file and open it in VCV Rack via **File → Open**. You need the Fundamental plugin installed — it ships with VCV Rack by default.
+Save the file and open it in VCV Rack via **File → Open**. You need the VCV Free plugin installed — it ships with VCV Rack by default.
 
 ---
 
 ## What is in the patch
 
-Nine modules, all from Fundamental:
+Nine modules, all from VCV Free:
 
 | Module | Role |
 |--------|------|
 | VCO (×2) | Dual drone oscillators, tuned to G2 and detuned by 12 cents |
 | Noise | Pink noise for texture layer |
 | LFO | Slow 8-second filter sweep |
-| VCMixer | Blends the two oscillators and noise |
+| VCA Mix | Blends the two oscillators and noise |
 | VCF | Lowpass ladder filter with LFO modulation |
 | VCA | Signal level, permanently open for a continuous drone |
 | Delay | Dub echo at dotted-eighth time (≈ 506 ms at 89 BPM) |
-| AudioInterface2 | Stereo output to your audio device |
+| Audio 2 | Stereo output to your audio device |
 
 ---
 
@@ -115,7 +115,7 @@ Nine modules, all from Fundamental:
 
 ```
 VCO 1 (G2)  ─┐
-VCO 2 (G2+12¢)─┤ VCMixer → VCF → VCA → Delay → AudioInterface2
+VCO 2 (G2+12¢)─┤ VCA Mix → VCF → VCA → Delay → Audio 2
 Noise (Pink) ─┘
 
 LFO (8s) ──────→ VCF freq CV
@@ -127,7 +127,7 @@ The two VCOs produce a slow-beating drone — the 12-cent offset creates a gentl
 
 ## First steps after loading
 
-1. **Set your audio device.** Right-click AudioInterface2 and choose your output device. The patch is silent until a device is selected.
+1. **Set your audio device.** Right-click Audio 2 and choose your output device. The patch is silent until a device is selected.
 2. **Listen.** You should hear a low G drone with a slowly moving filter.
 3. **Adjust the VCF knobs** to taste — cutoff at around 9 o'clock, resonance at around 10 o'clock is a good starting point.
 4. **Nudge the Delay feedback** up if you want longer echoes, down for a subtler tail.
@@ -144,7 +144,7 @@ Install the **Valley** plugin for the **Plateau** reverb. Connect VCA output to 
 
 ### Add a bass line
 
-Add a second VCO (or any Fundamental VCO) tuned 1–2 octaves below, driven by a sequencer. A Fundamental **SEQ-3** works for a simple repeating bass pattern. Add an **ADSR** with a short attack and medium decay to shape the bass notes.
+Add a second VCO (or any VCV Free VCO) tuned 1–2 octaves below, driven by a sequencer. A VCV Free **SEQ 3** works for a simple repeating bass pattern. Add an **ADSR** with a short attack and medium decay to shape the bass notes.
 
 ### Add a clock and gate
 
@@ -152,7 +152,7 @@ Install **Impromptu Modular** for the **Clocked** master clock. Connect Clocked'
 
 ### Add modulation depth control
 
-Add a Fundamental **VCA** as an attenuverter for the LFO → VCF path. This lets you dial in exactly how much filter movement you want. Put it between the LFO output and the VCF FREQ CV input; map its level to a MIDI CC for live control.
+Add a VCV Free **VCA** as an attenuverter for the LFO → VCF path. This lets you dial in exactly how much filter movement you want. Put it between the LFO output and the VCF FREQ CV input; map its level to a MIDI CC for live control.
 
 ### Add pattern switching
 
@@ -166,15 +166,15 @@ For wiring the modules listed above, the connections are:
 
 | From | Output | To | Input |
 |------|--------|-----|-------|
-| VCO 1 | SAW | VCMixer | CH 1 |
-| VCO 2 | SAW | VCMixer | CH 2 |
-| Noise | PINK | VCMixer | CH 3 |
+| VCO 1 | SAW | VCA Mix | CH 1 |
+| VCO 2 | SAW | VCA Mix | CH 2 |
+| Noise | PINK | VCA Mix | CH 3 |
 | LFO | SIN | VCF | FREQ CV |
-| VCMixer | MIX | VCF | IN |
+| VCA Mix | MIX | VCF | IN |
 | VCF | LPF | VCA | IN 1 |
 | VCA | OUT 1 | Delay | IN |
-| Delay | MIX | AudioInterface2 | L |
-| Delay | MIX | AudioInterface2 | R |
+| Delay | MIX | Audio 2 | L |
+| Delay | MIX | Audio 2 | R |
 
 ---
 

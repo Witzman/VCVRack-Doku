@@ -23,13 +23,13 @@ Press RUN. The clock runs; nothing sounds yet.
 
 The drone pad is the harmonic foundation. It plays continuously throughout the track, very slowly evolving in brightness and texture.
 
-**Modules needed:** 2× Fundamental VCO-1, Fundamental VCF, Fundamental VCA, Bogaudio ADSR, Bogaudio LFO, Fundamental 8vert, Fundamental Mixer.
+**Modules needed:** 2× VCV Free VCO, VCV Free VCF, VCV Free VCA, Bogaudio ADSR, Bogaudio LFO, VCV Free 8vert, VCV Free Mix.
 
 **Build it:**
 
-1. Add two VCO-1 modules. Set both to SAW output.
-2. Set one VCO-1 FREQ knob so it outputs G2 (roughly -1.5V from center). Set the other to the same pitch, then use FINE to detune it by about +7 cents.
-3. Connect both SAW outputs to a Fundamental Mixer. Set levels to 0.6 each.
+1. Add two VCO modules. Set both to SAW output.
+2. Set one VCO FREQ knob so it outputs G2 (roughly -1.5V from center). Set the other to the same pitch, then use FINE to detune it by about +7 cents.
+3. Connect both SAW outputs to a VCV Free Mix. Set levels to 0.6 each.
 4. Connect the Mixer output to VCF IN. Set VCF FREQ to about 600 Hz, RES at 0.2.
 5. Add Bogaudio ADSR. Set: Attack 4 seconds, Decay 0, Sustain 1.0, Release 8 seconds.
 6. Manually trigger the ADSR once (right-click → trigger) or patch a manual gate. The pad fades in slowly.
@@ -51,16 +51,16 @@ The drone pad is the harmonic foundation. It plays continuously throughout the t
 
 The bass is simple, mono, and low. It sits below the pad and pulses on specific notes without constant movement.
 
-**Modules needed:** Fundamental VCO-1, Fundamental VCF, Fundamental VCA, Bogaudio ADSR, Fundamental SEQ-3.
+**Modules needed:** VCV Free VCO, VCV Free VCF, VCV Free VCA, Bogaudio ADSR, VCV Free SEQ 3.
 
 **Build it:**
 
-1. Add SEQ-3. Connect Clocked CLK3 (half notes) to SEQ-3 CLK. Set STEPS to 5.
+1. Add SEQ 3. Connect Clocked CLK3 (half notes) to SEQ 3 CLK. Set STEPS to 5.
 2. Set the five step voltages to approximately: G1, G1, F1, G1, Eb1 (roughly -2.5V, -2.5V, -2.75V, -2.5V, -3V — tune by ear).
 3. Enable gates on steps 1 and 3; leave 2, 4, 5 silent for sparse rhythm.
-4. Add VCO-1. Set to SIN output for a clean bass tone. Connect SEQ-3 ROW1 to VCO-1 V/OCT.
-5. VCO-1 SIN → VCF IN. Set VCF FREQ to 150 Hz, RES near zero. VCF LP → VCA IN.
-6. Add Bogaudio ADSR. Attack 10ms, Decay 400ms, Sustain 0.0, Release 100ms. Connect SEQ-3 GATE to ADSR GATE. Connect ADSR ENV to VCA CV.
+4. Add VCO. Set to SIN output for a clean bass tone. Connect SEQ 3 ROW1 to VCO V/OCT.
+5. VCO SIN → VCF IN. Set VCF FREQ to 150 Hz, RES near zero. VCF LP → VCA IN.
+6. Add Bogaudio ADSR. Attack 10ms, Decay 400ms, Sustain 0.0, Release 100ms. Connect SEQ 3 GATE to ADSR GATE. Connect ADSR ENV to VCA CV.
 7. Connect VCA OUT to main mixer at a low level — the bass should support, not dominate.
 
 **Listen:** You should hear a pulsing bass note following the G minor pattern.
@@ -71,14 +71,14 @@ The bass is simple, mono, and low. It sits below the pad and pulses on specific 
 
 Brief, bright melodic fragments that appear and disappear — the "psychedelic" element. These use random pitch selection with a quantizer so they always sound musical.
 
-**Modules needed:** Fundamental VCO-1 (or WTVCO), Fundamental VCF, Fundamental VCA, Bogaudio ADSR, Bogaudio S&H, Fundamental Noise, Fundamental Quantizer, 8vert.
+**Modules needed:** VCV Free VCO (or WTVCO), VCV Free VCF, VCV Free VCA, Bogaudio ADSR, Bogaudio S&H, VCV Free Noise, VCV Free Quantizer, VCV Free 8vert.
 
 **Build it:**
 
-1. Add Bogaudio S&H. Connect Fundamental Noise's White output to S&H IN. Connect Clocked CLK2 (eighth notes) to S&H TRIG.
-2. Add Fundamental Quantizer. Select G minor scale: G, A, Bb, C, D, Eb, F.
-3. Connect S&H OUT to Quantizer IN. Connect Quantizer OUT to a VCO-1 V/OCT input.
-4. VCO-1 (set to TRI output for a softer character) → VCF (bandpass mode, FREQ at 1.5 kHz, RES 0.4) → VCA.
+1. Add Bogaudio S&H. Connect VCV Free Noise's White output to S&H IN. Connect Clocked CLK2 (eighth notes) to S&H TRIG.
+2. Add VCV Free Quantizer. Select G minor scale: G, A, Bb, C, D, Eb, F.
+3. Connect S&H OUT to Quantizer IN. Connect Quantizer OUT to a VCO V/OCT input.
+4. VCO (set to TRI output for a softer character) → VCF (bandpass mode, FREQ at 1.5 kHz, RES 0.4) → VCA.
 5. Add Bogaudio ADSR. Attack 5ms, Decay 300ms, Sustain 0, Release 200ms. Clock-trigger this ADSR from Clocked CLK2 as well.
 6. Connect ADSR ENV to VCA CV. VCA OUT → main mixer at a low level — these should be subtle, not prominent.
 
@@ -90,18 +90,18 @@ Brief, bright melodic fragments that appear and disappear — the "psychedelic" 
 
 89 BPM half-time feel: kick on beats 1 and 3, snare on beat 3, closed hats on eighth notes.
 
-**Modules needed:** Fundamental Noise (×2 or one shared), 3× Fundamental VCA, 3× Bogaudio ADSR, Fundamental Mixer, Impromptu Clocked (already running).
+**Modules needed:** VCV Free Noise (×2 or one shared), 3× VCV Free VCA, 3× Bogaudio ADSR, VCV Free Mix, Impromptu Clocked (already running).
 
 For authentic drums you would use a dedicated drum module like Valley Topograph. For this tutorial, build simple noise bursts:
 
 **Kick:**
 1. Noise White → VCF (LP, 80 Hz, RES 0.1) → VCA.
-2. ADSR: Attack 2ms, Decay 80ms, Sustain 0, Release 50ms. Trigger from a trigger pattern. For a half-time kick: use SEQ-3 with CLK1 (quarter notes), 4 steps, gates on steps 1 and 3 only.
+2. ADSR: Attack 2ms, Decay 80ms, Sustain 0, Release 50ms. Trigger from a trigger pattern. For a half-time kick: use SEQ 3 with CLK1 (quarter notes), 4 steps, gates on steps 1 and 3 only.
 3. VCA OUT → drum mixer.
 
 **Snare:**
 1. Noise White → VCA (no filter needed).
-2. ADSR: Attack 1ms, Decay 120ms, Sustain 0, Release 60ms. Trigger from SEQ-3 step 3 only.
+2. ADSR: Attack 1ms, Decay 120ms, Sustain 0, Release 60ms. Trigger from SEQ 3 step 3 only.
 3. VCA OUT → drum mixer.
 
 **Hi-hats:**
@@ -122,7 +122,7 @@ This is what makes the patch feel alive and psychedelic rather than mechanical. 
 **LFO B — fine pitch drift:**
 1. Add Bogaudio LFO. Set FREQ to 0.03 Hz (one cycle every 33 seconds).
 2. Take SIN output through 8vert at very low attenuation (0.05 — tiny amount).
-3. Connect to both pad VCO-1 modules' FM inputs. This causes the pitch to drift imperceptibly — you feel it more than hear it.
+3. Connect to both pad VCO modules' FM inputs. This causes the pitch to drift imperceptibly — you feel it more than hear it.
 
 **LFO C — fragment density:**
 1. Add Bogaudio LFO. Set FREQ to 0.08 Hz.
