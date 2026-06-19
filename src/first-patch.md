@@ -8,6 +8,17 @@ This tutorial takes you from a blank VCV Rack canvas to a working, playable soun
 
 A basic synthesizer voice: an oscillator shaped by a filter and an amplitude envelope, played from your computer keyboard via MIDI.
 
+```mermaid
+flowchart LR
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
+    VCO -->|"SAW"| VCF["VCF\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    ADSR -->|"Envelope"| VCA
+    ADSR -->|"Envelope"| VCF
+    VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
+```
+
 ---
 
 ## Step 1 — Open a new patch
@@ -34,33 +45,63 @@ You now have a V/Oct output (pitch) and a Gate output on this module.
 
 ## Step 4 — Add VCO
 
-Add **VCO** (VCV Free). Connect the **MIDI to CV**'s **V/Oct** output to the VCO's **PITCH** input. You've just told the oscillator to track your keyboard.
+Add **VCO** (VCV). Connect the **MIDI to CV**'s **V/Oct** output to the VCO's **PITCH** input. You've just told the oscillator to track your keyboard.
 
 Run the engine (click the power button in the toolbar) and press a key. Nothing sounds yet — the oscillator is running, but nothing is carrying its signal to the output.
+
+```mermaid
+flowchart LR
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+```
 
 ---
 
 ## Step 5 — Add ADSR
 
-Add **ADSR EG** (VCV Free). Connect **MIDI to CV**'s **Gate** output to the ADSR's **Gate** input. The envelope will now fire when you press a key.
+Add **ADSR** (VCV). Connect **MIDI to CV**'s **Gate** output to the ADSR's **Gate** input. The envelope will now fire when you press a key.
+
+```mermaid
+flowchart LR
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
+```
 
 ---
 
 ## Step 6 — Add VCA
 
-Add **VCA** (VCV Free). Connect the VCO's **SAW** output to the VCA's **CH** input. Connect the ADSR's **Envelope** output to the VCA's **CV** input.
+Add **VCA** (VCV). Connect the VCO's **SAW** output to the VCA's **Channel** input. Connect the ADSR's **Envelope** output to the VCA's **CV** input.
 
-Connect the VCA's **CH** output to the **Audio 8**'s **L** input (and optionally also to **R** for mono-to-stereo).
+Connect the VCA's **Channel** output to the **Audio 8**'s **L** input (and optionally also to **R** for mono-to-stereo).
 
 Press a key. You should now hear a sawtooth note that fades with the release time of the envelope.
+
+```mermaid
+flowchart LR
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
+    VCO -->|"SAW"| VCA["VCA\n(VCV)"]
+    ADSR -->|"Envelope"| VCA
+    VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
+```
 
 ---
 
 ## Step 7 — Add VCF
 
-Add **VCF** (VCV Free). Insert it between the VCO and the VCA: disconnect the VCO from the VCA, then connect the VCO's **SAW** output to the VCF's **IN** input, and the VCF's **LPF** output to the VCA's **CH** input.
+Add **VCF** (VCV). Insert it between the VCO and the VCA: disconnect the VCO from the VCA, then connect the VCO's **SAW** output to the VCF's **IN** input, and the VCF's **LPF** output to the VCA's **Channel** input.
 
 Turn the VCF's **Cutoff** knob to a lower value — around 9 o'clock. Press a key. The sound is now darker. Turn Resonance up for a more nasal character.
+
+```mermaid
+flowchart LR
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
+    VCO -->|"SAW"| VCF["VCF\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    ADSR -->|"Envelope"| VCA
+    VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
+```
 
 ---
 
@@ -69,6 +110,17 @@ Turn the VCF's **Cutoff** knob to a lower value — around 9 o'clock. Press a ke
 Connect a second cable from the ADSR's **Envelope** output to the VCF's **Freq** input. Turn the VCF's Freq CV knob (small knob next to the Freq input) up to about 3 o'clock.
 
 Now each note attack briefly opens the filter before it closes back down. This is the classic subtractive synthesis "envelope filter" effect.
+
+```mermaid
+flowchart LR
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
+    VCO -->|"SAW"| VCF["VCF\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    ADSR -->|"Envelope"| VCA
+    ADSR -->|"Envelope"| VCF
+    VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
+```
 
 ---
 
