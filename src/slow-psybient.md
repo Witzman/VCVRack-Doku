@@ -116,7 +116,7 @@ flowchart LR
     NOISE["Noise\n(VCV)"] -->|"White noise"| BSH
     BSH -->|"output"| QUANT["Quantizer\n(VCV)"]
     QUANT -->|"output"| FVCO["VCO\n(VCV)"]
-    FVCO -->|"Sine"| VCF["VCF\n(VCV)"]
+    FVCO -->|"Triangle"| VCF["VCF\n(VCV)"]
     VCF -->|"LPF"| VCA["VCA\n(VCV)"]
     FADSR["ADSR\n(Bogaudio)"] -->|"Envelope"| VCA
     CLK -->|"Clock 2"| FADSR
