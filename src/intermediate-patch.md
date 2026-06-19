@@ -81,7 +81,7 @@ flowchart LR
 
 Add **VCF (VCV)** and **ADSR (Bogaudio)**.
 
-- Connect VCO (Bogaudio)'s **Saw signal** output to VCF IN.
+- Connect VCO (Bogaudio)'s **Saw signal** output to VCF's **IN** input.
 - Take VCF's **LPF** output to a VCA (add **VCA** (VCV) — the dual-channel version).
 - Connect SEQ3's **Trigger** output to ADSR (Bogaudio)'s **Gate** input.
 - Connect ADSR (Bogaudio)'s **Envelope** output to VCA's **Channel 1 exponential CV** input.

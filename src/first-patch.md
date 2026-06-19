@@ -10,7 +10,7 @@ A basic synthesizer voice: an oscillator shaped by a filter and an amplitude env
 
 ```mermaid
 flowchart LR
-    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
     VCF -->|"LPF"| VCA["VCA\n(VCV)"]
@@ -51,7 +51,7 @@ Run the engine (click the power button in the toolbar) and press a key. Nothing 
 
 ```mermaid
 flowchart LR
-    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
 ```
 
 ---
@@ -62,7 +62,7 @@ Add **ADSR** (VCV). Connect **MIDI to CV**'s **Gate** output to the ADSR's **Gat
 
 ```mermaid
 flowchart LR
-    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
 ```
 
@@ -78,7 +78,7 @@ Press a key. You should now hear a sawtooth note that fades with the release tim
 
 ```mermaid
 flowchart LR
-    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCA["VCA\n(VCV)"]
     ADSR -->|"Envelope"| VCA
@@ -95,7 +95,7 @@ Turn the VCF's **Cutoff** knob to a lower value — around 9 o'clock. Press a ke
 
 ```mermaid
 flowchart LR
-    MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
+    MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
     VCF -->|"LPF"| VCA["VCA\n(VCV)"]
