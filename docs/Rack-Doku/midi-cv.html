@@ -81,8 +81,8 @@ function toggle(id){
     <article>
 <h1>MIDI to CV</h1>
 <p>MIDI to CV modules convert incoming MIDI messages — note on/off, pitch, velocity, modulation wheel, aftertouch, and other controllers — into control voltages that modular modules understand. This is the bridge between a MIDI keyboard, DAW, or controller and your VCV Rack patch. Without a MIDI-CV converter, the patch operates in isolation from external MIDI instruments.</p>
-<h2>MIDI-CV (VCV Core)</h2>
-<p>The MIDI-CV module is included with VCV Rack Free as a core module (not part of any plugin — it appears under the VCV menu in the module browser). It accepts MIDI input from any device connected to your computer and outputs pitch CV, gate, velocity, aftertouch, and modulation wheel as separate signals.</p>
+<h2>MIDI to CV (VCV Core)</h2>
+<p>The MIDI to CV module is included with VCV Rack Free as a core module (not part of any plugin — it appears under the VCV menu in the module browser). It accepts MIDI input from any device connected to your computer and outputs pitch CV, gate, velocity, aftertouch, and modulation wheel as separate signals.</p>
 <table>
 <tr><th>Output</th><th>Type</th><th>Description</th></tr>
 <tr><td>V/OCT</td><td>CV</td><td>Pitch — 1V per octave, C4 = 0V</td></tr>
@@ -108,7 +108,7 @@ function toggle(id){
 <tr><td>Output</td><td>0–10V proportional to CC value</td></tr>
 </table>
 <p><strong>Patching tips:</strong> Assign your controller&#x27;s filter knob to CC74 (standard) and map it to MIDI-CC output 1. Patch that output to VCF FREQ CV for hands-on filter control from hardware. Use multiple MIDI-CC channels for a live performance setup with tactile hardware control.</p>
-<h3>MIDI-GATE (VCV Core)</h3>
+<h3>MIDI to Gate (VCV Core)</h3>
 <p>Converts MIDI notes to gate outputs — each note produces its own gate when that specific note is played. Useful for triggering drum voices from a MIDI keyboard where each key corresponds to a specific drum hit.</p>
 <h3>Bogaudio MIDI-CV (Bogaudio)</h3>
 <p>Bogaudio provides their own MIDI-CV with additional output options and a different interface layout. The functionality overlaps with VCV Core&#x27;s MIDI-CV — choose based on your preference for the module layout.</p>

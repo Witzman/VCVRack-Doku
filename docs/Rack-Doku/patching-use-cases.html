@@ -85,46 +85,46 @@ function toggle(id){
 <h2>1 — Bassline with a sequencer</h2>
 <p><strong>Goal:</strong> A repeating melodic pattern that plays without holding keys.</p>
 <p>Add <strong>SEQ 3</strong> (from VCV Free). Set its Tempo knob to your preferred BPM. Set the Steps knob to 8. On the three rows of CV knobs (CV 1, CV 2, CV 3), use CV 1 to program a pitch sequence: each knob sets the pitch CV for that step in volts (0 V = C4, 1 V = C5, etc.).</p>
-<p>Connect SEQ 3&#x27;s <strong>CV 1</strong> output to the VCO&#x27;s <strong>PITCH</strong> input (replacing any MIDI-CV connection for the pitch). Connect SEQ 3&#x27;s <strong>Trigger</strong> output to the ADSR&#x27;s <strong>Gate</strong> input. The sequencer now drives both pitch and envelope.</p>
+<p>Connect SEQ 3&#x27;s <strong>CV 1</strong> output to the VCO&#x27;s <strong>PITCH</strong> input (replacing any MIDI to CV connection for the pitch). Connect SEQ 3&#x27;s <strong>Trigger</strong> output to the ADSR&#x27;s <strong>Gate</strong> input. The sequencer now drives both pitch and envelope.</p>
 <p>For a two-bar pattern, use two SEQ 3 modules chained together: connect the first sequencer&#x27;s <strong>EOC</strong> (end of cycle) output to the second&#x27;s <strong>Clock</strong> input, and the second back to the first, or simply program the full sequence across one module at 16 steps.</p>
 <p>Set the VCF cutoff low and crank the resonance to taste for an acid bass sound. Modulate the filter cutoff with a slowly rising LFO for sweep.</p>
 <hr>
 <h2>2 — Percussion hit</h2>
 <p><strong>Goal:</strong> A short, punchy percussive sound without a melodic pitch.</p>
-<p>Add a <strong>Noise</strong> module (VCV Free). Noise has no inputs — it simply outputs several flavors of noise (white, pink, red, etc.). Connect the <strong>White</strong> output to a VCA&#x27;s <strong>CH</strong> input.</p>
+<p>Add a <strong>VCV Free Noise</strong> module. Noise has no inputs — it simply outputs several flavors of noise (white, pink, red, etc.). Connect the <strong>White</strong> output to a VCA&#x27;s <strong>CH</strong> input.</p>
 <p>Add a short ADSR: set Attack nearly to zero, Decay to a short value (around 9 o&#x27;clock), Sustain to zero, Release to zero. Connect a <strong>Pulses</strong> module (VCV Free) or a clock to the ADSR&#x27;s <strong>Gate</strong> input to trigger it rhythmically. Connect ADSR&#x27;s output to the VCA&#x27;s CV.</p>
 <p>For a kick-drum character, use a VCO set to a very low frequency (−2 to −3 on the Freq knob) instead of noise, and add a fast pitch envelope: a second short ADSR connected to the VCO&#x27;s FM input with a very fast attack and decay, so the pitch drops sharply after the hit.</p>
 <hr>
 <h2>3 — Effects send and return</h2>
 <p><strong>Goal:</strong> Apply reverb or delay to part of your signal while keeping a dry signal.</p>
-<p>Add a <strong>Mix</strong> module (VCV Free, 6-channel mixer). Connect your VCA&#x27;s output to channel 1 of the Mix module. Set channel 1&#x27;s level to taste.</p>
+<p>Add a <strong>VCV Free Mix</strong> module (6-channel mixer). Connect your VCA&#x27;s output to channel 1 of the Mix module. Set channel 1&#x27;s level to taste.</p>
 <p>Add a <strong>Delay</strong> module. Connect the Mix&#x27;s <strong>Mix</strong> output to the Delay&#x27;s <strong>Audio</strong> input. Connect the Delay&#x27;s <strong>Wet</strong> output to channel 2 of the Mix module. Now the delay receives the full mix, but you&#x27;re blending the wet signal back in via channel 2&#x27;s level knob. Keep channel 2&#x27;s level low for a subtle effect.</p>
 <p>The same approach works for reverb plugins: send your source to the effect, and return the wet output to a separate mixer channel. This avoids the effect &quot;doubling&quot; your signal&#x27;s dry component.</p>
 <hr>
 <h2>4 — Drone and texture</h2>
 <p><strong>Goal:</strong> A sustained, evolving ambient texture without rhythmic articulation.</p>
-<p>Use two or three VCOs detuned slightly from each other. Set one to 0 V (center) on its Frequency knob. Set another to +2 cents (a very slight detune using the Fine knob, if present, or a slight nudge on Freq). Set a third an octave higher. Connect all three to a Mix module.</p>
+<p>Use two or three VCOs detuned slightly from each other. Set one to 0 V (center) on its Frequency knob. Set another to +2 cents (a very slight detune using the Fine knob, if present, or a slight nudge on Freq). Set a third an octave higher. Connect all three to a VCV Free Mix module.</p>
 <p>Patch an LFO at a very slow rate (0.1 Hz or slower) to the VCF&#x27;s Freq CV input with a moderate attenuverter setting. The filter cutoff will drift slowly, creating movement without a fixed rhythm.</p>
 <p>Patch a second LFO at a different rate to the Mix module&#x27;s level for one of the VCOs, so it fades in and out. With two LFOs at prime ratios (e.g., 0.07 Hz and 0.11 Hz), the texture never exactly repeats.</p>
 <p>Skip the ADSR — just keep the VCA fully open (CV input unpatched, Level knob up). Let the LFOs create all the movement.</p>
 <hr>
 <h2>5 — Generative random patch</h2>
 <p><strong>Goal:</strong> A patch that generates evolving, semi-random melodies or textures on its own.</p>
-<p>Add a <strong>SEQ 3</strong> module. Use its <strong>Clock</strong> output to drive its own timing. Add a <strong>Random</strong> module (VCV Free). Connect Random&#x27;s <strong>Stepped</strong> output to the VCO&#x27;s PITCH input. The Stepped output holds a new random voltage each time a trigger fires. Connect SEQ 3&#x27;s Trigger output to Random&#x27;s <strong>Trig</strong> input so the Random module updates on each sequencer step.</p>
-<p>Add a <strong>Quantizer</strong> (VCV Free) between Random and the VCO: Random → Quantizer In → VCO Pitch. The quantizer snaps random voltages to a musical scale. Right-click the Quantizer to choose a scale. Now your random pitches are always in key.</p>
+<p>Add a <strong>SEQ 3</strong> module. Use its <strong>Clock</strong> output to drive its own timing. Add a <strong>VCV Free Random</strong> module. Connect Random&#x27;s <strong>Stepped</strong> output to the VCO&#x27;s PITCH input. The Stepped output holds a new random voltage each time a trigger fires. Connect SEQ 3&#x27;s Trigger output to Random&#x27;s <strong>Trig</strong> input so the Random module updates on each sequencer step.</p>
+<p>Add a <strong>VCV Free Quantizer</strong> between Random and the VCO: Random → Quantizer In → VCO Pitch. The quantizer snaps random voltages to a musical scale. Right-click the Quantizer to choose a scale. Now your random pitches are always in key.</p>
 <p>For rhythmic variation, add a <strong>Logic</strong> module and combine two different clock divisions using an AND or OR gate to create irregular triggers instead of a simple steady beat.</p>
 <hr>
 <hr>
 <h2>Recipe 6 — Generative Melody with Bogaudio S&amp;H and Quantizer</h2>
 <p><strong>Goal:</strong> A self-generating melodic line that stays in key and never exactly repeats.</p>
-<p>Install <strong>Bogaudio</strong> if not already installed. Add <strong>Bogaudio S&amp;H</strong>, <strong>Fundamental Noise</strong>, <strong>Fundamental Quantizer</strong>, <strong>Impromptu Clocked</strong>, and a basic VCO-VCF-VCA voice.</p>
-<p>Set Clocked to 120 BPM. Connect CLK2 (eighth notes) to Bogaudio S&amp;H&#x27;s TRIG input. Connect Fundamental Noise&#x27;s White output to S&amp;H IN. Connect S&amp;H OUT to Quantizer IN. In the Quantizer, select a pentatonic scale: activate C, D, E, G, A only. Connect Quantizer OUT to VCO V/OCT.</p>
+<p>Install <strong>Bogaudio</strong> if not already installed. Add <strong>Bogaudio S&amp;H</strong>, <strong>VCV Free Noise</strong>, <strong>VCV Free Quantizer</strong>, <strong>Impromptu Clocked</strong>, and a basic VCO-VCF-VCA voice.</p>
+<p>Set Clocked to 120 BPM. Connect CLK2 (eighth notes) to Bogaudio S&amp;H&#x27;s TRIG input. Connect VCV Free Noise&#x27;s White output to S&amp;H IN. Connect S&amp;H OUT to Quantizer IN. In the Quantizer, select a pentatonic scale: activate C, D, E, G, A only. Connect Quantizer OUT to VCO V/OCT.</p>
 <p>The patch now generates a new random note in the pentatonic scale on every eighth note. Pentatonic works especially well here because it has no dissonant intervals — every random note combination sounds musical.</p>
 <p><strong>Tweak:</strong> Slow the clock division to CLK3 (quarter notes) for a sparser, more deliberate melodic feel. Add a Bogaudio ADSR with short attack and medium decay for plucky note shapes. Layer a second quantized S&amp;H at a different clock division for a second melodic voice.</p>
 <hr>
 <h2>Recipe 7 — Textural Pad with Surge XT Wavetable and Plateau</h2>
 <p><strong>Goal:</strong> A slowly evolving atmospheric pad using a wavetable oscillator and large reverb.</p>
-<p>Install <strong>Surge XT</strong> and <strong>Valley</strong>. Add <strong>Surge XT Wavetable VCO</strong>, <strong>Fundamental VCF</strong>, <strong>Fundamental VCA</strong>, <strong>Bogaudio ADSR</strong>, <strong>Bogaudio LFO</strong>, <strong>Valley Plateau</strong>.</p>
+<p>Install <strong>Surge XT</strong> and <strong>Valley</strong>. Add <strong>Surge XT Wavetable VCO</strong>, <strong>VCV Free VCF</strong>, <strong>VCV Free VCA</strong>, <strong>Bogaudio ADSR</strong>, <strong>Bogaudio LFO</strong>, <strong>Valley Plateau</strong>.</p>
 <p>Tune the Surge XT VCO to a fixed pitch (no sequencer — this is a drone). Select a vocal or harmonics wavetable from the bank. Set a slow ADSR: 3 second attack, full sustain, 6 second release. Manually trigger the ADSR to start the pad.</p>
 <p>Add Bogaudio LFO at 0.02 Hz (very slow). Route the SIN output through 8vert at 0.4 to the Surge XT VCO&#x27;s Position CV input. The wavetable position morphs continuously through different timbres over a 50-second cycle.</p>
 <p>Add Valley Plateau: SIZE 0.95, DECAY 0.93, DAMP 0.4. Route the VCA output to Plateau and mix the reverb return generously (0.5–0.7 wet level).</p>

@@ -81,8 +81,8 @@ function toggle(id){
     <article>
 <h1>Envelopes</h1>
 <p>An envelope generates a shaped CV signal in response to a gate or trigger. When a note starts (gate goes high), the envelope rises and falls through a predefined contour; when the note ends (gate goes low), it releases. Envelopes are used primarily to control VCA volume and VCF cutoff, but they can modulate anything that accepts a CV input. The most common shape is ADSR: Attack, Decay, Sustain, Release.</p>
-<h2>ADSR (Fundamental)</h2>
-<p>The Fundamental ADSR is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs both a positive (ENV) and inverted (INV) version.</p>
+<h2>ADSR EG (VCV Free)</h2>
+<p>The VCV Free ADSR EG is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs both a positive (ENV) and inverted (INV) version.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
 <tr><td>ATTACK</td><td>1ms – 10s</td><td>Time to rise from 0 to peak when gate opens</td></tr>
@@ -121,7 +121,7 @@ function toggle(id){
 <h3>ML Modules ADSR (ML Modules)</h3>
 <p>A clean, minimal ADSR with standard parameters. Good starting point for simple patches where no per-parameter CV modulation is needed.</p>
 <h3>Befaco ADSR (Befaco)</h3>
-<p>A compact ADSR from Befaco, smaller than Fundamental&#x27;s. Behaves similarly to Fundamental ADSR with the addition of a VEL input for velocity-sensitive amplitude scaling.</p>
+<p>A compact ADSR from Befaco, smaller than VCV Free&#x27;s. Behaves similarly to VCV Free ADSR EG with the addition of a VEL input for velocity-sensitive amplitude scaling.</p>
 <h2>Where to go next</h2>
 <ul><li><a href="vca.html">VCA</a> — the most common envelope destination</li>
 <li><a href="vcf.html">VCF</a> — envelope-driven filter sweeps</li>

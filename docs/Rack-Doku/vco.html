@@ -81,8 +81,8 @@ function toggle(id){
     <article>
 <h1>VCO — Voltage Controlled Oscillator</h1>
 <p>A VCO is the sound source of your patch. It generates a continuous waveform at a pitch set by an incoming CV signal. Without a VCO (or another sound source), there is nothing to filter, shape, or amplify. Most patches start here. The standard pitch control format is V/Oct: one volt per octave, so middle C is typically 0V and the C one octave up is 1V.</p>
-<h2>VCO-1 (Fundamental)</h2>
-<p>The VCO-1 is the oscillator bundled with every VCV Rack installation. It covers the full range of classic subtractive synthesis waveforms and accepts V/Oct pitch CV, FM, and pulse width modulation.</p>
+<h2>VCO (VCV Free)</h2>
+<p>The VCO is the oscillator bundled with every VCV Rack installation. It covers the full range of classic subtractive synthesis waveforms and accepts V/Oct pitch CV, FM, and pulse width modulation.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
 <tr><td>FREQ</td><td>±5 octaves</td><td>Coarse pitch offset from center</td></tr>
@@ -97,7 +97,7 @@ function toggle(id){
 <tr><td>SYNC</td><td>Input</td><td>Hard sync — resets waveform phase</td></tr>
 <tr><td>SIN, TRI, SAW, SQR</td><td>Output</td><td>Individual waveform outputs</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Connect a MIDI-CV module&#x27;s V/OCT output to VCO-1&#x27;s V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO-1 instances slightly detuned using the FINE knob and mix their outputs.</p>
+<p><strong>Patching tips:</strong> Connect a MIDI to CV module&#x27;s V/OCT output to VCO&#x27;s V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO instances slightly detuned using the FINE knob and mix their outputs.</p>
 <h2>EvenVCO (Befaco)</h2>
 <p>The EvenVCO is a clean, low-aliasing oscillator based on the Befaco hardware module. It produces even harmonics alongside its main waveforms, giving it a warmer, more analog character than a mathematically pure oscillator.</p>
 <table>
@@ -125,9 +125,9 @@ function toggle(id){
 <p><strong>Patching tips:</strong> Use linear FM for cleaner FM tones; exponential FM tracks pitch better for musical intervals but can get harsh at high amounts.</p>
 <h3>Surge XT VCO (Surge XT)</h3>
 <p>Surge XT provides a library of oscillator algorithms: Classic (virtual analog), Modern (anti-aliased), Wavetable, Window, FM2, FM3, String, Twist, and more. Each algorithm has its own set of parameters. The plugin is free and dramatically expands sound design range beyond standard waveforms. Find it in the VCV Library under &quot;Surge XT.&quot;</p>
-<h3>WTVCO (Fundamental)</h3>
-<p>The WTVCO is the wavetable oscillator included with Fundamental. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated <a href="wavetable.html">Wavetable</a> page.</p>
-<h3>VCO-2 (Fundamental)</h3>
+<h3>Wavetable VCO (VCV Free)</h3>
+<p>The Wavetable VCO is the wavetable oscillator included with VCV Free. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated <a href="wavetable.html">Wavetable</a> page.</p>
+<h3>VCO 2 (VCV Free)</h3>
 <p>A simpler oscillator with fewer outputs but a morphing waveform knob that crossfades continuously between sine, triangle, sawtooth, and square. Useful when you want a single output with variable timbre rather than separate waveform outs.</p>
 <h3>Vult Vco (Vult — free tier)</h3>
 <p>Vult&#x27;s free oscillators include models with analog drift simulation. Their oscillators are known for subtle pitch and waveform instability that mimics hardware VCOs well.</p>

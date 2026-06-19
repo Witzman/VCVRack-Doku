@@ -81,8 +81,8 @@ function toggle(id){
     <article>
 <h1>Sequencers</h1>
 <p>A sequencer stores a series of values and outputs them one at a time in response to a clock. The output is typically a V/Oct pitch CV for melodic sequences, but sequencers can also output gate signals, trigger patterns, and modulation values. Sequencers are the primary way to make a patch play musical patterns autonomously without a keyboard or MIDI input.</p>
-<h2>SEQ-3 (Fundamental)</h2>
-<p>SEQ-3 is an 8-step sequencer included with Rack Free. Each step has a voltage knob and a gate button. When clocked, the module advances one step per clock pulse and outputs the current step&#x27;s voltage and gate state.</p>
+<h2>SEQ 3 (VCV Free)</h2>
+<p>SEQ 3 is an 8-step sequencer included with Rack Free. Each step has a voltage knob and a gate button. When clocked, the module advances one step per clock pulse and outputs the current step&#x27;s voltage and gate state.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
 <tr><td>STEPS</td><td>1–8</td><td>Number of active steps in the sequence</td></tr>
@@ -122,8 +122,8 @@ function toggle(id){
 <p>A step sequencer combined with a signal multiplexer. Each step has a voltage, gate, and a clock divider, making it possible to build polyrhythmic patterns where different steps run at different speeds. Its output routing capabilities are more complex than a standard sequencer — useful for advanced rhythmic applications.</p>
 <h3>ML Modules SeqSwitch (ML Modules)</h3>
 <p>Routes an input signal to one of several outputs based on a clock step. Useful for switching between sound sources or effects routings rhythmically rather than for pitch sequencing.</p>
-<h3>VCV MIDI-CV + keyboard</h3>
-<p>For live playing rather than sequenced patterns, a MIDI keyboard connected through MIDI-CV is the simplest approach. See <a href="midi-cv.html">MIDI to CV</a> for setup details.</p>
+<h3>VCV Core MIDI to CV + keyboard</h3>
+<p>For live playing rather than sequenced patterns, a MIDI keyboard connected through MIDI to CV is the simplest approach. See <a href="midi-cv.html">MIDI to CV</a> for setup details.</p>
 <h2>Where to go next</h2>
 <ul><li><a href="clock.html">Clock</a> — the clock that drives sequencers</li>
 <li><a href="quantizer.html">Quantizer</a> — snap sequencer output to musical scales</li>

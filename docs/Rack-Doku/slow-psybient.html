@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slow Psybient — VCV Rack Handbook</title>
   <link rel="stylesheet" href="style.css">
-  
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:"neutral"});</script>
 </head>
 <body>
 <div id="layout">
@@ -89,90 +90,134 @@ function toggle(id){
 <li><strong>Valley</strong> — Plateau (reverb)</li>
 <li><strong>Alright Devices</strong> — Chronoblob2 (delay)</li></ul>
 <h2>Part 1 — Clock</h2>
-<p>Add <strong>Impromptu Clocked</strong>. Set BPM to 89. Set CLK1 to ×1 (quarter notes), CLK2 to ×2 (eighth notes), CLK3 to /2 (half notes = one pulse every two beats).</p>
+<p>Add <strong>Clocked (Impromptu)</strong>. Set BPM to 89. Set <strong>Clock 1</strong> to ×1 (quarter notes), <strong>Clock 2</strong> to ×2 (eighth notes), <strong>Clock 3</strong> to /2 (half notes = one pulse every two beats).</p>
 <p>Press RUN. The clock runs; nothing sounds yet.</p>
+<div class="mermaid">flowchart LR
+    CLK["Clocked\n(Impromptu)"]</div>
+<p><strong><a href="slow-psybient-part1.vcv">⬇ Download patch — Part 1</a></strong></p>
 <h2>Part 2 — Drone Pad</h2>
 <p>The drone pad is the harmonic foundation. It plays continuously throughout the track, very slowly evolving in brightness and texture.</p>
-<p><strong>Modules needed:</strong> 2× Fundamental VCO-1, Fundamental VCF, Fundamental VCA, Bogaudio ADSR, Bogaudio LFO, Fundamental 8vert, Fundamental Mixer.</p>
+<p><strong>Modules needed:</strong> 2× VCO (VCV), VCF (VCV), VCA (VCV), ADSR (Bogaudio), LFO (Bogaudio), 8vert (VCV), Mix (VCV).</p>
 <p><strong>Build it:</strong></p>
-<ol><li>Add two VCO-1 modules. Set both to SAW output.</li>
-<li>Set one VCO-1 FREQ knob so it outputs G2 (roughly -1.5V from center). Set the other to the same pitch, then use FINE to detune it by about +7 cents.</li>
-<li>Connect both SAW outputs to a Fundamental Mixer. Set levels to 0.6 each.</li>
-<li>Connect the Mixer output to VCF IN. Set VCF FREQ to about 600 Hz, RES at 0.2.</li>
-<li>Add Bogaudio ADSR. Set: Attack 4 seconds, Decay 0, Sustain 1.0, Release 8 seconds.</li>
+<ol><li>Add two VCO modules. Set both to SAW output.</li>
+<li>Set one VCO FREQ knob so it outputs G2 (roughly -1.5V from center). Set the other to the same pitch, then use FINE to detune it by about +7 cents.</li>
+<li>Connect both SAW outputs to a Mix (VCV). Set levels to 0.6 each.</li>
+<li>Connect the Mixer output to VCF <strong>IN</strong> input. Set VCF FREQ to about 600 Hz, RES at 0.2.</li>
+<li>Add ADSR (Bogaudio). Set: Attack 4 seconds, Decay 0, Sustain 1.0, Release 8 seconds.</li>
 <li>Manually trigger the ADSR once (right-click → trigger) or patch a manual gate. The pad fades in slowly.</li>
-<li>Connect ADSR ENV output to VCA CV input. Connect VCF LP to VCA IN. Connect VCA OUT to your main mixer.</li></ol>
+<li>Connect ADSR <strong>Envelope</strong> output to VCA <strong>CV</strong> input. Connect VCF <strong>LPF</strong> output to VCA <strong>Channel</strong> input. Connect VCA <strong>Channel</strong> output to your main mixer.</li></ol>
 <p><strong>Listen:</strong> You should hear a slowly swelling detuned saw pad in G. The detuning produces slow beating — the two oscillators drifting in and out of phase.</p>
 <p><strong>Add filter motion:</strong></p>
-<ol><li>Add Bogaudio LFO. Set FREQ to 0.05 Hz (one cycle every 20 seconds).</li>
-<li>Take Bogaudio LFO&#x27;s SIN output to an 8vert channel. Set the knob to +0.3.</li>
-<li>Connect the attenuated output to VCF FREQ CV.</li></ol>
+<ol><li>Add LFO (Bogaudio). Set FREQ to 0.05 Hz (one cycle every 20 seconds).</li>
+<li>Take LFO (Bogaudio)&#x27;s <strong>Sine</strong> output to an <strong>8vert</strong> (VCV) <strong>Row 1</strong> input. Set the knob to +0.3.</li>
+<li>Connect the attenuated output to VCF <strong>Frequency</strong> CV input.</li></ol>
+<div class="mermaid">flowchart LR
+    VCO1["VCO 1\n(VCV)"] -->|"SAW"| MIX["Mix\n(VCV)"]
+    VCO2["VCO 2\n(VCV)"] -->|"SAW"| MIX
+    MIX -->|"output"| VCF["VCF\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    PADSR["ADSR\n(Bogaudio)"] -->|"Envelope"| VCA
+    VCA -->|"Channel"| MAIN["Main mixer"]
+    PLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
+    VERT -->|"Row 1"| VCF</div>
 <p><strong>Listen:</strong> The filter now slowly opens and closes every 20 seconds. The pad breathes.</p>
 <p><strong>Tweak:</strong> Increase LFO rate to 0.1 Hz for faster breathing. Reduce 8vert attenuation to tighten the sweep range.</p>
+<p><strong><a href="slow-psybient-part2.vcv">⬇ Download patch — Part 2</a></strong></p>
 <h2>Part 3 — Sparse Bass</h2>
 <p>The bass is simple, mono, and low. It sits below the pad and pulses on specific notes without constant movement.</p>
-<p><strong>Modules needed:</strong> Fundamental VCO-1, Fundamental VCF, Fundamental VCA, Bogaudio ADSR, Fundamental SEQ-3.</p>
+<p><strong>Modules needed:</strong> VCO (VCV), VCF (VCV), VCA (VCV), ADSR (Bogaudio), SEQ3 (VCV).</p>
 <p><strong>Build it:</strong></p>
-<ol><li>Add SEQ-3. Connect Clocked CLK3 (half notes) to SEQ-3 CLK. Set STEPS to 5.</li>
+<ol><li>Add SEQ3 (VCV). Connect Clocked <strong>Clock 3</strong> (half notes) to SEQ3&#x27;s <strong>Clock</strong> input. Set STEPS to 5.</li>
 <li>Set the five step voltages to approximately: G1, G1, F1, G1, Eb1 (roughly -2.5V, -2.5V, -2.75V, -2.5V, -3V — tune by ear).</li>
 <li>Enable gates on steps 1 and 3; leave 2, 4, 5 silent for sparse rhythm.</li>
-<li>Add VCO-1. Set to SIN output for a clean bass tone. Connect SEQ-3 ROW1 to VCO-1 V/OCT.</li>
-<li>VCO-1 SIN → VCF IN. Set VCF FREQ to 150 Hz, RES near zero. VCF LP → VCA IN.</li>
-<li>Add Bogaudio ADSR. Attack 10ms, Decay 400ms, Sustain 0.0, Release 100ms. Connect SEQ-3 GATE to ADSR GATE. Connect ADSR ENV to VCA CV.</li>
-<li>Connect VCA OUT to main mixer at a low level — the bass should support, not dominate.</li></ol>
+<li>Add VCO. Set to Sine output for a clean bass tone. Connect SEQ3&#x27;s <strong>CV 1</strong> output to VCO V/OCT.</li>
+<li>VCO <strong>Sine</strong> → VCF <strong>IN</strong> input. Set VCF FREQ to 150 Hz, RES near zero. VCF <strong>LPF</strong> output → VCA <strong>Channel</strong> input.</li>
+<li>Add ADSR (Bogaudio). Attack 10ms, Decay 400ms, Sustain 0.0, Release 100ms. Connect SEQ3&#x27;s <strong>Trigger</strong> output to ADSR <strong>Gate</strong> input. Connect ADSR <strong>Envelope</strong> output to VCA <strong>CV</strong> input.</li>
+<li>Connect VCA <strong>Channel</strong> output to main mixer at a low level — the bass should support, not dominate.</li></ol>
+<div class="mermaid">flowchart LR
+    CLK["Clocked\n(Impromptu)"] -->|"Clock 3"| SEQ["SEQ3\n(VCV)"]
+    SEQ -->|"CV 1"| BVCO["VCO\n(VCV)"]
+    SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
+    BVCO -->|"Sine"| VCF["VCF\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    BADSR -->|"Envelope"| VCA
+    VCA -->|"Channel"| MAIN["Main mixer"]</div>
 <p><strong>Listen:</strong> You should hear a pulsing bass note following the G minor pattern.</p>
 <p><strong>Tweak:</strong> Enable or disable individual step gates to change the rhythm. The sparser the bass, the more hypnotic the groove.</p>
+<p><strong><a href="slow-psybient-part3.vcv">⬇ Download patch — Part 3</a></strong></p>
 <h2>Part 4 — Psychedelic Fragments</h2>
 <p>Brief, bright melodic fragments that appear and disappear — the &quot;psychedelic&quot; element. These use random pitch selection with a quantizer so they always sound musical.</p>
-<p><strong>Modules needed:</strong> Fundamental VCO-1 (or WTVCO), Fundamental VCF, Fundamental VCA, Bogaudio ADSR, Bogaudio S&amp;H, Fundamental Noise, Fundamental Quantizer, 8vert.</p>
+<p><strong>Modules needed:</strong> VCO (VCV) (or Wavetable VCO), VCF (VCV), VCA (VCV), ADSR (Bogaudio), S&amp;H (Bogaudio), Noise (VCV), Quantizer (VCV), 8vert (VCV).</p>
 <p><strong>Build it:</strong></p>
-<ol><li>Add Bogaudio S&amp;H. Connect Fundamental Noise&#x27;s White output to S&amp;H IN. Connect Clocked CLK2 (eighth notes) to S&amp;H TRIG.</li>
-<li>Add Fundamental Quantizer. Select G minor scale: G, A, Bb, C, D, Eb, F.</li>
-<li>Connect S&amp;H OUT to Quantizer IN. Connect Quantizer OUT to a VCO-1 V/OCT input.</li>
-<li>VCO-1 (set to TRI output for a softer character) → VCF (bandpass mode, FREQ at 1.5 kHz, RES 0.4) → VCA.</li>
-<li>Add Bogaudio ADSR. Attack 5ms, Decay 300ms, Sustain 0, Release 200ms. Clock-trigger this ADSR from Clocked CLK2 as well.</li>
-<li>Connect ADSR ENV to VCA CV. VCA OUT → main mixer at a low level — these should be subtle, not prominent.</li></ol>
-<p><strong>Listen:</strong> Random melodic notes appear in G minor on eighth notes. The bandpass filter gives them a nasal, distant character.</p>
-<p><strong>Tweak:</strong> Reduce Clocked CLK2 to CLK3 (half notes) to make fragments appear less frequently. This is usually better — too many notes sound like a melody rather than a texture.</p>
+<ol><li>Add S&amp;H (Bogaudio). Connect Noise (VCV) <strong>White noise</strong> output to S&amp;H <strong>Signal 1</strong> input. Connect Clocked <strong>Clock 2</strong> (eighth notes) to S&amp;H <strong>Trigger 1</strong> input.</li>
+<li>Add Quantizer (VCV). Select G minor scale: G, A, Bb, C, D, Eb, F.</li>
+<li>Connect S&amp;H output through Quantizer IN. Connect Quantizer OUT to a VCO V/OCT input.</li>
+<li>VCO (set to TRI output for a softer character) → VCF (bandpass mode, FREQ at 1.5 kHz, RES 0.4) → VCA.</li>
+<li>Add ADSR (Bogaudio). Attack 5ms, Decay 300ms, Sustain 0, Release 200ms. Clock-trigger this ADSR from Clocked <strong>Clock 2</strong> as well.</li>
+<li>Connect ADSR <strong>Envelope</strong> output to VCA <strong>CV</strong> input. VCA <strong>Channel</strong> output → main mixer at a low level — these should be subtle, not prominent.</li></ol>
+<div class="mermaid">flowchart LR
+    CLK["Clocked\n(Impromptu)"] -->|"Clock 2"| BSH["S&H\n(Bogaudio)"]
+    NOISE["Noise\n(VCV)"] -->|"White noise"| BSH
+    BSH -->|"output"| QUANT["Quantizer\n(VCV)"]
+    QUANT -->|"output"| FVCO["VCO\n(VCV)"]
+    FVCO -->|"Triangle"| VCF["VCF\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    FADSR["ADSR\n(Bogaudio)"] -->|"Envelope"| VCA
+    CLK -->|"Clock 2"| FADSR
+    VCA -->|"Channel"| MAIN["Main mixer"]</div>
+<p><strong>Listen:</strong> You should now hear sparse random notes in G minor appearing on eighth notes. The triangle wave through the filter gives them a nasal, distant character.</p>
+<p><strong>Tweak:</strong> Reduce Clocked <strong>Clock 2</strong> to <strong>Clock 3</strong> (half notes) to make fragments appear less frequently. This is usually better — too many notes sound like a melody rather than a texture.</p>
+<p><strong><a href="slow-psybient-part4.vcv">⬇ Download patch — Part 4</a></strong></p>
 <h2>Part 5 — Half-Time Drums</h2>
 <p>89 BPM half-time feel: kick on beats 1 and 3, snare on beat 3, closed hats on eighth notes.</p>
-<p><strong>Modules needed:</strong> Fundamental Noise (×2 or one shared), 3× Fundamental VCA, 3× Bogaudio ADSR, Fundamental Mixer, Impromptu Clocked (already running).</p>
+<p><strong>Modules needed:</strong> Noise (VCV) (×2 or one shared), 3× VCA (VCV), 3× ADSR (Bogaudio), Mix (VCV), Clocked (Impromptu) (already running).</p>
 <p>For authentic drums you would use a dedicated drum module like Valley Topograph. For this tutorial, build simple noise bursts:</p>
 <p><strong>Kick:</strong></p>
 <ol><li>Noise White → VCF (LP, 80 Hz, RES 0.1) → VCA.</li>
-<li>ADSR: Attack 2ms, Decay 80ms, Sustain 0, Release 50ms. Trigger from a trigger pattern. For a half-time kick: use SEQ-3 with CLK1 (quarter notes), 4 steps, gates on steps 1 and 3 only.</li>
-<li>VCA OUT → drum mixer.</li></ol>
+<li>ADSR: Attack 2ms, Decay 80ms, Sustain 0, Release 50ms. Trigger from a trigger pattern. For a half-time kick: use SEQ3 (VCV) with Clocked <strong>Clock 1</strong> (quarter notes), 4 steps, gates on steps 1 and 3 only.</li>
+<li>VCA <strong>Channel</strong> output → drum mixer.</li></ol>
 <p><strong>Snare:</strong></p>
 <ol><li>Noise White → VCA (no filter needed).</li>
-<li>ADSR: Attack 1ms, Decay 120ms, Sustain 0, Release 60ms. Trigger from SEQ-3 step 3 only.</li>
-<li>VCA OUT → drum mixer.</li></ol>
+<li>ADSR: Attack 1ms, Decay 120ms, Sustain 0, Release 60ms. Trigger from SEQ3 step 3 only.</li>
+<li>VCA <strong>Channel</strong> output → drum mixer.</li></ol>
 <p><strong>Hi-hats:</strong></p>
 <ol><li>Noise White → VCF (HP, 8 kHz) → VCA.</li>
-<li>ADSR: Attack 1ms, Decay 40ms, Sustain 0, Release 20ms. Trigger from Clocked CLK2 (eighth notes).</li>
-<li>VCA OUT → drum mixer at low level.</li></ol>
+<li>ADSR: Attack 1ms, Decay 40ms, Sustain 0, Release 20ms. Trigger from Clocked <strong>Clock 2</strong> (eighth notes).</li>
+<li>VCA <strong>Channel</strong> output → drum mixer at low level.</li></ol>
 <p><strong>Listen:</strong> You should have a sparse, half-time groove. The kick and snare are the skeleton; hats add motion.</p>
+<p><strong><a href="slow-psybient-part5.vcv">⬇ Download patch — Part 5</a></strong></p>
 <h2>Part 6 — The Slow Modulation System</h2>
 <p>This is what makes the patch feel alive and psychedelic rather than mechanical. Add multiple ultra-slow modulators targeting different parameters simultaneously.</p>
-<p><strong>Add three more Bogaudio LFO modules:</strong></p>
-<p><strong>LFO A — pad filter drift (already built in Part 2):</strong> 0.05 Hz sine to VCF FREQ CV of the pad.</p>
+<p><strong>Add three more LFO (Bogaudio) modules:</strong></p>
+<p><strong>LFO A — pad filter drift (already built in Part 2):</strong> 0.05 Hz sine to VCF <strong>Frequency</strong> CV input of the pad.</p>
 <p><strong>LFO B — fine pitch drift:</strong></p>
-<ol><li>Add Bogaudio LFO. Set FREQ to 0.03 Hz (one cycle every 33 seconds).</li>
-<li>Take SIN output through 8vert at very low attenuation (0.05 — tiny amount).</li>
-<li>Connect to both pad VCO-1 modules&#x27; FM inputs. This causes the pitch to drift imperceptibly — you feel it more than hear it.</li></ol>
+<ol><li>Add LFO (Bogaudio). Set FREQ to 0.03 Hz (one cycle every 33 seconds).</li>
+<li>Take <strong>Sine</strong> output through <strong>8vert</strong> (VCV) <strong>Row 1</strong> input at very low attenuation (0.05 — tiny amount).</li>
+<li>Connect to both pad VCO modules&#x27; FM inputs. This causes the pitch to drift imperceptibly — you feel it more than hear it.</li></ol>
 <p><strong>LFO C — fragment density:</strong></p>
-<ol><li>Add Bogaudio LFO. Set FREQ to 0.08 Hz.</li>
-<li>Take SIN output through 8vert at 0.4.</li>
-<li>Connect to the fragment VCA&#x27;s CV input as an offset. This makes the fragments gradually louder and quieter over a 12-second cycle.</li></ol>
+<ol><li>Add LFO (Bogaudio). Set FREQ to 0.08 Hz.</li>
+<li>Take <strong>Sine</strong> output through <strong>8vert</strong> (VCV) <strong>Row 2</strong> input at 0.4.</li>
+<li>Connect to the fragment VCA&#x27;s <strong>CV</strong> input as an offset. This makes the fragments gradually louder and quieter over a 12-second cycle.</li></ol>
 <p><strong>S&amp;H into reverb and delay:</strong></p>
-<ol><li>Add a second Bogaudio S&amp;H. Input: Noise White. TRIG: Clocked CLK3 (one pulse every two beats).</li>
-<li>Connect OUT through 8vert (0.3) to Plateau&#x27;s DECAY CV input.</li>
-<li>Add a third Bogaudio S&amp;H. Input: Noise White. TRIG: Clocked CLK3.</li>
-<li>Connect OUT through 8vert (0.2) to Chronoblob2&#x27;s FEEDBACK CV input.</li></ol>
+<ol><li>Add a second S&amp;H (Bogaudio). <strong>Signal 1</strong> input: Noise (VCV) <strong>White noise</strong> output. <strong>Trigger 1</strong>: Clocked <strong>Clock 3</strong> (one pulse every two beats).</li>
+<li>Connect S&amp;H output through <strong>8vert</strong> (VCV) <strong>Row 3</strong> input (0.3) to Plateau&#x27;s DECAY CV input.</li>
+<li>Add a third S&amp;H (Bogaudio). <strong>Signal 1</strong> input: Noise (VCV) <strong>White noise</strong> output. <strong>Trigger 1</strong>: Clocked <strong>Clock 3</strong>.</li>
+<li>Connect S&amp;H output through <strong>8vert</strong> (VCV) <strong>Row 4</strong> input (0.2) to Chronoblob2&#x27;s FEEDBACK CV input.</li></ol>
 <p>The reverb decay and delay feedback now change randomly every two beats — the reverb tail gets longer and shorter organically, and the delay becomes denser and sparser unpredictably.</p>
+<div class="mermaid">flowchart LR
+    CLK["Clocked\n(Impromptu)"] -->|"Clock 3"| SH2["S&H 2\n(Bogaudio)"]
+    CLK -->|"Clock 3"| SH3["S&H 3\n(Bogaudio)"]
+    NOISE["Noise\n(VCV)"] -->|"White noise"| SH2
+    NOISE -->|"White noise"| SH3
+    SH2 -->|"output"| VERT["8vert\n(VCV)"]
+    VERT -->|"Row N"| PLT["Plateau\n(Valley)"]
+    SH3 -->|"output"| VERT
+    VERT -->|"Row N"| CB["Chronoblob2\n(Alright Devices)"]</div>
 <p><strong>Listen:</strong> The patch should now sound like it has a life of its own. Nothing repeats exactly.</p>
+<p><strong><a href="slow-psybient-part6.vcv">⬇ Download patch — Part 6</a></strong></p>
 <h2>Part 7 — Effects Chain</h2>
 <p>The effects are what give this style its enormous spatial quality.</p>
-<p><strong>Add Valley Plateau:</strong></p>
+<p><strong>Add Plateau (Valley):</strong></p>
 <ol><li>Take the main drum + bass + fragment mixer output to Plateau L input (connect same signal to R for mono-to-stereo).</li>
 <li>Settings: SIZE 0.9, DIFF 0.7, DECAY 0.92, DAMP 0.35, MOD SPEED 0.2, MOD DEPTH 0.15, PRE-DELAY 0.3 (20–30ms equivalent).</li>
 <li>Connect Plateau OUT L+R to the final output mixer at 0.4 (below the dry signal level).</li></ol>
@@ -180,7 +225,15 @@ function toggle(id){
 <ol><li>Route the fragment voice (before it hits the main mixer) to Chronoblob2 IN.</li>
 <li>Settings: TIME at dotted 1/8 (at 89 BPM ≈ 420ms), FEEDBACK 0.5, TONE 0.35, MIX 0.45.</li>
 <li>Connect Chronoblob2 OUT to the final mixer alongside the dry fragment signal.</li></ol>
-<p><strong>Listen:</strong> The combination of enormous Plateau reverb and dub-style Chronoblob delay should transform the patch from a collection of sounds into a spatial, immersive texture.</p>
+<p><strong>Listen:</strong> You should now hear the patch transform into a spatial, immersive texture — the enormous Plateau reverb and dub-style Chronoblob delay place every sound inside a large, living space.</p>
+<div class="mermaid">flowchart LR
+    MAIN["Main mixer"] -->|"L"| PLT["Plateau\n(Valley)"]
+    MAIN -->|"R"| PLT
+    PLT -->|"OUT L"| FINAL["Final output mixer"]
+    PLT -->|"OUT R"| FINAL
+    FRAG["Fragment voice"] -->|"IN"| CB["Chronoblob2\n(Alright Devices)"]
+    CB -->|"OUT"| FINAL</div>
+<p><strong><a href="slow-psybient-part7.vcv">⬇ Download patch — Part 7</a></strong></p>
 <h2>Part 8 — Mixing</h2>
 <p>Final balance guidelines:</p>
 <ul><li>Pad: prominent but not harsh. Sits in the mid-range.</li>
@@ -190,6 +243,8 @@ function toggle(id){
 <li>Reverb return: generously loud — this style has wet reverb in the foreground, not the background.</li>
 <li>Delay return: moderate — delay echoes should be heard, not overpowering.</li></ul>
 <p>Roll off high frequencies above 12 kHz using a VCF in HP-inverted (LP mode) on the main bus. Psybient mixes are typically dark and warm.</p>
+<p>You should now hear the same sounds as Part 7, but better balanced — pad prominent but not harsh, reverb generous and forward in the mix, bass felt more than heard, fragments subtle.</p>
+<p><strong><a href="slow-psybient-part8.vcv">⬇ Download patch — Part 8</a></strong></p>
 <h2>Key style rules</h2>
 <ol><li>Less is more. Sparse bass and sparse melodic fragments feel more hypnotic than busy ones.</li>
 <li>The modulation system matters more than the notes. Change LFO rates to change the feel entirely.</li>
@@ -202,7 +257,7 @@ function toggle(id){
 <li><a href="delay-reverb-chorus.html">Delay, Reverb &amp; Chorus</a> — Plateau and Chronoblob in detail</li>
 <li><a href="patching-use-cases.html">Patching Use Cases</a> — other patching styles to explore</li></ul>
 <hr>
-<p><em>Version: 2026-06-17.</em></p>
+<p><em>Version: 2026-06-19.</em></p>
     </article>
   </main>
   <footer>VCV Rack Patcher's Handbook · 2026</footer>

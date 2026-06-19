@@ -33,6 +33,8 @@ Press **Space** to open the module browser. Search for **Audio 8** or just **Aud
 
 Click the device display on the module and select your audio output device. If you don't see one, check that your audio interface or built-in speakers are connected and not in use by another application.
 
+**[⬇ Download patch — Step 2](first-patch-step2.vcv)**
+
 ---
 
 ## Step 3 — Add MIDI to CV
@@ -40,6 +42,8 @@ Click the device display on the module and select your audio output device. If y
 Open the browser again and add **MIDI to CV** (VCV Core). Click its display and select your MIDI keyboard, or select **Computer keyboard** to use your computer's typing keys as a piano.
 
 You now have a V/Oct output (pitch) and a Gate output on this module.
+
+**[⬇ Download patch — Step 3](first-patch-step3.vcv)**
 
 ---
 
@@ -54,17 +58,23 @@ flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
 ```
 
+**[⬇ Download patch — Step 4](first-patch-step4.vcv)**
+
 ---
 
 ## Step 5 — Add ADSR
 
 Add **ADSR** (VCV). Connect **MIDI to CV**'s **Gate** output to the ADSR's **Gate** input. The envelope will now fire when you press a key.
 
+Still silent — the envelope fires when you press a key but there is no VCA carrying the signal through yet.
+
 ```mermaid
 flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
 ```
+
+**[⬇ Download patch — Step 5](first-patch-step5.vcv)**
 
 ---
 
@@ -85,13 +95,15 @@ flowchart LR
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
 ```
 
+**[⬇ Download patch — Step 6](first-patch-step6.vcv)**
+
 ---
 
 ## Step 7 — Add VCF
 
 Add **VCF** (VCV). Insert it between the VCO and the VCA: disconnect the VCO from the VCA, then connect the VCO's **SAW** output to the VCF's **IN** input, and the VCF's **LPF** output to the VCA's **Channel** input.
 
-Turn the VCF's **Cutoff** knob to a lower value — around 9 o'clock. Press a key. The sound is now darker. Turn Resonance up for a more nasal character.
+Turn the VCF's **Cutoff** knob to a lower value — around 9 o'clock. You should now hear a darker sound — the VCF is rolling off the high frequencies. Turn Resonance up for a more nasal character.
 
 ```mermaid
 flowchart LR
@@ -103,13 +115,15 @@ flowchart LR
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
 ```
 
+**[⬇ Download patch — Step 7](first-patch-step7.vcv)**
+
 ---
 
 ## Step 8 — Modulate the filter
 
 Connect a second cable from the ADSR's **Envelope** output to the VCF's **Freq** input. Turn the VCF's Freq CV knob (small knob next to the Freq input) up to about 3 o'clock.
 
-Now each note attack briefly opens the filter before it closes back down. This is the classic subtractive synthesis "envelope filter" effect.
+You should now hear the filter open briefly on each note attack, then close back down as the envelope falls. This is the classic subtractive synthesis "envelope filter" effect.
 
 ```mermaid
 flowchart LR
@@ -121,6 +135,8 @@ flowchart LR
     ADSR -->|"Envelope"| VCF
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
 ```
+
+**[⬇ Download patch — Step 8](first-patch-step8.vcv)**
 
 ---
 

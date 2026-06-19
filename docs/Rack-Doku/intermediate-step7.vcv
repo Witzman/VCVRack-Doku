@@ -1,0 +1,186 @@
+{
+  "version": "2.5.2",
+  "modules": [
+    {
+      "id": 1,
+      "plugin": "ImpromptuModular",
+      "model": "Clocked",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [0, 0]
+    },
+    {
+      "id": 2,
+      "plugin": "Fundamental",
+      "model": "SEQ3",
+      "version": "2.6.5.rc1",
+      "params": [],
+      "pos": [16, 0]
+    },
+    {
+      "id": 3,
+      "plugin": "Bogaudio",
+      "model": "Bogaudio-VCO",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [36, 0]
+    },
+    {
+      "id": 4,
+      "plugin": "Bogaudio",
+      "model": "Bogaudio-ADSR",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [46, 0]
+    },
+    {
+      "id": 5,
+      "plugin": "Fundamental",
+      "model": "VCF",
+      "version": "2.6.5.rc1",
+      "params": [{"id": 0, "value": 0.6}],
+      "pos": [56, 0]
+    },
+    {
+      "id": 6,
+      "plugin": "Fundamental",
+      "model": "VCA",
+      "version": "2.6.5.rc1",
+      "params": [],
+      "pos": [66, 0]
+    },
+    {
+      "id": 7,
+      "plugin": "Core",
+      "model": "AudioInterface2",
+      "version": "2.5.2",
+      "params": [{"id": 0, "value": 1.0}],
+      "pos": [76, 0]
+    },
+    {
+      "id": 8,
+      "plugin": "Bogaudio",
+      "model": "Bogaudio-LFO",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [0, 1]
+    },
+    {
+      "id": 9,
+      "plugin": "Fundamental",
+      "model": "8vert",
+      "version": "2.6.5.rc1",
+      "params": [{"id": 0, "value": 0.4}, {"id": 1, "value": 0.3}],
+      "pos": [10, 1]
+    },
+    {
+      "id": 10,
+      "plugin": "Bogaudio",
+      "model": "Bogaudio-SampleHold",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [22, 1]
+    },
+    {
+      "id": 11,
+      "plugin": "Fundamental",
+      "model": "Noise",
+      "version": "2.6.5.rc1",
+      "params": [],
+      "pos": [32, 1]
+    }
+  ],
+  "cables": [
+    {
+      "id": 1,
+      "outputModuleId": 1,
+      "outputId": 1,
+      "inputModuleId": 2,
+      "inputId": 1
+    },
+    {
+      "id": 2,
+      "outputModuleId": 2,
+      "outputId": 1,
+      "inputModuleId": 3,
+      "inputId": 0
+    },
+    {
+      "id": 3,
+      "outputModuleId": 2,
+      "outputId": 0,
+      "inputModuleId": 4,
+      "inputId": 0
+    },
+    {
+      "id": 4,
+      "outputModuleId": 3,
+      "outputId": 1,
+      "inputModuleId": 5,
+      "inputId": 3
+    },
+    {
+      "id": 5,
+      "outputModuleId": 5,
+      "outputId": 0,
+      "inputModuleId": 6,
+      "inputId": 2
+    },
+    {
+      "id": 6,
+      "outputModuleId": 4,
+      "outputId": 0,
+      "inputModuleId": 6,
+      "inputId": 0
+    },
+    {
+      "id": 7,
+      "outputModuleId": 6,
+      "outputId": 0,
+      "inputModuleId": 7,
+      "inputId": 0
+    },
+    {
+      "id": 8,
+      "outputModuleId": 8,
+      "outputId": 4,
+      "inputModuleId": 9,
+      "inputId": 0
+    },
+    {
+      "id": 9,
+      "outputModuleId": 9,
+      "outputId": 0,
+      "inputModuleId": 5,
+      "inputId": 0
+    },
+    {
+      "id": 10,
+      "outputModuleId": 1,
+      "outputId": 1,
+      "inputModuleId": 10,
+      "inputId": 0
+    },
+    {
+      "id": 11,
+      "outputModuleId": 11,
+      "outputId": 0,
+      "inputModuleId": 10,
+      "inputId": 1
+    },
+    {
+      "id": 12,
+      "outputModuleId": 10,
+      "outputId": 0,
+      "inputModuleId": 9,
+      "inputId": 1
+    },
+    {
+      "id": 13,
+      "outputModuleId": 9,
+      "outputId": 1,
+      "inputModuleId": 6,
+      "inputId": 1
+    }
+  ]
+}

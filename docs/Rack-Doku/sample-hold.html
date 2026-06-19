@@ -93,9 +93,9 @@ function toggle(id){
 <tr><td>TRIG</td><td>Input</td><td>Trigger or gate to initiate sampling</td></tr>
 <tr><td>OUT</td><td>Output</td><td>Held voltage</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Connect Fundamental Noise&#x27;s White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO&#x27;s V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.</p>
-<h2>SHASR (Fundamental)</h2>
-<p>SHASR combines Sample &amp; Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.</p>
+<p><strong>Patching tips:</strong> Connect VCV Free Noise&#x27;s White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO&#x27;s V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.</p>
+<h2>Sample &amp; Hold ASR (VCV Free)</h2>
+<p>Sample &amp; Hold ASR combines Sample &amp; Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.</p>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
 <tr><td>IN</td><td>Input</td><td>Signal to sample</td></tr>

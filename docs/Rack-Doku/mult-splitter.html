@@ -82,15 +82,15 @@ function toggle(id){
 <h1>Mult &amp; Splitter</h1>
 <p>A mult (multiple) copies one signal to several outputs so the same CV or audio can be sent to multiple destinations simultaneously. A splitter separates a polyphonic cable (a single cable carrying multiple independent signals) into individual monophonic outputs. These are routing utilities — they don&#x27;t change the signal, they distribute it.</p>
 <p>In VCV Rack, you can often connect one output to multiple inputs simply by clicking the output and adding more cables. The built-in mult behavior means you may not always need a dedicated mult module. However, explicit mult modules are useful for documentation clarity and when driving many destinations from a single source.</p>
-<h2>Split (Fundamental)</h2>
+<h2>Split (VCV Free)</h2>
 <p>Split takes one polyphonic cable and outputs up to 16 individual monophonic channels. Polyphonic cables in VCV Rack carry multiple signals in a single wire. When a polyphonic source (like a MIDI keyboard outputting polyphonic pitch CV) needs to feed multiple monophonic destinations, Split separates the channels.</p>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
 <tr><td>POLY</td><td>Input</td><td>Polyphonic cable input</td></tr>
 <tr><td>1–16</td><td>Output</td><td>Individual channel outputs</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Connect the POLY output of a MIDI-CV module (in polyphonic mode) to Split&#x27;s input. Each output then carries one voice&#x27;s pitch CV. Route each to its own VCO for true polyphony.</p>
-<h2>Merge (Fundamental)</h2>
+<p><strong>Patching tips:</strong> Connect the POLY output of a MIDI to CV module (in polyphonic mode) to Split&#x27;s input. Each output then carries one voice&#x27;s pitch CV. Route each to its own VCO for true polyphony.</p>
+<h2>Merge (VCV Free)</h2>
 <p>The inverse of Split — takes up to 16 monophonic inputs and combines them into one polyphonic cable output. Used to feed polyphonic-aware modules from individual signals.</p>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
@@ -98,7 +98,7 @@ function toggle(id){
 <tr><td>POLY</td><td>Output</td><td>Polyphonic cable output</td></tr>
 </table>
 <p><strong>Patching tips:</strong> Merge several separate LFO outputs into one polyphonic cable for use with polyphonic-capable modules. Or merge individual voices&#x27; outputs into a single polyphonic bus for a polyphonic VCF.</p>
-<h2>Mult (Fundamental)</h2>
+<h2>Mult (VCV Free)</h2>
 <p>A simple passive mult: one input connected to multiple outputs. In VCV Rack, this is largely redundant since any output cable can be clicked repeatedly to add multiple destinations. However, explicit Mult modules make the signal flow visually clearer when one source drives many destinations.</p>
 <p><strong>Patching tips:</strong> Use a Mult to distribute a master clock signal to multiple sequencers, LFOs, and envelope triggers from a single source. Visual clarity is the main benefit.</p>
 <h3>Count Modula Poly Channels (Count Modula)</h3>

@@ -1,0 +1,60 @@
+{
+  "version": "2.5.2",
+  "modules": [
+    {
+      "id": 1,
+      "plugin": "ImpromptuModular",
+      "model": "Clocked",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [0, 0]
+    },
+    {
+      "id": 2,
+      "plugin": "Fundamental",
+      "model": "SEQ3",
+      "version": "2.6.5.rc1",
+      "params": [],
+      "pos": [16, 0]
+    },
+    {
+      "id": 3,
+      "plugin": "Bogaudio",
+      "model": "Bogaudio-VCO",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [36, 0]
+    },
+    {
+      "id": 4,
+      "plugin": "Bogaudio",
+      "model": "Bogaudio-ADSR",
+      "version": "2.0.0",
+      "params": [],
+      "pos": [46, 0]
+    }
+  ],
+  "cables": [
+    {
+      "id": 1,
+      "outputModuleId": 1,
+      "outputId": 1,
+      "inputModuleId": 2,
+      "inputId": 1
+    },
+    {
+      "id": 2,
+      "outputModuleId": 2,
+      "outputId": 1,
+      "inputModuleId": 3,
+      "inputId": 0
+    },
+    {
+      "id": 3,
+      "outputModuleId": 2,
+      "outputId": 0,
+      "inputModuleId": 4,
+      "inputId": 0
+    }
+  ]
+}

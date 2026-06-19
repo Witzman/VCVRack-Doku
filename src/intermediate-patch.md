@@ -48,6 +48,8 @@ flowchart LR
     CLK["Clocked\n(Impromptu)"]
 ```
 
+**[⬇ Download patch — Step 2](intermediate-step2.vcv)**
+
 ## Step 3 — Add a sequencer
 
 Add **SEQ3** (VCV) from the module browser.
@@ -57,10 +59,14 @@ Add **SEQ3** (VCV) from the module browser.
 - Set the four step knobs to C3, E3, G3, A3 (these are approximately -1V, -0.75V, -0.5V, -0.25V — tune by ear against the VCO you add next).
 - Enable all four gate buttons.
 
+Still silent — clock and sequencer are running, producing CV and gate signals, but no voice module is connected yet.
+
 ```mermaid
 flowchart LR
     CLK["Clocked\n(Impromptu)"] -->|"Clock 1"| SEQ["SEQ3\n(VCV)"]
 ```
+
+**[⬇ Download patch — Step 3](intermediate-step3.vcv)**
 
 ## Step 4 — Add the voice
 
@@ -70,12 +76,16 @@ Add **VCO (Bogaudio)** (search "Bogaudio VCO" in the browser). This is a more fl
 - Connect SEQ3's **Trigger** output to the next step's input (keep reading).
 - Take the **Saw signal** output from VCO (Bogaudio) forward into the filter.
 
+Still silent — the VCO is tracking the sequence pitches, but no filter, VCA, or output path exists yet.
+
 ```mermaid
 flowchart LR
     CLK["Clocked\n(Impromptu)"] -->|"Clock 1"| SEQ["SEQ3\n(VCV)"]
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
 ```
+
+**[⬇ Download patch — Step 4](intermediate-step4.vcv)**
 
 ## Step 5 — Add filter and envelope
 
@@ -102,6 +112,8 @@ flowchart LR
     VCA -->|"Channel 1"| AUDIO["Audio 8\n(VCV Core)"]
 ```
 
+**[⬇ Download patch — Step 5](intermediate-step5.vcv)**
+
 ## Step 6 — Add a tempo-synced filter sweep
 
 This is the step that makes the patch feel professional rather than static.
@@ -112,7 +124,7 @@ Add **LFO (Bogaudio)**.
 - Take the **Sine** output through an **8vert** (VCV) **Row 1** input (attenuate to about 0.4).
 - Connect the **Row 1** output to VCF's **Frequency** CV input.
 
-Now the filter opens and closes in time with the beat, giving the sequence a rhythmic breathing quality.
+You should now hear the filter open and close in time with the beat, giving the sequence a rhythmic breathing quality.
 
 **What to tweak:** Change the LFO rate. Halving it to 1 Hz gives a two-beat filter sweep — the filter opens slowly over two beats and closes again. Setting it very slow (0.1 Hz) produces a gradual sweep over ten seconds. Each rate changes the groove completely.
 
@@ -129,6 +141,8 @@ flowchart LR
     VCA -->|"Channel 1"| AUDIO["Audio 8\n(VCV Core)"]
 ```
 
+**[⬇ Download patch — Step 6](intermediate-step6.vcv)**
+
 ## Step 7 — Add velocity variation
 
 ADSR (Bogaudio) shapes each note's amplitude over time, but every note hits equally hard. To add random velocity — some notes louder, some softer — feed a random sample-and-hold signal into the VCA's linear CV input alongside the envelope.
@@ -138,7 +152,7 @@ ADSR (Bogaudio) shapes each note's amplitude over time, but every note hits equa
 - Connect **Noise** (VCV)'s **White noise** output to S&H's **Signal 1** input.
 - Connect S&H's output through an **8vert** (VCV) **Row 2** input (attenuate to 0.3), then connect **Row 2** output to VCA's **Channel 1 linear CV** input.
 
-The VCA now receives a different random level offset on each step — some notes hit harder, some softer. This is the single biggest step toward making a sequenced patch feel alive.
+You should now hear velocity variation — some notes hit harder, some softer, with a different random level on each step. This is the single biggest step toward making a sequenced patch feel alive.
 
 ```mermaid
 flowchart LR
@@ -156,6 +170,8 @@ flowchart LR
     VERT -->|"Row 2"| VCA
     VCA -->|"Channel 1"| AUDIO["Audio 8\n(VCV Core)"]
 ```
+
+**[⬇ Download patch — Step 7](intermediate-step7.vcv)**
 
 ## What you have learned
 

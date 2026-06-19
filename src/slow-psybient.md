@@ -24,6 +24,8 @@ flowchart LR
     CLK["Clocked\n(Impromptu)"]
 ```
 
+**[⬇ Download patch — Part 1](slow-psybient-part1.vcv)**
+
 ## Part 2 — Drone Pad
 
 The drone pad is the harmonic foundation. It plays continuously throughout the track, very slowly evolving in brightness and texture.
@@ -64,6 +66,8 @@ flowchart LR
 
 **Tweak:** Increase LFO rate to 0.1 Hz for faster breathing. Reduce 8vert attenuation to tighten the sweep range.
 
+**[⬇ Download patch — Part 2](slow-psybient-part2.vcv)**
+
 ## Part 3 — Sparse Bass
 
 The bass is simple, mono, and low. It sits below the pad and pulses on specific notes without constant movement.
@@ -95,6 +99,8 @@ flowchart LR
 
 **Tweak:** Enable or disable individual step gates to change the rhythm. The sparser the bass, the more hypnotic the groove.
 
+**[⬇ Download patch — Part 3](slow-psybient-part3.vcv)**
+
 ## Part 4 — Psychedelic Fragments
 
 Brief, bright melodic fragments that appear and disappear — the "psychedelic" element. These use random pitch selection with a quantizer so they always sound musical.
@@ -123,9 +129,11 @@ flowchart LR
     VCA -->|"Channel"| MAIN["Main mixer"]
 ```
 
-**Listen:** Random melodic notes appear in G minor on eighth notes. The bandpass filter gives them a nasal, distant character.
+**Listen:** You should now hear sparse random notes in G minor appearing on eighth notes. The triangle wave through the filter gives them a nasal, distant character.
 
 **Tweak:** Reduce Clocked **Clock 2** to **Clock 3** (half notes) to make fragments appear less frequently. This is usually better — too many notes sound like a melody rather than a texture.
+
+**[⬇ Download patch — Part 4](slow-psybient-part4.vcv)**
 
 ## Part 5 — Half-Time Drums
 
@@ -151,6 +159,8 @@ For authentic drums you would use a dedicated drum module like Valley Topograph.
 3. VCA **Channel** output → drum mixer at low level.
 
 **Listen:** You should have a sparse, half-time groove. The kick and snare are the skeleton; hats add motion.
+
+**[⬇ Download patch — Part 5](slow-psybient-part5.vcv)**
 
 ## Part 6 — The Slow Modulation System
 
@@ -192,6 +202,8 @@ flowchart LR
 
 **Listen:** The patch should now sound like it has a life of its own. Nothing repeats exactly.
 
+**[⬇ Download patch — Part 6](slow-psybient-part6.vcv)**
+
 ## Part 7 — Effects Chain
 
 The effects are what give this style its enormous spatial quality.
@@ -206,7 +218,7 @@ The effects are what give this style its enormous spatial quality.
 2. Settings: TIME at dotted 1/8 (at 89 BPM ≈ 420ms), FEEDBACK 0.5, TONE 0.35, MIX 0.45.
 3. Connect Chronoblob2 OUT to the final mixer alongside the dry fragment signal.
 
-**Listen:** The combination of enormous Plateau reverb and dub-style Chronoblob delay should transform the patch from a collection of sounds into a spatial, immersive texture.
+**Listen:** You should now hear the patch transform into a spatial, immersive texture — the enormous Plateau reverb and dub-style Chronoblob delay place every sound inside a large, living space.
 
 ```mermaid
 flowchart LR
@@ -217,6 +229,8 @@ flowchart LR
     FRAG["Fragment voice"] -->|"IN"| CB["Chronoblob2\n(Alright Devices)"]
     CB -->|"OUT"| FINAL
 ```
+
+**[⬇ Download patch — Part 7](slow-psybient-part7.vcv)**
 
 ## Part 8 — Mixing
 
@@ -230,6 +244,10 @@ Final balance guidelines:
 - Delay return: moderate — delay echoes should be heard, not overpowering.
 
 Roll off high frequencies above 12 kHz using a VCF in HP-inverted (LP mode) on the main bus. Psybient mixes are typically dark and warm.
+
+You should now hear the same sounds as Part 7, but better balanced — pad prominent but not harsh, reverb generous and forward in the mix, bass felt more than heard, fragments subtle.
+
+**[⬇ Download patch — Part 8](slow-psybient-part8.vcv)**
 
 ## Key style rules
 

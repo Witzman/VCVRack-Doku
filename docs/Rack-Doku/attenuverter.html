@@ -82,7 +82,7 @@ function toggle(id){
 <h1>Attenuverter</h1>
 <p>An attenuverter scales a CV signal up or down (attenuation) and optionally flips it to negative (inversion). The word combines &quot;attenuate&quot; and &quot;invert.&quot; Attenuverters are utility modules — they don&#x27;t generate or transform sound, but they make modulation practical by letting you dial in exactly how much a modulator affects its target, and in which direction.</p>
 <p>Without attenuverters, a signal going from an LFO to a filter might swing the cutoff across the entire frequency range when you only want a subtle movement. An attenuverter scales that swing down to a useful range. If you want the filter to close as the LFO rises rather than open, an attenuverter inverts the signal.</p>
-<h2>8vert (Fundamental)</h2>
+<h2>8vert (VCV Free)</h2>
 <p>8vert provides eight independent attenuverter channels. Each channel has an input, a knob ranging from -1 to +1, and an output. At +1, the signal passes unchanged. At 0, the output is zero. At -1, the signal is inverted. Values between these points scale and optionally flip the signal.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
@@ -97,7 +97,7 @@ function toggle(id){
 <h2>Bogaudio OFFSET (Bogaudio)</h2>
 <p>Adds a fixed offset to a CV signal — shifts the entire voltage range up or down without scaling. Useful when a modulator or sequencer outputs voltages in the wrong range for your target. For example, an envelope that outputs 0–10V can be shifted down by 5V to produce a -5V to +5V range.</p>
 <p><strong>Patching tips:</strong> After an S&amp;H random output, add an OFFSET to bias random voltages into a higher or lower range before sending to a quantizer. This shifts which octave or register the random pitches land in.</p>
-<h3>Fundamental 8vert as CV source</h3>
+<h3>VCV Free 8vert as CV source</h3>
 <p>With no inputs patched, 8vert&#x27;s eight knobs become eight independent manual CV sources. Set knob positions for fixed offsets, pitch CV values, or modulation biases. This is a free way to create up to eight manually-tuned control voltages without dedicated offset or CV source modules.</p>
 <h3>Bogaudio Attenuvert (Bogaudio)</h3>
 <p>A single-channel attenuverter with a cleaner panel layout than individual 8vert channels. Use when you need one attenuverter in a specific part of the signal path and don&#x27;t want to use a full 8vert module for a single channel.</p>

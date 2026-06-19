@@ -137,7 +137,7 @@ function toggle(id){
 <hr>
 <h2>Step 2 — VCV Rack MIDI modules</h2>
 <p>Add these modules to your patch:</p>
-<p><strong>MIDI-GATE</strong> (Fundamental) — converts the pad note-ons into gate signals, one gate output per note. Use four instances, one per voice row, or one instance and route outputs by note number.</p>
+<p><strong>MIDI to Gate</strong> (VCV Free) — converts the pad note-ons into gate signals, one gate output per note. Use four instances, one per voice row, or one instance and route outputs by note number.</p>
 <p><strong>MIDI-MAP</strong> (VCV) — right-click any parameter in your patch, select &quot;Map to MIDI CC&quot;, then move the corresponding encoder. Repeat for all 16 CCs across both encoder pages. MIDI-MAP can handle all 16 in two stacked modules (8 slots each).</p>
 <hr>
 <h2>Step 3 — Pattern switching with PhraseSeq16</h2>
@@ -146,7 +146,7 @@ function toggle(id){
 <p><strong>Wiring per sequencer:</strong></p>
 <ol><li>Connect <strong>Impromptu Clocked</strong> master clock output → PhraseSeq16 clock input</li>
 <li>Connect Clocked&#x27;s <strong>bar output</strong> (or end-of-phrase trigger) → PhraseSeq16 reset/phrase-advance input — this is what makes switching wait for the bar end</li>
-<li>Connect the MIDI-GATE output for that voice&#x27;s pads → PhraseSeq16 phrase select CV input</li></ol>
+<li>Connect the MIDI to Gate output for that voice&#x27;s pads → PhraseSeq16 phrase select CV input</li></ol>
 <p>When you hit pad 1 in the drums row, the gate fires, PhraseSeq16 queues pattern 1, and at the next bar boundary it switches cleanly.</p>
 <p><strong>Programming patterns:</strong> Click into each PhraseSeq16, select a pattern slot (1–4), and program the steps. The drums sequencer drives your kick/snare/hat trigger signals; the bass sequencer drives the bass VCO pitch and gate.</p>
 <hr>

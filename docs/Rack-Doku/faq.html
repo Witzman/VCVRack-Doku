@@ -102,9 +102,9 @@ function toggle(id){
 <p><strong>A specific module is causing a CPU spike.</strong> Bypass modules one at a time to identify the culprit. Effects modules (reverb, convolution) are common offenders at high buffer quality settings.</p>
 <hr>
 <h2>MIDI</h2>
-<p><strong>My MIDI keyboard sends notes but I hear nothing in VCV Rack.</strong> Confirm the MIDI-CV module is added and your device is selected in its display. Check that V/Oct is connected to the VCO&#x27;s PITCH input and Gate is connected to the ADSR&#x27;s Gate input.</p>
-<p><strong>Only one note plays at a time (no polyphony).</strong> MIDI-CV in its default mode is monophonic. To enable polyphony, right-click the MIDI-CV module and change the polyphony mode to a chord or poly mode. Then use polyphonic-capable modules (most VCV Free modules support polyphony) for the rest of the chain.</p>
-<p><strong>Pitch bend doesn&#x27;t work.</strong> Connect the MIDI-CV module&#x27;s <strong>Pitch Bend</strong> output to the VCO&#x27;s FM input. Set the FM attenuverter to a value that corresponds to your desired bend range (a full semitone is roughly 0.083 V, so for ±2 semitone bend, use an attenuverter that scales the ±5 V bend signal to ±0.17 V).</p>
+<p><strong>My MIDI keyboard sends notes but I hear nothing in VCV Rack.</strong> Confirm the MIDI to CV module is added and your device is selected in its display. Check that V/Oct is connected to the VCO&#x27;s PITCH input and Gate is connected to the ADSR&#x27;s Gate input.</p>
+<p><strong>Only one note plays at a time (no polyphony).</strong> MIDI to CV in its default mode is monophonic. To enable polyphony, right-click the MIDI to CV module and change the polyphony mode to a chord or poly mode. Then use polyphonic-capable modules (most VCV Free modules support polyphony) for the rest of the chain.</p>
+<p><strong>Pitch bend doesn&#x27;t work.</strong> Connect the MIDI to CV module&#x27;s <strong>Pitch Bend</strong> output to the VCO&#x27;s FM input. Set the FM attenuverter to a value that corresponds to your desired bend range (a full semitone is roughly 0.083 V, so for ±2 semitone bend, use an attenuverter that scales the ±5 V bend signal to ±0.17 V).</p>
 <hr>
 <h2>Polyphony</h2>
 <p><strong>I want to play chords but the sound is still monophonic.</strong> Check that all modules in your chain support polyphony (most VCV Free modules do). The polyphonic signal is only as wide as the narrowest module in the chain. If one module in the middle is monophonic, it collapses the signal to one channel.</p>
