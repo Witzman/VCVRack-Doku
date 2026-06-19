@@ -82,18 +82,17 @@ function toggle(id){
 <h1>Mixer</h1>
 <p>A mixer combines multiple audio signals into one output, with individual level control for each channel. In a modular patch, mixers appear at several points: combining multiple oscillator waveforms, summing voices before a shared filter, blending dry and wet signals in an effects send, and at the final stage before the audio output. CV signals can also be mixed to combine multiple modulation sources.</p>
 <h2>Mix (VCV Free)</h2>
-<p>The VCV Free Mix has four mono input channels each with a LEVEL knob, and two outputs: a mono sum and a stereo sum (channels 1-2 panned left, channels 3-4 panned right). Simple and immediately useful.</p>
+<p>The VCV Free Mix has six mono input channels and one master LEVEL knob, summing everything to a single mono Mix output. Simple and immediately useful. (It has no per-channel level knobs and no stereo or pan outputs — for those, use VCA Mix or a Bogaudio mixer.)</p>
 <table>
 <tr><th>Parameter</th><th>Description</th></tr>
-<tr><td>CH1–CH4 LEVEL</td><td>Per-channel volume</td></tr>
+<tr><td>LEVEL</td><td>Master output level (0–100%)</td></tr>
 </table>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
-<tr><td>CH1–CH4</td><td>Input</td><td>Four mono audio inputs</td></tr>
-<tr><td>MIX</td><td>Output</td><td>Mono summed output</td></tr>
-<tr><td>L / R</td><td>Output</td><td>Stereo output with fixed pan positions</td></tr>
+<tr><td>Channel 1–6</td><td>Input</td><td>Six mono audio inputs</td></tr>
+<tr><td>Mix</td><td>Output</td><td>Mono summed output</td></tr>
 </table>
-<p><strong>Patching tips:</strong> The stereo output places channels 1-2 left and 3-4 right — put your bass and lead on 1-2 so they appear center, and pads on 3-4 for width. For a send effect, take the MIX output to your reverb input, then mix the reverb return with the dry signal in a second mixer channel.</p>
+<p><strong>Patching tips:</strong> For a send effect, take the Mix output to your reverb input, then mix the reverb return with the dry signal in a second mixer. When you need per-channel level control, reach for VCA Mix instead.</p>
 <h2>VCA Mix (VCV Free)</h2>
 <p>An extended mixer with CV-controllable channel levels. Each channel has both a LEVEL knob and a CV input that scales the knob value. This allows dynamic volume control per channel — useful for automated fade-ins, envelope-shaped channel levels, or LFO-driven volume animation.</p>
 <table>
@@ -112,7 +111,7 @@ function toggle(id){
 </table>
 <p><strong>Patching tips:</strong> Use pan CV inputs to automate stereo movement — a slow triangle LFO on pan produces a gradual side-to-side sweep (autopan effect). Mute buttons let you quickly A/B voices during patch building.</p>
 <h3>CV Mix (VCV Free)</h3>
-<p>A four-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.</p>
+<p>A three-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.</p>
 <h3>8vert (VCV Free)</h3>
 <p>Eight attenuverters that can function as a simple eight-input mixer when their outputs are connected to a multi-input module. See <a href="attenuverter.html">Attenuverter</a> for full details.</p>
 <h3>Befaco STMix (Befaco)</h3>

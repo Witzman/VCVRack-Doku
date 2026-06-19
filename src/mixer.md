@@ -4,19 +4,18 @@ A mixer combines multiple audio signals into one output, with individual level c
 
 ## Mix (VCV Free)
 
-The VCV Free Mix has four mono input channels each with a LEVEL knob, and two outputs: a mono sum and a stereo sum (channels 1-2 panned left, channels 3-4 panned right). Simple and immediately useful.
+The VCV Free Mix has six mono input channels and one master LEVEL knob, summing everything to a single mono Mix output. Simple and immediately useful. (It has no per-channel level knobs and no stereo or pan outputs — for those, use VCA Mix or a Bogaudio mixer.)
 
 | Parameter | Description |
 |-----------|-------------|
-| CH1–CH4 LEVEL | Per-channel volume |
+| LEVEL | Master output level (0–100%) |
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
-| CH1–CH4 | Input | Four mono audio inputs |
-| MIX | Output | Mono summed output |
-| L / R | Output | Stereo output with fixed pan positions |
+| Channel 1–6 | Input | Six mono audio inputs |
+| Mix | Output | Mono summed output |
 
-**Patching tips:** The stereo output places channels 1-2 left and 3-4 right — put your bass and lead on 1-2 so they appear center, and pads on 3-4 for width. For a send effect, take the MIX output to your reverb input, then mix the reverb return with the dry signal in a second mixer channel.
+**Patching tips:** For a send effect, take the Mix output to your reverb input, then mix the reverb return with the dry signal in a second mixer. When you need per-channel level control, reach for VCA Mix instead.
 
 ## VCA Mix (VCV Free)
 
@@ -43,7 +42,7 @@ Bogaudio provides a more comprehensive mixer with stereo channels, per-channel p
 
 ### CV Mix (VCV Free)
 
-A four-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.
+A three-input CV mixer without audio features. Use this to combine multiple modulation sources — for example, summing an LFO and an envelope to create a compound modulation curve that is both rhythmically pulsing and shaped over time.
 
 ### 8vert (VCV Free)
 

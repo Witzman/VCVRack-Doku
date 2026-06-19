@@ -81,17 +81,22 @@ function toggle(id){
     <article>
 <h1>Waveshaper &amp; Distortion</h1>
 <p>Waveshapers and distortion modules transform the shape of an audio waveform, adding harmonic content and changing timbre. Unlike a filter, which removes frequencies, distortion adds new ones that weren&#x27;t in the original signal. At low amounts, distortion produces warmth and analog grit. At high amounts, it creates aggressive, buzzing, or chaotic textures. Waveshapers apply a mathematical function to the waveform — bending, clipping, or folding it — while traditional distortion typically means hard or soft clipping.</p>
-<h2>Befaco Crush Delay (Befaco)</h2>
-<p>Despite the name &quot;delay,&quot; Crush Delay is primarily a bit-crusher and sample-rate reducer with a feedback delay. The bit-crush section reduces bit depth for digital distortion, while the sample-rate section creates aliasing artifacts. These are classic lo-fi and industrial textures.</p>
+<h2>Chopping Kinky (Befaco)</h2>
+<p>Chopping Kinky is a voltage-controllable dual-channel wavefolder. Each channel&#x27;s fold/shape knob progressively folds the waveform back on itself, adding harmonics — from gentle saturation at low amounts to bright, metallic folding at high amounts. A &quot;Chopp&quot; gate input switches between the two channels for rectification/chopping effects, and each channel has a built-in VCA.</p>
 <table>
 <tr><th>Parameter</th><th>Description</th></tr>
-<tr><td>CRUSH</td><td>Bit depth reduction</td></tr>
-<tr><td>FREQ</td><td>Sample rate reduction</td></tr>
-<tr><td>TIME</td><td>Delay time</td></tr>
-<tr><td>FEEDBACK</td><td>Delay feedback amount</td></tr>
-<tr><td>MIX</td><td>Wet/dry blend</td></tr>
+<tr><td>Fold A / Fold B</td><td>Gain/shape (fold amount) per channel (0–2)</td></tr>
+<tr><td>CV A / CV B</td><td>Attenuverter for each channel&#x27;s fold CV</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Apply to a drum bus for gritty, compressed electronic percussion. Use at low CRUSH amounts for subtle analog-feeling warmth. Full CRUSH with high FEEDBACK produces chaotic, self-oscillating noise — use a VCA to gate it.</p>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>A / B</td><td>Input</td><td>Audio in for each channel</td></tr>
+<tr><td>Chopp</td><td>Input</td><td>Gate that chops between channels A and B</td></tr>
+<tr><td>CV A / CV B</td><td>Input</td><td>CV control of fold amount (with and without attenuator)</td></tr>
+<tr><td>A / B</td><td>Output</td><td>Folded channel outputs</td></tr>
+<tr><td>Chopp</td><td>Output</td><td>Chopped/combined output</td></tr>
+</table>
+<p><strong>Patching tips:</strong> Send an oscillator into A and push Fold A up for buzzy, harmonically rich folding. Modulate the fold CV with an envelope or LFO for evolving timbres. Feed the Chopp gate from a clock to rhythmically rectify between the two channels.</p>
 <h2>Squinky Labs Stairway (Squinky Labs)</h2>
 <p>A wavefolder combined with a soft-clipper. A wavefolder &quot;folds&quot; the waveform back on itself when it exceeds a threshold, creating new harmonics at a rate proportional to how far past the threshold the signal goes. Feeding a sine wave through a wavefolder with a slow amplitude modulator produces complex, evolving timbres.</p>
 <table>

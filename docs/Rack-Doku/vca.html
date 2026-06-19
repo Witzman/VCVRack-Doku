@@ -81,22 +81,29 @@ function toggle(id){
     <article>
 <h1>VCA — Voltage Controlled Amplifier</h1>
 <p>A VCA controls the volume of a signal using a CV input. Without a VCA, a sound plays continuously at full volume the moment you connect the oscillator to the output — there is no way to start or stop individual notes. By patching an envelope into the VCA&#x27;s CV input, you give each note a defined attack, sustain, and release. Every voice in a polyphonic patch needs at least one VCA; effects sends and mixer levels often use additional VCAs for dynamic control.</p>
-<h2>VCA (VCV Free)</h2>
-<p>The VCV Free VCA is a clean, straightforward amplifier. It has two inputs — linear and exponential response — and applies a CV-controlled gain. The exponential mode better matches how humans perceive loudness; the linear mode is useful for modulation routing where mathematical precision matters.</p>
+<h2>VCA-1 (VCV Free)</h2>
+<p>The VCV Free VCA-1 is a clean, straightforward single-channel amplifier. It applies a CV-controlled gain to one signal and has a single CV input (linear response by default, switchable to exponential in the right-click menu).</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
-<tr><td>LEVEL</td><td>0–2</td><td>Manual gain offset added to CV</td></tr>
+<tr><td>LEVEL</td><td>0–100%</td><td>Manual gain — multiplies the CV-controlled gain (default 100% = unity)</td></tr>
 </table>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
-<tr><td>IN</td><td>Input</td><td>Audio or CV signal to amplify</td></tr>
 <tr><td>CV</td><td>Input</td><td>Gain control voltage</td></tr>
-<tr><td>OUT</td><td>Output</td><td>Amplified signal</td></tr>
+<tr><td>Channel</td><td>Input</td><td>Audio or CV signal to amplify</td></tr>
+<tr><td>Channel</td><td>Output</td><td>Amplified signal</td></tr>
 </table>
-<p>There are two VCA channels on the module. The second channel follows the same pattern.</p>
-<p><strong>Patching tips:</strong> For a basic voice, connect your ADSR&#x27;s ENV output to the VCA&#x27;s CV input and your filtered oscillator to IN. The LEVEL knob acts as a manual volume offset — leave it at 0 if your envelope reaches full amplitude on its own. For a tremolo effect, replace the envelope with a slow LFO patched to CV. Use the linear input for modulation routing where you want predictable, proportional response.</p>
+<p><strong>Patching tips:</strong> For a basic voice, connect your ADSR&#x27;s ENV output to the VCA-1&#x27;s CV input and your filtered oscillator to the Channel input. The LEVEL knob scales the CV-controlled gain — keep it at maximum (its default) so the envelope sets the full dynamics, and lower it only to reduce overall output. For a tremolo effect, replace the envelope with a slow LFO patched to CV.</p>
 <h2>VCA-2 (VCV Free)</h2>
-<p>A simpler single-channel VCA with only one input and exponential response. Use this when you just need a basic gated amplifier and don&#x27;t need the two-channel or linear mode features of the main VCA.</p>
+<p>The dual-channel VCA. It has two independent VCA channels, and each channel provides both an exponential CV input and a linear CV input. The exponential response better matches how humans perceive loudness; the linear input is useful for modulation routing where proportional precision matters. Use this when you need two amplifiers in one module or want both CV response curves available.</p>
+<table>
+<tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
+<tr><td>Channel 1 exponential CV</td><td>Input</td><td>Exponential gain CV for channel 1</td></tr>
+<tr><td>Channel 1 linear CV</td><td>Input</td><td>Linear gain CV for channel 1</td></tr>
+<tr><td>Channel 1</td><td>Input</td><td>Signal to amplify (channel 1)</td></tr>
+<tr><td>Channel 1</td><td>Output</td><td>Amplified signal (channel 1)</td></tr>
+</table>
+<p>Channel 2 follows the same pattern with its own set of ports.</p>
 <h2>Bogaudio VCA (Bogaudio)</h2>
 <p>Bogaudio&#x27;s VCA offers linear and exponential modes with a dedicated level knob that sets the maximum gain independently of the CV. This makes it easy to set a ceiling on how loud the sound gets regardless of the incoming CV level — useful when controlling volume from an LFO or other non-standard modulator.</p>
 <table>

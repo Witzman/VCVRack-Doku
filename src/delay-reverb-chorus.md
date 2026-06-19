@@ -37,11 +37,11 @@ Chronoblob2 is a high-quality stereo delay module. It features tempo-syncable de
 | SPREAD | Stereo width of delay taps |
 | MIX | Dry/wet blend |
 
-**Patching tips:** For dub-style delay, set TIME to dotted 1/8 at 89 BPM (roughly 420ms), FEEDBACK 40–65%, and TONE around 0.4 to roll off harsh highs on repeats. Patch a random S&H into FEEDBACK CV for unpredictable, organic delay behavior. Send a sparse chord hit or melodic fragment through this for a classic dub echo effect.
+**Patching tips:** For dub-style delay, set TIME to dotted 1/8 at 89 BPM (roughly 505 ms), FEEDBACK 40–65%, and TONE around 0.4 to roll off harsh highs on repeats. Patch a random S&H into FEEDBACK CV for unpredictable, organic delay behavior. Send a sparse chord hit or melodic fragment through this for a classic dub echo effect.
 
 ## Delay (VCV Free)
 
-The built-in VCV Free Delay is a straightforward stereo delay. TIME, FEEDBACK, and MIX controls with CV inputs. Not as feature-rich as Chronoblob2 but requires no extra plugin installation. Suitable for basic echo effects when starting out.
+The built-in VCV Free Delay is a straightforward mono delay (one Audio input; Mix and Wet outputs). TIME, FEEDBACK, TONE, and MIX controls with CV inputs. Not as feature-rich as Chronoblob2 but requires no extra plugin installation. Suitable for basic echo effects when starting out.
 
 | Parameter | Description |
 |-----------|-------------|

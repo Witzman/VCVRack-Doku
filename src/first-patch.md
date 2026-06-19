@@ -13,7 +13,7 @@ flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     ADSR -->|"Envelope"| VCF
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
@@ -80,7 +80,7 @@ flowchart LR
 
 ## Step 6 — Add VCA
 
-Add **VCA** (VCV). Connect the VCO's **SAW** output to the VCA's **Channel** input. Connect the ADSR's **Envelope** output to the VCA's **CV** input.
+Add **VCA-1** (VCV) — the single-channel VCA. (In the module browser it appears under the name **VCA**; the dual-channel version is **VCA-2** and is normally hidden.) Connect the VCO's **SAW** output to the VCA-1's **Channel** input. Connect the ADSR's **Envelope** output to the VCA's **CV** input.
 
 Connect the VCA's **Channel** output to the **Audio 8**'s **L** input (and optionally also to **R** for mono-to-stereo).
 
@@ -90,7 +90,7 @@ Press a key. You should now hear a sawtooth note that fades with the release tim
 flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
-    VCO -->|"SAW"| VCA["VCA\n(VCV)"]
+    VCO -->|"SAW"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
 ```
@@ -110,7 +110,7 @@ flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
 ```
@@ -130,7 +130,7 @@ flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     ADSR -->|"Envelope"| VCF
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]
@@ -150,7 +150,7 @@ Press **Ctrl+S** and save the patch somewhere you'll find it.
 
 - [How a Patch Works](how-a-patch-works.md) — understand what each connection is doing
 - [Patching Use Cases](patching-use-cases.md) — extend this patch into a bassline or add effects
-- [Fundamental Modules](fundamental-modules.md) — full parameter reference for every module you used here
+- [VCO](vco.md), [VCF](vcf.md), [VCA](vca.md), [Envelopes](envelope.md) — parameter reference for the modules you used here
 
 ---
 

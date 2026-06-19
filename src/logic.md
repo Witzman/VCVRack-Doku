@@ -4,7 +4,7 @@ Logic modules perform Boolean operations on gate and trigger signals: AND, OR, N
 
 ## Befaco Rampage comparator output
 
-Rampage's comparator output fires a gate when channel A's output exceeds channel B's. When both channels are running as LFOs at different frequencies, the comparator output produces a gate that opens and closes based on the phase relationship between the two — an emergent rhythmic pattern derived from two simple waveforms.
+Rampage's comparator output (labeled "B > A") fires a gate when channel B's output exceeds channel A's. When both channels are running as LFOs at different frequencies, the comparator output produces a gate that opens and closes based on the phase relationship between the two — an emergent rhythmic pattern derived from two simple waveforms.
 
 **Patching tips:** Set channel A to a fast rate and channel B to a slow rate. The comparator output fires in a pattern that combines both frequencies, producing rhythms that are related to but not identical to either source. Change either rate to create dramatically different patterns without reprogramming anything.
 

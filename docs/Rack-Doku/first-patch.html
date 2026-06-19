@@ -89,7 +89,7 @@ function toggle(id){
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     ADSR -->|"Envelope"| VCF
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]</div>
@@ -123,13 +123,13 @@ function toggle(id){
 <p><strong><a href="first-patch-step5.vcv">⬇ Download patch — Step 5</a></strong></p>
 <hr>
 <h2>Step 6 — Add VCA</h2>
-<p>Add <strong>VCA</strong> (VCV). Connect the VCO&#x27;s <strong>SAW</strong> output to the VCA&#x27;s <strong>Channel</strong> input. Connect the ADSR&#x27;s <strong>Envelope</strong> output to the VCA&#x27;s <strong>CV</strong> input.</p>
+<p>Add <strong>VCA-1</strong> (VCV) — the single-channel VCA. (In the module browser it appears under the name <strong>VCA</strong>; the dual-channel version is <strong>VCA-2</strong> and is normally hidden.) Connect the VCO&#x27;s <strong>SAW</strong> output to the VCA-1&#x27;s <strong>Channel</strong> input. Connect the ADSR&#x27;s <strong>Envelope</strong> output to the VCA&#x27;s <strong>CV</strong> input.</p>
 <p>Connect the VCA&#x27;s <strong>Channel</strong> output to the <strong>Audio 8</strong>&#x27;s <strong>L</strong> input (and optionally also to <strong>R</strong> for mono-to-stereo).</p>
 <p>Press a key. You should now hear a sawtooth note that fades with the release time of the envelope.</p>
 <div class="mermaid">flowchart LR
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
-    VCO -->|"SAW"| VCA["VCA\n(VCV)"]
+    VCO -->|"SAW"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]</div>
 <p><strong><a href="first-patch-step6.vcv">⬇ Download patch — Step 6</a></strong></p>
@@ -141,7 +141,7 @@ function toggle(id){
     MIDI["MIDI-CV\n(VCV Core)"] -->|"V/Oct"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]</div>
 <p><strong><a href="first-patch-step7.vcv">⬇ Download patch — Step 7</a></strong></p>
@@ -153,7 +153,7 @@ function toggle(id){
     MIDI["MIDI-CV\n(VCV Core)"] -->|"1V/octave pitch"| VCO["VCO\n(VCV)"]
     MIDI -->|"Gate"| ADSR["ADSR\n(VCV)"]
     VCO -->|"SAW"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     ADSR -->|"Envelope"| VCA
     ADSR -->|"Envelope"| VCF
     VCA -->|"Channel"| AUDIO["Audio 8\n(VCV Core)"]</div>
@@ -165,7 +165,7 @@ function toggle(id){
 <h2>Where to go next</h2>
 <ul><li><a href="how-a-patch-works.html">How a Patch Works</a> — understand what each connection is doing</li>
 <li><a href="patching-use-cases.html">Patching Use Cases</a> — extend this patch into a bassline or add effects</li>
-<li><a href="fundamental-modules.html">Fundamental Modules</a> — full parameter reference for every module you used here</li></ul>
+<li><a href="vco.html">VCO</a>, <a href="vcf.html">VCF</a>, <a href="vca.html">VCA</a>, <a href="envelope.html">Envelopes</a> — parameter reference for the modules you used here</li></ul>
 <hr>
 <p><em>Version: 2026-06-17.</em></p>
     </article>

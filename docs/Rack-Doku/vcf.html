@@ -82,11 +82,11 @@ function toggle(id){
 <h1>VCF — Voltage Controlled Filter</h1>
 <p>A VCF removes frequencies from an audio signal based on a cutoff point set by a knob or CV. It is the primary tonal shaping tool in subtractive synthesis: start with a harmonically rich source (a saw or square wave), then sculpt the brightness with the filter. The most common type is a low-pass filter, which lets frequencies below the cutoff through and attenuates those above it. Resonance adds a peak at the cutoff frequency, producing the characteristic sweeping &quot;wah&quot; character.</p>
 <h2>VCF (VCV Free)</h2>
-<p>The VCF bundled with Rack Free is a state-variable filter with simultaneous low-pass, high-pass, and band-pass outputs. It covers the core subtractive synthesis use cases and responds well to CV modulation.</p>
+<p>The VCF bundled with Rack Free is a filter with simultaneous low-pass and high-pass outputs. It covers the core subtractive synthesis use cases and responds well to CV modulation. (It has no band-pass output — for band-pass, cascade the two outputs or use a multimode filter such as SurgeXT VCF or Bogaudio LMHR.)</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
 <tr><td>FREQ</td><td>20 Hz – 20 kHz</td><td>Cutoff frequency</td></tr>
-<tr><td>RES</td><td>0–1</td><td>Resonance — peak at cutoff</td></tr>
+<tr><td>RES</td><td>0–100%</td><td>Resonance — peak at cutoff</td></tr>
 <tr><td>FREQ CV</td><td>±1</td><td>Amount of CV applied to cutoff</td></tr>
 <tr><td>DRIVE</td><td>0–1</td><td>Input gain — adds saturation at high amounts</td></tr>
 </table>
@@ -95,9 +95,9 @@ function toggle(id){
 <tr><td>IN</td><td>Input</td><td>Audio signal to filter</td></tr>
 <tr><td>FREQ</td><td>Input</td><td>CV modulates cutoff frequency</td></tr>
 <tr><td>RES</td><td>Input</td><td>CV modulates resonance</td></tr>
-<tr><td>LP, BP, HP</td><td>Output</td><td>Low-pass, band-pass, high-pass outputs</td></tr>
+<tr><td>LP, HP</td><td>Output</td><td>Low-pass, high-pass outputs</td></tr>
 </table>
-<p><strong>Patching tips:</strong> For a classic synth sweep, connect an ADSR envelope to the FREQ CV input and set FREQ CV amount to taste. The LP output handles most bread-and-butter sounds. Use BP for nasal, mid-forward tones. Patch HP through a second VCF to create a band-pass with independently adjustable slopes. At high RES with low FREQ, the filter self-oscillates and produces a pure sine tone — useful as a secondary sound source.</p>
+<p><strong>Patching tips:</strong> For a classic synth sweep, connect an ADSR envelope to the FREQ CV input and set FREQ CV amount to taste. The LP output handles most bread-and-butter sounds. For nasal, mid-forward band-pass tones, patch the HP output through a second VCF&#x27;s LP — the two cutoffs then bracket a pass band with independently adjustable slopes. At high RES with low FREQ, the filter self-oscillates and produces a pure sine tone — useful as a secondary sound source.</p>
 <h2>Vult Freak (Vult — free tier)</h2>
 <p>Freak is a zero-delay-feedback filter based on several classic hardware filter topologies. The model can be switched between Ladder (Moog-style), Steiner-Parker, and others. Each topology has a distinctly different character. The free tier of Vult includes Freak.</p>
 <table>

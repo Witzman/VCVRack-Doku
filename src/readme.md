@@ -29,8 +29,8 @@ Welcome. This handbook is your guide to building patches in VCV Rack. Whether yo
 
 | Page | What it answers |
 |------|----------------|
-| [Fundamental Modules](fundamental-modules.md) | Every module included with VCV Rack Free — parameters, inputs, outputs |
-| [Befaco Modules](befaco-modules.md) | Every module in the Befaco plugin — parameters, inputs, outputs |
+| [VCO](vco.md), [VCF](vcf.md), [VCA](vca.md) | Sound generation and shaping modules (VCV Free and Befaco) — parameters, inputs, outputs |
+| [Envelopes](envelope.md), [LFO](lfo.md), [Sequencers](sequencer.md) | Modulation and control modules — see the Modules section in the sidebar for the full list |
 
 ---
 

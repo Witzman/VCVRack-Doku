@@ -5,17 +5,26 @@
       "id": 1,
       "plugin": "Core",
       "model": "AudioInterface2",
-      "version": "2.5.2",
-      "params": [{"id": 0, "value": 1.0}],
-      "pos": [0, 0]
+      "params": [
+        {
+          "id": 0,
+          "value": 1.0
+        }
+      ],
+      "pos": [
+        0,
+        0
+      ]
     },
     {
       "id": 2,
       "plugin": "Core",
       "model": "MIDIToCVInterface",
-      "version": "2.5.2",
       "params": [],
-      "pos": [8, 0]
+      "pos": [
+        8,
+        0
+      ]
     }
   ],
   "cables": []

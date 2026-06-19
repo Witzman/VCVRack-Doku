@@ -82,12 +82,12 @@ function toggle(id){
 <h1>Envelopes</h1>
 <p>An envelope generates a shaped CV signal in response to a gate or trigger. When a note starts (gate goes high), the envelope rises and falls through a predefined contour; when the note ends (gate goes low), it releases. Envelopes are used primarily to control VCA volume and VCF cutoff, but they can modulate anything that accepts a CV input. The most common shape is ADSR: Attack, Decay, Sustain, Release.</p>
 <h2>ADSR EG (VCV Free)</h2>
-<p>The VCV Free ADSR EG is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs both a positive (ENV) and inverted (INV) version.</p>
+<p>The VCV Free ADSR EG is the standard envelope module included with Rack Free. It generates an ADSR contour in response to a gate signal and outputs it on a single Envelope (ENV) output.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
 <tr><td>ATTACK</td><td>1ms – 10s</td><td>Time to rise from 0 to peak when gate opens</td></tr>
 <tr><td>DECAY</td><td>1ms – 10s</td><td>Time to fall from peak to sustain level</td></tr>
-<tr><td>SUSTAIN</td><td>0–1</td><td>Level held while gate remains open</td></tr>
+<tr><td>SUSTAIN</td><td>0–100%</td><td>Level held while gate remains open</td></tr>
 <tr><td>RELEASE</td><td>1ms – 10s</td><td>Time to fall from sustain to 0 after gate closes</td></tr>
 </table>
 <table>
@@ -95,9 +95,8 @@ function toggle(id){
 <tr><td>GATE</td><td>Input</td><td>Gate signal — high = note on, low = note off</td></tr>
 <tr><td>TRIG</td><td>Input</td><td>Retrigger envelope without retriggering gate</td></tr>
 <tr><td>ENV</td><td>Output</td><td>Envelope CV (0–10V)</td></tr>
-<tr><td>INV</td><td>Output</td><td>Inverted envelope (10V – ENV)</td></tr>
 </table>
-<p><strong>Patching tips:</strong> For a plucky sound: fast ATTACK (near minimum), medium DECAY (100–300ms), SUSTAIN at zero, and short RELEASE. For a pad: slow ATTACK (1–3s), no DECAY, full SUSTAIN, slow RELEASE (2–5s). Use the INV output to close a filter as the amplitude opens — this creates a tone that gets darker as it gets louder, useful for plucked string simulations. Patch the ENV output to both VCA and VCF for coordinated amplitude and tonal shaping.</p>
+<p><strong>Patching tips:</strong> For a plucky sound: fast ATTACK (near minimum), medium DECAY (100–300ms), SUSTAIN at zero, and short RELEASE. For a pad: slow ATTACK (1–3s), no DECAY, full SUSTAIN, slow RELEASE (2–5s). To close a filter as the amplitude opens, route the ENV output through an attenuverter (such as 8vert at a negative setting) into the VCF cutoff CV — this creates a tone that gets darker as it gets louder, useful for plucked string simulations. Patch the ENV output to both VCA and VCF for coordinated amplitude and tonal shaping.</p>
 <h2>Befaco Rampage (Befaco)</h2>
 <p>Rampage is a dual function generator — each channel can act as an envelope, LFO, slew limiter, or oscillator depending on how it is patched. As an envelope, it produces a customizable rise/fall contour with adjustable response curves (log, linear, exponential). Unlike ADSR, Rampage does not have a sustain stage: it rises when triggered and falls when the trigger ends or after a set time.</p>
 <table>
@@ -109,19 +108,18 @@ function toggle(id){
 </table>
 <p><strong>Patching tips:</strong> The SHAPE knob&#x27;s ability to change curve type is its key advantage over ADSR — exponential curves feel more natural for amplitude; logarithmic curves feel faster. Use CYCLE to turn Rampage into an LFO without patching a separate module. The two channels have a logical comparator output useful for rhythmic triggering — see the <a href="logic.html">Logic</a> page.</p>
 <h2>Bogaudio ADSR (Bogaudio)</h2>
-<p>Bogaudio&#x27;s ADSR adds a linear/exponential mode switch and separate CV inputs for all four parameters. This allows all stages to be modulated in real time — you can sweep attack time with an LFO or modulate sustain level from a sequencer.</p>
+<p>Bogaudio&#x27;s ADSR adds a linear/exponential mode switch. Its attack, decay and release knobs display in seconds (sustain in percent), and it triggers from a single Gate input.</p>
 <table>
 <tr><th>Input</th><th>Description</th></tr>
-<tr><td>GATE</td><td>Gate signal</td></tr>
-<tr><td>A, D, S, R CV</td><td>Per-parameter modulation inputs</td></tr>
+<tr><td>GATE</td><td>Gate signal — the only input</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Patch a slow random S&amp;H signal to the ATTACK CV input to give each note a slightly different attack time — the variation adds organic feel to repeated notes.</p>
+<p><strong>Patching tips:</strong> Use the linear/exponential switch to tailor the envelope feel — exponential curves sound more natural for amplitude. Bogaudio&#x27;s ADSR has no per-parameter CV inputs; to modulate a stage over time, automate the knob with another module or choose an envelope that exposes A/D/S/R CV (e.g. the VCV ADSR EG or Befaco ADSR).</p>
 <h3>Count Modula ADSR (Count Modula)</h3>
 <p>Count Modula&#x27;s envelope includes all standard ADSR controls with a retrigger mode and optional looping. Consistent with their other sequencer modules — useful in Count Modula-heavy patches.</p>
 <h3>ML Modules ADSR (ML Modules)</h3>
 <p>A clean, minimal ADSR with standard parameters. Good starting point for simple patches where no per-parameter CV modulation is needed.</p>
 <h3>Befaco ADSR (Befaco)</h3>
-<p>A compact ADSR from Befaco, smaller than VCV Free&#x27;s. Behaves similarly to VCV Free ADSR EG with the addition of a VEL input for velocity-sensitive amplitude scaling.</p>
+<p>A compact ADSR from Befaco, smaller than VCV Free&#x27;s. Behaves similarly to the VCV Free ADSR EG, with a trigger input and per-stage CV inputs (Attack, Decay, Sustain, Release CV). It has no dedicated velocity input — for velocity-sensitive amplitude, route a velocity CV to the VCA alongside the envelope.</p>
 <h2>Where to go next</h2>
 <ul><li><a href="vca.html">VCA</a> — the most common envelope destination</li>
 <li><a href="vcf.html">VCF</a> — envelope-driven filter sweeps</li>

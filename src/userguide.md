@@ -69,7 +69,7 @@ For sending MIDI out, the **CV-MIDI** module does the reverse: converts CV signa
 The toolbar at the top of the screen has controls for:
 
 - **Engine on/off** — starts and stops audio processing
-- **BPM** — sets the master tempo for Rack's internal clock
+- **Sample rate / CPU meter** — engine status indicators (Rack has no master BPM in the toolbar; tempo comes from a clock module such as Clocked or SEQ3)
 - **Zoom** — scroll wheel or the zoom controls to make modules larger or smaller
 - **Cables visible** — toggle cable visibility to declutter the view
 

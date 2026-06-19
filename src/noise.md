@@ -4,7 +4,7 @@ Noise modules generate random, unpitched signals across a range of frequencies. 
 
 ## Noise (VCV Free)
 
-The Noise module bundled with VCV Rack Free outputs five simultaneous noise colors, each with a different frequency distribution. No parameters — just outputs.
+The Noise module bundled with VCV Rack Free outputs seven simultaneous noise colors, each with a different frequency distribution. No parameters — just outputs.
 
 | Output | Character | Use case |
 |--------|-----------|----------|
@@ -13,6 +13,8 @@ The Noise module bundled with VCV Rack Free outputs five simultaneous noise colo
 | Red | Heavy low-frequency emphasis (-6dB/oct) | Sub rumble, wind |
 | Blue | High-frequency emphasis | Bright hiss, air |
 | Violet | Very high-frequency emphasis | Extreme brightness, sizzle |
+| Gray | Psychoacoustic equal-loudness curve | Perceptually flat noise |
+| Black | Sub-low-frequency emphasis | Very deep rumble |
 
 **Patching tips:** For a snare drum, mix the White output with a short VCA burst. Run Pink through a slow VCF sweep for a breathing pad texture. Feed any color through a sample-and-hold to create random stepped CV for modulation.
 

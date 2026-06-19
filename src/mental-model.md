@@ -80,7 +80,7 @@ The Split module separates a polyphonic cable into individual monophonic cables.
 
 - [How a Patch Works](how-a-patch-works.md) — see signal flow in action from oscillator to output
 - [Your First Patch](first-patch.md) — build a working patch step by step
-- [Fundamental Modules](fundamental-modules.md) — reference for every module in this category
+- [VCO](vco.md), [VCF](vcf.md), [VCA](vca.md) — module reference pages (see the Modules section in the sidebar for all of them)
 - [Glossary](glossary.md) — definitions for every term on this page
 
 ---

@@ -5,17 +5,63 @@
       "id": 1,
       "plugin": "ImpromptuModular",
       "model": "Clocked",
-      "version": "2.0.0",
-      "params": [],
-      "pos": [0, 0]
+      "params": [
+        {
+          "id": 0,
+          "value": 120.0
+        }
+      ],
+      "pos": [
+        0,
+        0
+      ]
     },
     {
       "id": 2,
       "plugin": "Fundamental",
       "model": "SEQ3",
-      "version": "2.6.5.rc1",
-      "params": [],
-      "pos": [16, 0]
+      "params": [
+        {
+          "id": 3,
+          "value": 4.0
+        },
+        {
+          "id": 4,
+          "value": -1.0
+        },
+        {
+          "id": 5,
+          "value": -0.667
+        },
+        {
+          "id": 6,
+          "value": -0.417
+        },
+        {
+          "id": 7,
+          "value": -0.25
+        },
+        {
+          "id": 28,
+          "value": 1.0
+        },
+        {
+          "id": 29,
+          "value": 1.0
+        },
+        {
+          "id": 30,
+          "value": 1.0
+        },
+        {
+          "id": 31,
+          "value": 1.0
+        }
+      ],
+      "pos": [
+        8,
+        0
+      ]
     }
   ],
   "cables": [

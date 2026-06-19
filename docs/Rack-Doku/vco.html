@@ -85,8 +85,7 @@ function toggle(id){
 <p>The VCO is the oscillator bundled with every VCV Rack installation. It covers the full range of classic subtractive synthesis waveforms and accepts V/Oct pitch CV, FM, and pulse width modulation.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
-<tr><td>FREQ</td><td>±5 octaves</td><td>Coarse pitch offset from center</td></tr>
-<tr><td>FINE</td><td>±1 semitone</td><td>Fine-tune for exact pitch</td></tr>
+<tr><td>FREQ</td><td>±76 semitones</td><td>Pitch, shown in Hz on the tooltip (C4 ≈ 261 Hz at center)</td></tr>
 <tr><td>PW</td><td>0–100%</td><td>Pulse width of the square wave</td></tr>
 <tr><td>FM</td><td>±1</td><td>Amount of FM applied from the FM input</td></tr>
 </table>
@@ -97,13 +96,13 @@ function toggle(id){
 <tr><td>SYNC</td><td>Input</td><td>Hard sync — resets waveform phase</td></tr>
 <tr><td>SIN, TRI, SAW, SQR</td><td>Output</td><td>Individual waveform outputs</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Connect a MIDI to CV module&#x27;s V/OCT output to VCO&#x27;s V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO instances slightly detuned using the FINE knob and mix their outputs.</p>
+<p><strong>Patching tips:</strong> Connect a MIDI to CV module&#x27;s V/OCT output to VCO&#x27;s V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO instances and detune one slightly by nudging its FREQ knob a fraction of a semitone (the VCV VCO has no FINE knob), then mix their outputs.</p>
 <h2>EvenVCO (Befaco)</h2>
 <p>The EvenVCO is a clean, low-aliasing oscillator based on the Befaco hardware module. It produces even harmonics alongside its main waveforms, giving it a warmer, more analog character than a mathematically pure oscillator.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
-<tr><td>TUNE</td><td>±4 octaves</td><td>Coarse pitch</td></tr>
-<tr><td>Octave switch</td><td>-2 to +2</td><td>Octave transpose</td></tr>
+<tr><td>TUNE</td><td>±7 semitones</td><td>Coarse pitch</td></tr>
+<tr><td>Octave</td><td>-5 to +4</td><td>Octave transpose (snapped)</td></tr>
 </table>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
@@ -127,8 +126,6 @@ function toggle(id){
 <p>Surge XT provides a library of oscillator algorithms: Classic (virtual analog), Modern (anti-aliased), Wavetable, Window, FM2, FM3, String, Twist, and more. Each algorithm has its own set of parameters. The plugin is free and dramatically expands sound design range beyond standard waveforms. Find it in the VCV Library under &quot;Surge XT.&quot;</p>
 <h3>Wavetable VCO (VCV Free)</h3>
 <p>The Wavetable VCO is the wavetable oscillator included with VCV Free. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated <a href="wavetable.html">Wavetable</a> page.</p>
-<h3>VCO 2 (VCV Free)</h3>
-<p>A simpler oscillator with fewer outputs but a morphing waveform knob that crossfades continuously between sine, triangle, sawtooth, and square. Useful when you want a single output with variable timbre rather than separate waveform outs.</p>
 <h3>Vult Vco (Vult — free tier)</h3>
 <p>Vult&#x27;s free oscillators include models with analog drift simulation. Their oscillators are known for subtle pitch and waveform instability that mimics hardware VCOs well.</p>
 <h3>Squinky Labs EV3 (Squinky Labs)</h3>

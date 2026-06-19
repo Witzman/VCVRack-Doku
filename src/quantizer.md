@@ -15,7 +15,7 @@ The VCV Free Quantizer allows you to select which individual notes of the chroma
 | IN | Input | Unquantized CV |
 | OUT | Output | Quantized CV snapped to selected notes |
 
-**Patching tips:** For a C minor scale, activate: C, D, Eb, F, G, Ab, Bb. Feed a random S&H output to IN — the OUT produces melodic fragments in C minor. For a pentatonic scale, activate only 5 notes; the output will feel more immediately musical with fewer dissonant possibilities. The VCV Free Quantizer fires a trigger on each output change — useful as a gate source for accompanying envelopes.
+**Patching tips:** For a C minor scale, activate: C, D, Eb, F, G, Ab, Bb. Feed a random S&H output to IN — the OUT produces melodic fragments in C minor. For a pentatonic scale, activate only 5 notes; the output will feel more immediately musical with fewer dissonant possibilities. The VCV Free Quantizer has only a pitch input and a pitch output — no trigger or gate output.
 
 ## Bogaudio ADDR-SEQ as quantizer
 

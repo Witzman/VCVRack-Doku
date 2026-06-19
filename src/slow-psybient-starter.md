@@ -34,7 +34,7 @@ Open VCV Rack with a blank patch. Double-click an empty rack area to open the mo
 - Leave all other knobs at centre.
 
 **VCO 2** (detuned voice):
-- **FREQ** knob: same position as VCO 1, then turn it a tiny fraction higher — the goal is about 12 cents of detune, which is just a hair of movement. The beating between the two oscillators should pulse slowly (about once every 3–4 seconds at this detuning).
+- **FREQ** knob: same position as VCO 1, then turn it a tiny fraction higher — the goal is about 12 cents of detune, which is just a hair of movement. The beating between the two oscillators should pulse gently (roughly once or twice a second at this detuning). Detune further apart for faster beating, closer for slower.
 
 **Noise**: no knobs to set.
 
@@ -52,7 +52,7 @@ Open VCV Rack with a blank patch. Double-click an empty rack area to open the mo
 - **FREQ CV** attenuverter (small knob near FREQ CV input): turn to about 9–10 o'clock — this controls how much the LFO moves the cutoff. Start conservative; you can increase it once the patch is running.
 
 **VCA**:
-- **LEVEL 1** knob: full up. The drone sustains continuously with no envelope.
+- **LEVEL** knob: full up. The drone sustains continuously with no envelope.
 
 **Delay**:
 - **TIME** knob: just above centre — about 1 o'clock. At 89 BPM this lands near a dotted eighth note (≈ 506 ms).
@@ -73,8 +73,8 @@ Drag from output port to input port. The outputs are on the right side of each m
 | Noise | **PINK** | VCA Mix | **CH 3** |
 | LFO | **SIN** | VCF | **FREQ CV** |
 | VCA Mix | **MIX** | VCF | **IN** |
-| VCF | **LPF** | VCA | **IN 1** |
-| VCA | **OUT 1** | Delay | **IN** |
+| VCF | **LPF** | VCA | **IN** |
+| VCA | **OUT** | Delay | **IN** |
 | Delay | **MIX** | Audio 2 | **L** |
 | Delay | **MIX** | Audio 2 | **R** |
 
@@ -171,8 +171,8 @@ For wiring the modules listed above, the connections are:
 | Noise | PINK | VCA Mix | CH 3 |
 | LFO | SIN | VCF | FREQ CV |
 | VCA Mix | MIX | VCF | IN |
-| VCF | LPF | VCA | IN 1 |
-| VCA | OUT 1 | Delay | IN |
+| VCF | LPF | VCA | IN |
+| VCA | OUT | Delay | IN |
 | Delay | MIX | Audio 2 | L |
 | Delay | MIX | Audio 2 | R |
 

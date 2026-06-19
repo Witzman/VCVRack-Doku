@@ -94,16 +94,16 @@ function toggle(id){
 <tr><td>OUT</td><td>Output</td><td>Held voltage</td></tr>
 </table>
 <p><strong>Patching tips:</strong> Connect VCV Free Noise&#x27;s White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO&#x27;s V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.</p>
-<h2>Sample &amp; Hold ASR (VCV Free)</h2>
-<p>Sample &amp; Hold ASR combines Sample &amp; Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.</p>
+<h2>Sample &amp; Hold / Analog Shift Register (VCV Free)</h2>
+<p>The VCV Free <strong>Sample &amp; Hold</strong> module (full name &quot;Sample &amp; Hold Analog Shift Register&quot;) is an 8-stage analog shift register — here &quot;ASR&quot; means <em>Analog Shift Register</em>, not attack-sustain-release. On each trigger it samples the input into the first stage and shifts every previously held value one stage down the chain, so the eight outputs carry the last eight sampled values in sequence. Used as a single stage it is an ordinary sample &amp; hold; used across stages it produces delayed echoes of a CV — handy for canons and call-and-response melodies.</p>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
-<tr><td>IN</td><td>Input</td><td>Signal to sample</td></tr>
-<tr><td>TRIG</td><td>Input</td><td>Trigger input</td></tr>
-<tr><td>SH OUT</td><td>Output</td><td>Standard sample-and-hold output</td></tr>
-<tr><td>ASR OUT</td><td>Output</td><td>Slewed output — smooth transitions between samples</td></tr>
+<tr><td>Sample 1–8</td><td>Input</td><td>Signal to sample into each stage</td></tr>
+<tr><td>Trigger 1–8</td><td>Input</td><td>Trigger that samples/shifts each stage</td></tr>
+<tr><td>Sample 1–8</td><td>Output</td><td>Held value of each stage (stage N = N triggers ago)</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Use the ASR output rather than SH OUT when you want random values that glide smoothly — this produces organic, flowing pitch sequences when patched to a VCO. The glide time is set by the ASR attack and release knobs.</p>
+<p>It also has RND, PUSH, and CLEAR buttons for randomizing, manually advancing, and clearing the register.</p>
+<p><strong>Patching tips:</strong> Patch a noise source to Sample 1 and a clock to Trigger 1 for a basic random S&amp;H on output 1. Take outputs 2, 3, 4… to additional voices to play the same pitch sequence delayed by one, two, three steps — an instant canon. Quantize each output for melodic results.</p>
 <h2>ML Modules Bernoulli Gate (ML Modules)</h2>
 <p>Strictly a gate router rather than a sample-and-hold, but closely related in function: each incoming trigger has a 50% probability (adjustable) of being routed to one of two outputs rather than the other. This introduces randomness into gate patterns — notes are selectively triggered or skipped. Combined with a sequencer, it creates sequences that randomly drop notes.</p>
 <table>

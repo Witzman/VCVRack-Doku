@@ -13,7 +13,7 @@ flowchart LR
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     BLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
     VERT -->|"Row 1"| VCF
@@ -56,7 +56,7 @@ Add **SEQ3** (VCV) from the module browser.
 
 - Connect Clocked's **Clock 1** output to SEQ3's **Clock** input.
 - Set STEPS to 4 (four-step loop).
-- Set the four step knobs to C3, E3, G3, A3 (these are approximately -1V, -0.75V, -0.5V, -0.25V — tune by ear against the VCO you add next).
+- Set the four step knobs to C3, E3, G3, A3 (relative to C4 = 0 V: approximately −1.0 V, −0.67 V, −0.42 V, −0.25 V — tune by ear against the VCO you add next).
 - Enable all four gate buttons.
 
 Still silent — clock and sequencer are running, producing CV and gate signals, but no voice module is connected yet.
@@ -92,12 +92,12 @@ flowchart LR
 Add **VCF (VCV)** and **ADSR (Bogaudio)**.
 
 - Connect VCO (Bogaudio)'s **Saw signal** output to VCF's **IN** input.
-- Take VCF's **LPF** output to a VCA (add **VCA** (VCV) — the dual-channel version).
+- Take VCF's **LPF** output to a VCA (add **VCA-2** (VCV) — the dual-channel version).
 - Connect SEQ3's **Trigger** output to ADSR (Bogaudio)'s **Gate** input.
 - Connect ADSR (Bogaudio)'s **Envelope** output to VCA's **Channel 1 exponential CV** input.
 - Connect VCA's **Channel 1** output to the Audio module inputs.
 
-Set the ADSR: Attack 10ms, Decay 200ms, Sustain 0.6, Release 300ms. You should now hear a four-note sequence.
+Set the ADSR: Attack 0.01 s (10 ms), Decay 0.2 s (200 ms), Sustain 60%, Release 0.3 s (300 ms). (Bogaudio ADSR shows attack/decay/release in seconds and sustain in %.) You should now hear a four-note sequence.
 
 **What to tweak first:** Adjust the SEQ3 step knob voltages while the sequence runs to change the pitches. The four notes will drift through whatever intervals you set — use the VCO's built-in tuner display or tune by ear.
 
@@ -107,7 +107,7 @@ flowchart LR
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     VCA -->|"Channel 1"| AUDIO["Audio 8\n(VCV Core)"]
 ```
@@ -120,8 +120,8 @@ This is the step that makes the patch feel professional rather than static.
 
 Add **LFO (Bogaudio)**.
 
-- Set LFO (Bogaudio)'s FREQ to match your tempo: at 120 BPM, one beat per second = 2 Hz.
-- Take the **Sine** output through an **8vert** (VCV) **Row 1** input (attenuate to about 0.4).
+- Set LFO (Bogaudio)'s FREQ to match your tempo: at 120 BPM there are two beats per second, so one cycle per beat = 2 Hz.
+- Take the **Sine** output through an **8vert** (VCV) **Row 1** input (attenuate to about 40%).
 - Connect the **Row 1** output to VCF's **Frequency** CV input.
 
 You should now hear the filter open and close in time with the beat, giving the sequence a rhythmic breathing quality.
@@ -134,7 +134,7 @@ flowchart LR
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     BLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
     VERT -->|"Row 1"| VCF
@@ -150,7 +150,7 @@ ADSR (Bogaudio) shapes each note's amplitude over time, but every note hits equa
 - Add **S&H (Bogaudio)**.
 - Connect Clocked's **Clock 1** output to S&H's **Trigger 1** input.
 - Connect **Noise** (VCV)'s **White noise** output to S&H's **Signal 1** input.
-- Connect S&H's output through an **8vert** (VCV) **Row 2** input (attenuate to 0.3), then connect **Row 2** output to VCA's **Channel 1 linear CV** input.
+- Connect S&H's output through an **8vert** (VCV) **Row 2** input (attenuate to 30%), then connect **Row 2** output to VCA's **Channel 1 linear CV** input.
 
 You should now hear velocity variation — some notes hit harder, some softer, with a different random level on each step. This is the single biggest step toward making a sequenced patch feel alive.
 
@@ -161,7 +161,7 @@ flowchart LR
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     BLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
     VERT -->|"Row 1"| VCF

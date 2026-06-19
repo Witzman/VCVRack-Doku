@@ -4,12 +4,12 @@ A VCF removes frequencies from an audio signal based on a cutoff point set by a 
 
 ## VCF (VCV Free)
 
-The VCF bundled with Rack Free is a state-variable filter with simultaneous low-pass, high-pass, and band-pass outputs. It covers the core subtractive synthesis use cases and responds well to CV modulation.
+The VCF bundled with Rack Free is a filter with simultaneous low-pass and high-pass outputs. It covers the core subtractive synthesis use cases and responds well to CV modulation. (It has no band-pass output — for band-pass, cascade the two outputs or use a multimode filter such as SurgeXT VCF or Bogaudio LMHR.)
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
 | FREQ | 20 Hz – 20 kHz | Cutoff frequency |
-| RES | 0–1 | Resonance — peak at cutoff |
+| RES | 0–100% | Resonance — peak at cutoff |
 | FREQ CV | ±1 | Amount of CV applied to cutoff |
 | DRIVE | 0–1 | Input gain — adds saturation at high amounts |
 
@@ -18,9 +18,9 @@ The VCF bundled with Rack Free is a state-variable filter with simultaneous low-
 | IN | Input | Audio signal to filter |
 | FREQ | Input | CV modulates cutoff frequency |
 | RES | Input | CV modulates resonance |
-| LP, BP, HP | Output | Low-pass, band-pass, high-pass outputs |
+| LP, HP | Output | Low-pass, high-pass outputs |
 
-**Patching tips:** For a classic synth sweep, connect an ADSR envelope to the FREQ CV input and set FREQ CV amount to taste. The LP output handles most bread-and-butter sounds. Use BP for nasal, mid-forward tones. Patch HP through a second VCF to create a band-pass with independently adjustable slopes. At high RES with low FREQ, the filter self-oscillates and produces a pure sine tone — useful as a secondary sound source.
+**Patching tips:** For a classic synth sweep, connect an ADSR envelope to the FREQ CV input and set FREQ CV amount to taste. The LP output handles most bread-and-butter sounds. For nasal, mid-forward band-pass tones, patch the HP output through a second VCF's LP — the two cutoffs then bracket a pass band with independently adjustable slopes. At high RES with low FREQ, the filter self-oscillates and produces a pure sine tone — useful as a secondary sound source.
 
 ## Vult Freak (Vult — free tier)
 

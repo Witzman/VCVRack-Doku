@@ -8,8 +8,7 @@ The VCO is the oscillator bundled with every VCV Rack installation. It covers th
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
-| FREQ | ±5 octaves | Coarse pitch offset from center |
-| FINE | ±1 semitone | Fine-tune for exact pitch |
+| FREQ | ±76 semitones | Pitch, shown in Hz on the tooltip (C4 ≈ 261 Hz at center) |
 | PW | 0–100% | Pulse width of the square wave |
 | FM | ±1 | Amount of FM applied from the FM input |
 
@@ -20,7 +19,7 @@ The VCO is the oscillator bundled with every VCV Rack installation. It covers th
 | SYNC | Input | Hard sync — resets waveform phase |
 | SIN, TRI, SAW, SQR | Output | Individual waveform outputs |
 
-**Patching tips:** Connect a MIDI to CV module's V/OCT output to VCO's V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO instances slightly detuned using the FINE knob and mix their outputs.
+**Patching tips:** Connect a MIDI to CV module's V/OCT output to VCO's V/OCT input to play it from a keyboard. Use the SAW output for a classic subtractive synth sound. Patch the SQR output with PW modulated by a slow LFO for animated pulse-width modulation. For thick unison, run two VCO instances and detune one slightly by nudging its FREQ knob a fraction of a semitone (the VCV VCO has no FINE knob), then mix their outputs.
 
 ## EvenVCO (Befaco)
 
@@ -28,8 +27,8 @@ The EvenVCO is a clean, low-aliasing oscillator based on the Befaco hardware mod
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
-| TUNE | ±4 octaves | Coarse pitch |
-| Octave switch | -2 to +2 | Octave transpose |
+| TUNE | ±7 semitones | Coarse pitch |
+| Octave | -5 to +4 | Octave transpose (snapped) |
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
@@ -61,10 +60,6 @@ Surge XT provides a library of oscillator algorithms: Classic (virtual analog), 
 ### Wavetable VCO (VCV Free)
 
 The Wavetable VCO is the wavetable oscillator included with VCV Free. It reads through a built-in wavetable bank and can be position-modulated by CV. More detail on the dedicated [Wavetable](wavetable.md) page.
-
-### VCO 2 (VCV Free)
-
-A simpler oscillator with fewer outputs but a morphing waveform knob that crossfades continuously between sine, triangle, sawtooth, and square. Useful when you want a single output with variable timbre rather than separate waveform outs.
 
 ### Vult Vco (Vult — free tier)
 

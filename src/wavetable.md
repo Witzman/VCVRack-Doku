@@ -8,10 +8,10 @@ The Wavetable VCO is VCV Rack's built-in wavetable oscillator. It comes with a b
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
-| FREQ | wide | Coarse pitch |
-| FINE | ±1 semitone | Fine-tune |
-| POS | 0–1 | Wavetable position (timbre) |
-| BANK | selector | Chooses which wavetable bank to use |
+| FREQ | ±75 semitones | Pitch, shown in Hz on the tooltip |
+| POS | 0–100% | Wavetable position (timbre) |
+
+The wavetable itself is chosen from the module's right-click context menu, not a panel knob.
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
@@ -19,7 +19,7 @@ The Wavetable VCO is VCV Rack's built-in wavetable oscillator. It comes with a b
 | POS | Input | CV morphs through wavetable positions |
 | OUT | Output | Audio output |
 
-**Patching tips:** Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. The BANK selector changes the entire character of the Wavetable VCO — try all banks before committing.
+**Patching tips:** Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. Loading a different wavetable from the right-click menu changes the entire character of the oscillator — try several before committing.
 
 ## Surge XT Wavetable VCO (Surge XT)
 

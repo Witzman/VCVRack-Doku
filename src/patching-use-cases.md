@@ -12,7 +12,7 @@ Add **SEQ 3** (from VCV Free). Set its Tempo knob to your preferred BPM. Set the
 
 Connect SEQ 3's **CV 1** output to the VCO's **PITCH** input (replacing any MIDI to CV connection for the pitch). Connect SEQ 3's **Trigger** output to the ADSR's **Gate** input. The sequencer now drives both pitch and envelope.
 
-For a two-bar pattern, use two SEQ 3 modules chained together: connect the first sequencer's **EOC** (end of cycle) output to the second's **Clock** input, and the second back to the first, or simply program the full sequence across one module at 16 steps.
+For a longer pattern, use two SEQ 3 modules and switch between them with a clock divider, or chain their Trigger/Clock outputs through a counter — a single SEQ 3 maxes out at 8 steps, so two are needed for anything longer.
 
 Set the VCF cutoff low and crank the resonance to taste for an acid bass sound. Modulate the filter cutoff with a slowly rising LFO for sweep.
 
@@ -46,7 +46,7 @@ The same approach works for reverb plugins: send your source to the effect, and 
 
 **Goal:** A sustained, evolving ambient texture without rhythmic articulation.
 
-Use two or three VCOs detuned slightly from each other. Set one to 0 V (center) on its Frequency knob. Set another to +2 cents (a very slight detune using the Fine knob, if present, or a slight nudge on Freq). Set a third an octave higher. Connect all three to a VCV Free Mix module.
+Use two or three VCOs detuned slightly from each other. Set one to 0 V (center) on its Frequency knob. Set another a hair higher with a slight nudge on the Freq knob (the VCV VCO has no Fine knob). Set a third an octave higher. Connect all three to a VCV Free Mix module.
 
 Patch an LFO at a very slow rate (0.1 Hz or slower) to the VCF's Freq CV input with a moderate attenuverter setting. The filter cutoff will drift slowly, creating movement without a fixed rhythm.
 
@@ -62,7 +62,7 @@ Skip the ADSR — just keep the VCA fully open (CV input unpatched, Level knob u
 
 Add a **SEQ 3** module. Use its **Clock** output to drive its own timing. Add a **VCV Free Random** module. Connect Random's **Stepped** output to the VCO's PITCH input. The Stepped output holds a new random voltage each time a trigger fires. Connect SEQ 3's Trigger output to Random's **Trig** input so the Random module updates on each sequencer step.
 
-Add a **VCV Free Quantizer** between Random and the VCO: Random → Quantizer In → VCO Pitch. The quantizer snaps random voltages to a musical scale. Right-click the Quantizer to choose a scale. Now your random pitches are always in key.
+Add a **VCV Free Quantizer** between Random and the VCO: Random → Quantizer In → VCO Pitch. The quantizer snaps random voltages to a musical scale. Select the scale by toggling notes on the Quantizer's note display (it has no scale presets). Now your random pitches are always in key.
 
 For rhythmic variation, add a **Logic** module and combine two different clock divisions using an AND or OR gate to create irregular triggers instead of a simple steady beat.
 
@@ -92,7 +92,7 @@ Install **Surge XT** and **Valley**. Add **Surge XT Wavetable VCO**, **VCV Free 
 
 Tune the Surge XT VCO to a fixed pitch (no sequencer — this is a drone). Select a vocal or harmonics wavetable from the bank. Set a slow ADSR: 3 second attack, full sustain, 6 second release. Manually trigger the ADSR to start the pad.
 
-Add Bogaudio LFO at 0.02 Hz (very slow). Route the SIN output through 8vert at 0.4 to the Surge XT VCO's Position CV input. The wavetable position morphs continuously through different timbres over a 50-second cycle.
+Add Bogaudio LFO with its **Slow** button enabled (rates below ~0.064 Hz require Slow mode), set to 0.02 Hz (very slow). Route the SIN output through 8vert at 40% to the Surge XT VCO's Position CV input. The wavetable position morphs continuously through different timbres over a 50-second cycle.
 
 Add Valley Plateau: SIZE 0.95, DECAY 0.93, DAMP 0.4. Route the VCA output to Plateau and mix the reverb return generously (0.5–0.7 wet level).
 

@@ -2,19 +2,24 @@
 
 Waveshapers and distortion modules transform the shape of an audio waveform, adding harmonic content and changing timbre. Unlike a filter, which removes frequencies, distortion adds new ones that weren't in the original signal. At low amounts, distortion produces warmth and analog grit. At high amounts, it creates aggressive, buzzing, or chaotic textures. Waveshapers apply a mathematical function to the waveform — bending, clipping, or folding it — while traditional distortion typically means hard or soft clipping.
 
-## Befaco Crush Delay (Befaco)
+## Chopping Kinky (Befaco)
 
-Despite the name "delay," Crush Delay is primarily a bit-crusher and sample-rate reducer with a feedback delay. The bit-crush section reduces bit depth for digital distortion, while the sample-rate section creates aliasing artifacts. These are classic lo-fi and industrial textures.
+Chopping Kinky is a voltage-controllable dual-channel wavefolder. Each channel's fold/shape knob progressively folds the waveform back on itself, adding harmonics — from gentle saturation at low amounts to bright, metallic folding at high amounts. A "Chopp" gate input switches between the two channels for rectification/chopping effects, and each channel has a built-in VCA.
 
 | Parameter | Description |
 |-----------|-------------|
-| CRUSH | Bit depth reduction |
-| FREQ | Sample rate reduction |
-| TIME | Delay time |
-| FEEDBACK | Delay feedback amount |
-| MIX | Wet/dry blend |
+| Fold A / Fold B | Gain/shape (fold amount) per channel (0–2) |
+| CV A / CV B | Attenuverter for each channel's fold CV |
 
-**Patching tips:** Apply to a drum bus for gritty, compressed electronic percussion. Use at low CRUSH amounts for subtle analog-feeling warmth. Full CRUSH with high FEEDBACK produces chaotic, self-oscillating noise — use a VCA to gate it.
+| Input/Output | Type | Description |
+|-------------|------|-------------|
+| A / B | Input | Audio in for each channel |
+| Chopp | Input | Gate that chops between channels A and B |
+| CV A / CV B | Input | CV control of fold amount (with and without attenuator) |
+| A / B | Output | Folded channel outputs |
+| Chopp | Output | Chopped/combined output |
+
+**Patching tips:** Send an oscillator into A and push Fold A up for buzzy, harmonically rich folding. Modulate the fold CV with an envelope or LFO for evolving timbres. Feed the Chopp gate from a clock to rhythmically rectify between the two channels.
 
 ## Squinky Labs Stairway (Squinky Labs)
 

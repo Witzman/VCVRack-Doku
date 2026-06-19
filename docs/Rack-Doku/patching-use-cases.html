@@ -86,7 +86,7 @@ function toggle(id){
 <p><strong>Goal:</strong> A repeating melodic pattern that plays without holding keys.</p>
 <p>Add <strong>SEQ 3</strong> (from VCV Free). Set its Tempo knob to your preferred BPM. Set the Steps knob to 8. On the three rows of CV knobs (CV 1, CV 2, CV 3), use CV 1 to program a pitch sequence: each knob sets the pitch CV for that step in volts (0 V = C4, 1 V = C5, etc.).</p>
 <p>Connect SEQ 3&#x27;s <strong>CV 1</strong> output to the VCO&#x27;s <strong>PITCH</strong> input (replacing any MIDI to CV connection for the pitch). Connect SEQ 3&#x27;s <strong>Trigger</strong> output to the ADSR&#x27;s <strong>Gate</strong> input. The sequencer now drives both pitch and envelope.</p>
-<p>For a two-bar pattern, use two SEQ 3 modules chained together: connect the first sequencer&#x27;s <strong>EOC</strong> (end of cycle) output to the second&#x27;s <strong>Clock</strong> input, and the second back to the first, or simply program the full sequence across one module at 16 steps.</p>
+<p>For a longer pattern, use two SEQ 3 modules and switch between them with a clock divider, or chain their Trigger/Clock outputs through a counter — a single SEQ 3 maxes out at 8 steps, so two are needed for anything longer.</p>
 <p>Set the VCF cutoff low and crank the resonance to taste for an acid bass sound. Modulate the filter cutoff with a slowly rising LFO for sweep.</p>
 <hr>
 <h2>2 — Percussion hit</h2>
@@ -103,7 +103,7 @@ function toggle(id){
 <hr>
 <h2>4 — Drone and texture</h2>
 <p><strong>Goal:</strong> A sustained, evolving ambient texture without rhythmic articulation.</p>
-<p>Use two or three VCOs detuned slightly from each other. Set one to 0 V (center) on its Frequency knob. Set another to +2 cents (a very slight detune using the Fine knob, if present, or a slight nudge on Freq). Set a third an octave higher. Connect all three to a VCV Free Mix module.</p>
+<p>Use two or three VCOs detuned slightly from each other. Set one to 0 V (center) on its Frequency knob. Set another a hair higher with a slight nudge on the Freq knob (the VCV VCO has no Fine knob). Set a third an octave higher. Connect all three to a VCV Free Mix module.</p>
 <p>Patch an LFO at a very slow rate (0.1 Hz or slower) to the VCF&#x27;s Freq CV input with a moderate attenuverter setting. The filter cutoff will drift slowly, creating movement without a fixed rhythm.</p>
 <p>Patch a second LFO at a different rate to the Mix module&#x27;s level for one of the VCOs, so it fades in and out. With two LFOs at prime ratios (e.g., 0.07 Hz and 0.11 Hz), the texture never exactly repeats.</p>
 <p>Skip the ADSR — just keep the VCA fully open (CV input unpatched, Level knob up). Let the LFOs create all the movement.</p>
@@ -111,7 +111,7 @@ function toggle(id){
 <h2>5 — Generative random patch</h2>
 <p><strong>Goal:</strong> A patch that generates evolving, semi-random melodies or textures on its own.</p>
 <p>Add a <strong>SEQ 3</strong> module. Use its <strong>Clock</strong> output to drive its own timing. Add a <strong>VCV Free Random</strong> module. Connect Random&#x27;s <strong>Stepped</strong> output to the VCO&#x27;s PITCH input. The Stepped output holds a new random voltage each time a trigger fires. Connect SEQ 3&#x27;s Trigger output to Random&#x27;s <strong>Trig</strong> input so the Random module updates on each sequencer step.</p>
-<p>Add a <strong>VCV Free Quantizer</strong> between Random and the VCO: Random → Quantizer In → VCO Pitch. The quantizer snaps random voltages to a musical scale. Right-click the Quantizer to choose a scale. Now your random pitches are always in key.</p>
+<p>Add a <strong>VCV Free Quantizer</strong> between Random and the VCO: Random → Quantizer In → VCO Pitch. The quantizer snaps random voltages to a musical scale. Select the scale by toggling notes on the Quantizer&#x27;s note display (it has no scale presets). Now your random pitches are always in key.</p>
 <p>For rhythmic variation, add a <strong>Logic</strong> module and combine two different clock divisions using an AND or OR gate to create irregular triggers instead of a simple steady beat.</p>
 <hr>
 <hr>
@@ -126,7 +126,7 @@ function toggle(id){
 <p><strong>Goal:</strong> A slowly evolving atmospheric pad using a wavetable oscillator and large reverb.</p>
 <p>Install <strong>Surge XT</strong> and <strong>Valley</strong>. Add <strong>Surge XT Wavetable VCO</strong>, <strong>VCV Free VCF</strong>, <strong>VCV Free VCA</strong>, <strong>Bogaudio ADSR</strong>, <strong>Bogaudio LFO</strong>, <strong>Valley Plateau</strong>.</p>
 <p>Tune the Surge XT VCO to a fixed pitch (no sequencer — this is a drone). Select a vocal or harmonics wavetable from the bank. Set a slow ADSR: 3 second attack, full sustain, 6 second release. Manually trigger the ADSR to start the pad.</p>
-<p>Add Bogaudio LFO at 0.02 Hz (very slow). Route the SIN output through 8vert at 0.4 to the Surge XT VCO&#x27;s Position CV input. The wavetable position morphs continuously through different timbres over a 50-second cycle.</p>
+<p>Add Bogaudio LFO with its <strong>Slow</strong> button enabled (rates below ~0.064 Hz require Slow mode), set to 0.02 Hz (very slow). Route the SIN output through 8vert at 40% to the Surge XT VCO&#x27;s Position CV input. The wavetable position morphs continuously through different timbres over a 50-second cycle.</p>
 <p>Add Valley Plateau: SIZE 0.95, DECAY 0.93, DAMP 0.4. Route the VCA output to Plateau and mix the reverb return generously (0.5–0.7 wet level).</p>
 <p><strong>Tweak:</strong> Add a second LFO at a different rate (0.05 Hz) to the VCF cutoff for independent timbral and spatial evolution. This creates a pad that changes character in two independent dimensions simultaneously.</p>
 <hr>

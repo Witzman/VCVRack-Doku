@@ -2,27 +2,34 @@
 
 A VCA controls the volume of a signal using a CV input. Without a VCA, a sound plays continuously at full volume the moment you connect the oscillator to the output — there is no way to start or stop individual notes. By patching an envelope into the VCA's CV input, you give each note a defined attack, sustain, and release. Every voice in a polyphonic patch needs at least one VCA; effects sends and mixer levels often use additional VCAs for dynamic control.
 
-## VCA (VCV Free)
+## VCA-1 (VCV Free)
 
-The VCV Free VCA is a clean, straightforward amplifier. It has two inputs — linear and exponential response — and applies a CV-controlled gain. The exponential mode better matches how humans perceive loudness; the linear mode is useful for modulation routing where mathematical precision matters.
+The VCV Free VCA-1 is a clean, straightforward single-channel amplifier. It applies a CV-controlled gain to one signal and has a single CV input (linear response by default, switchable to exponential in the right-click menu).
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
-| LEVEL | 0–2 | Manual gain offset added to CV |
+| LEVEL | 0–100% | Manual gain — multiplies the CV-controlled gain (default 100% = unity) |
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
-| IN | Input | Audio or CV signal to amplify |
 | CV | Input | Gain control voltage |
-| OUT | Output | Amplified signal |
+| Channel | Input | Audio or CV signal to amplify |
+| Channel | Output | Amplified signal |
 
-There are two VCA channels on the module. The second channel follows the same pattern.
-
-**Patching tips:** For a basic voice, connect your ADSR's ENV output to the VCA's CV input and your filtered oscillator to IN. The LEVEL knob acts as a manual volume offset — leave it at 0 if your envelope reaches full amplitude on its own. For a tremolo effect, replace the envelope with a slow LFO patched to CV. Use the linear input for modulation routing where you want predictable, proportional response.
+**Patching tips:** For a basic voice, connect your ADSR's ENV output to the VCA-1's CV input and your filtered oscillator to the Channel input. The LEVEL knob scales the CV-controlled gain — keep it at maximum (its default) so the envelope sets the full dynamics, and lower it only to reduce overall output. For a tremolo effect, replace the envelope with a slow LFO patched to CV.
 
 ## VCA-2 (VCV Free)
 
-A simpler single-channel VCA with only one input and exponential response. Use this when you just need a basic gated amplifier and don't need the two-channel or linear mode features of the main VCA.
+The dual-channel VCA. It has two independent VCA channels, and each channel provides both an exponential CV input and a linear CV input. The exponential response better matches how humans perceive loudness; the linear input is useful for modulation routing where proportional precision matters. Use this when you need two amplifiers in one module or want both CV response curves available.
+
+| Input/Output | Type | Description |
+|-------------|------|-------------|
+| Channel 1 exponential CV | Input | Exponential gain CV for channel 1 |
+| Channel 1 linear CV | Input | Linear gain CV for channel 1 |
+| Channel 1 | Input | Signal to amplify (channel 1) |
+| Channel 1 | Output | Amplified signal (channel 1) |
+
+Channel 2 follows the same pattern with its own set of ports.
 
 ## Bogaudio VCA (Bogaudio)
 

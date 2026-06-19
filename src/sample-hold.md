@@ -18,18 +18,19 @@ Bogaudio's S&H is a clean, accurate sample-and-hold with a track mode (output fo
 
 **Patching tips:** Connect VCV Free Noise's White output to IN. Connect a clock divided by 4 or 8 to TRIG. The OUT now produces a new random pitch or CV value once per measure. Patch OUT to a VCO's V/OCT input through a Quantizer for random melodic fragments that stay in key. Patch to VCF FREQ CV for random filter jumps. Patch to delay feedback amount for organic, unpredictable echoes.
 
-## Sample & Hold ASR (VCV Free)
+## Sample & Hold / Analog Shift Register (VCV Free)
 
-Sample & Hold ASR combines Sample & Hold with a slew limiter. The SH section samples the input on trigger; the ASR section is an attack-sustain-release envelope triggered simultaneously. The combination produces a random stepped voltage that glides between values (when slew is applied) rather than jumping abruptly.
+The VCV Free **Sample & Hold** module (full name "Sample & Hold Analog Shift Register") is an 8-stage analog shift register — here "ASR" means *Analog Shift Register*, not attack-sustain-release. On each trigger it samples the input into the first stage and shifts every previously held value one stage down the chain, so the eight outputs carry the last eight sampled values in sequence. Used as a single stage it is an ordinary sample & hold; used across stages it produces delayed echoes of a CV — handy for canons and call-and-response melodies.
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
-| IN | Input | Signal to sample |
-| TRIG | Input | Trigger input |
-| SH OUT | Output | Standard sample-and-hold output |
-| ASR OUT | Output | Slewed output — smooth transitions between samples |
+| Sample 1–8 | Input | Signal to sample into each stage |
+| Trigger 1–8 | Input | Trigger that samples/shifts each stage |
+| Sample 1–8 | Output | Held value of each stage (stage N = N triggers ago) |
 
-**Patching tips:** Use the ASR output rather than SH OUT when you want random values that glide smoothly — this produces organic, flowing pitch sequences when patched to a VCO. The glide time is set by the ASR attack and release knobs.
+It also has RND, PUSH, and CLEAR buttons for randomizing, manually advancing, and clearing the register.
+
+**Patching tips:** Patch a noise source to Sample 1 and a clock to Trigger 1 for a basic random S&H on output 1. Take outputs 2, 3, 4… to additional voices to play the same pitch sequence delayed by one, two, three steps — an instant canon. Quantize each output for melodic results.
 
 ## ML Modules Bernoulli Gate (ML Modules)
 

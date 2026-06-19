@@ -82,17 +82,18 @@ function toggle(id){
 <h1>LFO — Low Frequency Oscillator</h1>
 <p>An LFO is an oscillator running below audio rate — typically between 0.01 Hz and 20 Hz — whose output is used as a CV modulator rather than a sound source. LFOs add movement, variation, and life to otherwise static patches. A slow sine LFO on filter cutoff produces a gradual sweep; a faster triangle on oscillator pitch produces vibrato; a square wave into a VCA produces tremolo. Almost any parameter that accepts CV can be animated with an LFO.</p>
 <h2>LFO (VCV Free)</h2>
-<p>The VCV Free LFO provides simultaneous sine, triangle, sawtooth, reverse sawtooth, and square wave outputs. It can sync to an external clock and has a reset input for phase-locking.</p>
+<p>The VCV Free LFO provides four simultaneous waveform outputs — sine, triangle, sawtooth, and square. It can sync to an external clock and has a reset input for phase-locking. Two switches set the output range: an Offset switch (bipolar ±5 V or unipolar 0–10 V) and an Invert switch.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
-<tr><td>FREQ</td><td>0.001 – 20 Hz</td><td>LFO speed</td></tr>
-<tr><td>WAVE knob</td><td>selector</td><td>Selects which waveform is used for the INTERP output</td></tr>
+<tr><td>FREQ</td><td>≈0.004 Hz – 1 kHz</td><td>LFO speed (shown in Hz; default 2 Hz)</td></tr>
+<tr><td>Offset</td><td>switch</td><td>Bipolar (±5 V) or unipolar (0–10 V) output</td></tr>
+<tr><td>Invert</td><td>switch</td><td>Flips the waveform polarity</td></tr>
 </table>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
 <tr><td>FREQ CV</td><td>Input</td><td>CV control over speed</td></tr>
 <tr><td>RESET</td><td>Input</td><td>Resets LFO phase to start</td></tr>
-<tr><td>SIN, TRI, SAW, INV SAW, SQR</td><td>Output</td><td>Individual waveform outputs</td></tr>
+<tr><td>SIN, TRI, SAW, SQR</td><td>Output</td><td>Four individual waveform outputs</td></tr>
 </table>
 <p><strong>Patching tips:</strong> For vibrato, patch the SIN output through an <a href="attenuverter.html">Attenuverter</a> to VCO FM — keep the depth small (a few semitones maximum). For filter animation, patch SIN or TRI to VCF FREQ CV. For rhythmic tremolo, use SQR at a musically related frequency and patch to VCA CV. Extremely slow LFOs (0.01–0.1 Hz) are essential for psybient and ambient patches — they provide gradual change that feels like the patch is &quot;breathing&quot; rather than obviously moving.</p>
 <h2>Wavetable LFO (VCV Free)</h2>
@@ -101,18 +102,19 @@ function toggle(id){
 <tr><th>Parameter</th><th>Description</th></tr>
 <tr><td>FREQ</td><td>LFO rate</td></tr>
 <tr><td>POS</td><td>Wavetable position</td></tr>
-<tr><td>BANK</td><td>Wavetable bank selection</td></tr>
 </table>
+<p>The wavetable is selected from the module&#x27;s right-click context menu, not a panel knob.</p>
 <p><strong>Patching tips:</strong> Modulate POS itself with a second very slow LFO to produce a modulator that continuously changes its shape — this gives each cycle a slightly different character, useful for organic, non-repeating textures.</p>
 <h2>Bogaudio LFO (Bogaudio)</h2>
 <p>A full-featured LFO with smooth knob interpolation, a dedicated slow range mode, and both unipolar (0 to +10V) and bipolar (-5V to +5V) outputs. The slow range mode extends down to fractions of a Hz — useful for very gradual changes over minutes rather than seconds.</p>
 <table>
 <tr><th>Parameter</th><th>Description</th></tr>
-<tr><td>FREQ</td><td>Rate — with dedicated slow range toggle</td></tr>
-<tr><td>WAVE</td><td>Waveform selection</td></tr>
+<tr><td>FREQ</td><td>Rate — with dedicated Slow range button</td></tr>
 <tr><td>OFFSET</td><td>Shifts output up or down (bias)</td></tr>
 <tr><td>SCALE</td><td>Attenuates output</td></tr>
+<tr><td>SAMPLE / SMOOTH</td><td>Step/smooth the output shape</td></tr>
 </table>
+<p>Like the VCV LFO, it has no waveform-selector knob — it provides separate simultaneous outputs (Sine, Triangle, Ramp Up, Ramp Down, Square).</p>
 <p><strong>Patching tips:</strong> Use the slow range for ambient patches where you want very gradual change. Use OFFSET to shift a bipolar LFO to unipolar (all positive) for modulating parameters that don&#x27;t accept negative CV well.</p>
 <h3>Count Modula Quad LFO (Count Modula)</h3>
 <p>Four LFOs in one module with phase offset control between them. Patching the four outputs to four different parameters at the same frequency but different phases creates an evolving, cycling modulation system without needing four separate LFO modules.</p>

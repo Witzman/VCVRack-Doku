@@ -85,18 +85,17 @@ function toggle(id){
 <p>The Wavetable VCO is VCV Rack&#x27;s built-in wavetable oscillator. It comes with a bank of wavetables covering analog, digital, vocal, and spectral shapes. A POS knob and CV input control which wavetable position is being read.</p>
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
-<tr><td>FREQ</td><td>wide</td><td>Coarse pitch</td></tr>
-<tr><td>FINE</td><td>±1 semitone</td><td>Fine-tune</td></tr>
-<tr><td>POS</td><td>0–1</td><td>Wavetable position (timbre)</td></tr>
-<tr><td>BANK</td><td>selector</td><td>Chooses which wavetable bank to use</td></tr>
+<tr><td>FREQ</td><td>±75 semitones</td><td>Pitch, shown in Hz on the tooltip</td></tr>
+<tr><td>POS</td><td>0–100%</td><td>Wavetable position (timbre)</td></tr>
 </table>
+<p>The wavetable itself is chosen from the module&#x27;s right-click context menu, not a panel knob.</p>
 <table>
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
 <tr><td>V/OCT</td><td>Input</td><td>Pitch CV</td></tr>
 <tr><td>POS</td><td>Input</td><td>CV morphs through wavetable positions</td></tr>
 <tr><td>OUT</td><td>Output</td><td>Audio output</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. The BANK selector changes the entire character of the Wavetable VCO — try all banks before committing.</p>
+<p><strong>Patching tips:</strong> Modulate the POS input with a slow LFO for continuously morphing timbre. A fast LFO produces formant-like animation. Use an envelope to sweep position in sync with amplitude for evolving attack-decay textures. Loading a different wavetable from the right-click menu changes the entire character of the oscillator — try several before committing.</p>
 <h2>Surge XT Wavetable VCO (Surge XT)</h2>
 <p>Surge XT includes a high-quality wavetable engine with hundreds of factory wavetables plus the ability to load custom wavetable files. It offers multiple playback modes (forward, backward, ping-pong), morph smoothing, and spectral processing options. For complex sound design, this is one of the best free wavetable sources available in VCV Rack.</p>
 <table>

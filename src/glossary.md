@@ -89,7 +89,7 @@ Terms specific to popular free VCV Rack plugins.
 | **Chronoblob2** | Alright Devices' flagship delay module. Stereo, tempo-syncable, with a tone control on the feedback path for dark dub-style repeats. |
 | **Count Modula** | A large free plugin (80+ modules) specializing in sequencers, Euclidean rhythm generators, logic, and utility modules. Per-step probability is its standout sequencer feature. |
 | **Drone** | A sustained, non-rhythmic sound providing harmonic foundation. Created with slow attack/release envelopes and no gate-off event. Common in ambient and psybient music. |
-| **Euclidean rhythm** | A rhythm that distributes a number of hits as evenly as possible across a number of steps. 3 hits in 8 steps produces the son clave pattern. Generates interlocking polyrhythms. |
+| **Euclidean rhythm** | A rhythm that distributes a number of hits as evenly as possible across a number of steps. 3 hits in 8 steps produces the tresillo pattern (x..x..x.). Generates interlocking polyrhythms. |
 | **Impromptu Modular** | Free plugin known for Clocked (master clock with swing and multiple divisions) and Phrase-Seq16 (phrase-chaining sequencer with slide and ties). |
 | **ML Modules** | A small focused free plugin providing Bernoulli Gate, S&H, quantizer, and basic utilities. |
 | **Morphader** | A Befaco crossfader that blends two signals using CV control. Useful for transition effects and live mixing. |

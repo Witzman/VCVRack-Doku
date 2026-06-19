@@ -90,7 +90,7 @@ function toggle(id){
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     BLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
     VERT -->|"Row 1"| VCF
@@ -118,7 +118,7 @@ function toggle(id){
 <p>Add <strong>SEQ3</strong> (VCV) from the module browser.</p>
 <ul><li>Connect Clocked&#x27;s <strong>Clock 1</strong> output to SEQ3&#x27;s <strong>Clock</strong> input.</li>
 <li>Set STEPS to 4 (four-step loop).</li>
-<li>Set the four step knobs to C3, E3, G3, A3 (these are approximately -1V, -0.75V, -0.5V, -0.25V — tune by ear against the VCO you add next).</li>
+<li>Set the four step knobs to C3, E3, G3, A3 (relative to C4 = 0 V: approximately −1.0 V, −0.67 V, −0.42 V, −0.25 V — tune by ear against the VCO you add next).</li>
 <li>Enable all four gate buttons.</li></ul>
 <p>Still silent — clock and sequencer are running, producing CV and gate signals, but no voice module is connected yet.</p>
 <div class="mermaid">flowchart LR
@@ -138,26 +138,26 @@ function toggle(id){
 <h2>Step 5 — Add filter and envelope</h2>
 <p>Add <strong>VCF (VCV)</strong> and <strong>ADSR (Bogaudio)</strong>.</p>
 <ul><li>Connect VCO (Bogaudio)&#x27;s <strong>Saw signal</strong> output to VCF&#x27;s <strong>IN</strong> input.</li>
-<li>Take VCF&#x27;s <strong>LPF</strong> output to a VCA (add <strong>VCA</strong> (VCV) — the dual-channel version).</li>
+<li>Take VCF&#x27;s <strong>LPF</strong> output to a VCA (add <strong>VCA-2</strong> (VCV) — the dual-channel version).</li>
 <li>Connect SEQ3&#x27;s <strong>Trigger</strong> output to ADSR (Bogaudio)&#x27;s <strong>Gate</strong> input.</li>
 <li>Connect ADSR (Bogaudio)&#x27;s <strong>Envelope</strong> output to VCA&#x27;s <strong>Channel 1 exponential CV</strong> input.</li>
 <li>Connect VCA&#x27;s <strong>Channel 1</strong> output to the Audio module inputs.</li></ul>
-<p>Set the ADSR: Attack 10ms, Decay 200ms, Sustain 0.6, Release 300ms. You should now hear a four-note sequence.</p>
+<p>Set the ADSR: Attack 0.01 s (10 ms), Decay 0.2 s (200 ms), Sustain 60%, Release 0.3 s (300 ms). (Bogaudio ADSR shows attack/decay/release in seconds and sustain in %.) You should now hear a four-note sequence.</p>
 <p><strong>What to tweak first:</strong> Adjust the SEQ3 step knob voltages while the sequence runs to change the pitches. The four notes will drift through whatever intervals you set — use the VCO&#x27;s built-in tuner display or tune by ear.</p>
 <div class="mermaid">flowchart LR
     CLK["Clocked\n(Impromptu)"] -->|"Clock 1"| SEQ["SEQ3\n(VCV)"]
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     VCA -->|"Channel 1"| AUDIO["Audio 8\n(VCV Core)"]</div>
 <p><strong><a href="intermediate-step5.vcv">⬇ Download patch — Step 5</a></strong></p>
 <h2>Step 6 — Add a tempo-synced filter sweep</h2>
 <p>This is the step that makes the patch feel professional rather than static.</p>
 <p>Add <strong>LFO (Bogaudio)</strong>.</p>
-<ul><li>Set LFO (Bogaudio)&#x27;s FREQ to match your tempo: at 120 BPM, one beat per second = 2 Hz.</li>
-<li>Take the <strong>Sine</strong> output through an <strong>8vert</strong> (VCV) <strong>Row 1</strong> input (attenuate to about 0.4).</li>
+<ul><li>Set LFO (Bogaudio)&#x27;s FREQ to match your tempo: at 120 BPM there are two beats per second, so one cycle per beat = 2 Hz.</li>
+<li>Take the <strong>Sine</strong> output through an <strong>8vert</strong> (VCV) <strong>Row 1</strong> input (attenuate to about 40%).</li>
 <li>Connect the <strong>Row 1</strong> output to VCF&#x27;s <strong>Frequency</strong> CV input.</li></ul>
 <p>You should now hear the filter open and close in time with the beat, giving the sequence a rhythmic breathing quality.</p>
 <p><strong>What to tweak:</strong> Change the LFO rate. Halving it to 1 Hz gives a two-beat filter sweep — the filter opens slowly over two beats and closes again. Setting it very slow (0.1 Hz) produces a gradual sweep over ten seconds. Each rate changes the groove completely.</p>
@@ -166,7 +166,7 @@ function toggle(id){
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     BLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
     VERT -->|"Row 1"| VCF
@@ -177,7 +177,7 @@ function toggle(id){
 <ul><li>Add <strong>S&amp;H (Bogaudio)</strong>.</li>
 <li>Connect Clocked&#x27;s <strong>Clock 1</strong> output to S&amp;H&#x27;s <strong>Trigger 1</strong> input.</li>
 <li>Connect <strong>Noise</strong> (VCV)&#x27;s <strong>White noise</strong> output to S&amp;H&#x27;s <strong>Signal 1</strong> input.</li>
-<li>Connect S&amp;H&#x27;s output through an <strong>8vert</strong> (VCV) <strong>Row 2</strong> input (attenuate to 0.3), then connect <strong>Row 2</strong> output to VCA&#x27;s <strong>Channel 1 linear CV</strong> input.</li></ul>
+<li>Connect S&amp;H&#x27;s output through an <strong>8vert</strong> (VCV) <strong>Row 2</strong> input (attenuate to 30%), then connect <strong>Row 2</strong> output to VCA&#x27;s <strong>Channel 1 linear CV</strong> input.</li></ul>
 <p>You should now hear velocity variation — some notes hit harder, some softer, with a different random level on each step. This is the single biggest step toward making a sequenced patch feel alive.</p>
 <div class="mermaid">flowchart LR
     CLK["Clocked\n(Impromptu)"] -->|"Clock 1"| SEQ["SEQ3\n(VCV)"]
@@ -185,7 +185,7 @@ function toggle(id){
     SEQ -->|"CV 1"| BVCO["VCO\n(Bogaudio)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Saw signal"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-2\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     BLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
     VERT -->|"Row 1"| VCF

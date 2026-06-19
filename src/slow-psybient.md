@@ -30,15 +30,15 @@ flowchart LR
 
 The drone pad is the harmonic foundation. It plays continuously throughout the track, very slowly evolving in brightness and texture.
 
-**Modules needed:** 2× VCO (VCV), VCF (VCV), VCA (VCV), ADSR (Bogaudio), LFO (Bogaudio), 8vert (VCV), Mix (VCV).
+**Modules needed:** 2× VCO (VCV), VCF (VCV), VCA-1 (VCV), ADSR (Bogaudio), LFO (Bogaudio), 8vert (VCV), VCA Mix (VCV).
 
 **Build it:**
 
 1. Add two VCO modules. Set both to SAW output.
-2. Set one VCO FREQ knob so it outputs G2 (roughly -1.5V from center). Set the other to the same pitch, then use FINE to detune it by about +7 cents.
-3. Connect both SAW outputs to a Mix (VCV). Set levels to 0.6 each.
-4. Connect the Mixer output to VCF **IN** input. Set VCF FREQ to about 600 Hz, RES at 0.2.
-5. Add ADSR (Bogaudio). Set: Attack 4 seconds, Decay 0, Sustain 1.0, Release 8 seconds.
+2. Set one VCO **FREQ** knob to G2 (approximately 98 Hz shown on the display). Set the other VCO **FREQ** to the same pitch, then nudge its **FREQ** knob by the smallest perceptible amount until you hear slow amplitude beating between the two oscillators. Tune by ear — faster beating = more detuning, slower beating = less. There is no FINE knob on VCV VCO.
+3. Connect both SAW outputs to a VCA Mix (VCV) — its per-channel level knobs let you balance the two oscillators. Set both channel levels to about −4 dB each.
+4. Connect the VCA Mix **Mix** output to VCF **IN** input. Set VCF **Cutoff frequency** to about 600 Hz, **Resonance** at 20%.
+5. Add ADSR (Bogaudio). Set: Attack 4 s, Decay 0 s, Sustain 100%, Release 8 s. (Bogaudio ADSR shows attack/decay/release in seconds.)
 6. Manually trigger the ADSR once (right-click → trigger) or patch a manual gate. The pad fades in slowly.
 7. Connect ADSR **Envelope** output to VCA **CV** input. Connect VCF **LPF** output to VCA **Channel** input. Connect VCA **Channel** output to your main mixer.
 
@@ -46,16 +46,16 @@ The drone pad is the harmonic foundation. It plays continuously throughout the t
 
 **Add filter motion:**
 
-8. Add LFO (Bogaudio). Set FREQ to 0.05 Hz (one cycle every 20 seconds).
-9. Take LFO (Bogaudio)'s **Sine** output to an **8vert** (VCV) **Row 1** input. Set the knob to +0.3.
+8. Add LFO (Bogaudio). Enable the **Slow** button (rates below ~0.064 Hz require Slow mode). Set FREQ to 0.05 Hz (one cycle every 20 seconds).
+9. Take LFO (Bogaudio)'s **Sine** output to an **8vert** (VCV) **Row 1** input. Set the knob to +30%.
 10. Connect the attenuated output to VCF **Frequency** CV input.
 
 ```mermaid
 flowchart LR
-    VCO1["VCO 1\n(VCV)"] -->|"SAW"| MIX["Mix\n(VCV)"]
+    VCO1["VCO 1\n(VCV)"] -->|"SAW"| MIX["VCA Mix\n(VCV)"]
     VCO2["VCO 2\n(VCV)"] -->|"SAW"| MIX
     MIX -->|"output"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     PADSR["ADSR\n(Bogaudio)"] -->|"Envelope"| VCA
     VCA -->|"Channel"| MAIN["Main mixer"]
     PLFO["LFO\n(Bogaudio)"] -->|"Sine"| VERT["8vert\n(VCV)"]
@@ -72,16 +72,16 @@ flowchart LR
 
 The bass is simple, mono, and low. It sits below the pad and pulses on specific notes without constant movement.
 
-**Modules needed:** VCO (VCV), VCF (VCV), VCA (VCV), ADSR (Bogaudio), SEQ3 (VCV).
+**Modules needed:** VCO (VCV), VCF (VCV), VCA-1 (VCV), ADSR (Bogaudio), SEQ3 (VCV).
 
 **Build it:**
 
 1. Add SEQ3 (VCV). Connect Clocked **Clock 3** (half notes) to SEQ3's **Clock** input. Set STEPS to 5.
-2. Set the five step voltages to approximately: G1, G1, F1, G1, Eb1 (roughly -2.5V, -2.5V, -2.75V, -2.5V, -3V — tune by ear).
+2. Set the five step voltages to approximately: G1, G1, F1, G1, Eb1 (relative to C4 = 0 V: G1 ≈ −2.42 V, F1 ≈ −2.58 V, Eb1 ≈ −2.75 V — tune by ear).
 3. Enable gates on steps 1 and 3; leave 2, 4, 5 silent for sparse rhythm.
 4. Add VCO. Set to Sine output for a clean bass tone. Connect SEQ3's **CV 1** output to VCO V/OCT.
-5. VCO **Sine** → VCF **IN** input. Set VCF FREQ to 150 Hz, RES near zero. VCF **LPF** output → VCA **Channel** input.
-6. Add ADSR (Bogaudio). Attack 10ms, Decay 400ms, Sustain 0.0, Release 100ms. Connect SEQ3's **Trigger** output to ADSR **Gate** input. Connect ADSR **Envelope** output to VCA **CV** input.
+5. VCO **Sine** → VCF **IN** input. Set VCF **Cutoff frequency** to 150 Hz, **Resonance** near 0%. VCF **LPF** output → VCA **Channel** input.
+6. Add ADSR (Bogaudio). Attack 0.01 s (10 ms), Decay 0.4 s (400 ms), Sustain 0%, Release 0.1 s (100 ms). Connect SEQ3's **Trigger** output to ADSR **Gate** input. Connect ADSR **Envelope** output to VCA **CV** input.
 7. Connect VCA **Channel** output to main mixer at a low level — the bass should support, not dominate.
 
 ```mermaid
@@ -90,7 +90,7 @@ flowchart LR
     SEQ -->|"CV 1"| BVCO["VCO\n(VCV)"]
     SEQ -->|"Trigger"| BADSR["ADSR\n(Bogaudio)"]
     BVCO -->|"Sine"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    VCF -->|"LPF"| VCA["VCA-1\n(VCV)"]
     BADSR -->|"Envelope"| VCA
     VCA -->|"Channel"| MAIN["Main mixer"]
 ```
@@ -105,15 +105,17 @@ flowchart LR
 
 Brief, bright melodic fragments that appear and disappear — the "psychedelic" element. These use random pitch selection with a quantizer so they always sound musical.
 
-**Modules needed:** VCO (VCV) (or Wavetable VCO), VCF (VCV), VCA (VCV), ADSR (Bogaudio), S&H (Bogaudio), Noise (VCV), Quantizer (VCV), 8vert (VCV).
+**Modules needed:** VCO (VCV) (or Wavetable VCO), VCF (SurgeXT VCF, SurgeXTRack), VCA-1 (VCV), ADSR (Bogaudio), S&H (Bogaudio), Noise (VCV), Quantizer (VCV), 8vert (VCV).
 
 **Build it:**
 
 1. Add S&H (Bogaudio). Connect Noise (VCV) **White noise** output to S&H **Signal 1** input. Connect Clocked **Clock 2** (eighth notes) to S&H **Trigger 1** input.
 2. Add Quantizer (VCV). Select G minor scale: G, A, Bb, C, D, Eb, F.
 3. Connect S&H output through Quantizer IN. Connect Quantizer OUT to a VCO V/OCT input.
-4. VCO (set to TRI output for a softer character) → VCF (bandpass mode, FREQ at 1.5 kHz, RES 0.4) → VCA.
-5. Add ADSR (Bogaudio). Attack 5ms, Decay 300ms, Sustain 0, Release 200ms. Clock-trigger this ADSR from Clocked **Clock 2** as well.
+4. VCO (set to **Triangle** output for a softer character) → **SurgeXT VCF** (SurgeXTRack): set its **Filter Model Type** knob to **Band Pass 12 dB**, **Frequency** at 1.5 kHz, **Resonance** at 40%. Patch the VCO into the SurgeXT VCF **Left** input and take its **Left** output → VCA.
+
+   > *Better choice: **SurgeXT VCF** (SurgeXTRack) has a true band-pass mode. VCV VCF has only LPF and HPF outputs — it cannot do bandpass.*
+5. Add ADSR (Bogaudio). Attack 0.005 s (5 ms), Decay 0.3 s (300 ms), Sustain 0%, Release 0.2 s (200 ms). Clock-trigger this ADSR from Clocked **Clock 2** as well.
 6. Connect ADSR **Envelope** output to VCA **CV** input. VCA **Channel** output → main mixer at a low level — these should be subtle, not prominent.
 
 ```mermaid
@@ -122,8 +124,8 @@ flowchart LR
     NOISE["Noise\n(VCV)"] -->|"White noise"| BSH
     BSH -->|"output"| QUANT["Quantizer\n(VCV)"]
     QUANT -->|"output"| FVCO["VCO\n(VCV)"]
-    FVCO -->|"Triangle"| VCF["VCF\n(VCV)"]
-    VCF -->|"LPF"| VCA["VCA\n(VCV)"]
+    FVCO -->|"Triangle"| VCF["SurgeXT VCF\n(SurgeXTRack)"]
+    VCF -->|"Left out (Band Pass)"| VCA["VCA-1\n(VCV)"]
     FADSR["ADSR\n(Bogaudio)"] -->|"Envelope"| VCA
     CLK -->|"Clock 2"| FADSR
     VCA -->|"Channel"| MAIN["Main mixer"]
@@ -139,23 +141,23 @@ flowchart LR
 
 89 BPM half-time feel: kick on beats 1 and 3, snare on beat 3, closed hats on eighth notes.
 
-**Modules needed:** Noise (VCV) (×2 or one shared), 3× VCA (VCV), 3× ADSR (Bogaudio), Mix (VCV), Clocked (Impromptu) (already running).
+**Modules needed:** Noise (VCV) (×2 or one shared), 3× VCA-1 (VCV), 3× ADSR (Bogaudio), VCA Mix (VCV), Clocked (Impromptu) (already running).
 
 For authentic drums you would use a dedicated drum module like Valley Topograph. For this tutorial, build simple noise bursts:
 
 **Kick:**
-1. Noise White → VCF (LP, 80 Hz, RES 0.1) → VCA.
-2. ADSR: Attack 2ms, Decay 80ms, Sustain 0, Release 50ms. Trigger from a trigger pattern. For a half-time kick: use SEQ3 (VCV) with Clocked **Clock 1** (quarter notes), 4 steps, gates on steps 1 and 3 only.
+1. Noise White → VCF (**Cutoff frequency** 80 Hz, **Resonance** 10%, LPF output) → VCA.
+2. ADSR: Attack 0.002 s (2 ms), Decay 0.08 s (80 ms), Sustain 0%, Release 0.05 s (50 ms). Trigger from a trigger pattern. For a half-time kick: use SEQ3 (VCV) with Clocked **Clock 1** (quarter notes), 4 steps, gates on steps 1 and 3 only.
 3. VCA **Channel** output → drum mixer.
 
 **Snare:**
 1. Noise White → VCA (no filter needed).
-2. ADSR: Attack 1ms, Decay 120ms, Sustain 0, Release 60ms. Trigger from SEQ3 step 3 only.
+2. ADSR: Attack 0.001 s (1 ms), Decay 0.12 s (120 ms), Sustain 0%, Release 0.06 s (60 ms). Trigger from SEQ3 step 3 only.
 3. VCA **Channel** output → drum mixer.
 
 **Hi-hats:**
-1. Noise White → VCF (HP, 8 kHz) → VCA.
-2. ADSR: Attack 1ms, Decay 40ms, Sustain 0, Release 20ms. Trigger from Clocked **Clock 2** (eighth notes).
+1. Noise White → VCF (**Cutoff frequency** 8 kHz, HPF output) → VCA.
+2. ADSR: Attack 0.001 s (1 ms), Decay 0.04 s (40 ms), Sustain 0%, Release 0.02 s (20 ms). Trigger from Clocked **Clock 2** (eighth notes).
 3. VCA **Channel** output → drum mixer at low level.
 
 **Listen:** You should have a sparse, half-time groove. The kick and snare are the skeleton; hats add motion.
@@ -171,20 +173,20 @@ This is what makes the patch feel alive and psychedelic rather than mechanical. 
 **LFO A — pad filter drift (already built in Part 2):** 0.05 Hz sine to VCF **Frequency** CV input of the pad.
 
 **LFO B — fine pitch drift:**
-1. Add LFO (Bogaudio). Set FREQ to 0.03 Hz (one cycle every 33 seconds).
-2. Take **Sine** output through **8vert** (VCV) **Row 1** input at very low attenuation (0.05 — tiny amount).
+1. Add LFO (Bogaudio). Enable the **Slow** button (0.03 Hz is below the normal-mode minimum). Set FREQ to 0.03 Hz (one cycle every 33 seconds).
+2. Take **Sine** output through **8vert** (VCV) **Row 1** input at very low attenuation (5% — tiny amount).
 3. Connect to both pad VCO modules' FM inputs. This causes the pitch to drift imperceptibly — you feel it more than hear it.
 
 **LFO C — fragment density:**
-1. Add LFO (Bogaudio). Set FREQ to 0.08 Hz.
-2. Take **Sine** output through **8vert** (VCV) **Row 2** input at 0.4.
-3. Connect to the fragment VCA's **CV** input as an offset. This makes the fragments gradually louder and quieter over a 12-second cycle.
+1. Add LFO (Bogaudio). Enable the **Slow** button. Set FREQ to 0.08 Hz.
+2. Take **Sine** output through **8vert** (VCV) **Row 2** input at 40%.
+3. Connect to the fragment VCA's **CV** input as an offset. This makes the fragments gradually louder and quieter over a ~12.5-second cycle.
 
 **S&H into reverb and delay:**
 1. Add a second S&H (Bogaudio). **Signal 1** input: Noise (VCV) **White noise** output. **Trigger 1**: Clocked **Clock 3** (one pulse every two beats).
-2. Connect S&H output through **8vert** (VCV) **Row 3** input (0.3) to Plateau's DECAY CV input.
+2. Connect S&H output through **8vert** (VCV) **Row 3** input (30%) to Plateau's DECAY CV input.
 3. Add a third S&H (Bogaudio). **Signal 1** input: Noise (VCV) **White noise** output. **Trigger 1**: Clocked **Clock 3**.
-4. Connect S&H output through **8vert** (VCV) **Row 4** input (0.2) to Chronoblob2's FEEDBACK CV input.
+4. Connect S&H output through **8vert** (VCV) **Row 4** input (20%) to Chronoblob2's FEEDBACK CV input.
 
 The reverb decay and delay feedback now change randomly every two beats — the reverb tail gets longer and shorter organically, and the delay becomes denser and sparser unpredictably.
 
@@ -215,7 +217,7 @@ The effects are what give this style its enormous spatial quality.
 
 **Add Chronoblob2 (Alright Devices):**
 1. Route the fragment voice (before it hits the main mixer) to Chronoblob2 IN.
-2. Settings: TIME at dotted 1/8 (at 89 BPM ≈ 420ms), FEEDBACK 0.5, TONE 0.35, MIX 0.45.
+2. Settings: TIME at dotted 1/8 (at 89 BPM ≈ 505 ms), FEEDBACK 0.5, TONE 0.35, MIX 0.45.
 3. Connect Chronoblob2 OUT to the final mixer alongside the dry fragment signal.
 
 **Listen:** You should now hear the patch transform into a spatial, immersive texture — the enormous Plateau reverb and dub-style Chronoblob delay place every sound inside a large, living space.
@@ -243,7 +245,7 @@ Final balance guidelines:
 - Reverb return: generously loud — this style has wet reverb in the foreground, not the background.
 - Delay return: moderate — delay echoes should be heard, not overpowering.
 
-Roll off high frequencies above 12 kHz using a VCF in HP-inverted (LP mode) on the main bus. Psybient mixes are typically dark and warm.
+Roll off high frequencies by running the main bus through a VCF on its Lowpass (LPF) output with the cutoff set around 12 kHz. Psybient mixes are typically dark and warm.
 
 You should now hear the same sounds as Part 7, but better balanced — pad prominent but not harsh, reverb generous and forward in the mix, bass felt more than heard, fragments subtle.
 

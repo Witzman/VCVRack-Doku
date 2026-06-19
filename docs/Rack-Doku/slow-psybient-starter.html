@@ -102,7 +102,7 @@ function toggle(id){
 <ul><li><strong>FREQ</strong> knob: turn fully counterclockwise, then nudge up to about 7 o&#x27;clock. This puts it at G2 (roughly −17 semitones from the centre C4 default). The exact position is not critical — you can tune by ear.</li>
 <li>Leave all other knobs at centre.</li></ul>
 <p><strong>VCO 2</strong> (detuned voice):</p>
-<ul><li><strong>FREQ</strong> knob: same position as VCO 1, then turn it a tiny fraction higher — the goal is about 12 cents of detune, which is just a hair of movement. The beating between the two oscillators should pulse slowly (about once every 3–4 seconds at this detuning).</li></ul>
+<ul><li><strong>FREQ</strong> knob: same position as VCO 1, then turn it a tiny fraction higher — the goal is about 12 cents of detune, which is just a hair of movement. The beating between the two oscillators should pulse gently (roughly once or twice a second at this detuning). Detune further apart for faster beating, closer for slower.</li></ul>
 <p><strong>Noise</strong>: no knobs to set.</p>
 <p><strong>LFO</strong>:</p>
 <ul><li><strong>FREQ</strong> knob: turn to roughly 8 o&#x27;clock (well left of centre). This gives an 8-second sweep period. If you move it further left, the sweep slows down; further right, it speeds up.</li></ul>
@@ -115,7 +115,7 @@ function toggle(id){
 <li><strong>RES</strong> knob: slightly past the minimum — about 8 o&#x27;clock. A touch of resonance adds character without getting sharp.</li>
 <li><strong>FREQ CV</strong> attenuverter (small knob near FREQ CV input): turn to about 9–10 o&#x27;clock — this controls how much the LFO moves the cutoff. Start conservative; you can increase it once the patch is running.</li></ul>
 <p><strong>VCA</strong>:</p>
-<ul><li><strong>LEVEL 1</strong> knob: full up. The drone sustains continuously with no envelope.</li></ul>
+<ul><li><strong>LEVEL</strong> knob: full up. The drone sustains continuously with no envelope.</li></ul>
 <p><strong>Delay</strong>:</p>
 <ul><li><strong>TIME</strong> knob: just above centre — about 1 o&#x27;clock. At 89 BPM this lands near a dotted eighth note (≈ 506 ms).</li>
 <li><strong>FEEDBACK</strong> knob: just above centre — around 2 o&#x27;clock (55 %). Higher gives more repeats; lower is subtler.</li>
@@ -131,8 +131,8 @@ function toggle(id){
 <tr><td>Noise</td><td><strong>PINK</strong></td><td>VCA Mix</td><td><strong>CH 3</strong></td></tr>
 <tr><td>LFO</td><td><strong>SIN</strong></td><td>VCF</td><td><strong>FREQ CV</strong></td></tr>
 <tr><td>VCA Mix</td><td><strong>MIX</strong></td><td>VCF</td><td><strong>IN</strong></td></tr>
-<tr><td>VCF</td><td><strong>LPF</strong></td><td>VCA</td><td><strong>IN 1</strong></td></tr>
-<tr><td>VCA</td><td><strong>OUT 1</strong></td><td>Delay</td><td><strong>IN</strong></td></tr>
+<tr><td>VCF</td><td><strong>LPF</strong></td><td>VCA</td><td><strong>IN</strong></td></tr>
+<tr><td>VCA</td><td><strong>OUT</strong></td><td>Delay</td><td><strong>IN</strong></td></tr>
 <tr><td>Delay</td><td><strong>MIX</strong></td><td>Audio 2</td><td><strong>L</strong></td></tr>
 <tr><td>Delay</td><td><strong>MIX</strong></td><td>Audio 2</td><td><strong>R</strong></td></tr>
 </table>
@@ -194,8 +194,8 @@ LFO (8s) ──────→ VCF freq CV</code></pre>
 <tr><td>Noise</td><td>PINK</td><td>VCA Mix</td><td>CH 3</td></tr>
 <tr><td>LFO</td><td>SIN</td><td>VCF</td><td>FREQ CV</td></tr>
 <tr><td>VCA Mix</td><td>MIX</td><td>VCF</td><td>IN</td></tr>
-<tr><td>VCF</td><td>LPF</td><td>VCA</td><td>IN 1</td></tr>
-<tr><td>VCA</td><td>OUT 1</td><td>Delay</td><td>IN</td></tr>
+<tr><td>VCF</td><td>LPF</td><td>VCA</td><td>IN</td></tr>
+<tr><td>VCA</td><td>OUT</td><td>Delay</td><td>IN</td></tr>
 <tr><td>Delay</td><td>MIX</td><td>Audio 2</td><td>L</td></tr>
 <tr><td>Delay</td><td>MIX</td><td>Audio 2</td><td>R</td></tr>
 </table>

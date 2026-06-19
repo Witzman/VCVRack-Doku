@@ -9,7 +9,7 @@ SEQ 3 is an 8-step sequencer included with Rack Free. Each step has a voltage kn
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
 | STEPS | 1–8 | Number of active steps in the sequence |
-| Per-step knob | ±5V | Voltage output for that step |
+| Per-step knob | ±10V | Voltage output for that step |
 | Per-step button | on/off | Whether the gate fires on that step |
 | RUN | toggle | Starts and stops the sequencer |
 | RESET | trigger | Returns to step 1 |
@@ -18,10 +18,10 @@ SEQ 3 is an 8-step sequencer included with Rack Free. Each step has a voltage kn
 |-------------|------|-------------|
 | CLK | Input | Clock input — advances one step per pulse |
 | RESET | Input | Resets to step 1 |
-| GATE | Output | Gate signal for the current step's gate setting |
-| ROW1/2/3 | Output | Three independent voltage rows per step |
+| Trigger | Output | Trigger pulse on each active step |
+| CV 1/2/3 | Output | Three independent voltage rows per step |
 
-**Patching tips:** Connect a clock's output to CLK. Patch ROW1 to a VCO's V/OCT input for a pitched sequence. Patch GATE to an ADSR's GATE input to trigger notes. The three rows allow independent pitch, modulation, and velocity sequences running in sync — program ROW1 for pitch, ROW2 for filter cutoff offsets, and ROW3 for VCA level variation. Use STEPS to create patterns shorter than 8 — a 5-step sequence over a 4/4 clock creates interesting polyrhythmic effects.
+**Patching tips:** Connect a clock's output to CLK. Patch CV 1 to a VCO's V/OCT input for a pitched sequence. Patch Trigger to an ADSR's GATE input to trigger notes. The three rows allow independent pitch, modulation, and velocity sequences running in sync — program CV 1 for pitch, CV 2 for filter cutoff offsets, and CV 3 for VCA level variation. Use STEPS to create patterns shorter than 8 — a 5-step sequence over a 4/4 clock creates interesting polyrhythmic effects.
 
 ## Impromptu Clocked + Phrase-Seq (Impromptu)
 

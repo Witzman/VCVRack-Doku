@@ -4,18 +4,19 @@ An LFO is an oscillator running below audio rate — typically between 0.01 Hz a
 
 ## LFO (VCV Free)
 
-The VCV Free LFO provides simultaneous sine, triangle, sawtooth, reverse sawtooth, and square wave outputs. It can sync to an external clock and has a reset input for phase-locking.
+The VCV Free LFO provides four simultaneous waveform outputs — sine, triangle, sawtooth, and square. It can sync to an external clock and has a reset input for phase-locking. Two switches set the output range: an Offset switch (bipolar ±5 V or unipolar 0–10 V) and an Invert switch.
 
 | Parameter | Range | What it does |
 |-----------|-------|--------------|
-| FREQ | 0.001 – 20 Hz | LFO speed |
-| WAVE knob | selector | Selects which waveform is used for the INTERP output |
+| FREQ | ≈0.004 Hz – 1 kHz | LFO speed (shown in Hz; default 2 Hz) |
+| Offset | switch | Bipolar (±5 V) or unipolar (0–10 V) output |
+| Invert | switch | Flips the waveform polarity |
 
 | Input/Output | Type | Description |
 |-------------|------|-------------|
 | FREQ CV | Input | CV control over speed |
 | RESET | Input | Resets LFO phase to start |
-| SIN, TRI, SAW, INV SAW, SQR | Output | Individual waveform outputs |
+| SIN, TRI, SAW, SQR | Output | Four individual waveform outputs |
 
 **Patching tips:** For vibrato, patch the SIN output through an [Attenuverter](attenuverter.md) to VCO FM — keep the depth small (a few semitones maximum). For filter animation, patch SIN or TRI to VCF FREQ CV. For rhythmic tremolo, use SQR at a musically related frequency and patch to VCA CV. Extremely slow LFOs (0.01–0.1 Hz) are essential for psybient and ambient patches — they provide gradual change that feels like the patch is "breathing" rather than obviously moving.
 
@@ -27,7 +28,8 @@ The Wavetable LFO uses the same wavetable engine as the Wavetable VCO oscillator
 |-----------|-------------|
 | FREQ | LFO rate |
 | POS | Wavetable position |
-| BANK | Wavetable bank selection |
+
+The wavetable is selected from the module's right-click context menu, not a panel knob.
 
 **Patching tips:** Modulate POS itself with a second very slow LFO to produce a modulator that continuously changes its shape — this gives each cycle a slightly different character, useful for organic, non-repeating textures.
 
@@ -37,10 +39,12 @@ A full-featured LFO with smooth knob interpolation, a dedicated slow range mode,
 
 | Parameter | Description |
 |-----------|-------------|
-| FREQ | Rate — with dedicated slow range toggle |
-| WAVE | Waveform selection |
+| FREQ | Rate — with dedicated Slow range button |
 | OFFSET | Shifts output up or down (bias) |
 | SCALE | Attenuates output |
+| SAMPLE / SMOOTH | Step/smooth the output shape |
+
+Like the VCV LFO, it has no waveform-selector knob — it provides separate simultaneous outputs (Sine, Triangle, Ramp Up, Ramp Down, Square).
 
 **Patching tips:** Use the slow range for ambient patches where you want very gradual change. Use OFFSET to shift a bipolar LFO to unipolar (all positive) for modulating parameters that don't accept negative CV well.
 

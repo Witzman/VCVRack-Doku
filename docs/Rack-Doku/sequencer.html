@@ -86,7 +86,7 @@ function toggle(id){
 <table>
 <tr><th>Parameter</th><th>Range</th><th>What it does</th></tr>
 <tr><td>STEPS</td><td>1–8</td><td>Number of active steps in the sequence</td></tr>
-<tr><td>Per-step knob</td><td>±5V</td><td>Voltage output for that step</td></tr>
+<tr><td>Per-step knob</td><td>±10V</td><td>Voltage output for that step</td></tr>
 <tr><td>Per-step button</td><td>on/off</td><td>Whether the gate fires on that step</td></tr>
 <tr><td>RUN</td><td>toggle</td><td>Starts and stops the sequencer</td></tr>
 <tr><td>RESET</td><td>trigger</td><td>Returns to step 1</td></tr>
@@ -95,10 +95,10 @@ function toggle(id){
 <tr><th>Input/Output</th><th>Type</th><th>Description</th></tr>
 <tr><td>CLK</td><td>Input</td><td>Clock input — advances one step per pulse</td></tr>
 <tr><td>RESET</td><td>Input</td><td>Resets to step 1</td></tr>
-<tr><td>GATE</td><td>Output</td><td>Gate signal for the current step&#x27;s gate setting</td></tr>
-<tr><td>ROW1/2/3</td><td>Output</td><td>Three independent voltage rows per step</td></tr>
+<tr><td>Trigger</td><td>Output</td><td>Trigger pulse on each active step</td></tr>
+<tr><td>CV 1/2/3</td><td>Output</td><td>Three independent voltage rows per step</td></tr>
 </table>
-<p><strong>Patching tips:</strong> Connect a clock&#x27;s output to CLK. Patch ROW1 to a VCO&#x27;s V/OCT input for a pitched sequence. Patch GATE to an ADSR&#x27;s GATE input to trigger notes. The three rows allow independent pitch, modulation, and velocity sequences running in sync — program ROW1 for pitch, ROW2 for filter cutoff offsets, and ROW3 for VCA level variation. Use STEPS to create patterns shorter than 8 — a 5-step sequence over a 4/4 clock creates interesting polyrhythmic effects.</p>
+<p><strong>Patching tips:</strong> Connect a clock&#x27;s output to CLK. Patch CV 1 to a VCO&#x27;s V/OCT input for a pitched sequence. Patch Trigger to an ADSR&#x27;s GATE input to trigger notes. The three rows allow independent pitch, modulation, and velocity sequences running in sync — program CV 1 for pitch, CV 2 for filter cutoff offsets, and CV 3 for VCA level variation. Use STEPS to create patterns shorter than 8 — a 5-step sequence over a 4/4 clock creates interesting polyrhythmic effects.</p>
 <h2>Impromptu Clocked + Phrase-Seq (Impromptu)</h2>
 <p>Impromptu is a free plugin with a comprehensive sequencing ecosystem. Clocked provides a master clock with multiple divided outputs. Phrase-Seq16 is a 16-step, 2-row sequencer with phrase chaining — you can define up to 16 different phrases and chain them in order, allowing full song structures rather than a single repeating loop.</p>
 <table>
